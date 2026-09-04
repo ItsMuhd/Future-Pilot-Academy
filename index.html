@@ -24,10 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* =========================
-           NAVIGATION
-        ========================= */
-
         header {
             position: sticky;
             top: 0;
@@ -91,10 +87,6 @@
             border-radius: 8px;
             cursor: pointer;
         }
-
-        /* =========================
-           HERO
-        ========================= */
 
         .hero {
             min-height: 650px;
@@ -188,8 +180,6 @@
             color: #062b49;
         }
 
-        /* Decorative plane */
-
         .floating-plane {
             position: absolute;
             right: 7%;
@@ -208,10 +198,6 @@
                 transform: translateY(-25px) rotate(3deg);
             }
         }
-
-        /* =========================
-           STATS
-        ========================= */
 
         .stats {
             width: 92%;
@@ -250,10 +236,6 @@
             font-weight: 700;
         }
 
-        /* =========================
-           SECTIONS
-        ========================= */
-
         section {
             width: 92%;
             max-width: 1250px;
@@ -284,10 +266,6 @@
             color: #607d94;
             line-height: 1.7;
         }
-
-        /* =========================
-           FEATURE CARDS
-        ========================= */
 
         .features {
             display: grid;
@@ -342,10 +320,6 @@
             text-decoration: underline;
         }
 
-        /* =========================
-           AIRCRAFT PREVIEW
-        ========================= */
-
         .aircraft-preview {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -377,10 +351,6 @@
             margin-bottom: 25px;
         }
 
-        /* =========================
-           CTA
-        ========================= */
-
         .cta {
             background: linear-gradient(135deg, #0875c1, #004c87);
             border-radius: 25px;
@@ -400,10 +370,6 @@
             line-height: 1.7;
             color: #e8f5ff;
         }
-
-        /* =========================
-           FOOTER
-        ========================= */
 
         footer {
             background: #031c30;
@@ -456,10 +422,6 @@
         .creator strong {
             color: #ffd43b;
         }
-
-        /* =========================
-           MOBILE
-        ========================= */
 
         @media (max-width: 950px) {
 
@@ -560,10 +522,6 @@
 
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
 <header>
     <nav class="navbar">
 
@@ -617,15 +575,15 @@
                 <a href="contact.html">Contact</a>
             </li>
 
+            <!-- GIST ADDED -->
+            <li>
+                <a href="gist.html">💬 Gist</a>
+            </li>
+
         </ul>
 
     </nav>
 </header>
-
-
-<!-- =========================
-     HERO
-========================= -->
 
 <main>
 
@@ -667,11 +625,6 @@
 
 </section>
 
-
-<!-- =========================
-     STATS
-========================= -->
-
 <div class="stats">
 
     <div class="stat">
@@ -696,11 +649,6 @@
 
 </div>
 
-
-<!-- =========================
-     LEARNING AREAS
-========================= -->
-
 <section>
 
     <div class="section-heading">
@@ -715,7 +663,6 @@
         </p>
 
     </div>
-
 
     <div class="features">
 
@@ -736,7 +683,6 @@
 
         </article>
 
-
         <article class="feature-card">
 
             <div class="feature-icon">🗺️</div>
@@ -753,7 +699,6 @@
             </a>
 
         </article>
-
 
         <article class="feature-card">
 
@@ -772,7 +717,6 @@
 
         </article>
 
-
         <article class="feature-card">
 
             <div class="feature-icon">🎛️</div>
@@ -789,7 +733,6 @@
             </a>
 
         </article>
-
 
         <article class="feature-card">
 
@@ -808,7 +751,6 @@
 
         </article>
 
-
         <article class="feature-card">
 
             <div class="feature-icon">📖</div>
@@ -826,14 +768,27 @@
 
         </article>
 
+        <!-- GIST ADDED -->
+        <article class="feature-card">
+
+            <div class="feature-icon">💬</div>
+
+            <h3>Aviation Gist</h3>
+
+            <p>
+                Take a break from studying and explore funny aviation
+                stories, surprises, jokes and interactive gists.
+            </p>
+
+            <a href="gist.html" class="card-link">
+                Enter Gist →
+            </a>
+
+        </article>
+
     </div>
 
 </section>
-
-
-<!-- =========================
-     AIRCRAFT PREVIEW
-========================= -->
 
 <section>
 
@@ -848,7 +803,6 @@
             >
 
         </div>
-
 
         <div class="aircraft-text">
 
@@ -870,11 +824,6 @@
 
 </section>
 
-
-<!-- =========================
-     MISSIONS
-========================= -->
-
 <section>
 
     <div class="section-heading">
@@ -889,7 +838,6 @@
         </p>
 
     </div>
-
 
     <div class="features">
 
@@ -910,7 +858,6 @@
 
         </article>
 
-
         <article class="feature-card">
 
             <div class="feature-icon">🎯</div>
@@ -927,7 +874,6 @@
             </a>
 
         </article>
-
 
         <article class="feature-card">
 
@@ -950,11 +896,6 @@
 
 </section>
 
-
-<!-- =========================
-     CTA
-========================= -->
-
 <section>
 
     <div class="cta">
@@ -976,11 +917,6 @@
 
 </main>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
     <div class="footer-grid">
@@ -996,7 +932,6 @@
             </p>
 
         </div>
-
 
         <div>
 
@@ -1020,10 +955,14 @@
                     <a href="missions.html">Missions</a>
                 </li>
 
+                <!-- GIST ADDED -->
+                <li>
+                    <a href="gist.html">💬 Gist</a>
+                </li>
+
             </ul>
 
         </div>
-
 
         <div>
 
@@ -1047,12 +986,16 @@
                     <a href="contact.html">Contact</a>
                 </li>
 
+                <!-- GIST ADDED -->
+                <li>
+                    <a href="gist.html">💬 Gist</a>
+                </li>
+
             </ul>
 
         </div>
 
     </div>
-
 
     <div class="creator">
 
@@ -1067,11 +1010,6 @@
 
 </footer>
 
-
-<!-- =========================
-     MOBILE MENU SCRIPT
-========================= -->
-
 <script>
 
     const menuBtn = document.getElementById("menuBtn");
@@ -1082,9 +1020,6 @@
         navLinks.classList.toggle("show");
 
     });
-
-
-    // Close mobile menu after selecting a page
 
     document.querySelectorAll(".nav-links a").forEach(function(link) {
 
@@ -1099,4 +1034,4 @@
 </script>
 
 </body>
-</html>
+    </html>
