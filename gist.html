@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gist ✈️ | Future Pilot Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{
+ scroll-behavior:smooth;
+}
+
+body{
+ font-family:Montserrat,sans-serif;
+ color:#fff;
+ min-height:100vh;
+ overflow-x:hidden;
+ background:
+ radial-gradient(circle at 15% 20%,#123e70 0,transparent 25%),
+ radial-gradient(circle at 85% 75%,#30135f 0,transparent 27%),
+ linear-gradient(145deg,#020611,#06152b 50%,#020611);
+}
+
+/* ================= STARS ================= */
+
+.stars{
+ position:fixed;
+ inset:0;
+ z-index:-5;
+ pointer-events:none;
+ background-image:
+ radial-gradient(circle,#fff 1px,transparent 1.5px),
+ radial-gradient(circle,#5bdcff 1px,transparent 1.5px),
+ radial-gradient(circle,#fff 1px,transparent 1.5px);
+ background-size:90px 90px,150px 150px,210px 210px;
+ animation:starMove 12s linear infinite;
+ opacity:.42;
+}
+
+@keyframes starMove{
+ from{background-position:0 0,0 0,0 0}
+ to{background-position:0 90px,70px 150px,100px 210px}
+}
+
+/* ================= LIGHT BLOBS ================= */
+
+.light{
+ position:fixed;
+ width:180px;
+ height:180px;
+ border-radius:50%;
+ filter:blur(70px);
+ opacity:.15;
+ z-index:-4;
+ pointer-events:none;
+ animation:lightMove 9s ease-in-out infinite alternate;
+}
+
+.light.one{
+ background:#008cff;
+ top:10%;
+ left:-80px;
+}
+
+.light.two{
+ background:#b400ff;
+ right:-80px;
+ bottom:10%;
+ animation-delay:2s;
+}
+
+@keyframes lightMove{
+ to{
+  transform:translate(90px,50px) scale(1.25);
+ }
+}
+
+/* ================= NAV ================= */
+
+nav{
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:rgba(2,8,22,.9);
+ backdrop-filter:blur(15px);
+ border-bottom:1px solid #45cfff22;
+}
+
+.nav-inner{
+ max-width:1200px;
+ margin:auto;
+ padding:14px 18px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+}
+
+.logo{
+ color:#fff;
+ text-decoration:none;
+ font-family:Cinzel,serif;
+ font-weight:800;
+ font-size:17px;
+}
+
+.logo span{
+ color:#55dcff;
+}
+
+.menu{
+ display:flex;
+ gap:6px;
+ flex-wrap:wrap;
+ justify-content:center;
+}
+
+.menu a{
+ color:#dcefff;
+ text-decoration:none;
+ padding:8px 10px;
+ border-radius:20px;
+ font-size:10px;
+ font-weight:700;
+ transition:.3s;
+}
+
+.menu a:hover,
+.menu a.active{
+ background:#078dcc;
+ color:#fff;
+}
+
+.menu-btn{
+ display:none;
+ background:none;
+ border:0;
+ color:#fff;
+ font-size:25px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+ min-height:680px;
+ max-width:1100px;
+ margin:auto;
+ padding:80px 20px 60px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+}
+
+.badge{
+ padding:8px 15px;
+ border:1px solid #38d5ff;
+ border-radius:30px;
+ color:#72e3ff;
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:1.5px;
+ box-shadow:0 0 25px #00bfff44;
+ margin-bottom:25px;
+}
+
+.hero h1{
+ font-family:Cinzel,serif;
+ font-size:clamp(38px,7vw,72px);
+ line-height:1.05;
+ margin-bottom:16px;
+}
+
+.hero h1 span{
+ color:#4edcff;
+ text-shadow:0 0 25px #00bfff99;
+}
+
+.hero>p{
+ max-width:680px;
+ color:#b8cee0;
+ line-height:1.8;
+ font-size:13px;
+}
+
+/* ================================================= */
+/*             ROTATING MUH'D CORE                  */
+/* ================================================= */
+
+.name-zone{
+ position:relative;
+ width:330px;
+ height:330px;
+ margin:65px auto 15px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ perspective:1000px;
+}
+
+/* MAIN CIRCLE */
+
+.name-orb{
+ position:relative;
+ width:220px;
+ height:220px;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ cursor:pointer;
+ z-index:5;
+
+ background:
+ radial-gradient(circle at 35% 25%,
+ rgba(255,255,255,.25),
+ rgba(20,112,180,.35) 25%,
+ rgba(3,20,45,.95) 68%);
+
+ border:2px solid rgba(91,222,255,.9);
+
+ box-shadow:
+ 0 0 12px #00cfff,
+ 0 0 30px #00aaffaa,
+ 0 0 70px #007dff55,
+ inset 0 0 30px #42ddff33;
+
+ animation:
+  orbRotate 7s linear infinite,
+  orbFloat 3.5s ease-in-out infinite alternate;
+
+ transform-style:preserve-3d;
+ transition:.35s;
+}
+
+/* INNER CIRCLE */
+
+.name-orb:before{
+ content:"";
+ position:absolute;
+ width:190px;
+ height:190px;
+ border-radius:50%;
+ border:1px solid #ffffff44;
+ box-shadow:
+ inset 0 0 25px #00cfff55,
+ 0 0 20px #ffffff22;
+}
+
+/* SECOND ORBIT */
+
+.name-orb:after{
+ content:"";
+ position:absolute;
+ width:270px;
+ height:95px;
+ border-radius:50%;
+ border:2px solid #56e4ff;
+ box-shadow:
+ 0 0 10px #00d9ff,
+ 0 0 25px #00aaffaa;
+ transform:rotateX(68deg);
+ animation:outerOrbit 3.5s linear infinite;
+}
+
+/* NAME INSIDE */
+
+.muhd-name{
+ position:relative;
+ z-index:10;
+ font-family:Cinzel,serif;
+ font-weight:800;
+ font-size:20px;
+ line-height:1.3;
+ padding:20px;
+ color:#fff;
+ text-shadow:
+ 0 0 5px #fff,
+ 0 0 15px #4ddcff,
+ 0 0 30px #00aaff;
+ animation:nameShine 2.5s ease-in-out infinite alternate;
+}
+
+.muhd-name span{
+ color:#65e3ff;
+}
+
+/* ROTATION */
+
+@keyframes orbRotate{
+ from{
+  transform:rotateZ(0deg);
+ }
+ to{
+  transform:rotateZ(360deg);
+ }
+}
+
+@keyframes outerOrbit{
+ from{
+  transform:rotateX(68deg) rotateZ(0deg);
+ }
+ to{
+  transform:rotateX(68deg) rotateZ(360deg);
+ }
+}
+
+@keyframes orbFloat{
+ from{
+  translate:0 0;
+ }
+ to{
+  translate:0 -9px;
+ }
+}
+
+@keyframes nameShine{
+ from{
+  text-shadow:
+  0 0 5px #fff,
+  0 0 12px #4ddcff,
+  0 0 22px #00aaff;
+ }
+ to{
+  text-shadow:
+  0 0 8px #fff,
+  0 0 25px #5eeaff,
+  0 0 45px #00bfff;
+ }
+}
+
+/* MOVING REFLECTION */
+
+.reflection{
+ position:absolute;
+ width:55px;
+ height:8px;
+ border-radius:50%;
+ background:#fff;
+ filter:blur(2px);
+ box-shadow:
+ 0 0 8px #fff,
+ 0 0 18px #5de5ff,
+ 0 0 35px #00bfff;
+ z-index:8;
+ animation:reflectionMove 2.8s linear infinite;
+}
+
+@keyframes reflectionMove{
+ 0%{
+  transform:rotate(0deg) translateX(105px) rotate(0deg);
+ }
+ 100%{
+  transform:rotate(360deg) translateX(105px) rotate(-360deg);
+ }
+}
+
+/* SMALL LABEL */
+
+.future-label{
+ position:absolute;
+ bottom:0;
+ left:50%;
+ transform:translateX(-50%);
+ color:#86a9bf;
+ font-size:9px;
+ letter-spacing:1.5px;
+ white-space:nowrap;
+}
+
+.future-label strong{
+ color:#68dfff;
+ font-size:10px;
+}
+
+/* CLICK MESSAGE */
+
+.tap-text{
+ margin-top:5px;
+ color:#7697aa;
+ font-size:10px;
+ letter-spacing:.5px;
+}
+
+/* ================================================= */
+/*              EXPLOSION GIST SYSTEM               */
+/* ================================================= */
+
+.gist-explosion{
+ position:fixed;
+ left:50%;
+ top:50%;
+ width:10px;
+ height:10px;
+ z-index:600;
+ pointer-events:none;
+ transform:translate(-50%,-50%);
+}
+
+.particle{
+ position:absolute;
+ width:6px;
+ height:6px;
+ border-radius:50%;
+ background:var(--particle-color);
+ box-shadow:
+ 0 0 7px var(--particle-color),
+ 0 0 15px var(--particle-color),
+ 0 0 25px var(--particle-color);
+ animation:particleBlast 1.1s cubic-bezier(.15,.8,.2,1) forwards;
+}
+
+@keyframes particleBlast{
+ 0%{
+  transform:translate(0,0) scale(1);
+  opacity:1;
+ }
+ 100%{
+  transform:translate(var(--x),var(--y)) scale(.05);
+  opacity:0;
+ }
+}
+
+/* BIG FLASH */
+
+.flash{
+ position:fixed;
+ left:50%;
+ top:50%;
+ width:30px;
+ height:30px;
+ border-radius:50%;
+ background:var(--flash-color);
+ box-shadow:
+ 0 0 20px var(--flash-color),
+ 0 0 60px var(--flash-color),
+ 0 0 120px var(--flash-color);
+ transform:translate(-50%,-50%) scale(.1);
+ z-index:590;
+ pointer-events:none;
+ animation:flashBoom .7s ease-out forwards;
+}
+
+@keyframes flashBoom{
+ 0%{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(.1);
+ }
+ 45%{
+  opacity:.8;
+ }
+ 100%{
+  opacity:0;
+  transform:translate(-50%,-50%) scale(15);
+ }
+}
+
+/* ================================================= */
+/*                    POPUP                         */
+/* ================================================= */
+
+.gist-popup{
+ position:fixed;
+ left:50%;
+ top:50%;
+ width:min(90%,520px);
+ padding:32px 25px;
+ transform:translate(-50%,-50%) scale(.5);
+ opacity:0;
+ pointer-events:none;
+ z-index:700;
+ text-align:center;
+
+ border-radius:28px;
+ border:1px solid var(--gist-color,#4ddcff);
+
+ background:
+ radial-gradient(circle at 50% 0,#16476b,#031426 70%);
+
+ box-shadow:
+ 0 0 15px var(--gist-color,#4ddcff),
+ 0 0 50px var(--gist-color,#4ddcff55),
+ 0 25px 100px #000b;
+
+ transition:.35s;
+}
+
+.gist-popup.show{
+ opacity:1;
+ transform:translate(-50%,-50%) scale(1);
+}
+
+.gist-popup .plane{
+ font-size:40px;
+ margin-bottom:8px;
+ animation:planeFloat 1s ease-in-out infinite alternate;
+}
+
+@keyframes planeFloat{
+ to{
+  transform:translateX(8px) rotate(-4deg);
+ }
+}
+
+.gist-popup h3{
+ color:var(--gist-color,#65ddff);
+ margin-bottom:13px;
+ font-size:18px;
+}
+
+.gist-popup p{
+ color:#d5eaf4;
+ line-height:1.8;
+ font-size:13px;
+}
+
+.count{
+ margin-top:17px;
+ color:#7fdfff;
+ font-size:10px;
+}
+
+/* ================= CONTENT ================= */
+
+section{
+ max-width:1100px;
+ margin:auto;
+ padding:65px 20px;
+}
+
+.section-title{
+ text-align:center;
+ margin-bottom:35px;
+}
+
+.section-title h2{
+ font-family:Cinzel,serif;
+ font-size:clamp(25px,5vw,40px);
+ margin-bottom:10px;
+}
+
+.section-title p{
+ color:#9db6c9;
+ font-size:12px;
+}
+
+.gist-box{
+ padding:35px;
+ border-radius:28px;
+ background:linear-gradient(135deg,#09294b,#061b31);
+ border:1px solid #2dcfff33;
+ box-shadow:0 20px 55px #0005;
+}
+
+.gist-box h3{
+ color:#5bdfff;
+ margin-bottom:14px;
+}
+
+.gist-box p{
+ color:#cee1ed;
+ line-height:1.9;
+ font-size:13px;
+}
+
+.pidgin{
+ margin-top:20px;
+ padding:18px;
+ border-left:4px solid #38d7ff;
+ background:#031526aa;
+ border-radius:12px;
+ color:#cbeeff;
+ line-height:1.8;
+ font-size:13px;
+}
+
+/* ================= CARDS ================= */
+
+.card-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:20px;
+}
+
+.card{
+ padding:25px;
+ border-radius:22px;
+ background:linear-gradient(145deg,#071c34dd,#082a4599);
+ border:1px solid #5bcfff22;
+ transition:.3s;
+}
+
+.card:hover{
+ transform:translateY(-7px);
+ border-color:#39d5ff;
+ box-shadow:0 15px 40px #0008;
+}
+
+.icon{
+ font-size:30px;
+ margin-bottom:14px;
+}
+
+.card h3{
+ margin-bottom:10px;
+ font-size:17px;
+}
+
+.card p{
+ color:#a9c1d2;
+ font-size:12px;
+ line-height:1.8;
+}
+
+/* ================= BUTTON ================= */
+
+button,
+.btn{
+ display:inline-block;
+ border:0;
+ cursor:pointer;
+ text-decoration:none;
+ color:#fff;
+ background:linear-gradient(135deg,#008dcc,#00bce8);
+ padding:12px 20px;
+ border-radius:25px;
+ font-weight:800;
+ font-size:11px;
+ box-shadow:0 8px 25px #00aaff33;
+ transition:.3s;
+}
+
+button:hover,
+.btn:hover{
+ transform:translateY(-3px);
+ box-shadow:0 12px 30px #00cfff66;
+}
+
+/* ================= SECRET ================= */
+
+.secret{
+ display:none;
+ margin-top:18px;
+ padding:18px;
+ border-radius:17px;
+ border:1px dashed #39d8ff;
+ background:#031423;
+ color:#cce7f3;
+ font-size:12px;
+ line-height:1.8;
+}
+
+.secret.show{
+ display:block;
+ animation:appear .4s ease;
+}
+
+@keyframes appear{
+ from{
+  opacity:0;
+  transform:translateY(10px);
+ }
+ to{
+  opacity:1;
+  transform:translateY(0);
+ }
+}
+
+/* ================= JOKE ================= */
+
+.joke{
+ text-align:center;
+ padding:35px;
+ border-radius:25px;
+ background:#061b31;
+ border:1px solid #2ccfff33;
+}
+
+#jokeText{
+ min-height:55px;
+ color:#d7edf7;
+ line-height:1.8;
+ font-size:13px;
+}
+
+/* ================= DIARY ================= */
+
+.diary{
+ display:grid;
+ gap:15px;
+}
+
+.entry{
+ padding:20px;
+ border-radius:18px;
+ background:#061a2e;
+ border-left:4px solid #35cfff;
+}
+
+.entry small{
+ color:#58dbff;
+ font-weight:800;
+}
+
+.entry p{
+ margin-top:7px;
+ color:#aec5d5;
+ font-size:12px;
+ line-height:1.8;
+}
+
+/* ================= WHATSAPP ================= */
+
+.chat{
+ max-width:700px;
+ margin:auto;
+ padding:30px;
+ border-radius:25px;
+ background:#071d34;
+ border:1px solid #2acbff33;
+}
+
+.chat h3{
+ text-align:center;
+ margin-bottom:9px;
+}
+
+.chat p{
+ text-align:center;
+ color:#9db6c9;
+ font-size:11px;
+}
+
+textarea{
+ width:100%;
+ min-height:130px;
+ margin-top:20px;
+ padding:16px;
+ resize:vertical;
+ outline:0;
+ border-radius:15px;
+ border:1px solid #28718f;
+ background:#031323;
+ color:#fff;
+ font-family:inherit;
+ font-size:13px;
+}
+
+textarea:focus{
+ border-color:#45d8ff;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+ text-align:center;
+ padding:70px 20px;
+ background:linear-gradient(135deg,#06294a,#073b5e);
+}
+
+.cta p{
+ max-width:600px;
+ margin:12px auto 20px;
+ color:#b7d0e0;
+ font-size:13px;
+ line-height:1.8;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+ padding:30px 20px;
+ text-align:center;
+ border-top:1px solid #ffffff12;
+ color:#819bae;
+ font-size:10px;
+}
+
+footer strong{
+ color:#5edcff;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+ position:fixed;
+ left:50%;
+ bottom:25px;
+ z-index:900;
+ padding:13px 20px;
+ border-radius:25px;
+ background:#062c45;
+ border:1px solid #3ad7ff;
+ color:#fff;
+ font-size:11px;
+ opacity:0;
+ pointer-events:none;
+ transform:translate(-50%,25px);
+ transition:.3s;
+}
+
+.toast.show{
+ opacity:1;
+ transform:translate(-50%,0);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:850px){
+
+ .menu{
+  display:none;
+  position:absolute;
+  top:65px;
+  left:10px;
+  right:10px;
+  padding:12px;
+  background:#041326f7;
+  border:1px solid #205978;
+  border-radius:18px;
+ }
+
+ .menu.open{
+  display:flex;
+ }
+
+ .menu a{
+  width:100%;
+  text-align:center;
+ }
+
+ .menu-btn{
+  display:block;
+ }
+
+ .card-grid{
+  grid-template-columns:1fr;
+ }
+
+ .hero{
+  min-height:620px;
+  padding-top:65px;
+ }
+
+}
+
+@media(max-width:480px){
+
+ .logo{
+  font-size:14px;
+ }
+
+ .name-zone{
+  width:300px;
+  height:310px;
+ }
+
+ .name-orb{
+  width:200px;
+  height:200px;
+ }
+
+ .name-orb:before{
+  width:175px;
+  height:175px;
+ }
+
+ .name-orb:after{
+  width:245px;
+ }
+
+ .muhd-name{
+  font-size:17px;
+ }
+
+ .gist-box,
+ .chat{
+  padding:22px;
+ }
+
+}
+
+/* REDUCE MOTION */
+
+@media(prefers-reduced-motion:reduce){
+
+ *,
+ *:before,
+ *:after{
+  animation-duration:.001ms!important;
+  animation-iteration-count:1!important;
+  scroll-behavior:auto!important;
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="light one"></div>
+<div class="light two"></div>
+
+
+<!-- ================= NAV ================= -->
+
+<nav>
+
+<div class="nav-inner">
+
+<a class="logo" href="index.html">
+Future <span>Pilot Academy</span>
+</a>
+
+<button class="menu-btn" id="menuBtn">☰</button>
+
+<div class="menu" id="menu">
+
+<a href="index.html">Home</a>
+<a href="academy.html">Academy</a>
+<a href="map.html">Map</a>
+<a href="aircraft.html">Aircraft</a>
+<a href="cockpit.html">Cockpit</a>
+<a href="tests.html">Tests</a>
+<a href="dictionary.html">Dictionary</a>
+<a href="missions.html">Missions</a>
+<a href="nigeria.html">Nigeria</a>
+<a href="gist.html" class="active">Gist</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<header class="hero">
+
+<div class="badge">
+✈️ AVIATION GIST CENTER
+</div>
+
+<h1>
+As You Don Dey<br>
+<span>Study Aviation</span> 😂✈️
+</h1>
+
+<p>
+Small aviation gist, Nigerian Pidgin cruise and interesting
+facts for the future pilot journey.
+</p>
+
+
+<!-- ================= MUH'D ROTATING CORE ================= -->
+
+<div class="name-zone" id="nameZone">
+
+<div class="name-orb" id="nameOrb">
+
+<div class="muhd-name">
+<span>It's Muh'd</span><br>
+👑🖥️
+</div>
+
+</div>
+
+<div class="reflection"></div>
+
+<div class="future-label">
+Future Pilot • <strong>ZILHEART ✈️</strong>
+</div>
+
+</div>
+
+
+<div class="tap-text">
+👆 Tap the rotating Muh'd circle for a random gist
+</div>
+
+</header>
+
+
+<!-- ================= WELCOME ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Welcome To The Gist Hangar</h2>
+
+<p>
+Serious aviation study first — small cruise afterwards 😂
+</p>
+
+</div>
+
+
+<div class="gist-box">
+
+<h3>✈️ Muh'd Dey Talk</h3>
+
+<p>
+ZILHEART, you don enter aviation study properly now.
+One day aircraft, next day cockpit, another day weather,
+navigation and plenty new aviation words.
+</p>
+
+<div class="pidgin">
+
+<strong>Pidgin Corner 😂</strong><br><br>
+
+Aviation no be something wey person go rush finish.
+Take am one topic at a time. Understand wetin you dey learn,
+then move to the next one.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= STORIES ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Pilot Gist 😂</h2>
+
+<p>Small aviation stories for the hangar.</p>
+
+</div>
+
+
+<div class="card-grid">
+
+<div class="card">
+
+<div class="icon">🧑‍✈️</div>
+
+<h3>The First Pilot</h3>
+
+<p>
+Imagine seeing airplane for the first time and asking:
+"How this heavy thing take dey inside sky?" 😂
+Physics had already prepared an answer.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">✈️</div>
+
+<h3>Aircraft No Get Leg</h3>
+
+<p>
+You look at an aircraft and realize that this huge machine
+doesn't move around on normal legs. Yet it travels through
+the sky. Engineering is something else. 😂
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🎧</div>
+
+<h3>Radio Matter</h3>
+
+<p>
+Aviation communication is short and precise.
+No long story when clear information is what matters. 😂
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SECRET ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Don't Touch These 😭</h2>
+
+<p>
+Okay... you can touch them. 😂
+</p>
+
+</div>
+
+
+<div class="card-grid">
+
+
+<div class="card">
+
+<h3>🚨 DON'T TOUCH THIS</h3>
+
+<button onclick="reveal('secret1',this)">
+Open Secret
+</button>
+
+<div class="secret" id="secret1">
+
+Aviation students can spend plenty time learning
+things that look simple from outside but are actually deep.
+Patience matters.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>⚠️ PILOT ALERT!</h3>
+
+<button onclick="reveal('secret2',this)">
+Open Alert
+</button>
+
+<div class="secret" id="secret2">
+
+Pilot learning doesn't stop after one lesson.
+Knowledge grows continuously through proper education,
+training and experience.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔐 MUH'D LOCKED THIS</h3>
+
+<button onclick="reveal('secret3',this)">
+Unlock
+</button>
+
+<div class="secret" id="secret3">
+
+Secret unlocked 😂✈️<br><br>
+
+Muh'd officially confirms that serious aviation study
+and small Pidgin cruise can exist together.
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= JOKE ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Random Aviation Joke 😂</h2>
+
+<p>Need small cruise? Press the button.</p>
+
+</div>
+
+
+<div class="joke">
+
+<div id="jokeText">
+Why did the airplane go to school?
+Because it wanted to improve its altitude. 😂✈️
+</div>
+
+<button onclick="newJoke()">
+Another Joke 😂
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= DIARY ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Flight Diary</h2>
+
+<p>Small notes for the learning journey.</p>
+
+</div>
+
+
+<div class="diary">
+
+<div class="entry">
+
+<small>DAY 01 ✈️</small>
+
+<p>
+Today we entered aviation study mode.
+No pressure — learn, understand and improve.
+</p>
+
+</div>
+
+
+<div class="entry">
+
+<small>DAY 02 🛫</small>
+
+<p>
+Aircraft can look complicated at first.
+Breaking the subject into smaller topics makes it easier.
+</p>
+
+</div>
+
+
+<div class="entry">
+
+<small>NEXT MISSION 🎯</small>
+
+<p>
+Keep learning aircraft, weather, navigation,
+communication, cockpit instruments and safety concepts.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= WHATSAPP ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Send Gist To Muh'd 📱</h2>
+
+<p>
+Type your message and WhatsApp will open directly.
+</p>
+
+</div>
+
+
+<div class="chat">
+
+<h3>💬 ZILHEART → Muh'd</h3>
+
+<p>
+Friendship gist only 😂✈️
+</p>
+
+<textarea
+id="message"
+placeholder="Type your gist here..."
+></textarea>
+
+<button onclick="sendWhatsApp()">
+Send Through WhatsApp 💬
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<div class="cta">
+
+<h2>
+Keep Studying, Future Pilot ✈️
+</h2>
+
+<p>
+Serious aviation knowledge first.
+Gist afterwards. 😂
+</p>
+
+<a href="academy.html" class="btn">
+Return To Academy →
+</a>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div>
+Created by <strong>It's Muh'd 👑🖥️</strong>
+</div>
+
+<div style="margin-top:8px">
+Future Pilot: ZILHEART ✈️
+</div>
+
+<div style="margin-top:8px">
+© <span id="year"></span> Future Pilot Academy
+</div>
+
+</footer>
+
+
+<!-- ================= GIST POPUP ================= -->
+
+<div class="gist-popup" id="gistPopup">
+
+<div class="plane">
+✈️
+</div>
+
+<h3>
+Muh'd's Random Gist 😂
+</h3>
+
+<p id="gistText"></p>
+
+<div class="count">
+Disappearing in <span id="countdown">5</span>s...
+</div>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* =========================================
+   MENU
+========================================= */
+
+const menuBtn=document.getElementById("menuBtn");
+const menu=document.getElementById("menu");
+
+menuBtn.addEventListener("click",()=>{
+ menu.classList.toggle("open");
+});
+
+
+/* =========================================
+   YEAR
+========================================= */
+
+document.getElementById("year").textContent=
+new Date().getFullYear();
+
+
+/* =========================================
+   SECRET BUTTONS
+========================================= */
+
+function reveal(id,button){
+
+ const box=document.getElementById(id);
+
+ box.classList.toggle("show");
+
+ button.textContent=
+ box.classList.contains("show")
+ ?"Hide Secret"
+ :"Open Secret";
+
+}
+
+
+/* =========================================
+   JOKES
+========================================= */
+
+const jokes=[
+
+"Why did the airplane go to school? Because it wanted to improve its altitude. 😂✈️",
+
+"Pilot: We are flying smoothly. Passenger: Thank God. My stomach didn't know that. 😂",
+
+"Why don't airplanes gossip? Because they always keep things in the air. 😂",
+
+"Aircraft said: 'I need space.' Pilot said: 'Bro, we are already in the sky.' 😂",
+
+"Why was the airplane calm? Because it knew how to stay above the situation. 😂",
+
+"Student pilot: 'I understand.' Aviation: 'You sure?' 😂",
+
+"Plane: 'Let's go.' Gravity: 'Come back here.' 😂",
+
+"Why does aviation have so many abbreviations? Because pilots don't have time to type essays. 😂"
+
+];
+
+function newJoke(){
+
+ const joke=
+ jokes[Math.floor(Math.random()*jokes.length)];
+
+ document.getElementById("jokeText")
+ .textContent=joke;
+
+}
+
+
+/* =========================================
+   GISTS
+========================================= */
+
+const gists=[
+
+"Imagine airplane dey fly peacefully and somebody for ground dey ask, 'Who dey hold am?' 😂",
+
+"Pilot study no be only about flying. Plenty things dey happen before aircraft even leaves ground. ✈️",
+
+"One day you go look aircraft and say, 'So this giant machine really dey stay inside sky?' Physics go just smile. 😂",
+
+"Some aviation words sound like secret government codes until you learn their meanings. 😂",
+
+"Aircraft dey fly because several forces dey work together. No be magic, na science. ✈️",
+
+"Pilot dey check plenty things because 'I think everything dey okay' no be aviation procedure. 😂",
+
+"Imagine telling somebody 100 years ago say people go dey cross countries inside metal tube through sky. 😂",
+
+"Weather can change aviation plans. Sky fit look innocent but aviation people still dey respect it. 🌦️",
+
+"Aircraft engines may look complicated, but every major system has a purpose. ✈️",
+
+"One aviation lesson fit start with 'what is lift?' and somehow end with 20 more questions. 😂",
+
+"Pilot dey learn discipline because aircraft no understand 'I forgot.' 😂",
+
+"Airport looks busy because aviation is basically many systems working together at once. ✈️",
+
+"Future pilot today: 'I just want to fly.' Aviation tomorrow: 'First, learn this entire vocabulary.' 😂",
+
+"Sometimes the hardest part of studying aviation is remembering all the abbreviations. 😂",
+
+"Aircraft don't just go up because they feel like it. Aerodynamics has serious business to do. ✈️",
+
+"Pilot headset on. Serious face activated. 😂🎧",
+
+"Imagine explaining to somebody that the plane is moving forward because of thrust while air is doing serious work around the wings. 😂",
+
+"Navigation is basically aviation's way of asking: 'Where are we, and where are we going?' ✈️",
+
+"Safety in aviation isn't one topic. It's a mindset that appears everywhere. 🛡️",
+
+"One thing about aviation: small details can matter a lot. ✈️",
+
+"Pilot training requires learning, practice, discipline and patience. No shortcut. 😂",
+
+"Aircraft systems have names that can make a beginner feel like they entered engineering class by mistake. 😂",
+
+"Airplane: 300 passengers. Pilot: 'Everybody calm down.' Me: 'Sir, I was already calm.' 😂",
+
+"Why did the airplane go to school? Because it wanted to improve its altitude. 😂",
+
+"Imagine being the first person to see a modern jet. Your brain would probably need an update. 😂",
+
+"If aviation starts confusing you, break the topic into smaller pieces. Na so knowledge dey enter. ✈️",
+
+"Some aircraft are designed mainly for training, some for transport, some for business and others for special missions. ✈️",
+
+"Pilot knowledge isn't just cockpit knowledge. Weather, aircraft, navigation, communication and safety all matter. 🧠",
+
+"One aviation dictionary can become your best friend when every sentence introduces another new word. 😂",
+
+"Airports have codes. Aircraft have types. Aviation has abbreviations. Basically, aviation loves short names. 😂",
+
+"Sometimes the easiest way to understand aviation is to ask simple questions without fear. ✈️",
+
+"Your future pilot journey no need rush. Understand today before jumping to tomorrow. 🛫",
+
+"One thing aviation will teach you: preparation matters. 😂",
+
+"Plane don't have wings for decoration. Aerodynamics is doing serious work there. ✈️",
+
+"Pilot looking at instruments: serious. Pilot looking at gist: also serious. 😂",
+
+"Some aviation concepts sound difficult until someone explains them with everyday examples. That's why gist helps. 😂",
+
+"Flying involves science, technology, human factors and decision-making. ✈️",
+
+"Future pilot energy: learn first, panic later. 😂",
+
+"Imagine saying 'I want to become a pilot' and aviation replying with a whole syllabus. 😂",
+
+"Aircraft don't fly by vibes. They fly through engineering and aerodynamics. ✈️",
+
+"Pilot life requires continuous learning because aviation keeps evolving. 🧠",
+
+"Sometimes the aircraft isn't the hardest thing. Understanding all the information around it can be. 😂",
+
+"Every aircraft has a story behind its design. ✈️",
+
+"Commercial aircraft are basically flying transportation systems with thousands of engineering details. 😂",
+
+"Training aircraft help students understand aviation fundamentals in a structured environment. ✈️",
+
+"Helicopters prove that aviation can take a completely different approach to flight. 🚁",
+
+"Business jets said: 'Let's travel fast, but make it comfortable.' 😂",
+
+"Airliners said: 'We have passengers to carry.' ✈️",
+
+"Every pilot started somewhere. Nobody was born knowing aviation terminology. 🧠",
+
+"Don't be afraid of difficult aviation topics. Difficult today can become normal tomorrow. ✈️",
+
+"Learning one aviation concept every day can build serious knowledge over time.",
+
+"Pilot dictionary today: one word. Tomorrow: five words. Next week: 'Why are there so many?' 😂",
+
+"Aircraft maintenance and inspection are important parts of aviation safety. 🛠️",
+
+"An airplane can look peaceful outside while hundreds of systems work behind the scenes. ✈️",
+
+"Modern aviation is basically engineering saying, 'Let's make this possible.' 😂",
+
+"Some people see clouds. Aviation students start thinking about weather. 😂☁️",
+
+"Once you start studying aviation, normal airport announcements suddenly become interesting. 😂",
+
+"Pilot: 'Check.' Aviation student: 'Check what?' Pilot: 'Everything.' 😂",
+
+"Good aviation learning is about understanding, not just memorizing. 🧠",
+
+"One day you may look at an aircraft and understand things you once didn't. ✈️",
+
+"Aviation is full of systems that depend on each other. That's why pilots learn broadly. 🛫",
+
+"Pilot training can feel like many subjects joining one big story. 😂",
+
+"Aircraft performance depends on several factors. Aviation no dey use one answer for everything. ✈️",
+
+"Weather is one of those things aviation never ignores. 🌦️",
+
+"Navigation helps pilots understand position, direction and route concepts. 🧭",
+
+"Communication in aviation values clarity. No long story when precise information matters. 😂",
+
+"Airports are more than runways. They are entire transportation environments. ✈️",
+
+"Runway, taxiway, terminal, apron... aviation vocabulary no wan finish. 😂",
+
+"Pilot student after learning 50 aviation words: 'Okay, give me exam.' 😂",
+
+"Cockpit looks like plenty buttons until you start learning what each instrument is for. 🎛️",
+
+"Knowledge turns a confusing cockpit into something you can understand step by step. ✈️",
+
+"Don't rush to know everything at once. Aviation is a long learning journey. 🧠",
+
+"Every new aviation word you learn removes one small piece of confusion. ✈️",
+
+"Pilot mindset: observe, understand, prepare. 🛫",
+
+"Aircraft design is a beautiful combination of engineering and physics. ✈️",
+
+"Some aircraft are built for efficiency, others for speed, range, training or special missions.",
+
+"Helicopters can operate differently from airplanes because their flight mechanics are different. 🚁",
+
+"Jets can travel at high speeds because their propulsion and aerodynamic designs are built for it. ✈️",
+
+"Training aircraft may look simple, but they are important learning platforms.",
+
+"Future pilot rule: if you don't understand a word, look it up. 😂",
+
+"Nobody loses points for asking a good aviation question. 🧠",
+
+"One question can open an entire aviation topic. ✈️",
+
+"Imagine aviation without weather information. Exactly. That's why weather knowledge matters. 🌦️",
+
+"Pilot communication sounds formal because clarity is important. 🎧",
+
+"Some aviation terms are confusing until you hear them in a real context. 😂",
+
+"Studying aircraft is basically meeting different personalities made of metal. 😂✈️",
+
+"Every aircraft category has its own characteristics and purposes.",
+
+"An aircraft's shape tells you plenty about what engineers wanted it to do. ✈️",
+
+"Airplane wings are not just flat pieces attached to the body. Aerodynamics is happening there.",
+
+"Engines provide propulsion, while wings generate aerodynamic lift. Different jobs, same aircraft. ✈️",
+
+"Gravity never takes a day off, so aircraft engineering has to take it seriously. 😂",
+
+"Flight is a balance of forces and controlled motion. 🛫",
+
+"Pilot training involves both knowledge and practical development under proper instruction.",
+
+"Online aviation learning is useful for knowledge, but it cannot replace certified practical flight training. ✈️",
+
+"One day you may explain aviation to someone who thinks airplanes simply jump into the sky. 😂",
+
+"Aircraft have limits because physics and engineering have limits. 🧠",
+
+"Safety margins exist because aviation takes risk seriously. 🛡️",
+
+"Pilot decision-making is an important part of aviation education.",
+
+"Sometimes the smartest aviation decision is knowing when not to continue. 🛡️",
+
+"Preparation can make difficult situations easier to understand.",
+
+"Good pilots keep learning. ✈️",
+
+"Aviation technology changes, but the importance of discipline remains.",
+
+"Pilot training is not a race. Understanding matters more than rushing. 🧠",
+
+"Future pilot today, aviation expert tomorrow — one lesson at a time. ✈️",
+
+"Some aircraft have two engines, some four, some one. Design depends on purpose.",
+
+"Commercial aviation moves huge numbers of people around the world every day. ✈️",
+
+"Aircraft registration numbers identify individual aircraft.",
+
+"Airports use standardized codes to make identification easier.",
+
+"Runways have markings that communicate important information. ✈️",
+
+"Taxiways help aircraft move around an airport between different areas.",
+
+"Control towers are part of a larger aviation communication and traffic system.",
+
+"Air traffic controllers and pilots depend on clear communication. 🎧",
+
+"Flight plans help organize intended flights and routes.",
+
+"Navigation technology has evolved enormously throughout aviation history. 🧭",
+
+"Modern pilots have access to advanced electronic systems, but understanding fundamentals still matters.",
+
+"Sometimes technology makes aviation easier, but knowledge remains important. ✈️",
+
+"Instrument panels are designed to provide information pilots need.",
+
+"Altimeter gives altitude information. Airspeed indicator gives airspeed information. Different instruments, different jobs. 😂",
+
+"Learning cockpit instruments can make the cockpit look less mysterious.",
+
+"Artificial horizon is a common term associated with the attitude indicator.",
+
+"Vertical speed information helps describe climb or descent trends.",
+
+"Heading information helps with understanding direction.",
+
+"Turn coordination is part of basic flight-instrument knowledge.",
+
+"Aviation is basically one giant teamwork project. ✈️",
+
+"Pilots, engineers, controllers, dispatchers, mechanics and many others contribute to aviation.",
+
+"Nobody runs aviation alone. 😂",
+
+"Airports have people doing important jobs far beyond what passengers see.",
+
+"Ground staff are part of the aviation ecosystem too.",
+
+"Cabin crew have important safety responsibilities as well as passenger service roles.",
+
+"Aircraft engineers help keep aircraft technically safe and serviceable.",
+
+"Maintenance personnel play a major role in aviation safety. 🛠️",
+
+"Weather forecasters support aviation by providing meteorological information.",
+
+"Airport operations involve many coordinated activities.",
+
+"Safety investigators study accidents and incidents to improve future safety.",
+
+"Regulators create and enforce aviation standards.",
+
+"Nigeria has its own aviation organizations and airports worth learning about. 🇳🇬✈️",
+
+"Nigerian aviation has many different professional career paths.",
+
+"Knowing your country's aviation system can help a future pilot understand the bigger picture.",
+
+"Pilot, engineer, controller, dispatcher, meteorologist — aviation has many careers. ✈️",
+
+"Don't think aviation means only cockpit. The industry is much bigger.",
+
+"Future pilot should understand both the aircraft and the aviation environment.",
+
+"One day the airport may feel less mysterious because you understand the systems around it.",
+
+"Aviation knowledge can make watching an aircraft take off much more interesting. 😂",
+
+"Once you understand lift, thrust, drag and weight, airplane movement starts making more sense.",
+
+"Four forces. One aircraft. Plenty physics. 😂✈️",
+
+"Lift works against weight. Thrust works against drag. Basic aviation physics in one gist.",
+
+"Every flight begins with preparation before the aircraft moves.",
+
+"Before aviation becomes exciting, it first becomes educational. 🧠",
+
+"Learning aviation is like building a staircase. One concept leads to another.",
+
+"Don't compare your learning speed with somebody else's. Keep progressing.",
+
+"Small improvement every day can become serious knowledge.",
+
+"Future pilot notebook: write it down. Brain: don't trust yourself to remember everything. 😂",
+
+"Revision is one of the underrated superpowers of studying.",
+
+"Quiz today, better understanding tomorrow. ✈️",
+
+"Some questions look easy until the options start confusing you. 😂",
+
+"Never fear an aviation test. Use it to discover what you don't yet understand.",
+
+"Every wrong answer can point toward a topic worth revisiting.",
+
+"Pilot knowledge grows through study, practice and feedback.",
+
+"Professional aviation requires responsibility. 🛡️",
+
+"Flying isn't just about going high. It's about doing things correctly and safely.",
+
+"Altitude sounds exciting, but aviation education teaches you to respect every part of flight.",
+
+"Aircraft speed is only one part of performance.",
+
+"Range, endurance, weight, weather and many other factors can affect aircraft performance.",
+
+"Aircraft design always involves trade-offs.",
+
+"More speed doesn't automatically mean better for every mission. ✈️",
+
+"Different aircraft are built for different jobs.",
+
+"A Cessna and an Airbus can both fly, but they were designed for very different purposes. 😂",
+
+"Helicopter and airplane are both aircraft, but their flight characteristics differ.",
+
+"Learning aircraft categories helps organize aviation knowledge.",
+
+"Training aircraft are important because students need appropriate learning environments.",
+
+"Commercial aircraft carry passengers and cargo.",
+
+"Business jets focus on private or corporate transportation needs.",
+
+"Utility aircraft can serve specialized purposes.",
+
+"Aircraft identification can become a fun hobby for aviation students. ✈️",
+
+"One day you may see an aircraft and immediately recognize the type. 😂",
+
+"Airport spotting becomes more interesting when you know what you're looking at.",
+
+"Pilot study can turn an ordinary sky into an educational classroom.",
+
+"Clouds can make aviation students suddenly become weather students. 😂☁️",
+
+"Wind direction matters to aviation, which is why weather information is important.",
+
+"Visibility matters in aviation operations.",
+
+"Thunderstorms are treated seriously in aviation because weather can affect safety.",
+
+"Weather isn't just rain. Aviation meteorology covers many atmospheric conditions.",
+
+"Navigation isn't simply looking at a map and saying 'there.' 😂",
+
+"Professional navigation involves aviation-specific information and procedures.",
+
+"Communication is part of situational awareness.",
+
+"Listening carefully is an important aviation skill.",
+
+"Good communication reduces misunderstanding.",
+
+"Clear information is valuable in aviation. 🎧",
+
+"Sometimes aviation sounds complicated because precision matters.",
+
+"Precision is one reason aviation language has standardized terms.",
+
+"Standard phraseology exists to make communication clearer.",
+
+"Pilot training teaches people to manage information, not just control an aircraft.",
+
+"Situational awareness means understanding what is happening around you.",
+
+"Decision-making becomes important when several pieces of information must be considered.",
+
+"Human factors are a major part of aviation safety.",
+
+"Safety culture is bigger than one checklist.",
+
+"Checklists help ensure important steps aren't forgotten.",
+
+"Pilot checklist: 'Did we check?' Brain: 'Let's check again.' 😂",
+
+"Good aviation habits are built through consistency.",
+
+"Professionalism matters from training day onward.",
+
+"Future pilot energy should include curiosity and discipline. ✈️",
+
+"Ask questions. Learn the answer. Ask another question. That's how aviation knowledge grows.",
+
+"One day today's confusing aviation word may become your favorite term.",
+
+"Every expert was once a beginner.",
+
+"ZILHEART, no rush. Aviation knowledge is a journey. ✈️",
+
+"Study hard, laugh small, keep learning. 😂",
+
+"Your friend Muhammad has one advice: don't let aviation vocabulary scare you.",
+
+"Future pilot mission: understand, revise, improve. 🎯",
+
+"Sometimes the best aviation lesson starts with a joke.",
+
+"Sometimes the joke starts with an aviation lesson. 😂",
+
+"Pilot gist with knowledge is educational cruise. 😂✈️",
+
+"That's enough aviation gist for now. But you can click Muh'd's name again. 😂"
+
+];
+
+
+/* =========================================
+   EXPLOSION COLORS
+========================================= */
+
+const explosionColors=[
+ "#00d9ff",
+ "#38ff88",
+ "#a855ff",
+ "#ffcc33",
+ "#ff7a18",
+ "#ff3b30",
+ "#ff4fd8",
+ "#ffffff"
+];
+
+
+/* =========================================
+   CREATE EXPLOSION
+========================================= */
+
+function explode(){
+
+ const color=
+ explosionColors[
+  Math.floor(Math.random()*explosionColors.length)
+ ];
+
+ /* FLASH */
+
+ const flash=document.createElement("div");
+
+ flash.className="flash";
+
+ flash.style.setProperty(
+  "--flash-color",
+  color
+ );
+
+ document.body.appendChild(flash);
+
+ setTimeout(()=>{
+  flash.remove();
+ },750);
+
+
+ /* PARTICLES */
+
+ const explosion=document.createElement("div");
+
+ explosion.className="gist-explosion";
+
+ document.body.appendChild(explosion);
+
+
+ for(let i=0;i<42;i++){
+
+  const particle=document.createElement("div");
+
+  particle.className="particle";
+
+  const angle=
+   Math.random()*Math.PI*2;
+
+  const distance=
+   80+Math.random()*190;
+
+  const x=
+   Math.cos(angle)*distance;
+
+  const y=
+   Math.sin(angle)*distance;
+
+  particle.style.setProperty(
+   "--x",
+   x+"px"
+  );
+
+  particle.style.setProperty(
+   "--y",
+   y+"px"
+  );
+
+  particle.style.setProperty(
+   "--particle-color",
+   Math.random()>.3
+   ?color
+   :explosionColors[
+     Math.floor(Math.random()*explosionColors.length)
+   ]
+  );
+
+  particle.style.animationDelay=
+   Math.random()*.15+"s";
+
+  explosion.appendChild(particle);
+
+ }
+
+ setTimeout(()=>{
+  explosion.remove();
+ },1400);
+
+}
+
+
+/* =========================================
+   RANDOM GIST
+========================================= */
+
+const nameOrb=
+document.getElementById("nameOrb");
+
+const popup=
+document.getElementById("gistPopup");
+
+const gistText=
+document.getElementById("gistText");
+
+const countdown=
+document.getElementById("countdown");
+
+let lastGist=-1;
+let gistTimer=null;
+
+
+nameOrb.addEventListener("click",()=>{
+
+ /* EXPLODE FIRST */
+
+ explode();
+
+
+ /* SELECT NEW GIST */
+
+ let index;
+
+ do{
+
+  index=
+   Math.floor(
+    Math.random()*gists.length
+   );
+
+ }while(
+  index===lastGist &&
+  gists.length>1
+ );
+
+ lastGist=index;
+
+
+ /* RANDOM COLOR */
+
+ const color=
+  explosionColors[
+   Math.floor(
+    Math.random()*explosionColors.length
+   )
+  ];
+
+ popup.style.setProperty(
+  "--gist-color",
+  color
+ );
+
+
+ /* SET GIST */
+
+ gistText.textContent=
+  gists[index];
+
+
+ /* SHOW */
+
+ setTimeout(()=>{
+
+  popup.classList.add("show");
+
+ },160);
+
+
+ /* COUNTDOWN */
+
+ let seconds=5;
+
+ countdown.textContent=
+  seconds;
+
+ clearInterval(gistTimer);
+
+ gistTimer=setInterval(()=>{
+
+  seconds--;
+
+  countdown.textContent=
+   seconds;
+
+  if(seconds<=0){
+
+   clearInterval(gistTimer);
+
+   popup.classList.remove("show");
+
+   /* EXIT EXPLOSION */
+
+   setTimeout(()=>{
+    explode();
+   },300);
+
+  }
+
+ },1000);
+
+});
+
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+function sendWhatsApp(){
+
+ const message=
+  document.getElementById("message")
+  .value
+  .trim();
+
+ if(!message){
+
+  showToast(
+   "Type your gist first 😂"
+  );
+
+  return;
+
+ }
+
+ const phone=
+  "2348163254986";
+
+ const text=
+  "Hello Muh'd 👑🖥️, it's ZILHEART ✈️.\n\n"+
+  message;
+
+ const whatsappURL=
+  "https://wa.me/"+
+  phone+
+  "?text="+
+  encodeURIComponent(text);
+
+ window.location.href=
+  whatsappURL;
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function showToast(message){
+
+ const toast=
+  document.getElementById("toast");
+
+ toast.textContent=
+  message;
+
+ toast.classList.add("show");
+
+ setTimeout(()=>{
+
+  toast.classList.remove("show");
+
+ },2500);
+
+}
+
+</script>
+
+</body>
+</html>

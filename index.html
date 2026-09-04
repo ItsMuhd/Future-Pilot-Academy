@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Future Pilot Academy | It's Muh'd 👑🖥️</title>
+
+    <meta name="description"
+          content="Future Pilot Academy - An educational aviation learning platform for future pilots.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f9ff;
+            color: #102a43;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #062b49;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+        }
+
+        .navbar {
+            width: 92%;
+            max-width: 1250px;
+            margin: auto;
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 21px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #ffd43b;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #1479c9;
+            color: #fff;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: #ffd43b;
+            color: #062b49;
+            font-size: 25px;
+            padding: 7px 11px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(3,35,62,0.94),
+                    rgba(3,71,115,0.78),
+                    rgba(3,71,115,0.25)
+                ),
+                url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            width: 92%;
+            max-width: 1250px;
+            margin: auto;
+            color: white;
+            padding: 80px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ffd43b;
+            color: #062b49;
+            padding: 9px 16px;
+            border-radius: 30px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 0.98;
+            max-width: 800px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #ffd43b;
+        }
+
+        .hero p {
+            max-width: 650px;
+            font-size: 19px;
+            line-height: 1.7;
+            color: #e6f4ff;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 21px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 900;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #ffd43b;
+            color: #062b49;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #ffe477;
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #062b49;
+        }
+
+        /* Decorative plane */
+
+        .floating-plane {
+            position: absolute;
+            right: 7%;
+            top: 20%;
+            font-size: 85px;
+            animation: fly 5s ease-in-out infinite;
+            filter: drop-shadow(0 10px 12px rgba(0,0,0,0.3));
+        }
+
+        @keyframes fly {
+            0%,100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-25px) rotate(3deg);
+            }
+        }
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            width: 92%;
+            max-width: 1100px;
+            margin: -55px auto 50px;
+            position: relative;
+            z-index: 5;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            overflow: hidden;
+        }
+
+        .stat {
+            padding: 30px 15px;
+            text-align: center;
+            border-right: 1px solid #e5edf5;
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat strong {
+            display: block;
+            color: #0875c1;
+            font-size: 30px;
+            margin-bottom: 6px;
+        }
+
+        .stat span {
+            color: #607d94;
+            font-weight: 700;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            width: 92%;
+            max-width: 1250px;
+            margin: 0 auto 80px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading small {
+            color: #0875c1;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(30px, 5vw, 48px);
+            margin: 10px 0;
+            color: #062b49;
+        }
+
+        .section-heading p {
+            max-width: 650px;
+            margin: auto;
+            color: #607d94;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           FEATURE CARDS
+        ========================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(20,70,110,0.09);
+            border: 1px solid #e3edf5;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(20,70,110,0.16);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: #e3f3ff;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #062b49;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #607d94;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .card-link {
+            color: #0875c1;
+            text-decoration: none;
+            font-weight: 900;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           AIRCRAFT PREVIEW
+        ========================= */
+
+        .aircraft-preview {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            align-items: center;
+            background: #062b49;
+            color: white;
+            border-radius: 25px;
+            padding: 35px;
+            overflow: hidden;
+        }
+
+        .aircraft-preview img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        .aircraft-text h2 {
+            font-size: 40px;
+            margin-bottom: 18px;
+        }
+
+        .aircraft-text p {
+            color: #dceeff;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            background: linear-gradient(135deg, #0875c1, #004c87);
+            border-radius: 25px;
+            padding: 55px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: clamp(30px, 5vw, 48px);
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: 0 auto 25px;
+            line-height: 1.7;
+            color: #e8f5ff;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #031c30;
+            color: white;
+            padding: 45px 5%;
+        }
+
+        .footer-grid {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 35px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #a9c4d8;
+            line-height: 1.7;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: #cce9ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffd43b;
+        }
+
+        .creator {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #21445d;
+            text-align: center;
+            color: #a9c4d8;
+        }
+
+        .creator strong {
+            color: #ffd43b;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .nav-links {
+                position: absolute;
+                left: 0;
+                top: 72px;
+                width: 100%;
+                background: #062b49;
+
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+
+                padding: 15px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat:nth-child(2) {
+                border-right: none;
+            }
+
+            .stat:nth-child(-n+2) {
+                border-bottom: 1px solid #e5edf5;
+            }
+
+            .features {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .aircraft-preview {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-plane {
+                opacity: 0.35;
+                right: 5%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .aircraft-preview {
+                padding: 20px;
+            }
+
+            .aircraft-preview img {
+                height: 230px;
+            }
+
+            .aircraft-text h2 {
+                font-size: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header>
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            ✈️ Future Pilot <span>Academy</span>
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="academy.html">Academy</a>
+            </li>
+
+            <li>
+                <a href="map.html">Aviation Map</a>
+            </li>
+
+            <li>
+                <a href="aircraft.html">Aircraft</a>
+            </li>
+
+            <li>
+                <a href="cockpit.html">Cockpit</a>
+            </li>
+
+            <li>
+                <a href="tests.html">Tests</a>
+            </li>
+
+            <li>
+                <a href="dictionary.html">Dictionary</a>
+            </li>
+
+            <li>
+                <a href="missions.html">Missions</a>
+            </li>
+
+            <li>
+                <a href="nigeria.html">Nigeria Aviation</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="floating-plane">✈️</div>
+
+    <div class="hero-content">
+
+        <span class="badge">
+            🎓 Learn • Explore • Become
+        </span>
+
+        <h1>
+            Your Journey to Becoming a
+            <span>Pilot</span> Starts Here.
+        </h1>
+
+        <p>
+            Welcome to Future Pilot Academy — an educational aviation
+            platform designed to help aspiring pilots understand aircraft,
+            aviation, cockpit instruments, weather, communication and
+            the world of flight.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="academy.html" class="btn btn-primary">
+                🚀 Start Learning
+            </a>
+
+            <a href="aircraft.html" class="btn btn-outline">
+                ✈️ Explore Aircraft
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<div class="stats">
+
+    <div class="stat">
+        <strong>10+</strong>
+        <span>Learning Areas</span>
+    </div>
+
+    <div class="stat">
+        <strong>50+</strong>
+        <span>Practice Questions</span>
+    </div>
+
+    <div class="stat">
+        <strong>20+</strong>
+        <span>Aviation Terms</span>
+    </div>
+
+    <div class="stat">
+        <strong>∞</strong>
+        <span>Learning Missions</span>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     LEARNING AREAS
+========================= -->
+
+<section>
+
+    <div class="section-heading">
+
+        <small>Explore The Academy</small>
+
+        <h2>Everything Starts With Knowledge</h2>
+
+        <p>
+            Explore different parts of aviation through separate
+            interactive sections.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🎓</div>
+
+            <h3>Flight Academy</h3>
+
+            <p>
+                Learn aviation basics, aircraft systems, weather,
+                navigation concepts and pilot knowledge.
+            </p>
+
+            <a href="academy.html" class="card-link">
+                Enter Academy →
+            </a>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🗺️</div>
+
+            <h3>Aviation Map</h3>
+
+            <p>
+                Explore airports and aviation locations through
+                an interactive educational map.
+            </p>
+
+            <a href="map.html" class="card-link">
+                Open Map →
+            </a>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">✈️</div>
+
+            <h3>Aircraft Hangar</h3>
+
+            <p>
+                Discover different aircraft types and learn what
+                makes airplanes and helicopters different.
+            </p>
+
+            <a href="aircraft.html" class="card-link">
+                Visit Hangar →
+            </a>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🎛️</div>
+
+            <h3>Cockpit Lab</h3>
+
+            <p>
+                Explore a simplified educational cockpit and learn
+                what common cockpit instruments represent.
+            </p>
+
+            <a href="cockpit.html" class="card-link">
+                Enter Cockpit →
+            </a>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🧠</div>
+
+            <h3>Pilot Tests</h3>
+
+            <p>
+                Challenge yourself with aviation knowledge questions
+                and track your progress.
+            </p>
+
+            <a href="tests.html" class="card-link">
+                Take Tests →
+            </a>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">📖</div>
+
+            <h3>Aviation Dictionary</h3>
+
+            <p>
+                Learn important aviation words and expressions in
+                simple beginner-friendly language.
+            </p>
+
+            <a href="dictionary.html" class="card-link">
+                Open Dictionary →
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     AIRCRAFT PREVIEW
+========================= -->
+
+<section>
+
+    <div class="aircraft-preview">
+
+        <div>
+
+            <img
+                src="https://images.unsplash.com/photo-1559628233-0c7d1f3a4f4c?auto=format&fit=crop&w=1200&q=85"
+                alt="Aircraft flying in the sky"
+                onerror="this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80';"
+            >
+
+        </div>
+
+
+        <div class="aircraft-text">
+
+            <h2>Welcome to the Hangar ✈️</h2>
+
+            <p>
+                Airplanes come in many shapes and sizes. Explore
+                passenger aircraft, training aircraft, helicopters
+                and other aviation machines in our aircraft section.
+            </p>
+
+            <a href="aircraft.html" class="btn btn-primary">
+                Explore Aircraft
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MISSIONS
+========================= -->
+
+<section>
+
+    <div class="section-heading">
+
+        <small>Become A Better Learner</small>
+
+        <h2>Complete Aviation Missions</h2>
+
+        <p>
+            Learn through small challenges instead of simply reading
+            information.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🌦️</div>
+
+            <h3>Weather Mission</h3>
+
+            <p>
+                Test your understanding of clouds, wind, visibility
+                and basic aviation weather concepts.
+            </p>
+
+            <a href="missions.html" class="card-link">
+                Start Mission →
+            </a>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🎯</div>
+
+            <h3>Knowledge Mission</h3>
+
+            <p>
+                Answer aviation questions and see how much you
+                have learned.
+            </p>
+
+            <a href="missions.html" class="card-link">
+                Start Mission →
+            </a>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🇳🇬</div>
+
+            <h3>Nigeria Aviation</h3>
+
+            <p>
+                Explore aviation in Nigeria and learn about airports,
+                aviation organizations and pilot training concepts.
+            </p>
+
+            <a href="nigeria.html" class="card-link">
+                Explore Nigeria →
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section>
+
+    <div class="cta">
+
+        <h2>Ready for Your First Mission?</h2>
+
+        <p>
+            Start learning the fundamentals today and build your
+            aviation knowledge step by step.
+        </p>
+
+        <a href="tests.html" class="btn btn-primary">
+            🧠 Take Your First Test
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>✈️ Future Pilot Academy</h3>
+
+            <p>
+                An educational aviation project created to make
+                learning about flight more interesting, interactive
+                and beginner-friendly.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li>
+                    <a href="academy.html">Academy</a>
+                </li>
+
+                <li>
+                    <a href="aircraft.html">Aircraft</a>
+                </li>
+
+                <li>
+                    <a href="tests.html">Tests</a>
+                </li>
+
+                <li>
+                    <a href="missions.html">Missions</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div>
+
+            <h3>More</h3>
+
+            <ul>
+
+                <li>
+                    <a href="map.html">Aviation Map</a>
+                </li>
+
+                <li>
+                    <a href="dictionary.html">Dictionary</a>
+                </li>
+
+                <li>
+                    <a href="nigeria.html">Nigeria Aviation</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="creator">
+
+        Created with ✈️ by
+        <strong>It's Muh'd 👑🖥️</strong>
+
+        <br><br>
+
+        © 2026 Future Pilot Academy
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     MOBILE MENU SCRIPT
+========================= -->
+
+<script>
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function () {
+
+        navLinks.classList.toggle("show");
+
+    });
+
+
+    // Close mobile menu after selecting a page
+
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            navLinks.classList.remove("show");
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

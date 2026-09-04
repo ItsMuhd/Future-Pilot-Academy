@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aviation Map | Future Pilot Academy</title>
+
+    <meta name="description"
+          content="Explore aviation locations with the Future Pilot Academy educational aviation map.">
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f9ff;
+            color: #102a43;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #062b49;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            width: 92%;
+            max-width: 1250px;
+            min-height: 72px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #ffd43b;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 11px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #0875c1;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: #ffd43b;
+            color: #062b49;
+            font-size: 24px;
+            padding: 7px 11px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 350px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(3,35,62,0.94),
+                    rgba(4,86,138,0.78)
+                ),
+                url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+        }
+
+        .hero-content {
+            width: 92%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            background: #ffd43b;
+            color: #062b49;
+
+            padding: 8px 16px;
+            border-radius: 25px;
+
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 68px);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #ffd43b;
+        }
+
+        .hero p {
+            max-width: 700px;
+            line-height: 1.8;
+            color: #e2f3ff;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           FLOATING ZILHEART
+        ========================= */
+
+        .zilheart-float {
+            position: absolute;
+
+            right: 8%;
+            top: 35%;
+
+            font-size: clamp(28px, 4vw, 52px);
+            font-weight: 1000;
+
+            color: #ffd43b;
+
+            text-shadow:
+                0 0 10px rgba(255,212,59,0.7),
+                0 0 25px rgba(255,212,59,0.4);
+
+            transform: rotate(-5deg);
+
+            animation:
+                floatingName 4s ease-in-out infinite;
+
+            user-select: none;
+        }
+
+        @keyframes floatingName {
+
+            0%, 100% {
+                transform:
+                    translateY(0)
+                    rotate(-5deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-22px)
+                    rotate(4deg);
+            }
+        }
+
+
+        /* =========================
+           MAP SECTION
+        ========================= */
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .map-section {
+            padding: 65px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title small {
+            color: #0875c1;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            color: #062b49;
+            font-size: clamp(30px, 5vw, 44px);
+            margin: 10px 0;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: auto;
+            color: #607d94;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           MAP
+        ========================= */
+
+        .map-wrapper {
+            background: white;
+            padding: 12px;
+            border-radius: 22px;
+
+            box-shadow:
+                0 15px 40px rgba(20,70,110,0.14);
+        }
+
+        #map {
+            width: 100%;
+            height: 560px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .map-loading {
+            min-height: 560px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background: #eaf5ff;
+            color: #42657b;
+
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+
+        /* =========================
+           AIRPORT CARDS
+        ========================= */
+
+        .airport-section {
+            padding: 0 0 70px;
+        }
+
+        .airports {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .airport {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+
+            border: 1px solid #e1edf6;
+
+            box-shadow:
+                0 8px 25px rgba(20,70,110,0.07);
+
+            transition: 0.3s;
+        }
+
+        .airport:hover {
+            transform: translateY(-7px);
+            box-shadow:
+                0 15px 35px rgba(20,70,110,0.13);
+        }
+
+        .airport-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .airport h3 {
+            color: #062b49;
+            margin-bottom: 8px;
+        }
+
+        .airport p {
+            color: #607d94;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           ZILHEART CARD
+        ========================= */
+
+        .pilot-card {
+            margin: 0 0 70px;
+
+            padding: 40px 25px;
+
+            text-align: center;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff3a8,
+                    #e2f5ff,
+                    #f3e8ff
+                );
+
+            border: 2px solid #ffd43b;
+
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pilot-card::before {
+            content: "✈️";
+            position: absolute;
+
+            font-size: 80px;
+            opacity: 0.12;
+
+            left: 7%;
+            top: 15%;
+
+            animation: planeFloat 5s ease-in-out infinite;
+        }
+
+        .pilot-card::after {
+            content: "☁️";
+            position: absolute;
+
+            font-size: 70px;
+            opacity: 0.15;
+
+            right: 8%;
+            bottom: 10%;
+
+            animation: cloudFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes planeFloat {
+
+            0%,100% {
+                transform: translate(0,0);
+            }
+
+            50% {
+                transform: translate(35px,-15px);
+            }
+        }
+
+        @keyframes cloudFloat {
+
+            0%,100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-30px);
+            }
+        }
+
+        .pilot-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .pilot-card h2 {
+            color: #062b49;
+            font-size: clamp(32px, 6vw, 55px);
+
+            margin-bottom: 10px;
+
+            animation: namePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes namePulse {
+
+            0%,100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.04);
+            }
+        }
+
+        .pilot-card h2 span {
+            color: #0875c1;
+        }
+
+        .pilot-card p {
+            max-width: 650px;
+            margin: auto;
+
+            color: #536f82;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .controls {
+            margin-top: 20px;
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .map-btn {
+            border: none;
+            background: #0875c1;
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 9px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .map-btn:hover {
+            background: #062b49;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #031c30;
+            color: white;
+
+            padding: 45px 5%;
+            text-align: center;
+        }
+
+        footer p {
+            color: #aac5d9;
+            line-height: 1.7;
+        }
+
+        .creator {
+            margin-top: 20px;
+            padding-top: 20px;
+
+            border-top: 1px solid #21445d;
+        }
+
+        .creator strong {
+            color: #ffd43b;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                left: 0;
+                top: 72px;
+
+                width: 100%;
+
+                background: #062b49;
+
+                display: none;
+                flex-direction: column;
+
+                padding: 12px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 13px;
+            }
+
+            .airports {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .zilheart-float {
+                opacity: 0.35;
+                right: 4%;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            #map {
+                height: 430px;
+            }
+
+            .airports {
+                grid-template-columns: 1fr;
+            }
+
+            .pilot-card {
+                padding: 35px 18px;
+            }
+
+            .zilheart-float {
+                font-size: 28px;
+                top: 65%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            ✈️ Future Pilot <span>Academy</span>
+        </a>
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open navigation">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="academy.html">Academy</a>
+            </li>
+
+            <li>
+                <a href="map.html" class="active">
+                    Aviation Map
+                </a>
+            </li>
+
+            <li>
+                <a href="aircraft.html">
+                    Aircraft
+                </a>
+            </li>
+
+            <li>
+                <a href="cockpit.html">
+                    Cockpit
+                </a>
+            </li>
+
+            <li>
+                <a href="tests.html">
+                    Tests
+                </a>
+            </li>
+
+            <li>
+                <a href="dictionary.html">
+                    Dictionary
+                </a>
+            </li>
+
+            <li>
+                <a href="missions.html">
+                    Missions
+                </a>
+            </li>
+
+            <li>
+                <a href="nigeria.html">
+                    Nigeria Aviation
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="zilheart-float">
+        ✈️ ZILHEART
+    </div>
+
+    <div class="hero-content">
+
+        <span class="hero-badge">
+            🗺️ AVIATION EXPLORER
+        </span>
+
+        <h1>
+            Explore the
+            <span>Sky Map</span>
+        </h1>
+
+        <p>
+            Explore aviation locations and Nigerian airports on
+            this educational interactive map.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MAP
+========================= -->
+
+<section class="map-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <small>Interactive Aviation Map</small>
+
+            <h2>Where Does Aviation Happen?</h2>
+
+            <p>
+                Select an airport marker to learn more about the
+                location. This map is for educational exploration,
+                not real-world flight navigation.
+            </p>
+
+        </div>
+
+
+        <div class="map-wrapper">
+
+            <div id="map">
+
+                <div class="map-loading">
+
+                    <div>
+
+                        <h3>🗺️ Loading Aviation Map...</h3>
+
+                        <br>
+
+                        <p>
+                            An internet connection is required
+                            to load the interactive map.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="controls">
+
+            <button class="map-btn" id="nigeriaBtn">
+                🇳🇬 Nigeria
+            </button>
+
+            <button class="map-btn" id="lagosBtn">
+                📍 Lagos
+            </button>
+
+            <button class="map-btn" id="abujaBtn">
+                📍 Abuja
+            </button>
+
+            <button class="map-btn" id="portBtn">
+                📍 Port Harcourt
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ZILHEART FEATURE
+========================= -->
+
+<section class="container">
+
+    <div class="pilot-card">
+
+        <div class="pilot-card-content">
+
+            <h2>
+                ✈️ <span>ZILHEART</span> ✈️
+            </h2>
+
+            <p>
+                Welcome to your aviation journey, ZILHEART.
+                Explore, learn and discover the fascinating world
+                of aviation one lesson at a time.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     AIRPORTS
+========================= -->
+
+<section class="airport-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <small>Nigeria</small>
+
+            <h2>Featured Aviation Locations</h2>
+
+            <p>
+                Some major Nigerian aviation locations included
+                in our educational exploration.
+            </p>
+
+        </div>
+
+
+        <div class="airports">
+
+            <article class="airport">
+
+                <div class="airport-icon">🛫</div>
+
+                <h3>Lagos</h3>
+
+                <p>
+                    Explore Lagos as an important aviation location
+                    in Nigeria.
+                </p>
+
+            </article>
+
+
+            <article class="airport">
+
+                <div class="airport-icon">🏛️</div>
+
+                <h3>Abuja</h3>
+
+                <p>
+                    Explore Nigeria's capital and its aviation
+                    environment.
+                </p>
+
+            </article>
+
+
+            <article class="airport">
+
+                <div class="airport-icon">🌴</div>
+
+                <h3>Port Harcourt</h3>
+
+                <p>
+                    Explore the aviation environment around
+                    Port Harcourt.
+                </p>
+
+            </article>
+
+
+            <article class="airport">
+
+                <div class="airport-icon">🌾</div>
+
+                <h3>Kano</h3>
+
+                <p>
+                    Discover another important Nigerian aviation
+                    location.
+                </p>
+
+            </article>
+
+
+            <article class="airport">
+
+                <div class="airport-icon">🏙️</div>
+
+                <h3>Enugu</h3>
+
+                <p>
+                    Explore Enugu and its role within Nigeria's
+                    aviation network.
+                </p>
+
+            </article>
+
+
+            <article class="airport">
+
+                <div class="airport-icon">🌍</div>
+
+                <h3>More Locations</h3>
+
+                <p>
+                    More aviation locations can be added as the
+                    academy grows.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h3>✈️ Future Pilot Academy</h3>
+
+    <br>
+
+    <p>
+        Explore aviation. Learn the fundamentals.
+        Build your future.
+    </p>
+
+    <div class="creator">
+
+        Created by
+        <strong>It's Muh'd 👑🖥️</strong>
+
+        <br><br>
+
+        For the future pilot:
+        <strong>ZILHEART ✈️</strong>
+
+        <br><br>
+
+        © 2026 Future Pilot Academy
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     LEAFLET JS
+========================= -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+<script>
+
+    /* =========================
+       MOBILE NAVIGATION
+    ========================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function () {
+
+        navLinks.classList.toggle("show");
+
+    });
+
+
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            navLinks.classList.remove("show");
+
+        });
+
+    });
+
+
+    /* =========================
+       MAP
+    ========================= */
+
+    const mapElement = document.getElementById("map");
+
+    if (typeof L === "undefined") {
+
+        mapElement.innerHTML = `
+            <div class="map-loading">
+                <div>
+                    <h3>⚠️ Map Could Not Load</h3>
+                    <br>
+                    <p>
+                        Check your internet connection and
+                        reload the page.
+                    </p>
+                </div>
+            </div>
+        `;
+
+    } else {
+
+        mapElement.innerHTML = "";
+
+        const map = L.map("map").setView(
+            [9.0820, 8.6753],
+            6
+        );
+
+
+        /* OpenStreetMap */
+
+        L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+                maxZoom: 19,
+
+                attribution:
+                    '&copy; OpenStreetMap contributors'
+            }
+        ).addTo(map);
+
+
+        /* =========================
+           AIRPORT LOCATIONS
+        ========================= */
+
+        const locations = [
+
+            {
+                name: "Lagos",
+                lat: 6.5774,
+                lng: 3.3211,
+                description:
+                    "Lagos aviation location."
+            },
+
+            {
+                name: "Abuja",
+                lat: 9.0068,
+                lng: 7.2632,
+                description:
+                    "Abuja aviation location."
+            },
+
+            {
+                name: "Port Harcourt",
+                lat: 5.0155,
+                lng: 6.9496,
+                description:
+                    "Port Harcourt aviation location."
+            },
+
+            {
+                name: "Kano",
+                lat: 12.0476,
+                lng: 8.5249,
+                description:
+                    "Kano aviation location."
+            },
+
+            {
+                name: "Enugu",
+                lat: 6.4743,
+                lng: 7.5619,
+                description:
+                    "Enugu aviation location."
+            }
+
+        ];
+
+
+        /* =========================
+           ADD MARKERS
+        ========================= */
+
+        locations.forEach(function(location) {
+
+            L.marker([
+                location.lat,
+                location.lng
+            ])
+            .addTo(map)
+
+            .bindPopup(`
+
+                <div style="
+                    text-align:center;
+                    min-width:180px;
+                ">
+
+                    <strong style="
+                        font-size:18px;
+                        color:#062b49;
+                    ">
+                        ✈️ ${location.name}
+                    </strong>
+
+                    <br><br>
+
+                    ${location.description}
+
+                    <br><br>
+
+                    <strong>
+                        Future Pilot Academy
+                    </strong>
+
+                </div>
+
+            `);
+
+        });
+
+
+        /* =========================
+           MAP BUTTONS
+        ========================= */
+
+        document.getElementById("nigeriaBtn")
+            .addEventListener("click", function() {
+
+                map.setView(
+                    [9.0820, 8.6753],
+                    6
+                );
+
+            });
+
+
+        document.getElementById("lagosBtn")
+            .addEventListener("click", function() {
+
+                map.setView(
+                    [6.5774, 3.3211],
+                    11
+                );
+
+            });
+
+
+        document.getElementById("abujaBtn")
+            .addEventListener("click", function() {
+
+                map.setView(
+                    [9.0068, 7.2632],
+                    11
+                );
+
+            });
+
+
+        document.getElementById("portBtn")
+            .addEventListener("click", function() {
+
+                map.setView(
+                    [5.0155, 6.9496],
+                    11
+                );
+
+            });
+
+    }
+
+</script>
+
+</body>
+</html>

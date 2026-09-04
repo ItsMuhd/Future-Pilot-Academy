@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact | Future Pilot Academy</title>
+
+  <meta name="description"
+        content="Contact Future Pilot Academy and It's Muh'd 👑🖥️.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #071a35;
+      --blue: #087cf0;
+      --sky: #4fc3ff;
+      --cyan: #00d9ff;
+      --gold: #ffc928;
+      --orange: #ff8a00;
+      --white: #ffffff;
+      --soft: #f3f9ff;
+      --text: #10233d;
+      --muted: #607089;
+      --green: #18b875;
+      --red: #ef5350;
+      --shadow: 0 18px 50px rgba(7, 26, 53, .13);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(79,195,255,.18), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(255,201,40,.18), transparent 25%),
+        linear-gradient(135deg, #f5fbff, #ffffff, #eef8ff);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input,
+    textarea {
+      font-family: inherit;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 26, 53, .96);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 25px rgba(0,0,0,.12);
+    }
+
+    .nav-inner {
+      max-width: 1250px;
+      margin: auto;
+      min-height: 72px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: white;
+      font-weight: 800;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #dcecff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 9px 11px;
+      border-radius: 20px;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: var(--blue);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      position: relative;
+      max-width: 1250px;
+      margin: auto;
+      padding: 90px 20px 70px;
+      text-align: center;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .hero::before {
+      width: 130px;
+      height: 130px;
+      background: rgba(79,195,255,.18);
+      left: 4%;
+      top: 50px;
+    }
+
+    .hero::after {
+      width: 100px;
+      height: 100px;
+      background: rgba(255,201,40,.2);
+      right: 5%;
+      bottom: 20px;
+      animation-delay: 1.5s;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 9px 17px;
+      border-radius: 30px;
+      background: rgba(8,124,240,.1);
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(42px, 7vw, 78px);
+      color: var(--navy);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .zilheart {
+      margin-top: 30px;
+      display: inline-block;
+      font-family: "Cinzel", serif;
+      font-weight: 800;
+      font-size: clamp(22px, 4vw, 34px);
+      color: var(--blue);
+      animation: nameFloat 3s ease-in-out infinite;
+      text-shadow: 0 5px 20px rgba(8,124,240,.25);
+    }
+
+    /* ================= MAIN ================= */
+
+    .container {
+      width: min(1150px, calc(100% - 30px));
+      margin: auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 80px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.92);
+      border-radius: 25px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(8,124,240,.08);
+    }
+
+    .card h2 {
+      font-family: "Cinzel", serif;
+      color: var(--navy);
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .card-intro {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    /* ================= CONTACT INFO ================= */
+
+    .info-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--soft);
+      transition: .25s ease;
+    }
+
+    .info-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 25px rgba(8,124,240,.08);
+    }
+
+    .info-icon {
+      width: 45px;
+      height: 45px;
+      flex: 0 0 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: white;
+      font-size: 21px;
+    }
+
+    .info-item small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .info-item strong {
+      font-size: 14px;
+      color: var(--navy);
+      word-break: break-word;
+    }
+
+    .copy-btn {
+      margin-top: 20px;
+      width: 100%;
+      border: 0;
+      border-radius: 15px;
+      padding: 14px;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 800;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .copy-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255,201,40,.3);
+    }
+
+    /* ================= FORM ================= */
+
+    .contact-form {
+      display: grid;
+      gap: 17px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      border: 2px solid #e5eef8;
+      background: #fbfdff;
+      color: var(--text);
+      border-radius: 15px;
+      padding: 14px 15px;
+      outline: none;
+      transition: .25s ease;
+      font-size: 14px;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--blue);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(8,124,240,.08);
+    }
+
+    .field textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .send-btn {
+      border: 0;
+      border-radius: 16px;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--blue), #0056d6);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 15px;
+      box-shadow: 0 12px 28px rgba(8,124,240,.22);
+      transition: .25s ease;
+    }
+
+    .send-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 17px 35px rgba(8,124,240,.3);
+    }
+
+    .send-btn:disabled {
+      opacity: .65;
+      cursor: wait;
+      transform: none;
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .status {
+      display: none;
+      padding: 13px;
+      border-radius: 13px;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .status.success {
+      display: block;
+      background: #e9fff5;
+      color: #087a4c;
+    }
+
+    .status.error {
+      display: block;
+      background: #fff0f0;
+      color: #b42323;
+    }
+
+    /* ================= CREATOR ================= */
+
+    .creator-section {
+      margin-bottom: 80px;
+    }
+
+    .creator-card {
+      position: relative;
+      overflow: hidden;
+      padding: 45px 30px;
+      text-align: center;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(79,195,255,.25), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255,201,40,.22), transparent 30%),
+        linear-gradient(135deg, #071a35, #0b3c78);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .creator-card h2 {
+      color: white;
+      font-family: "Cinzel", serif;
+      margin-bottom: 12px;
+    }
+
+    .creator-name {
+      display: inline-block;
+      font-size: clamp(25px, 5vw, 42px);
+      font-weight: 800;
+      color: var(--gold);
+      margin: 12px 0;
+      animation: nameFloat 3s ease-in-out infinite;
+    }
+
+    .creator-card p {
+      color: #d8eaff;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* ================= FAQ ================= */
+
+    .faq-section {
+      margin-bottom: 80px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-family: "Cinzel", serif;
+      color: var(--navy);
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .faq {
+      max-width: 850px;
+      margin: auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 17px;
+      box-shadow: 0 7px 25px rgba(7,26,53,.07);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      border: 0;
+      background: white;
+      padding: 18px;
+      text-align: left;
+      font-weight: 800;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 18px 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open .faq-plus {
+      transform: rotate(45deg);
+    }
+
+    .faq-plus {
+      font-size: 22px;
+      transition: .25s ease;
+    }
+
+    /* ================= CTA ================= */
+
+    .cta {
+      margin-bottom: 80px;
+      text-align: center;
+      padding: 50px 25px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #e5f7ff, #fff8d9);
+      border: 1px solid rgba(8,124,240,.08);
+    }
+
+    .cta h2 {
+      font-family: "Cinzel", serif;
+      color: var(--navy);
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 650px;
+      margin: auto auto 25px;
+      font-size: 14px;
+    }
+
+    .cta-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-links a {
+      padding: 13px 20px;
+      border-radius: 14px;
+      background: var(--blue);
+      color: white;
+      font-weight: 800;
+      font-size: 13px;
+      transition: .25s ease;
+    }
+
+    .cta-links a:hover {
+      transform: translateY(-3px);
+    }
+
+    .cta-links a.secondary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .footer-creator {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .footer-pilot {
+      margin-top: 7px;
+      color: #bcd6f2;
+      font-size: 13px;
+    }
+
+    .footer-line {
+      width: 70px;
+      height: 2px;
+      margin: 15px auto;
+      background: var(--blue);
+    }
+
+    .copyright {
+      color: #89a7c8;
+      font-size: 11px;
+    }
+
+    /* ================= TOAST ================= */
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      transform: translate(-50%, 100px);
+      z-index: 3000;
+      background: var(--navy);
+      color: white;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 15px 35px rgba(0,0,0,.2);
+      opacity: 0;
+      transition: .3s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    /* ================= ANIMATIONS ================= */
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes nameFloat {
+      0%,100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        background: var(--navy);
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        text-align: center;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 65px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .section-heading h2 {
+        font-size: 27px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVIGATION ================= -->
+
+  <nav class="navbar">
+    <div class="nav-inner">
+
+      <a href="index.html" class="brand">
+        It's Muh'd <span>👑🖥️</span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">
+        ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="academy.html">Academy</a>
+        <a href="map.html">Map</a>
+        <a href="aircraft.html">Aircraft</a>
+        <a href="cockpit.html">Cockpit</a>
+        <a href="tests.html">Tests</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="missions.html">Missions</a>
+        <a href="nigeria.html">Nigeria</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- ================= HERO ================= -->
+
+  <header class="hero">
+
+    <div class="eyebrow">
+      ✈️ FUTURE PILOT COMMUNICATION CENTER
+    </div>
+
+    <h1>
+      Let's <span>Talk</span>
+    </h1>
+
+    <p>
+      Have a question, suggestion, idea, or something you want
+      to tell the creator? Send a message directly through the
+      Future Pilot Academy contact system.
+    </p>
+
+    <div class="zilheart">
+      ZILHEART ✈️
+    </div>
+
+  </header>
+
+
+  <!-- ================= CONTACT AREA ================= -->
+
+  <main class="container">
+
+    <section class="contact-grid">
+
+      <!-- CONTACT INFORMATION -->
+
+      <div class="card">
+
+        <h2>Contact Information</h2>
+
+        <p class="card-intro">
+          You can use the information below if you want to
+          contact the creator directly.
+        </p>
+
+        <div class="info-list">
+
+          <div class="info-item">
+
+            <div class="info-icon">📱</div>
+
+            <div>
+              <small>Creator Contact</small>
+              <strong>08163254986</strong>
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-icon">👑</div>
+
+            <div>
+              <small>Website Creator</small>
+              <strong>It's Muh'd 👑🖥️</strong>
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-icon">✈️</div>
+
+            <div>
+              <small>Future Pilot</small>
+              <strong>ZILHEART</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button class="copy-btn" id="copyPhone">
+          📋 Copy Creator Number
+        </button>
+
+      </div>
+
+
+      <!-- REAL FORMSPREE FORM -->
+
+      <div class="card">
+
+        <h2>Send a Message</h2>
+
+        <p class="card-intro">
+          Fill in the form below and press send. Your message
+          will be submitted through the academy's contact system.
+        </p>
+
+
+        <form
+          id="contactForm"
+          class="contact-form"
+          action="https://formspree.io/f/xoeqlqyz"
+          method="POST"
+        >
+
+          <div class="field">
+
+            <label for="name">
+              Your Name
+            </label>
+
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              autocomplete="name"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="email">
+              Your Email
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="example@email.com"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="subject">
+              Subject
+            </label>
+
+            <input
+              id="subject"
+              type="text"
+              name="subject"
+              placeholder="What is your message about?"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="message">
+              Message
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <!-- Helps identify where the message came from -->
+
+          <input
+            type="hidden"
+            name="website"
+            value="Future Pilot Academy"
+          >
+
+          <input
+            type="hidden"
+            name="future_pilot"
+            value="ZILHEART"
+          >
+
+
+          <div
+            id="formStatus"
+            class="status"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+
+          <button
+            type="submit"
+            class="send-btn"
+            id="sendBtn"
+          >
+            ✈️ Send Message
+          </button>
+
+
+          <p class="form-note">
+            Your message is submitted securely through Formspree.
+            Please make sure your email address is correct if you
+            want a reply.
+          </p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= CREATOR ================= -->
+
+    <section class="creator-section">
+
+      <div class="creator-card">
+
+        <h2>
+          Built With Passion For Aviation
+        </h2>
+
+        <div class="creator-name">
+          It's Muh'd 👑🖥️
+        </div>
+
+        <p>
+          Future Pilot Academy is an educational project created
+          to make aviation learning more interesting, interactive,
+          and enjoyable for ZILHEART and other future aviation
+          enthusiasts.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= FAQ ================= -->
+
+    <section class="faq-section">
+
+      <div class="section-heading">
+
+        <h2>
+          Quick Questions
+        </h2>
+
+        <p>
+          A few things you may want to know.
+        </p>
+
+      </div>
+
+
+      <div class="faq">
+
+        <div class="faq-item">
+
+          <button class="faq-question">
+            Can I send a message through this page?
+            <span class="faq-plus">+</span>
+          </button>
+
+          <div class="faq-answer">
+            Yes. Complete the form and press the Send Message
+            button. The submission is sent to the Formspree
+            account connected to this form.
+          </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+          <button class="faq-question">
+            What should I put in the message?
+            <span class="faq-plus">+</span>
+          </button>
+
+          <div class="faq-answer">
+            You can send questions, suggestions, feedback,
+            corrections, ideas for new academy features,
+            or anything related to the website.
+          </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+          <button class="faq-question">
+            Can I use a phone to send the message?
+            <span class="faq-plus">+</span>
+          </button>
+
+          <div class="faq-answer">
+            Yes. The contact form is designed to work on
+            phones, tablets, and computers.
+          </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+          <button class="faq-question">
+            Is the aviation simulator real flight training?
+            <span class="faq-plus">+</span>
+          </button>
+
+          <div class="faq-answer">
+            No. The interactive cockpit and other simulations
+            on this website are educational experiences and
+            are not substitutes for certified flight training.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta">
+
+      <h2>
+        Keep Exploring ✈️
+      </h2>
+
+      <p>
+        After sending your message, continue exploring the
+        academy, aircraft, cockpit laboratory, missions,
+        aviation dictionary, and Nigerian aviation section.
+      </p>
+
+      <div class="cta-links">
+
+        <a href="academy.html">
+          🎓 Academy
+        </a>
+
+        <a href="dictionary.html">
+          📚 Dictionary
+        </a>
+
+        <a href="tests.html" class="secondary">
+          🧠 Take a Test
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="footer-creator">
+      Created by It's Muh'd 👑🖥️
+    </div>
+
+    <div class="footer-line"></div>
+
+    <div class="footer-pilot">
+      Future Pilot: ZILHEART ✈️
+    </div>
+
+    <br>
+
+    <div class="copyright">
+      © <span id="year"></span> Future Pilot Academy.
+      Educational project.
+    </div>
+
+  </footer>
+
+
+  <!-- ================= TOAST ================= -->
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <script>
+
+    /* ================= MOBILE MENU ================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+
+      navLinks.classList.toggle("show");
+
+      menuBtn.textContent =
+        navLinks.classList.contains("show")
+        ? "✕"
+        : "☰";
+
+    });
+
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("show");
+        menuBtn.textContent = "☰";
+
+      });
+
+    });
+
+
+    /* ================= YEAR ================= */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* ================= TOAST ================= */
+
+    const toast = document.getElementById("toast");
+
+    function showToast(message) {
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2800);
+
+    }
+
+
+    /* ================= COPY NUMBER ================= */
+
+    document
+      .getElementById("copyPhone")
+      .addEventListener("click", async () => {
+
+        const number = "08163254986";
+
+        try {
+
+          await navigator.clipboard.writeText(number);
+
+          showToast("📋 Creator number copied!");
+
+        } catch {
+
+          showToast("Number: " + number);
+
+        }
+
+      });
+
+
+    /* ================= FAQ ================= */
+
+    document.querySelectorAll(".faq-question").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const item = button.parentElement;
+
+        document.querySelectorAll(".faq-item").forEach(other => {
+
+          if (other !== item) {
+            other.classList.remove("open");
+          }
+
+        });
+
+        item.classList.toggle("open");
+
+      });
+
+    });
+
+
+    /* ================= FORM ================= */
+
+    const contactForm =
+      document.getElementById("contactForm");
+
+    const sendBtn =
+      document.getElementById("sendBtn");
+
+    const formStatus =
+      document.getElementById("formStatus");
+
+
+    contactForm.addEventListener("submit", async (event) => {
+
+      /*
+       * We submit with JavaScript so the visitor stays
+       * on the same page.
+       */
+
+      event.preventDefault();
+
+      sendBtn.disabled = true;
+
+      sendBtn.textContent = "Sending... ✈️";
+
+      formStatus.className = "status";
+
+      formStatus.textContent = "";
+
+
+      try {
+
+        const formData =
+          new FormData(contactForm);
+
+
+        const response = await fetch(
+          contactForm.action,
+          {
+            method: "POST",
+            body: formData,
+            headers: {
+              "Accept": "application/json"
+            }
+          }
+        );
+
+
+        if (response.ok) {
+
+          formStatus.className =
+            "status success";
+
+          formStatus.textContent =
+            "✅ Message sent successfully!";
+
+          contactForm.reset();
+
+          showToast("✈️ Your message was sent!");
+
+        } else {
+
+          const data =
+            await response.json()
+              .catch(() => ({}));
+
+          throw new Error(
+            data?.errors?.[0]?.message ||
+            "Unable to send message."
+          );
+
+        }
+
+      } catch (error) {
+
+        formStatus.className =
+          "status error";
+
+        formStatus.textContent =
+          "❌ Message could not be sent. Please check your internet connection and try again.";
+
+        showToast("❌ Message failed to send.");
+
+      }
+
+
+      sendBtn.disabled = false;
+
+      sendBtn.textContent =
+        "✈️ Send Message";
+
+    });
+
+
+  </script>
+
+</body>
+</html>
