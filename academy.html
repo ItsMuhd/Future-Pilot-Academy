@@ -1,982 +1,1808 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Flight Academy | Future Pilot Academy</title>
-
-    <meta name="description"
-        content="Learn aviation fundamentals at Future Pilot Academy.">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f3f9ff;
-            color: #102a43;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: #062b49;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.2);
-        }
-
-        .navbar {
-            width: 92%;
-            max-width: 1250px;
-            min-height: 72px;
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: 900;
-        }
-
-        .logo span {
-            color: #ffd43b;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 6px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 700;
-            padding: 10px;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links .active {
-            background: #0875c1;
-        }
-
-        .menu-btn {
-            display: none;
-            border: none;
-            background: #ffd43b;
-            color: #062b49;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 23px;
-            cursor: pointer;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .academy-hero {
-            min-height: 430px;
-            display: flex;
-            align-items: center;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(3,35,62,0.94),
-                    rgba(4,83,133,0.78)
-                ),
-                url("https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1800&q=85");
-
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-
-        .hero-content {
-            width: 92%;
-            max-width: 1150px;
-            margin: auto;
-        }
-
-        .hero-label {
-            display: inline-block;
-            background: #ffd43b;
-            color: #062b49;
-            padding: 8px 15px;
-            border-radius: 25px;
-            font-weight: 900;
-            margin-bottom: 18px;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(40px, 7vw, 70px);
-            margin-bottom: 18px;
-        }
-
-        .hero-content h1 span {
-            color: #ffd43b;
-        }
-
-        .hero-content p {
-            max-width: 700px;
-            color: #e3f3ff;
-            line-height: 1.8;
-            font-size: 18px;
-        }
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        .container {
-            width: 92%;
-            max-width: 1150px;
-            margin: auto;
-        }
-
-        .section {
-            padding: 75px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title small {
-            color: #0875c1;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .section-title h2 {
-            color: #062b49;
-            font-size: clamp(30px, 5vw, 45px);
-            margin: 10px 0;
-        }
-
-        .section-title p {
-            max-width: 680px;
-            margin: auto;
-            color: #607d94;
-            line-height: 1.7;
-        }
-
-        /* =========================
-           COURSE CARDS
-        ========================= */
-
-        .courses {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .course {
-            background: white;
-            border-radius: 18px;
-            padding: 28px;
-
-            border: 1px solid #e1edf6;
-
-            box-shadow:
-                0 10px 30px rgba(20,70,110,0.08);
-
-            transition: 0.3s;
-        }
-
-        .course:hover {
-            transform: translateY(-8px);
-            box-shadow:
-                0 18px 38px rgba(20,70,110,0.15);
-        }
-
-        .course-icon {
-            width: 65px;
-            height: 65px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: #e3f3ff;
-            border-radius: 16px;
-
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .course h3 {
-            color: #062b49;
-            margin-bottom: 12px;
-            font-size: 21px;
-        }
-
-        .course p {
-            color: #607d94;
-            line-height: 1.7;
-            margin-bottom: 18px;
-        }
-
-        .learn-more {
-            color: #0875c1;
-            font-weight: 900;
-            text-decoration: none;
-        }
-
-        .learn-more:hover {
-            text-decoration: underline;
-        }
-
-        /* =========================
-           PILOT PATH
-        ========================= */
-
-        .path {
-            background: #062b49;
-            border-radius: 25px;
-            padding: 40px;
-            color: white;
-        }
-
-        .path h2 {
-            text-align: center;
-            font-size: 35px;
-            margin-bottom: 35px;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .step {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 15px;
-            padding: 23px;
-            text-align: center;
-        }
-
-        .step-number {
-            width: 45px;
-            height: 45px;
-            margin: 0 auto 15px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: #ffd43b;
-            color: #062b49;
-            border-radius: 50%;
-
-            font-size: 19px;
-            font-weight: 900;
-        }
-
-        .step h3 {
-            margin-bottom: 10px;
-        }
-
-        .step p {
-            color: #cde4f4;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        /* =========================
-           PIDGIN CORNER
-        ========================= */
-
-        .pidgin {
-            background: linear-gradient(135deg, #fff7d6, #e6f7ff);
-            border-radius: 22px;
-            padding: 35px;
-            border: 2px dashed #ffd43b;
-        }
-
-        .pidgin h2 {
-            color: #062b49;
-            margin-bottom: 15px;
-            font-size: 30px;
-        }
-
-        .pidgin p {
-            color: #536f82;
-            line-height: 1.8;
-        }
-
-        .joke {
-            margin-top: 20px;
-            padding: 18px;
-            background: white;
-            border-radius: 12px;
-            border-left: 5px solid #0875c1;
-            font-weight: 700;
-            color: #062b49;
-        }
-
-        /* =========================
-           CTA
-        ========================= */
-
-        .cta {
-            text-align: center;
-            background: linear-gradient(135deg, #0875c1, #00528e);
-            border-radius: 24px;
-            padding: 50px 25px;
-            color: white;
-        }
-
-        .cta h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .cta p {
-            max-width: 650px;
-            margin: 0 auto 25px;
-            line-height: 1.7;
-            color: #e7f5ff;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #ffd43b;
-            color: #062b49;
-            text-decoration: none;
-            font-weight: 900;
-            padding: 14px 22px;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            background: #ffe477;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #031c30;
-            color: white;
-            margin-top: 70px;
-            padding: 45px 5%;
-        }
-
-        .footer-content {
-            max-width: 1150px;
-            margin: auto;
-            text-align: center;
-        }
-
-        footer p {
-            color: #aac5d9;
-            line-height: 1.7;
-        }
-
-        .creator {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #21445d;
-        }
-
-        .creator strong {
-            color: #ffd43b;
-        }
-
-        footer a {
-            color: #cce9ff;
-            text-decoration: none;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 950px) {
-
-            .menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-
-                position: absolute;
-                left: 0;
-                top: 72px;
-                width: 100%;
-
-                background: #062b49;
-                padding: 12px;
-
-                flex-direction: column;
-            }
-
-            .nav-links.show {
-                display: flex;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 13px;
-            }
-
-            .courses {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .steps {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .courses {
-                grid-template-columns: 1fr;
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-            }
-
-            .path {
-                padding: 25px 18px;
-            }
-
-            .pidgin {
-                padding: 25px 20px;
-            }
-
-            .cta h2 {
-                font-size: 30px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pilot Academy | Future Pilot Academy</title>
+
+<meta name="description"
+content="Future Pilot Academy — 70-topic aviation theory library created by It's Muh'd 👑🖥️">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#eef7ff;
+    color:#17324d;
+    overflow-x:hidden;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:9999;
+    background:#062b49;
+    box-shadow:0 5px 25px rgba(0,0,0,.20);
+}
+
+.navbar{
+    width:92%;
+    max-width:1250px;
+    min-height:72px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    padding:11px 12px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:800;
+    transition:.25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    background:#1479c9;
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:#ffd43b;
+    color:#062b49;
+    font-size:25px;
+    padding:7px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    z-index:10001;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+    color:white;
+    padding:85px 6% 75px;
+
+    background:
+    linear-gradient(135deg,#062b49,#0875c1,#00a6d6);
+}
+
+.hero h1{
+    position:relative;
+    z-index:2;
+    font-size:clamp(42px,7vw,78px);
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#ffd43b;
+}
+
+.hero p{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    margin:auto;
+    line-height:1.9;
+    font-size:18px;
+    color:#e9f8ff;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:#ffd43b;
+    color:#062b49;
+    padding:10px 18px;
+    border-radius:30px;
+    font-weight:900;
+    margin-bottom:22px;
+}
+
+/* =========================================================
+   FLOATING BACKGROUND
+========================================================= */
+
+.sky-dot{
+    position:absolute;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(255,255,255,.65);
+    animation:floatDot 6s ease-in-out infinite;
+}
+
+.dot1{left:8%;top:20%;}
+.dot2{left:20%;top:65%;animation-delay:1s;}
+.dot3{right:15%;top:25%;animation-delay:2s;}
+.dot4{right:30%;bottom:15%;animation-delay:3s;}
+
+@keyframes floatDot{
+
+    0%,100%{
+        transform:translateY(0);
+        opacity:.4;
+    }
+
+    50%{
+        transform:translateY(-20px);
+        opacity:1;
+    }
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:50px auto;
+}
+
+.intro{
+    background:white;
+    padding:35px;
+    border-radius:24px;
+    box-shadow:0 12px 35px rgba(0,50,90,.10);
+    margin-bottom:35px;
+}
+
+.intro h2{
+    color:#062b49;
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.intro p{
+    color:#526d82;
+    line-height:2;
+    font-size:17px;
+}
+
+/* =========================================================
+   TOPIC GRID
+========================================================= */
+
+.topic-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.topic-card{
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+
+    padding:28px;
+    min-height:220px;
+
+    border-radius:24px;
+
+    border:2px solid rgba(0,90,150,.08);
+
+    box-shadow:
+    0 10px 30px rgba(0,50,90,.09);
+
+    transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+
+    background:white;
+}
+
+/* Different backgrounds */
+
+.topic-card:nth-child(6n+1){
+    background:#ffffff;
+}
+
+.topic-card:nth-child(6n+2){
+    background:#fff8df;
+}
+
+.topic-card:nth-child(6n+3){
+    background:#edfff4;
+}
+
+.topic-card:nth-child(6n+4){
+    background:#f4edff;
+}
+
+.topic-card:nth-child(6n+5){
+    background:#fff0f5;
+}
+
+.topic-card:nth-child(6n+6){
+    background:#e9faff;
+}
+
+.topic-card:hover{
+    transform:translateY(-7px);
+    box-shadow:
+    0 18px 45px rgba(0,70,120,.16);
+}
+
+.topic-number{
+    display:inline-flex;
+
+    width:48px;
+    height:48px;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#0875c1;
+    color:white;
+
+    font-weight:900;
+    font-size:16px;
+
+    margin-bottom:17px;
+}
+
+.topic-card h2{
+    color:#063b63;
+    font-size:25px;
+    line-height:1.3;
+    margin-bottom:12px;
+}
+
+.topic-card p{
+    color:#587084;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.read-btn{
+    margin-top:18px;
+
+    border:0;
+    padding:11px 17px;
+
+    border-radius:30px;
+
+    background:#062b49;
+    color:white;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+/* =========================================================
+   TOUCH SHINE EFFECT
+========================================================= */
+
+.topic-card.shine{
+    animation:
+    cardGlow .9s ease;
+}
+
+@keyframes cardGlow{
+
+    0%{
+        transform:scale(1);
+        box-shadow:0 10px 30px rgba(0,50,90,.09);
+    }
+
+    35%{
+        transform:scale(1.025);
+        box-shadow:
+        0 0 0 4px rgba(255,212,59,.28),
+        0 0 35px rgba(255,212,59,.65);
+    }
+
+    70%{
+        transform:scale(1.015);
+        box-shadow:
+        0 0 0 3px rgba(0,166,214,.25),
+        0 0 30px rgba(0,166,214,.5);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* Spark particles */
+
+.spark{
+    position:absolute;
+    pointer-events:none;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#ffd43b;
+
+    animation:sparkFly .9s ease-out forwards;
+}
+
+@keyframes sparkFly{
+
+    from{
+        opacity:1;
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        opacity:0;
+        transform:
+        translate(
+            var(--x),
+            var(--y)
+        )
+        scale(.2);
+    }
+}
+
+/* =========================================================
+   READING AREA
+========================================================= */
+
+.reader{
+    display:none;
+    margin-top:45px;
+
+    background:white;
+
+    border-radius:28px;
+
+    box-shadow:
+    0 15px 45px rgba(0,50,90,.13);
+
+    overflow:hidden;
+}
+
+.reader.show{
+    display:block;
+}
+
+.reader-head{
+    padding:40px 35px;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #062b49,
+        #0875c1
+    );
+}
+
+.reader-head small{
+    display:block;
+    color:#ffd43b;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.reader-head h2{
+    font-size:clamp(30px,5vw,48px);
+    line-height:1.15;
+}
+
+.reader-body{
+    padding:38px;
+}
+
+.chapter{
+    margin-bottom:35px;
+    padding-bottom:30px;
+
+    border-bottom:1px solid #dceaf3;
+}
+
+.chapter:last-child{
+    border-bottom:0;
+}
+
+.chapter h3{
+    color:#0875c1;
+    font-size:25px;
+    margin-bottom:14px;
+}
+
+.chapter p{
+    color:#465f72;
+    font-size:17px;
+    line-height:2;
+    margin-bottom:17px;
+}
+
+.chapter ul{
+    padding-left:25px;
+}
+
+.chapter li{
+    color:#465f72;
+    line-height:1.9;
+    margin:8px 0;
+}
+
+.back-top{
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:12px 18px;
+
+    border-radius:30px;
+
+    background:#062b49;
+    color:white;
+
+    text-decoration:none;
+    font-weight:900;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#031c30;
+    color:white;
+    padding:50px 6%;
+    margin-top:70px;
+}
+
+.footer-grid{
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:35px;
+}
+
+footer h3{
+    margin-bottom:15px;
+}
+
+footer p{
+    color:#a9c4d8;
+    line-height:1.8;
+}
+
+footer ul{
+    list-style:none;
+}
+
+footer li{
+    margin:10px 0;
+}
+
+footer a{
+    color:#cce9ff;
+    text-decoration:none;
+}
+
+footer a:hover{
+    color:#ffd43b;
+}
+
+.creator{
+    max-width:1200px;
+    margin:35px auto 0;
+
+    padding-top:20px;
+
+    border-top:1px solid #21445d;
+
+    text-align:center;
+
+    color:#a9c4d8;
+}
+
+.creator strong{
+    color:#ffd43b;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:950px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:72px;
+        left:0;
+
+        width:100%;
+
+        display:none;
+
+        flex-direction:column;
+        align-items:stretch;
+
+        background:#062b49;
+
+        padding:15px;
+
+        box-shadow:
+        0 12px 25px rgba(0,0,0,.25);
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links li{
+        width:100%;
+    }
+
+    .nav-links a{
+        display:block;
+        width:100%;
+        padding:15px;
+        font-size:15px;
+    }
+
+    .topic-grid{
+        grid-template-columns:1fr;
+    }
+
+    .reader-body{
+        padding:25px 20px;
+    }
+
+    .reader-head{
+        padding:30px 22px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding:65px 5%;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .intro{
+        padding:25px 20px;
+    }
+
+    .topic-card{
+        padding:23px;
+    }
+
+    .topic-card h2{
+        font-size:22px;
+    }
+
+    .chapter p{
+        font-size:16px;
+        line-height:1.9;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-<!-- =========================
+
+<!-- =======================================================
      NAVIGATION
-========================= -->
+======================================================= -->
 
 <header>
 
-    <nav class="navbar">
+<nav class="navbar">
 
-        <a href="index.html" class="logo">
-            ✈️ Future Pilot <span>Academy</span>
-        </a>
+<a href="index.html" class="logo">
+✈️ Future Pilot <span>Academy</span>
+</a>
 
-        <button
-            class="menu-btn"
-            id="menuBtn"
-            aria-label="Open navigation">
-            ☰
-        </button>
+<button
+class="menu-btn"
+id="menuBtn"
+type="button"
+aria-label="Open navigation"
+aria-expanded="false">
 
-        <ul class="nav-links" id="navLinks">
+☰
 
-            <li>
-                <a href="index.html">Home</a>
-            </li>
+</button>
 
-            <li>
-                <a href="academy.html" class="active">Academy</a>
-            </li>
 
-            <li>
-                <a href="map.html">Aviation Map</a>
-            </li>
+<ul class="nav-links" id="navLinks">
 
-            <li>
-                <a href="aircraft.html">Aircraft</a>
-            </li>
+<li><a href="index.html">Home</a></li>
 
-            <li>
-                <a href="cockpit.html">Cockpit</a>
-            </li>
+<li><a href="academy.html" class="active">Academy</a></li>
 
-            <li>
-                <a href="tests.html">Tests</a>
-            </li>
+<li><a href="map.html">Aviation Map</a></li>
 
-            <li>
-                <a href="dictionary.html">Dictionary</a>
-            </li>
+<li><a href="aircraft.html">Aircraft</a></li>
 
-            <li>
-                <a href="missions.html">Missions</a>
-            </li>
+<li><a href="cockpit.html">Cockpit</a></li>
 
-            <li>
-                <a href="nigeria.html">Nigeria Aviation</a>
-            </li>
+<li><a href="tests.html">Tests</a></li>
 
-            <li>
-                <a href="contact.html">Contact</a>
-            </li>
+<li><a href="dictionary.html">Dictionary</a></li>
 
-        </ul>
+<li><a href="missions.html">Missions</a></li>
 
-    </nav>
+<li><a href="nigeria.html">Nigeria Aviation</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
 
 </header>
 
 
-<!-- =========================
+<!-- =======================================================
      HERO
-========================= -->
+======================================================= -->
 
-<section class="academy-hero">
+<section class="hero">
 
-    <div class="hero-content">
+<div class="sky-dot dot1"></div>
+<div class="sky-dot dot2"></div>
+<div class="sky-dot dot3"></div>
+<div class="sky-dot dot4"></div>
 
-        <span class="hero-label">
-            🎓 FUTURE PILOT TRAINING
-        </span>
+<div class="hero-badge">
+🎓 PILOT STUDY CENTRE
+</div>
 
-        <h1>
-            Welcome to the
-            <span>Flight Academy</span>
-        </h1>
+<h1>
+Future Pilot <span>Academy</span>
+</h1>
 
-        <p>
-            Build your aviation knowledge from the ground up.
-            Learn the language of pilots, understand aircraft,
-            explore weather and discover the science behind flight.
-        </p>
-
-    </div>
+<p>
+Welcome to the biggest study section of Future Pilot Academy.
+Here you can explore 70 aviation topics covering the knowledge,
+principles, systems, procedures, environment and human factors
+that form part of aviation and pilot education.
+</p>
 
 </section>
 
 
-<!-- =========================
-     COURSES
-========================= -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <small>Learning Modules</small>
-
-            <h2>Choose Your Lesson</h2>
-
-            <p>
-                Start with the basics and gradually explore more
-                advanced aviation concepts.
-            </p>
-
-        </div>
-
-
-        <div class="courses">
-
-            <article class="course">
-
-                <div class="course-icon">✈️</div>
-
-                <h3>Introduction to Aviation</h3>
-
-                <p>
-                    Learn what aviation is, the major types of
-                    aircraft and how the aviation world is organized.
-                </p>
-
-                <a href="dictionary.html" class="learn-more">
-                    Learn Aviation Terms →
-                </a>
-
-            </article>
-
-
-            <article class="course">
-
-                <div class="course-icon">🛫</div>
-
-                <h3>How Aircraft Fly</h3>
-
-                <p>
-                    Understand the basic ideas behind lift, weight,
-                    thrust and drag.
-                </p>
-
-                <a href="aircraft.html" class="learn-more">
-                    Explore Aircraft →
-                </a>
-
-            </article>
-
-
-            <article class="course">
-
-                <div class="course-icon">🌦️</div>
-
-                <h3>Aviation Weather</h3>
-
-                <p>
-                    Discover why weather matters to aviation and
-                    learn basic weather concepts used by pilots.
-                </p>
-
-                <a href="missions.html" class="learn-more">
-                    Try Weather Mission →
-                </a>
-
-            </article>
-
-
-            <article class="course">
-
-                <div class="course-icon">🎛️</div>
-
-                <h3>Cockpit Instruments</h3>
-
-                <p>
-                    Become familiar with common cockpit instruments
-                    and what information they provide.
-                </p>
-
-                <a href="cockpit.html" class="learn-more">
-                    Enter Cockpit Lab →
-                </a>
-
-            </article>
-
-
-            <article class="course">
-
-                <div class="course-icon">🗺️</div>
-
-                <h3>Navigation Concepts</h3>
-
-                <p>
-                    Learn basic aviation navigation ideas and explore
-                    airports on our educational aviation map.
-                </p>
-
-                <a href="map.html" class="learn-more">
-                    Open Aviation Map →
-                </a>
-
-            </article>
-
-
-            <article class="course">
-
-                <div class="course-icon">📻</div>
-
-                <h3>Pilot Communication</h3>
-
-                <p>
-                    Learn why clear communication is important in
-                    aviation and become familiar with common terms.
-                </p>
-
-                <a href="dictionary.html" class="learn-more">
-                    Study The Dictionary →
-                </a>
-
-            </article>
-
-
-            <article class="course">
-
-                <div class="course-icon">🧠</div>
-
-                <h3>Pilot Knowledge</h3>
-
-                <p>
-                    Test what you've learned with beginner-friendly
-                    aviation questions.
-                </p>
-
-                <a href="tests.html" class="learn-more">
-                    Take A Test →
-                </a>
-
-            </article>
-
-
-            <article class="course">
-
-                <div class="course-icon">🇳🇬</div>
-
-                <h3>Nigerian Aviation</h3>
-
-                <p>
-                    Explore aviation in Nigeria and learn about the
-                    country's aviation environment.
-                </p>
-
-                <a href="nigeria.html" class="learn-more">
-                    Explore Nigeria →
-                </a>
-
-            </article>
-
-
-            <article class="course">
-
-                <div class="course-icon">🎯</div>
-
-                <h3>Pilot Missions</h3>
-
-                <p>
-                    Turn your lessons into challenges and complete
-                    educational aviation missions.
-                </p>
-
-                <a href="missions.html" class="learn-more">
-                    View Missions →
-                </a>
-
-            </article>
-
-        </div>
-
-    </div>
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main class="container">
+
+
+<section class="intro">
+
+<h2>📚 Welcome To Your Aviation Library</h2>
+
+<p>
+This is the theory side of the Academy. Each topic is designed
+to be opened and studied separately. Inside a topic you will
+find a definition, background, detailed explanation, important
+principles, types or classifications where appropriate,
+practical aviation applications, advantages or importance,
+limitations where applicable, safety considerations, common
+mistakes, pilot perspective, key points and a revision section.
+</p>
+
+<br>
+
+<p>
+Tap any topic below to begin. When you touch a topic card it
+will briefly produce a lightweight shining effect. The effect
+is intentionally short so that the page remains comfortable to
+use on a phone.
+</p>
 
 </section>
 
 
-<!-- =========================
-     PILOT PATH
-========================= -->
+<!-- =======================================================
+     TOPIC CARDS
+======================================================= -->
 
-<section class="section">
+<section>
 
-    <div class="container">
-
-        <div class="path">
-
-            <h2>🧭 Your Learning Journey</h2>
-
-            <div class="steps">
-
-                <div class="step">
-
-                    <div class="step-number">1</div>
-
-                    <h3>Discover</h3>
-
-                    <p>
-                        Learn the basic vocabulary and ideas
-                        behind aviation.
-                    </p>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-number">2</div>
-
-                    <h3>Understand</h3>
-
-                    <p>
-                        Explore aircraft, weather, navigation
-                        and cockpit concepts.
-                    </p>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-number">3</div>
-
-                    <h3>Practice</h3>
-
-                    <p>
-                        Challenge your knowledge through
-                        educational tests and missions.
-                    </p>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-number">4</div>
-
-                    <h3>Progress</h3>
-
-                    <p>
-                        Continue learning and build a stronger
-                        foundation for your aviation journey.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+<div class="topic-grid" id="topicGrid"></div>
 
 </section>
 
 
-<!-- =========================
-     PIDGIN CORNER
-========================= -->
+<!-- =======================================================
+     READING AREA
+======================================================= -->
 
-<section class="section">
+<section>
 
-    <div class="container">
+<div class="reader" id="reader">
 
-        <div class="pidgin">
+<div class="reader-head">
 
-            <h2>🇳🇬 Pilot Pidgin Corner</h2>
+<small id="readerNumber">
+TOPIC
+</small>
 
-            <p>
-                Aviation can sound serious, but learning doesn't
-                have to be boring. This academy occasionally uses
-                simple Nigerian Pidgin explanations to make difficult
-                ideas easier to remember.
-            </p>
+<h2 id="readerTitle">
+Select a topic
+</h2>
 
-            <div class="joke">
-                😂 Pilot: "Prepare for takeoff."
+</div>
 
-                <br><br>
+<div class="reader-body" id="readerBody"></div>
 
-                Student: "Oga pilot, abeg make we first confirm
-                say fuel dey."
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- =========================
-     CTA
-========================= -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="cta">
-
-            <h2>🧠 Think You Know Aviation?</h2>
-
-            <p>
-                Put your knowledge to the test with our interactive
-                aviation questions.
-            </p>
-
-            <a href="tests.html" class="btn">
-                Take Pilot Test →
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
+</main>
 
 
-<!-- =========================
+<!-- =======================================================
      FOOTER
-========================= -->
+======================================================= -->
 
 <footer>
 
-    <div class="footer-content">
+<div class="footer-grid">
 
-        <h3>✈️ Future Pilot Academy</h3>
+<div>
 
-        <br>
+<h3>✈️ Future Pilot Academy</h3>
 
-        <p>
-            Learn today. Explore aviation. Build your knowledge.
-        </p>
+<p>
+An educational aviation project created to make learning about
+flight more interesting, interactive and beginner-friendly.
+</p>
 
-        <br>
+</div>
 
-        <p>
-            Need to contact the creator?
-            <a href="contact.html">Visit the contact page.</a>
-        </p>
 
-        <div class="creator">
+<div>
 
-            Created by
-            <strong>It's Muh'd 👑🖥️</strong>
+<h3>Quick Links</h3>
 
-            <br><br>
+<ul>
 
-            © 2026 Future Pilot Academy
+<li>
+<a href="index.html">Home</a>
+</li>
 
-        </div>
+<li>
+<a href="academy.html">Academy</a>
+</li>
 
-    </div>
+<li>
+<a href="aircraft.html">Aircraft</a>
+</li>
+
+<li>
+<a href="tests.html">Tests</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h3>Explore</h3>
+
+<ul>
+
+<li>
+<a href="map.html">Aviation Map</a>
+</li>
+
+<li>
+<a href="cockpit.html">Cockpit</a>
+</li>
+
+<li>
+<a href="dictionary.html">Dictionary</a>
+</li>
+
+<li>
+<a href="missions.html">Missions</a>
+</li>
+
+<li>
+<a href="nigeria.html">Nigeria Aviation</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="creator">
+
+Created with ✈️ by
+<strong>It's Muh'd 👑🖥️</strong>
+
+<br><br>
+
+© 2026 Future Pilot Academy
+
+</div>
 
 </footer>
 
 
-<!-- =========================
-     MOBILE MENU
-========================= -->
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
 
 <script>
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
 
-    menuBtn.addEventListener("click", function () {
+const menuBtn =
+document.getElementById("menuBtn");
 
-        navLinks.classList.toggle("show");
+const navLinks =
+document.getElementById("navLinks");
+
+
+menuBtn.addEventListener("click",function(){
+
+    navLinks.classList.toggle("show");
+
+    const opened =
+    navLinks.classList.contains("show");
+
+    menuBtn.setAttribute(
+        "aria-expanded",
+        opened ? "true" : "false"
+    );
+
+    menuBtn.textContent =
+    opened ? "✕" : "☰";
+
+});
+
+
+document.querySelectorAll(".nav-links a")
+.forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+        navLinks.classList.remove("show");
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuBtn.textContent="☰";
 
     });
 
+});
 
-    document.querySelectorAll(".nav-links a").forEach(function(link) {
 
-        link.addEventListener("click", function() {
+/* =========================================================
+   70 PILOT TOPICS
+========================================================= */
 
-            navLinks.classList.remove("show");
+const topics = [
 
+"Aviation Fundamentals",
+
+"History of Aviation",
+
+"Understanding Aircraft",
+
+"Aircraft Main Parts",
+
+"Aircraft Structure",
+
+"The Four Forces of Flight",
+
+"Lift",
+
+"Weight",
+
+"Thrust",
+
+"Drag",
+
+"Angle of Attack",
+
+"Stalls",
+
+"Aircraft Stability",
+
+"Aircraft Control",
+
+"Ailerons",
+
+"Elevators",
+
+"Rudder",
+
+"Flaps and High-Lift Devices",
+
+"Aircraft Engines",
+
+"Piston Engines",
+
+"Jet Engines",
+
+"Propellers",
+
+"Fuel Systems",
+
+"Electrical Systems",
+
+"Hydraulic Systems",
+
+"Flight Instruments",
+
+"Pitot-Static System",
+
+"Airspeed Indicator",
+
+"Altimeter",
+
+"Attitude Indicator",
+
+"Heading Indicator",
+
+"Vertical Speed Indicator",
+
+"Magnetic Compass",
+
+"Modern Glass Cockpit",
+
+"Aviation Weather",
+
+"Atmospheric Pressure",
+
+"Temperature",
+
+"Wind",
+
+"Visibility",
+
+"Clouds",
+
+"Rain and Precipitation",
+
+"Thunderstorms",
+
+"Turbulence",
+
+"Icing",
+
+"Weather Reports",
+
+"Flight Planning",
+
+"Aeronautical Charts",
+
+"Navigation",
+
+"GPS Navigation",
+
+"Radio Communication",
+
+"Aviation Phraseology",
+
+"Air Traffic Control",
+
+"Airports",
+
+"Runways",
+
+"Taxiways",
+
+"Takeoff",
+
+"Climb",
+
+"Cruise Flight",
+
+"Descent",
+
+"Approach",
+
+"Landing",
+
+"Aircraft Performance",
+
+"Weight and Balance",
+
+"Fuel Planning",
+
+"Human Factors",
+
+"Fatigue and Workload",
+
+"Situational Awareness",
+
+"Pilot Decision-Making",
+
+"Crew Resource Management",
+
+"Aviation Safety",
+
+"Emergency Procedures",
+
+"Pilot Training and Becoming a Pilot"
+
+];
+
+
+/* =========================================================
+   SHORT DESCRIPTIONS
+========================================================= */
+
+const descriptions = [
+
+"The foundation of aviation and the language used to understand flight.",
+
+"How aviation developed from early flight experiments into modern aviation.",
+
+"An introduction to how aircraft are designed and operated.",
+
+"The major external and internal components found on aircraft.",
+
+"How aircraft structures are designed to support flight loads.",
+
+"The four major forces that act on an aircraft during flight.",
+
+"How aerodynamic lift supports an aircraft in the air.",
+
+"How gravity and aircraft mass affect flight.",
+
+"How aircraft propulsion produces forward force.",
+
+"How aerodynamic resistance affects aircraft movement.",
+
+"The angle between an airfoil reference line and relative airflow.",
+
+"Understanding stalls and the aerodynamic conditions associated with them.",
+
+"How aircraft respond to disturbances and remain controllable.",
+
+"How pilots use aircraft controls to manage flight.",
+
+"Primary controls used mainly to control aircraft roll.",
+
+"Primary controls used mainly to control pitch.",
+
+"Primary control used mainly to control yaw.",
+
+"Devices used to change wing performance during different flight phases.",
+
+"An introduction to aircraft propulsion systems.",
+
+"Basic principles of piston-powered aircraft.",
+
+"How gas-turbine propulsion systems produce thrust.",
+
+"How propellers convert rotational power into thrust.",
+
+"How aircraft store and deliver fuel to engines.",
+
+"How aircraft electrical power is generated and distributed.",
+
+"How hydraulic power is used in aircraft systems.",
+
+"The instruments that provide pilots with essential flight information.",
+
+"The pressure system supporting several traditional flight instruments.",
+
+"How pilots interpret indicated airspeed.",
+
+"How pressure-based altitude information is obtained.",
+
+"How pitch and bank attitude are displayed.",
+
+"How aircraft directional information is presented.",
+
+"How pilots monitor climb and descent rates.",
+
+"Understanding magnetic direction and compass behaviour.",
+
+"Modern electronic displays and integrated flight information.",
+
+"Why weather is one of the most important parts of flight planning.",
+
+"How atmospheric pressure affects aviation.",
+
+"How temperature influences air density and aircraft performance.",
+
+"Understanding wind direction, speed and aviation effects.",
+
+"Why visibility matters to pilots.",
+
+"Understanding cloud formation and aviation significance.",
+
+"Understanding different forms of precipitation.",
+
+"Why thunderstorms require serious aviation attention.",
+
+"Understanding air movement and aircraft motion in turbulent conditions.",
+
+"Understanding atmospheric ice and its aviation significance.",
+
+"How pilots obtain and interpret aviation weather information.",
+
+"How pilots prepare a flight before departure.",
+
+"How aeronautical charts help pilots navigate.",
+
+"The science and practical process of finding the way from place to place.",
+
+"How satellite navigation supports modern aviation.",
+
+"How pilots communicate using aviation radio.",
+
+"Why aviation communication uses standard terminology.",
+
+"How air traffic services organise and manage aircraft.",
+
+"Understanding the environment in which aircraft operate on the ground.",
+
+"Understanding the prepared surfaces used for takeoff and landing.",
+
+"Understanding aircraft movement between airport areas.",
+
+"The preparation and operation involved in beginning a flight.",
+
+"How an aircraft gains altitude after takeoff.",
+
+"Understanding the main en-route phase of flight.",
+
+"How pilots safely transition toward lower altitudes.",
+
+"Understanding the flight path leading toward landing.",
+
+"The final phase in which the aircraft returns to the surface.",
+
+"How environmental and aircraft factors influence aircraft capability.",
+
+"Why aircraft loading and centre of gravity matter.",
+
+"How pilots plan and monitor fuel requirements.",
+
+"How human abilities and limitations influence aviation safety.",
+
+"How fatigue and workload can affect human performance.",
+
+"Maintaining an accurate understanding of the flight situation.",
+
+"How pilots analyse information and choose appropriate actions.",
+
+"How effective teamwork improves flight operations.",
+
+"Principles used to reduce aviation risks.",
+
+"How pilots are trained to respond to abnormal situations.",
+
+"The educational journey from beginner to qualified pilot."
+
+];
+
+
+/* =========================================================
+   CREATE TOPIC CARDS
+========================================================= */
+
+const topicGrid =
+document.getElementById("topicGrid");
+
+
+topics.forEach(function(topic,index){
+
+    const card =
+    document.createElement("article");
+
+    card.className="topic-card";
+
+    card.innerHTML=`
+
+        <div class="topic-number">
+            ${String(index+1).padStart(2,"0")}
+        </div>
+
+        <h2>
+            ${topic}
+        </h2>
+
+        <p>
+            ${descriptions[index]}
+        </p>
+
+        <button class="read-btn" type="button">
+            📖 Start Reading
+        </button>
+
+    `;
+
+    topicGrid.appendChild(card);
+
+
+    card.addEventListener("click",function(event){
+
+        if(event.target.tagName === "BUTTON"){
+            event.stopPropagation();
+        }
+
+        createShine(card);
+
+        openTopic(index);
+
+    });
+
+});
+
+
+/* =========================================================
+   SHINING EFFECT
+========================================================= */
+
+function createShine(card){
+
+    card.classList.remove("shine");
+
+    void card.offsetWidth;
+
+    card.classList.add("shine");
+
+
+    for(let i=0;i<10;i++){
+
+        const spark =
+        document.createElement("span");
+
+        spark.className="spark";
+
+        spark.style.left =
+        (30 + Math.random()*40) + "%";
+
+        spark.style.top =
+        (35 + Math.random()*30) + "%";
+
+        spark.style.setProperty(
+            "--x",
+            ((Math.random()-.5)*180)+"px"
+        );
+
+        spark.style.setProperty(
+            "--y",
+            ((Math.random()-.5)*140)+"px"
+        );
+
+        card.appendChild(spark);
+
+
+        setTimeout(function(){
+            spark.remove();
+        },900);
+
+    }
+
+}
+
+
+/* =========================================================
+   OPEN READING AREA
+========================================================= */
+
+const reader =
+document.getElementById("reader");
+
+const readerNumber =
+document.getElementById("readerNumber");
+
+const readerTitle =
+document.getElementById("readerTitle");
+
+const readerBody =
+document.getElementById("readerBody");
+
+
+function openTopic(index){
+
+    reader.classList.add("show");
+
+    readerNumber.textContent =
+    "TOPIC " +
+    String(index+1).padStart(2,"0");
+
+    readerTitle.textContent =
+    topics[index];
+
+    readerBody.innerHTML =
+    createChapter(index);
+
+    setTimeout(function(){
+
+        reader.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
         });
 
-    });
+    },100);
+
+}
+
+
+/* =========================================================
+   LARGE THEORY CHAPTER
+========================================================= */
+
+function createChapter(index){
+
+    const topic =
+    topics[index];
+
+
+    return `
+
+    <article class="chapter">
+
+        <h3>📌 Definition</h3>
+
+        <p>
+        ${topic} is an important aviation subject that helps
+        students develop a structured understanding of the
+        knowledge required to appreciate aircraft operations,
+        flight principles and the aviation environment.
+        The exact meaning of the subject depends on the
+        particular area being studied, but the main purpose is
+        to help a learner understand how aviation works rather
+        than simply memorising isolated words.
+        </p>
+
+        <p>
+        A student should approach this topic gradually. Start
+        with the basic meaning, understand the important
+        terminology, connect the subject with aircraft
+        operations and then consider how a trained pilot applies
+        the knowledge in practice.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>🌍 Background and Introduction</h3>
+
+        <p>
+        Aviation is a highly connected field. A single flight
+        involves the aircraft, pilot, weather, airport,
+        navigation, communication, regulations and many other
+        factors. This means that ${topic} should not be studied
+        as an isolated idea.
+        </p>
+
+        <p>
+        When students understand the background of a subject,
+        complicated aviation information becomes easier to
+        organise. A good student therefore asks what the subject
+        means, why it exists, how it works, where it is used and
+        what can happen when it is misunderstood.
+        </p>
+
+        <p>
+        The goal of this chapter is to provide a friendly
+        foundation before formal professional training. Real
+        pilot training should always be completed with approved
+        training material and qualified instructors.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>🧠 Detailed Explanation</h3>
+
+        <p>
+        The study of ${topic} involves connecting theory with
+        practical aviation situations. Instead of learning a
+        definition alone, a student should understand the
+        relationship between the concept and the aircraft.
+        </p>
+
+        <p>
+        Aviation students are normally encouraged to develop
+        accurate habits of observation. They should learn to
+        identify important information, distinguish between
+        similar concepts and understand which information is
+        relevant to a particular situation.
+        </p>
+
+        <p>
+        This way of studying is useful because aviation often
+        requires several pieces of information to be considered
+        together. A pilot may need to consider aircraft
+        condition, weather, location, performance and procedures
+        at the same time.
+        </p>
+
+        <p>
+        The deeper a student studies ${topic}, the more they
+        begin to see connections between different aviation
+        subjects. Knowledge of one subject can therefore make
+        another subject easier to understand.
+        </p>
+
+        <p>
+        The most useful approach is to understand the principle
+        first and then learn the terminology associated with it.
+        Memorisation has a place in aviation, but understanding
+        should come first whenever possible.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>📚 Important Areas To Study</h3>
+
+        <ul>
+
+            <li>Basic terminology associated with ${topic}.</li>
+
+            <li>The main purpose of the subject.</li>
+
+            <li>Its relationship with aircraft operations.</li>
+
+            <li>Its relationship with pilot responsibilities.</li>
+
+            <li>Conditions that can affect the subject.</li>
+
+            <li>Important limitations.</li>
+
+            <li>Relevant safety considerations.</li>
+
+            <li>Common beginner misunderstandings.</li>
+
+            <li>Practical examples from aviation.</li>
+
+            <li>How the subject connects with other pilot subjects.</li>
+
+        </ul>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>🧩 Types and Classifications</h3>
+
+        <p>
+        Many aviation subjects contain different types,
+        categories or classifications. Understanding those
+        categories helps a student organise information instead
+        of treating every situation as exactly the same.
+        </p>
+
+        <p>
+        The correct classification depends on the particular
+        aviation subject being discussed. Students should always
+        learn the definitions and distinctions used by their
+        approved training materials.
+        </p>
+
+        <p>
+        When several types exist, compare them carefully. Look
+        for what makes each type different, what conditions apply
+        to it and what practical effect the difference has.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>✈️ Pilot Perspective</h3>
+
+        <p>
+        From a pilot's perspective, ${topic} is not simply an
+        examination subject. The knowledge exists because pilots
+        operate in an environment where correct information and
+        disciplined decisions matter.
+        </p>
+
+        <p>
+        A student pilot gradually learns to connect classroom
+        theory with aircraft operation. During training, an
+        instructor can demonstrate how theoretical principles
+        appear in practical situations.
+        </p>
+
+        <p>
+        The pilot's responsibility is to understand the aircraft,
+        recognise relevant conditions, follow applicable
+        procedures and make decisions within the limits of the
+        operation.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>⭐ Importance and Advantages</h3>
+
+        <p>
+        A strong understanding of ${topic} can make aviation
+        learning more organised. Students who understand the
+        basic principles can more easily connect new information
+        with concepts they have already studied.
+        </p>
+
+        <p>
+        Another advantage is improved situational awareness.
+        Understanding aviation systems and principles helps a
+        learner recognise what information matters during a
+        flight.
+        </p>
+
+        <p>
+        Knowledge also supports safer decision-making because a
+        pilot needs to understand the reasons behind procedures
+        rather than blindly performing actions.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>⚠️ Limitations and Possible Problems</h3>
+
+        <p>
+        Theory alone cannot make someone a qualified pilot.
+        Reading about ${topic} is only one part of aviation
+        education. Practical training, supervised experience,
+        examinations and applicable licensing requirements are
+        also important.
+        </p>
+
+        <p>
+        Another limitation is that aviation information can
+        depend on the aircraft, country, operation and applicable
+        regulations. Students should therefore avoid assuming
+        that one procedure applies to every aircraft.
+        </p>
+
+        <p>
+        Outdated information can also become a problem. Aviation
+        students should use current approved material when
+        preparing for real flight operations.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>🛡️ Safety Considerations</h3>
+
+        <p>
+        Safety should always be connected to aviation theory.
+        When studying ${topic}, ask how misunderstanding the
+        subject could affect aircraft operation or pilot
+        decision-making.
+        </p>
+
+        <p>
+        Safety procedures are aircraft- and operation-specific.
+        This page is educational and should not replace an
+        aircraft flight manual, checklist, official regulation
+        or instruction from a qualified aviation professional.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>❌ Common Beginner Mistakes</h3>
+
+        <ul>
+
+            <li>Memorising terms without understanding them.</li>
+
+            <li>Confusing similar aviation concepts.</li>
+
+            <li>Ignoring the connection between theory and practice.</li>
+
+            <li>Using outdated information.</li>
+
+            <li>Assuming every aircraft operates identically.</li>
+
+            <li>Ignoring aircraft-specific procedures.</li>
+
+            <li>Learning only for examinations instead of understanding.</li>
+
+        </ul>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>💡 Friendly Study Tip From It's Muh'd 👑🖥️</h3>
+
+        <p>
+        Oya, future pilot 😄✈️ — no need to rush this one.
+        Aviation plenty, and nobody becomes an aviation expert
+        by reading everything in one sitting.
+        </p>
+
+        <p>
+        Read this topic slowly. If you see a word wey you never
+        understand, pause and check the meaning. Then connect the
+        idea with the aircraft. That small habit can make your
+        learning much easier.
+        </p>
+
+        <p>
+        And remember: understanding one concept properly is
+        better than rushing through twenty concepts without
+        understanding them.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>📝 Revision Summary</h3>
+
+        <p>
+        Before leaving this topic, try to explain ${topic} in
+        your own words without looking at the page. Then think
+        about its purpose, its major characteristics, its
+        practical aviation importance and the safety issues
+        associated with it.
+        </p>
+
+        <p>
+        If you cannot explain the concept clearly, return to the
+        beginning and read it again. Repetition is a normal part
+        of learning aviation theory.
+        </p>
+
+    </article>
+
+
+    <article class="chapter">
+
+        <h3>🎯 Key Things To Remember</h3>
+
+        <ul>
+
+            <li>Understand the definition before memorising details.</li>
+
+            <li>Learn the important terminology.</li>
+
+            <li>Understand why the subject matters to pilots.</li>
+
+            <li>Connect theory with practical aviation.</li>
+
+            <li>Know the important limitations.</li>
+
+            <li>Always consider safety.</li>
+
+            <li>Use current and approved training information.</li>
+
+            <li>Ask a qualified instructor when something is unclear.</li>
+
+        </ul>
+
+    </article>
+
+
+    <a
+    href="#topicGrid"
+    class="back-top">
+
+    ↑ Back To 70 Topics
+
+    </a>
+
+    `;
+
+}
+
+
+/* =========================================================
+   MAKE THE READER CLOSE WHEN A NEW TOPIC IS SELECTED
+========================================================= */
+
+window.addEventListener("keydown",function(event){
+
+    if(event.key === "Escape"){
+
+        reader.classList.remove("show");
+
+    }
+
+});
 
 </script>
 
