@@ -24,6 +24,10 @@
             overflow-x: hidden;
         }
 
+        /* =========================
+           NAVIGATION
+        ========================= */
+
         header {
             position: sticky;
             top: 0;
@@ -87,6 +91,10 @@
             border-radius: 8px;
             cursor: pointer;
         }
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
             min-height: 650px;
@@ -199,6 +207,10 @@
             }
         }
 
+        /* =========================
+           STATS
+        ========================= */
+
         .stats {
             width: 92%;
             max-width: 1100px;
@@ -236,6 +248,10 @@
             font-weight: 700;
         }
 
+        /* =========================
+           SECTIONS
+        ========================= */
+
         section {
             width: 92%;
             max-width: 1250px;
@@ -266,6 +282,10 @@
             color: #607d94;
             line-height: 1.7;
         }
+
+        /* =========================
+           FEATURE CARDS
+        ========================= */
 
         .features {
             display: grid;
@@ -320,6 +340,10 @@
             text-decoration: underline;
         }
 
+        /* =========================
+           AIRCRAFT PREVIEW
+        ========================= */
+
         .aircraft-preview {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -351,6 +375,10 @@
             margin-bottom: 25px;
         }
 
+        /* =========================
+           CTA
+        ========================= */
+
         .cta {
             background: linear-gradient(135deg, #0875c1, #004c87);
             border-radius: 25px;
@@ -370,6 +398,10 @@
             line-height: 1.7;
             color: #e8f5ff;
         }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             background: #031c30;
@@ -422,6 +454,135 @@
         .creator strong {
             color: #ffd43b;
         }
+
+        /* =========================
+           CLICKABLE LAUGH IMAGE
+        ========================= */
+
+        .laugh-image-box {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 110px;
+            z-index: 9999;
+            text-align: center;
+            isolation: isolate;
+            animation: laughFloat 3s ease-in-out infinite;
+        }
+
+        .laugh-image-box::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 126px;
+            height: 126px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #ff0000,
+                #ffd43b,
+                #00ff88,
+                #00e5ff,
+                #6246ff,
+                #ff00d4,
+                #ff0000
+            );
+            animation: rotateBorder 2s linear infinite;
+            z-index: -1;
+        }
+
+        .laugh-image-box::after {
+            content: "";
+            position: absolute;
+            top: -18px;
+            left: -18px;
+            width: 146px;
+            height: 146px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #00e5ff,
+                #ff00d4,
+                #ffd43b,
+                #00ff88,
+                #00e5ff
+            );
+            filter: blur(15px);
+            opacity: 0.7;
+            animation: blinkingLight 1.2s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        .laugh-image-box img {
+            width: 110px;
+            height: 110px;
+            display: block;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            cursor: pointer;
+            background: #062b49;
+            box-shadow:
+                0 0 10px #ffffff,
+                0 0 20px #00e5ff;
+            transition: transform 0.3s ease;
+        }
+
+        .laugh-image-box img:hover {
+            transform: scale(1.12);
+        }
+
+        .laugh-image-box img:active {
+            transform: scale(0.95);
+        }
+
+        .laugh-image-box p {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 6px 10px;
+            border-radius: 20px;
+            background: #062b49;
+            color: white;
+            font-size: 11px;
+            font-weight: 900;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        @keyframes rotateBorder {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes blinkingLight {
+            0%, 100% {
+                opacity: 0.25;
+                transform: scale(0.9);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes laughFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 950px) {
 
@@ -516,11 +677,64 @@
             .footer-grid {
                 grid-template-columns: 1fr;
             }
+
+            .laugh-image-box {
+                right: 18px;
+                bottom: 20px;
+                width: 80px;
+            }
+
+            .laugh-image-box::before {
+                width: 96px;
+                height: 96px;
+            }
+
+            .laugh-image-box::after {
+                width: 116px;
+                height: 116px;
+                top: -18px;
+                left: -18px;
+            }
+
+            .laugh-image-box img {
+                width: 80px;
+                height: 80px;
+                border-width: 4px;
+            }
+
+            .laugh-image-box p {
+                font-size: 9px;
+                padding: 5px 8px;
+                margin-top: 12px;
+            }
         }
     </style>
+
+    <!-- =========================
+         GOOGLE ANALYTICS
+    ========================= -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QWF7YCP3J"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag("js", new Date());
+
+        gtag("config", "G-9QWF7YCP3J");
+    </script>
+
 </head>
 
 <body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <header>
     <nav class="navbar">
@@ -571,19 +785,24 @@
                 <a href="nigeria.html">Nigeria Aviation</a>
             </li>
 
-            <li>
-                <a href="contact.html">Contact</a>
-            </li>
-
             <!-- GIST ADDED -->
             <li>
-                <a href="gist.html">💬 Gist</a>
+                <a href="gist.html">Gist ✈️</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
             </li>
 
         </ul>
 
     </nav>
 </header>
+
+
+<!-- =========================
+     HERO
+========================= -->
 
 <main>
 
@@ -625,6 +844,11 @@
 
 </section>
 
+
+<!-- =========================
+     STATS
+========================= -->
+
 <div class="stats">
 
     <div class="stat">
@@ -649,6 +873,11 @@
 
 </div>
 
+
+<!-- =========================
+     LEARNING AREAS
+========================= -->
+
 <section>
 
     <div class="section-heading">
@@ -663,6 +892,7 @@
         </p>
 
     </div>
+
 
     <div class="features">
 
@@ -683,6 +913,7 @@
 
         </article>
 
+
         <article class="feature-card">
 
             <div class="feature-icon">🗺️</div>
@@ -699,6 +930,7 @@
             </a>
 
         </article>
+
 
         <article class="feature-card">
 
@@ -717,6 +949,7 @@
 
         </article>
 
+
         <article class="feature-card">
 
             <div class="feature-icon">🎛️</div>
@@ -733,6 +966,7 @@
             </a>
 
         </article>
+
 
         <article class="feature-card">
 
@@ -751,6 +985,7 @@
 
         </article>
 
+
         <article class="feature-card">
 
             <div class="feature-icon">📖</div>
@@ -768,27 +1003,14 @@
 
         </article>
 
-        <!-- GIST ADDED -->
-        <article class="feature-card">
-
-            <div class="feature-icon">💬</div>
-
-            <h3>Aviation Gist</h3>
-
-            <p>
-                Take a break from studying and explore funny aviation
-                stories, surprises, jokes and interactive gists.
-            </p>
-
-            <a href="gist.html" class="card-link">
-                Enter Gist →
-            </a>
-
-        </article>
-
     </div>
 
 </section>
+
+
+<!-- =========================
+     AIRCRAFT PREVIEW
+========================= -->
 
 <section>
 
@@ -803,6 +1025,7 @@
             >
 
         </div>
+
 
         <div class="aircraft-text">
 
@@ -824,6 +1047,11 @@
 
 </section>
 
+
+<!-- =========================
+     MISSIONS
+========================= -->
+
 <section>
 
     <div class="section-heading">
@@ -838,6 +1066,7 @@
         </p>
 
     </div>
+
 
     <div class="features">
 
@@ -858,6 +1087,7 @@
 
         </article>
 
+
         <article class="feature-card">
 
             <div class="feature-icon">🎯</div>
@@ -874,6 +1104,7 @@
             </a>
 
         </article>
+
 
         <article class="feature-card">
 
@@ -896,6 +1127,11 @@
 
 </section>
 
+
+<!-- =========================
+     CTA
+========================= -->
+
 <section>
 
     <div class="cta">
@@ -917,6 +1153,35 @@
 
 </main>
 
+
+<!-- =========================
+     CLICKABLE LAUGH IMAGE
+========================= -->
+
+<div class="laugh-image-box">
+
+    <img
+        src="image.jpg"
+        alt="Click to hear a laugh"
+        id="laughImage"
+        title="Click me to laugh 😂"
+    >
+
+    <p>Click me 😂</p>
+
+</div>
+
+<audio
+    id="laughSound"
+    src="laugh.mp3"
+    preload="auto">
+</audio>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
     <div class="footer-grid">
@@ -932,6 +1197,7 @@
             </p>
 
         </div>
+
 
         <div>
 
@@ -955,14 +1221,14 @@
                     <a href="missions.html">Missions</a>
                 </li>
 
-                <!-- GIST ADDED -->
                 <li>
-                    <a href="gist.html">💬 Gist</a>
+                    <a href="gist.html">Gist ✈️</a>
                 </li>
 
             </ul>
 
         </div>
+
 
         <div>
 
@@ -983,12 +1249,11 @@
                 </li>
 
                 <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="gist.html">Gist ✈️</a>
                 </li>
 
-                <!-- GIST ADDED -->
                 <li>
-                    <a href="gist.html">💬 Gist</a>
+                    <a href="contact.html">Contact</a>
                 </li>
 
             </ul>
@@ -996,6 +1261,7 @@
         </div>
 
     </div>
+
 
     <div class="creator">
 
@@ -1010,7 +1276,16 @@
 
 </footer>
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
 
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
@@ -1020,6 +1295,11 @@
         navLinks.classList.toggle("show");
 
     });
+
+
+    /* =========================
+       CLOSE MOBILE MENU
+    ========================= */
 
     document.querySelectorAll(".nav-links a").forEach(function(link) {
 
@@ -1031,7 +1311,30 @@
 
     });
 
+
+    /* =========================
+       CLICK IMAGE TO PLAY LAUGH
+    ========================= */
+
+    const laughImage = document.getElementById("laughImage");
+    const laughSound = document.getElementById("laughSound");
+
+    laughImage.addEventListener("click", function() {
+
+        laughSound.currentTime = 0;
+
+        laughSound.play().catch(function(error) {
+
+            console.log(
+                "Audio playback was prevented:",
+                error
+            );
+
+        });
+
+    });
+
 </script>
 
 </body>
-    </html>
+</html>

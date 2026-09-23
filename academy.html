@@ -644,6 +644,25 @@ footer a:hover{
 }
 
 </style>
+
+<!-- =========================================================
+     GOOGLE ANALYTICS
+========================================================= -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9QWF7YCP3J"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
+gtag("js", new Date());
+
+gtag("config", "G-9QWF7YCP3J");
+</script>
+
 </head>
 
 
@@ -695,6 +714,8 @@ aria-expanded="false">
 <li><a href="nigeria.html">Nigeria Aviation</a></li>
 
 <li><a href="contact.html">Contact</a></li>
+
+<li><a href="gist.html">💬 Gist</a></li>
 
 </ul>
 
@@ -848,6 +869,10 @@ flight more interesting, interactive and beginner-friendly.
 <a href="tests.html">Tests</a>
 </li>
 
+<li>
+<a href="gist.html">💬 Gist</a>
+</li>
+
 </ul>
 
 </div>
@@ -877,6 +902,10 @@ flight more interesting, interactive and beginner-friendly.
 
 <li>
 <a href="nigeria.html">Nigeria Aviation</a>
+</li>
+
+<li>
+<a href="contact.html">Contact</a>
 </li>
 
 </ul>
@@ -1791,7 +1820,7 @@ function createChapter(index){
 
 
 /* =========================================================
-   MAKE THE READER CLOSE WHEN A NEW TOPIC IS SELECTED
+   MAKE THE READER CLOSE WITH ESCAPE
 ========================================================= */
 
 window.addEventListener("keydown",function(event){

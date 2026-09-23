@@ -1,2443 +1,2590 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aviation Knowledge Library | Future Pilot Academy</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Montserrat',sans-serif;
-    background:
-        radial-gradient(circle at 10% 10%,rgba(0,195,255,.16),transparent 30%),
-        radial-gradient(circle at 90% 20%,rgba(124,77,255,.16),transparent 30%),
-        linear-gradient(135deg,#06152d,#09244b,#06152d);
-    color:#fff;
-    min-height:100vh;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-button,
-input{
-    font-family:inherit;
-}
-
-nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(3,16,36,.92);
-    backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(255,255,255,.1);
-}
-
-.nav-inner{
-    width:min(1200px,94%);
-    margin:auto;
-    min-height:72px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.logo{
-    font-family:'Cinzel',serif;
-    font-size:20px;
-    font-weight:800;
-    color:#fff;
-    white-space:nowrap;
-}
-
-.logo span{
-    color:#37d5ff;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    flex-wrap:wrap;
-}
-
-.nav-links a{
-    font-size:12px;
-    font-weight:700;
-    padding:9px 11px;
-    border-radius:10px;
-    color:#dbe9ff;
-    transition:.25s;
-}
-
-.nav-links a:hover,
-.nav-links a.active{
-    background:#168dca;
-    color:#fff;
-}
-
-.menu-btn{
-    display:none;
-    border:0;
-    background:#168dca;
-    color:#fff;
-    font-size:23px;
-    padding:8px 12px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-/* HERO */
-
-.hero{
-    width:min(1200px,92%);
-    margin:0 auto;
-    padding:90px 0 55px;
-    text-align:center;
-}
-
-.badge{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:9px 17px;
-    border-radius:50px;
-    background:rgba(0,197,255,.13);
-    border:1px solid rgba(55,213,255,.4);
-    color:#67dcff;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-.hero h1{
-    font-family:'Cinzel',serif;
-    font-size:clamp(35px,7vw,72px);
-    margin:23px 0 12px;
-    line-height:1.05;
-}
-
-.hero h1 span{
-    color:#39d7ff;
-    text-shadow:0 0 25px rgba(57,215,255,.35);
-}
-
-.hero p{
-    max-width:760px;
-    margin:auto;
-    color:#bdd0ea;
-    line-height:1.8;
-    font-size:15px;
-}
-
-.student-name{
-    margin-top:25px;
-    display:inline-block;
-    font-family:'Cinzel',serif;
-    font-size:clamp(20px,4vw,31px);
-    color:#ffd76a;
-    letter-spacing:3px;
-    animation:floatName 3s ease-in-out infinite;
-}
-
-@keyframes floatName{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-8px);}
-}
-
-/* SEARCH */
-
-.search-section{
-    width:min(1050px,92%);
-    margin:0 auto 35px;
-}
-
-.search-box{
-    position:relative;
-}
-
-.search-box input{
-    width:100%;
-    height:68px;
-    border:none;
-    outline:none;
-    border-radius:20px;
-    padding:0 65px 0 25px;
-    background:rgba(255,255,255,.09);
-    border:1px solid rgba(255,255,255,.17);
-    color:#fff;
-    font-size:16px;
-    box-shadow:0 15px 40px rgba(0,0,0,.22);
-}
-
-.search-box input::placeholder{
-    color:#8fa7c7;
-}
-
-.search-icon{
-    position:absolute;
-    right:23px;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:25px;
-    color:#4edbff;
-}
-
-.search-hints{
-    display:flex;
-    gap:9px;
-    flex-wrap:wrap;
-    margin-top:13px;
-    justify-content:center;
-}
-
-.search-hints button{
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.06);
-    color:#cfe1f9;
-    padding:8px 12px;
-    border-radius:30px;
-    cursor:pointer;
-    font-size:11px;
-    transition:.2s;
-}
-
-.search-hints button:hover{
-    background:#168dca;
-    color:#fff;
-}
-
-/* FILTERS */
-
-.controls{
-    width:min(1200px,92%);
-    margin:0 auto 30px;
-    display:none;
-}
-
-.controls.visible{
-    display:block;
-}
-
-.control-title{
-    font-size:12px;
-    color:#8faed2;
-    font-weight:800;
-    margin-bottom:10px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-.filter-row{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-bottom:18px;
-}
-
-.filter-btn{
-    border:1px solid rgba(255,255,255,.13);
-    background:rgba(255,255,255,.06);
-    color:#cfe0f6;
-    padding:9px 13px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:11px;
-    font-weight:700;
-    transition:.2s;
-}
-
-.filter-btn:hover,
-.filter-btn.active{
-    background:#168dca;
-    border-color:#168dca;
-    color:#fff;
-}
-
-/* RESULTS */
-
-.results-area{
-    width:min(1200px,92%);
-    margin:auto;
-    padding-bottom:70px;
-}
-
-.result-header{
-    display:none;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    margin-bottom:20px;
-    flex-wrap:wrap;
-}
-
-.result-header.visible{
-    display:flex;
-}
-
-.result-count{
-    font-size:14px;
-    color:#d7e7fa;
-}
-
-.result-count strong{
-    color:#45d8ff;
-}
-
-.clear-btn{
-    border:none;
-    background:#e84f67;
-    color:#fff;
-    padding:9px 14px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:11px;
-    font-weight:800;
-}
-
-.results-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.term-card{
-    background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:20px;
-    padding:22px;
-    cursor:pointer;
-    transition:.3s;
-    min-height:215px;
-    position:relative;
-    overflow:hidden;
-}
-
-.term-card::before{
-    content:"";
-    position:absolute;
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    background:#18b9ec;
-    filter:blur(65px);
-    opacity:.12;
-    right:-30px;
-    top:-30px;
-}
-
-.term-card:hover{
-    transform:translateY(-7px);
-    border-color:rgba(65,213,255,.5);
-    box-shadow:0 15px 35px rgba(0,0,0,.25);
-}
-
-.term-category{
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:20px;
-    background:rgba(51,203,255,.12);
-    color:#5bdcff;
-    font-size:9px;
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:.7px;
-    margin-bottom:13px;
-}
-
-.term-card h3{
-    font-family:'Cinzel',serif;
-    font-size:19px;
-    margin-bottom:9px;
-}
-
-.pronunciation{
-    color:#8da9c9;
-    font-size:11px;
-    margin-bottom:12px;
-}
-
-.term-card p{
-    color:#b7cae3;
-    font-size:12px;
-    line-height:1.7;
-}
-
-.learn-more{
-    margin-top:16px;
-    display:inline-block;
-    color:#46d8ff;
-    font-size:11px;
-    font-weight:800;
-}
-
-/* EMPTY / START STATE */
-
-.start-state{
-    width:min(850px,92%);
-    margin:30px auto 90px;
-    text-align:center;
-    padding:55px 25px;
-    border:1px dashed rgba(92,188,255,.3);
-    border-radius:25px;
-    background:rgba(255,255,255,.035);
-}
-
-.start-state .big-icon{
-    font-size:60px;
-    margin-bottom:20px;
-    animation:floatPlane 3s ease-in-out infinite;
-}
-
-@keyframes floatPlane{
-    0%,100%{transform:translateY(0) rotate(-2deg);}
-    50%{transform:translateY(-10px) rotate(2deg);}
-}
-
-.start-state h2{
-    font-family:'Cinzel',serif;
-    font-size:28px;
-    margin-bottom:12px;
-}
-
-.start-state p{
-    color:#9eb5d3;
-    line-height:1.8;
-    max-width:650px;
-    margin:auto;
-    font-size:13px;
-}
-
-.no-results{
-    display:none;
-    text-align:center;
-    padding:60px 20px;
-}
-
-.no-results.visible{
-    display:block;
-}
-
-.no-results h2{
-    font-family:'Cinzel',serif;
-    margin-bottom:10px;
-}
-
-.no-results p{
-    color:#9eb5d3;
-    font-size:13px;
-}
-
-/* MODAL */
-
-.modal{
-    position:fixed;
-    inset:0;
-    z-index:2000;
-    background:rgba(0,7,20,.82);
-    backdrop-filter:blur(10px);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-content{
-    width:min(850px,100%);
-    max-height:90vh;
-    overflow-y:auto;
-    background:linear-gradient(145deg,#09254b,#061a36);
-    border:1px solid rgba(80,207,255,.3);
-    border-radius:25px;
-    padding:30px;
-    position:relative;
-    box-shadow:0 25px 80px rgba(0,0,0,.5);
-}
-
-.close-modal{
-    position:absolute;
-    right:18px;
-    top:18px;
-    width:40px;
-    height:40px;
-    border:none;
-    border-radius:50%;
-    background:rgba(255,255,255,.1);
-    color:#fff;
-    cursor:pointer;
-    font-size:20px;
-}
-
-.modal-category{
-    color:#4cdbff;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-.modal h2{
-    font-family:'Cinzel',serif;
-    font-size:32px;
-    margin:10px 50px 5px 0;
-}
-
-.modal-pronunciation{
-    color:#89a7ca;
-    font-size:12px;
-    margin-bottom:25px;
-}
-
-.detail-section{
-    margin-top:22px;
-    padding:19px;
-    border-radius:16px;
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.detail-section h4{
-    color:#4ddaff;
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:.8px;
-    margin-bottom:9px;
-}
-
-.detail-section p{
-    color:#c1d3e9;
-    line-height:1.8;
-    font-size:13px;
-}
-
-.related{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-}
-
-.related span{
-    background:rgba(46,198,255,.1);
-    border:1px solid rgba(46,198,255,.2);
-    color:#65dcff;
-    padding:7px 10px;
-    border-radius:20px;
-    font-size:10px;
-    font-weight:700;
-}
-
-/* FOOTER */
-
-footer{
-    border-top:1px solid rgba(255,255,255,.1);
-    padding:30px 20px;
-    text-align:center;
-    background:rgba(0,0,0,.16);
-}
-
-.creator{
-    font-family:'Cinzel',serif;
-    font-weight:800;
-    font-size:16px;
-}
-
-.creator span{
-    color:#4bdcff;
-}
-
-.footer-pilot{
-    color:#ffd76a;
-    margin-top:7px;
-    font-size:12px;
-    font-weight:700;
-}
-
-/* MOBILE */
-
-@media(max-width:950px){
-    .results-grid{
-        grid-template-columns:repeat(2,1fr);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aviation Knowledge Library | Future Pilot Academy</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QWF7YCP3J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9QWF7YCP3J');
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .nav-links{
-        display:none;
-        position:absolute;
-        left:0;
-        right:0;
-        top:72px;
-        background:#061a36;
-        padding:15px;
-        border-bottom:1px solid rgba(255,255,255,.1);
-        flex-direction:column;
-        align-items:stretch;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .nav-links.open{
-        display:flex;
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(0, 119, 255, 0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0, 204, 255, 0.12), transparent 30%),
+        linear-gradient(135deg, #020817, #061a35 45%, #03101f);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .nav-links a{
-        text-align:center;
-        padding:13px;
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      background: rgba(2, 10, 24, 0.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0, 183, 255, 0.18);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
     }
 
-    .menu-btn{
-        display:block;
-    }
-}
-
-@media(max-width:620px){
-    .hero{
-        padding-top:65px;
-    }
-
-    .results-grid{
-        grid-template-columns:1fr;
+    .nav-container {
+      max-width: 1400px;
+      margin: auto;
+      min-height: 76px;
+      padding: 12px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    .hero h1{
-        font-size:38px;
+    .logo {
+      text-decoration: none;
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
-    .search-box input{
-        height:60px;
-        font-size:13px;
+    .logo span {
+      color: #00c8ff;
     }
 
-    .modal-content{
-        padding:22px;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+      flex-wrap: wrap;
     }
 
-    .modal h2{
-        font-size:25px;
+    .nav-links a {
+      color: #d8edff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 10px 11px;
+      border-radius: 10px;
+      transition: 0.3s ease;
+      white-space: nowrap;
     }
-}
-</style>
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      background: linear-gradient(135deg, #006eff, #00bfff);
+      box-shadow: 0 6px 20px rgba(0, 157, 255, 0.25);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 20px 60px;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "✈";
+      position: absolute;
+      left: 5%;
+      top: 60px;
+      font-size: 80px;
+      opacity: 0.035;
+      transform: rotate(-15deg);
+    }
+
+    .hero::after {
+      content: "✈";
+      position: absolute;
+      right: 5%;
+      bottom: 20px;
+      font-size: 100px;
+      opacity: 0.035;
+      transform: rotate(15deg);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(0, 153, 255, 0.11);
+      border: 1px solid rgba(0, 195, 255, 0.25);
+      color: #67d9ff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(38px, 7vw, 76px);
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: #00c8ff;
+      text-shadow: 0 0 30px rgba(0, 200, 255, 0.22);
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: auto;
+      color: #a9bfd5;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .student-name {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 12px 22px;
+      border: 1px solid rgba(0, 190, 255, 0.28);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(0, 119, 255, 0.09);
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 800;
+      animation: floatName 3s ease-in-out infinite;
+    }
+
+    @keyframes floatName {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    .search-section {
+      max-width: 1100px;
+      margin: 0 auto 50px;
+      padding: 0 20px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 20px 58px 20px 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(0, 191, 255, 0.25);
+      outline: none;
+      background: rgba(3, 17, 35, 0.88);
+      color: #fff;
+      font-size: 15px;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.22);
+      transition: 0.3s ease;
+    }
+
+    .search-box input:focus {
+      border-color: #00bfff;
+      box-shadow: 0 0 0 4px rgba(0, 191, 255, 0.08);
+    }
+
+    .search-box input::placeholder {
+      color: #7790a8;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 21px;
+      color: #00c8ff;
+    }
+
+    .quick-search {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .quick-btn {
+      border: 1px solid rgba(0, 183, 255, 0.2);
+      background: rgba(0, 119, 255, 0.08);
+      color: #a9ddff;
+      padding: 9px 13px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .quick-btn:hover {
+      background: #007eff;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       FILTERS
+    ========================= */
+
+    .controls {
+      display: none;
+      margin-top: 28px;
+      padding: 22px;
+      border: 1px solid rgba(0, 183, 255, 0.16);
+      border-radius: 18px;
+      background: rgba(2, 15, 31, 0.75);
+    }
+
+    .controls.show {
+      display: block;
+    }
+
+    .filter-title {
+      color: #7edfff;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .filter-btn {
+      border: 1px solid rgba(0, 183, 255, 0.16);
+      background: rgba(0, 112, 255, 0.07);
+      color: #a7bfd4;
+      padding: 8px 11px;
+      border-radius: 9px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #007eff;
+      color: #fff;
+      border-color: #009fff;
+    }
+
+    /* =========================
+       START STATE
+    ========================= */
+
+    .start-state {
+      max-width: 850px;
+      margin: 40px auto 100px;
+      padding: 65px 20px;
+      text-align: center;
+      border: 1px solid rgba(0, 183, 255, 0.13);
+      border-radius: 25px;
+      background: rgba(2, 15, 30, 0.6);
+    }
+
+    .start-icon {
+      font-size: 65px;
+      margin-bottom: 20px;
+      animation: floatPlane 3s ease-in-out infinite;
+    }
+
+    @keyframes floatPlane {
+      0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+      50% {
+        transform: translateY(-10px) rotate(3deg);
+      }
+    }
+
+    .start-state h2 {
+      font-family: 'Cinzel', serif;
+      margin-bottom: 12px;
+    }
+
+    .start-state p {
+      color: #819ab1;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* =========================
+       RESULTS
+    ========================= */
+
+    .results-section {
+      display: none;
+      max-width: 1250px;
+      margin: 0 auto 100px;
+      padding: 0 20px;
+    }
+
+    .results-section.show {
+      display: block;
+    }
+
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 22px;
+    }
+
+    .results-count {
+      color: #9eb6ca;
+      font-size: 13px;
+    }
+
+    .results-count strong {
+      color: #00c8ff;
+    }
+
+    .clear-btn {
+      border: 1px solid rgba(255, 92, 92, 0.25);
+      background: rgba(255, 65, 65, 0.08);
+      color: #ff9696;
+      border-radius: 9px;
+      padding: 9px 13px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .dictionary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .term-card {
+      position: relative;
+      padding: 23px;
+      border-radius: 19px;
+      border: 1px solid rgba(0, 183, 255, 0.13);
+      background:
+        linear-gradient(145deg, rgba(4, 28, 53, 0.94), rgba(2, 14, 28, 0.94));
+      transition: 0.3s ease;
+      overflow: hidden;
+    }
+
+    .term-card::before {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      right: -45px;
+      top: -45px;
+      border-radius: 50%;
+      background: rgba(0, 180, 255, 0.08);
+    }
+
+    .term-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 190, 255, 0.38);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .term-category {
+      display: inline-block;
+      color: #00c8ff;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 11px;
+    }
+
+    .term-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 21px;
+      margin-bottom: 6px;
+    }
+
+    .pronunciation {
+      color: #718ba2;
+      font-size: 11px;
+      font-style: italic;
+      margin-bottom: 13px;
+    }
+
+    .term-card p {
+      color: #a5b9cb;
+      line-height: 1.7;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .explore-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 0;
+      background: transparent;
+      color: #4fd4ff;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .explore-btn:hover {
+      color: #fff;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      border: 1px dashed rgba(0, 183, 255, 0.2);
+      border-radius: 18px;
+      color: #8198ad;
+    }
+
+    .no-results-icon {
+      font-size: 42px;
+      margin-bottom: 14px;
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 4, 12, 0.82);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+      width: min(850px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 24px;
+      border: 1px solid rgba(0, 190, 255, 0.25);
+      background:
+        linear-gradient(145deg, #061d38, #020c1b);
+      padding: 32px;
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.55);
+      animation: modalIn 0.25s ease;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .close-modal {
+      position: sticky;
+      float: right;
+      top: 0;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .modal-category {
+      color: #00c8ff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .modal-content h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 5vw, 46px);
+      margin-bottom: 6px;
+    }
+
+    .modal-pronunciation {
+      color: #7891a8;
+      font-size: 12px;
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+
+    .knowledge-block {
+      margin-top: 25px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .knowledge-block h4 {
+      color: #67d9ff;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .knowledge-block p {
+      color: #aec0d1;
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .related-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .related-tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: #a9dcff;
+      background: rgba(0, 145, 255, 0.08);
+      border: 1px solid rgba(0, 183, 255, 0.15);
+      font-size: 10px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid rgba(0, 183, 255, 0.12);
+      background: rgba(1, 8, 18, 0.9);
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand span {
+      color: #00c8ff;
+    }
+
+    .footer-student {
+      color: #75dfff;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 13px;
+    }
+
+    footer p {
+      color: #657d94;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 1050px) {
+      .nav-links {
+        gap: 2px;
+      }
+
+      .nav-links a {
+        padding: 9px 7px;
+        font-size: 10px;
+      }
+
+      .dictionary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav-container {
+        min-height: 68px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 18px 18px;
+        background: rgba(2, 10, 24, 0.98);
+        border-bottom: 1px solid rgba(0, 183, 255, 0.16);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 13px 14px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .dictionary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 25px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 13px;
+      }
+
+      .results-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .search-box input {
+        padding: 17px 50px 17px 17px;
+      }
+
+      .controls {
+        padding: 17px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
-<nav>
-    <div class="nav-inner">
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
 
-        <a href="index.html" class="logo">
-            Future <span>Pilot</span> Academy
-        </a>
+  <nav>
+    <div class="nav-container">
 
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      <a href="index.html" class="logo">
+        Future <span>Pilot</span> Academy
+      </a>
 
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="academy.html">Academy</a>
-            <a href="map.html">Map</a>
-            <a href="aircraft.html">Aircraft</a>
-            <a href="cockpit.html">Cockpit</a>
-            <a href="tests.html">Tests</a>
-            <a href="dictionary.html" class="active">Dictionary</a>
-            <a href="missions.html">Missions</a>
-            <a href="nigeria.html">Nigeria</a>
-            <a href="contact.html">Contact</a>
-        </div>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open Menu">
+        ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="academy.html">Academy</a>
+        <a href="map.html">Map</a>
+        <a href="aircraft.html">Aircraft</a>
+        <a href="cockpit.html">Cockpit</a>
+        <a href="tests.html">Tests</a>
+        <a href="dictionary.html" class="active">Dictionary</a>
+        <a href="gist.html">Gist</a>
+        <a href="missions.html">Missions</a>
+        <a href="nigeria.html">Nigeria</a>
+        <a href="contact.html">Contact</a>
+      </div>
 
     </div>
-</nav>
+  </nav>
 
 
-<!-- HERO -->
-<section class="hero">
+  <!-- =========================
+       HERO
+  ========================= -->
 
-    <div class="badge">
-        ✈️ Aviation Knowledge Database
+  <header class="hero">
+
+    <div class="hero-badge">
+      ✈️ Aviation Knowledge Database
     </div>
 
     <h1>
-        Aviation <span>Knowledge</span> Library
+      Aviation <span>Knowledge</span> Library
     </h1>
 
     <p>
-        Search aviation terms, pilot concepts, aircraft knowledge,
-        weather, navigation, cockpit instruments, communication,
-        safety, careers and much more.
+      Explore aviation terms, aircraft systems, cockpit instruments,
+      navigation, weather, aerodynamics, safety, pilot careers and
+      Nigerian aviation knowledge in one organized learning library.
     </p>
 
     <div class="student-name">
-        ZILHEART ✈️
+      ZAIHEART ✈️
     </div>
 
-</section>
+  </header>
 
 
-<!-- SEARCH -->
-<section class="search-section">
+  <!-- =========================
+       SEARCH SECTION
+  ========================= -->
+
+  <section class="search-section">
 
     <div class="search-box">
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search anything about aviation... e.g. pilot, aircraft, weather, GPS"
-            autocomplete="off"
-        >
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search aviation knowledge... e.g. lift, pilot, aircraft, GPS"
+        autocomplete="off"
+      >
 
-        <div class="search-icon">🔎</div>
-
-    </div>
-
-    <div class="search-hints">
-
-        <button onclick="quickSearch('pilot')">Pilot</button>
-        <button onclick="quickSearch('aircraft')">Aircraft</button>
-        <button onclick="quickSearch('cockpit')">Cockpit</button>
-        <button onclick="quickSearch('weather')">Weather</button>
-        <button onclick="quickSearch('navigation')">Navigation</button>
-        <button onclick="quickSearch('airport')">Airport</button>
-        <button onclick="quickSearch('safety')">Safety</button>
-        <button onclick="quickSearch('career')">Pilot Careers</button>
-
-    </div>
-
-</section>
-
-
-<!-- FILTERS -->
-<section class="controls" id="controls">
-
-    <div class="control-title">Categories</div>
-
-    <div class="filter-row">
-
-        <button class="filter-btn active" onclick="filterCategory('All',this)">All</button>
-        <button class="filter-btn" onclick="filterCategory('Pilot',this)">Pilot</button>
-        <button class="filter-btn" onclick="filterCategory('Aircraft',this)">Aircraft</button>
-        <button class="filter-btn" onclick="filterCategory('Cockpit',this)">Cockpit</button>
-        <button class="filter-btn" onclick="filterCategory('Aerodynamics',this)">Aerodynamics</button>
-        <button class="filter-btn" onclick="filterCategory('Weather',this)">Weather</button>
-        <button class="filter-btn" onclick="filterCategory('Navigation',this)">Navigation</button>
-        <button class="filter-btn" onclick="filterCategory('Communication',this)">Communication</button>
-        <button class="filter-btn" onclick="filterCategory('Airport',this)">Airport</button>
-        <button class="filter-btn" onclick="filterCategory('Systems',this)">Systems</button>
-        <button class="filter-btn" onclick="filterCategory('Performance',this)">Performance</button>
-        <button class="filter-btn" onclick="filterCategory('Safety',this)">Safety</button>
-        <button class="filter-btn" onclick="filterCategory('Careers',this)">Careers</button>
-        <button class="filter-btn" onclick="filterCategory('Nigeria',this)">Nigeria</button>
+      <div class="search-icon">
+        🔎
+      </div>
 
     </div>
 
 
-    <div class="control-title">Alphabet</div>
+    <div class="quick-search">
 
-    <div class="filter-row" id="alphabetFilters"></div>
+      <button class="quick-btn" onclick="quickSearch('pilot')">
+        Pilot
+      </button>
 
-</section>
+      <button class="quick-btn" onclick="quickSearch('aircraft')">
+        Aircraft
+      </button>
+
+      <button class="quick-btn" onclick="quickSearch('cockpit')">
+        Cockpit
+      </button>
+
+      <button class="quick-btn" onclick="quickSearch('weather')">
+        Weather
+      </button>
+
+      <button class="quick-btn" onclick="quickSearch('navigation')">
+        Navigation
+      </button>
+
+      <button class="quick-btn" onclick="quickSearch('airport')">
+        Airport
+      </button>
+
+      <button class="quick-btn" onclick="quickSearch('safety')">
+        Safety
+      </button>
+
+      <button class="quick-btn" onclick="quickSearch('pilot careers')">
+        Pilot Careers
+      </button>
+
+    </div>
 
 
-<!-- START STATE -->
-<div class="start-state" id="startState">
+    <!-- FILTERS -->
 
-    <div class="big-icon">✈️</div>
+    <div class="controls" id="controls">
 
-    <h2>Search The Aviation Library</h2>
+      <div class="filter-title">
+        Categories
+      </div>
 
-    <p>
-        The knowledge library is waiting for you.
-        Search for a word or topic above and the relevant
-        aviation knowledge will appear here.
-        Nothing is shown automatically so ZILHEART can
-        discover the knowledge by searching.
-    </p>
+      <div class="filter-row" id="categoryFilters">
 
-</div>
-
-
-<!-- RESULTS -->
-<section class="results-area">
-
-    <div class="result-header" id="resultHeader">
-
-        <div class="result-count">
-            Showing <strong id="resultCount">0</strong> aviation results
-        </div>
-
-        <button class="clear-btn" onclick="clearSearch()">
-            Clear Search
+        <button class="filter-btn active" onclick="filterCategory('All', this)">
+          All
         </button>
 
+        <button class="filter-btn" onclick="filterCategory('Pilot', this)">
+          Pilot
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Aircraft', this)">
+          Aircraft
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Cockpit', this)">
+          Cockpit
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Aerodynamics', this)">
+          Aerodynamics
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Weather', this)">
+          Weather
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Navigation', this)">
+          Navigation
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Communication', this)">
+          Communication
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Airport', this)">
+          Airport
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Systems', this)">
+          Systems
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Performance', this)">
+          Performance
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Safety', this)">
+          Safety
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Careers', this)">
+          Careers
+        </button>
+
+        <button class="filter-btn" onclick="filterCategory('Nigeria', this)">
+          Nigeria
+        </button>
+
+      </div>
+
+
+      <div class="filter-title">
+        Alphabet
+      </div>
+
+      <div class="filter-row" id="alphabetFilters"></div>
+
     </div>
 
+  </section>
 
-    <div class="results-grid" id="resultsGrid"></div>
+
+  <!-- =========================
+       START STATE
+  ========================= -->
+
+  <section class="start-state" id="startState">
+
+    <div class="start-icon">
+      ✈️
+    </div>
+
+    <h2>
+      Start Exploring Aviation
+    </h2>
+
+    <p>
+      Search for an aviation term above or choose one of the quick
+      search buttons to begin exploring the Future Pilot Academy
+      Knowledge Library.
+    </p>
+
+  </section>
 
 
-    <div class="no-results" id="noResults">
+  <!-- =========================
+       RESULTS
+  ========================= -->
 
-        <h2>No Aviation Knowledge Found</h2>
+  <section class="results-section" id="resultsSection">
 
-        <p>
-            Try another word such as pilot, aircraft, engine,
-            weather, navigation, airport, safety or license.
-        </p>
+    <div class="results-header">
+
+      <div class="results-count" id="resultsCount">
+        <strong>0</strong> results found
+      </div>
+
+      <button class="clear-btn" onclick="clearSearch()">
+        Clear Search
+      </button>
 
     </div>
 
-</section>
+    <div class="dictionary-grid" id="resultsGrid"></div>
+
+  </section>
 
 
-<!-- MODAL -->
-<div class="modal" id="termModal">
+  <!-- =========================
+       MODAL
+  ========================= -->
+
+  <div class="modal" id="knowledgeModal">
 
     <div class="modal-content">
 
-        <button class="close-modal" onclick="closeModal()">×</button>
+      <button class="close-modal" onclick="closeModal()">
+        ×
+      </button>
 
-        <div class="modal-category" id="modalCategory"></div>
+      <div class="modal-category" id="modalCategory"></div>
 
-        <h2 id="modalTitle"></h2>
+      <h2 id="modalTitle"></h2>
 
-        <div class="modal-pronunciation" id="modalPronunciation"></div>
-
-
-        <div class="detail-section">
-
-            <h4>Simple Explanation</h4>
-
-            <p id="modalSimple"></p>
-
-        </div>
+      <div class="modal-pronunciation" id="modalPronunciation"></div>
 
 
-        <div class="detail-section">
+      <div class="knowledge-block">
 
-            <h4>Detailed Knowledge</h4>
+        <h4>
+          Simple Explanation
+        </h4>
 
-            <p id="modalDetailed"></p>
+        <p id="modalSimple"></p>
 
-        </div>
-
-
-        <div class="detail-section">
-
-            <h4>Why It Matters To Pilots</h4>
-
-            <p id="modalWhy"></p>
-
-        </div>
+      </div>
 
 
-        <div class="detail-section">
+      <div class="knowledge-block">
 
-            <h4>Related Aviation Concepts</h4>
+        <h4>
+          Detailed Knowledge
+        </h4>
 
-            <div class="related" id="modalRelated"></div>
+        <p id="modalDetailed"></p>
 
-        </div>
+      </div>
+
+
+      <div class="knowledge-block">
+
+        <h4>
+          Why It Matters To Pilots
+        </h4>
+
+        <p id="modalWhy"></p>
+
+      </div>
+
+
+      <div class="knowledge-block">
+
+        <h4>
+          Related Aviation Concepts
+        </h4>
+
+        <div class="related-list" id="modalRelated"></div>
+
+      </div>
 
     </div>
 
-</div>
+  </div>
 
 
-<!-- FOOTER -->
-<footer>
+  <!-- =========================
+       FOOTER
+  ========================= -->
 
-    <div class="creator">
-        Created by <span>It's Muh'd 👑🖥️</span>
+  <footer>
+
+    <div class="footer-brand">
+      Created by <span>It's Muh'd 👑🖥️</span>
     </div>
 
-    <div class="footer-pilot">
-        Future Pilot: ZILHEART ✈️
+    <div class="footer-student">
+      Future Pilot: ZAIHEART ✈️
     </div>
 
-</footer>
-
-
-<script>
-
-/* =========================================================
-   AVIATION KNOWLEDGE DATABASE
-   ========================================================= */
-
-const aviationDatabase = [
-
-/* ================= PILOT ================= */
-
-{
-title:"Pilot",
-category:"Pilot",
-pronunciation:"/ˈpaɪ.lət/",
-search:"pilot aviator flying flight crew licence license training",
-simple:"A pilot is a person trained and authorized to operate or control an aircraft.",
-detailed:"Pilots learn aeronautical knowledge, aircraft operation, communication, navigation, weather, human factors, decision-making and safety. Different certificates, licences and ratings exist depending on the aircraft and type of operation.",
-why:"Pilot knowledge is the foundation of professional aviation. A future pilot needs both theoretical knowledge and supervised practical training.",
-related:["Aviator","Flight Training","Pilot Licence","Captain","First Officer"]
-},
-
-{
-title:"Aviator",
-category:"Pilot",
-pronunciation:"/ˈeɪ.vi.eɪ.tər/",
-search:"aviator pilot aviation flying",
-simple:"An aviator is a person who flies or is professionally associated with aircraft.",
-detailed:"Aviator is a broad term that can describe someone involved in piloting aircraft. Pilots can work in airlines, general aviation, charter operations, flight instruction, government services and other aviation fields.",
-why:"Understanding aviation terminology helps students communicate clearly about the profession.",
-related:["Pilot","Captain","First Officer","Flight Instructor"]
-},
-
-{
-title:"Captain",
-category:"Pilot",
-pronunciation:"/ˈkæp.tɪn/",
-search:"captain airline pilot commander pilot in command pic",
-simple:"The captain is normally the pilot with overall command responsibility for an airline flight.",
-detailed:"In airline operations, the captain commonly serves as the pilot in command. The captain and other crew members work together using defined responsibilities, procedures and communication practices.",
-why:"Understanding flight crew roles is important for anyone interested in an airline career.",
-related:["First Officer","Pilot in Command","Crew Resource Management"]
-},
-
-{
-title:"First Officer",
-category:"Pilot",
-pronunciation:"/fɜːrst ˈɒf.ɪ.sər/",
-search:"first officer copilot co pilot airline pilot",
-simple:"A first officer is a professional flight crew member who works with the captain.",
-detailed:"The first officer is commonly the second pilot in a two-pilot airline crew. The exact duties depend on the operator, aircraft and regulations.",
-why:"Many airline pilots begin their professional careers as first officers before progressing to captain.",
-related:["Captain","Pilot","Crew Resource Management"]
-},
-
-{
-title:"Private Pilot",
-category:"Pilot",
-pronunciation:"/ˈpraɪ.vət ˈpaɪ.lət/",
-search:"private pilot ppl license licence",
-simple:"A private pilot certificate or licence generally permits a person to fly within the privileges and limitations of that credential.",
-detailed:"Private pilot privileges and limitations depend on the aviation authority and the specific certificate or licence. It is commonly an important stage in pilot development.",
-why:"It can form part of the pathway toward advanced pilot qualifications.",
-related:["Commercial Pilot","Pilot Licence","Flight Training"]
-},
-
-{
-title:"Commercial Pilot",
-category:"Pilot",
-pronunciation:"/kəˈmɜːr.ʃəl ˈpaɪ.lət/",
-search:"commercial pilot cpl license licence professional",
-simple:"A commercial pilot is qualified under an aviation authority's rules to exercise commercial pilot privileges.",
-detailed:"Commercial pilot qualifications involve defined knowledge, experience, training and testing requirements. Requirements vary by country and licence system.",
-why:"It is an important qualification for many professional aviation careers.",
-related:["Private Pilot","Airline Transport Pilot","Flight Instructor"]
-},
-
-{
-title:"Airline Transport Pilot",
-category:"Pilot",
-pronunciation:"/ˈeə.laɪn ˈtræn.spɔːrt ˈpaɪ.lət/",
-search:"atp airline transport pilot highest professional pilot license licence",
-simple:"An Airline Transport Pilot qualification is an advanced professional pilot credential.",
-detailed:"ATP-level licensing represents advanced professional pilot qualification. The exact requirements differ between aviation authorities and may include experience, knowledge, training and testing.",
-why:"It is associated with advanced professional airline flying roles in many licensing systems.",
-related:["Commercial Pilot","Captain","Type Rating"]
-},
-
-{
-title:"Flight Instructor",
-category:"Pilot",
-pronunciation:"/flaɪt ɪnˈstrʌk.tər/",
-search:"flight instructor cfi instructor teacher pilot training",
-simple:"A flight instructor teaches students how to develop aviation knowledge and flying skills.",
-detailed:"Flight instructors combine aeronautical knowledge, teaching techniques, risk management and supervised flight training. Instructor qualifications depend on the aviation authority.",
-why:"Instructors play a major role in developing safe and competent pilots.",
-related:["Flight Training","Student Pilot","Ground School"]
-},
-
-{
-title:"Student Pilot",
-category:"Pilot",
-pronunciation:"/ˈstjuː.dənt ˈpaɪ.lət/",
-search:"student pilot beginner learner training",
-simple:"A student pilot is a person learning to fly under an approved training framework.",
-detailed:"Student pilots normally learn ground subjects and practical flight skills under appropriate supervision. Their privileges and limitations depend on local aviation regulations.",
-why:"Every professional pilot starts with foundational learning and supervised development.",
-related:["Flight Training","Flight Instructor","Ground School"]
-},
-
-{
-title:"Pilot Licence",
-category:"Pilot",
-pronunciation:"/ˈpaɪ.lət ˈlaɪ.səns/",
-search:"pilot license licence certificate permit qualification",
-simple:"A pilot licence is an official credential issued by an aviation authority.",
-detailed:"Licences define the privileges, limitations and conditions under which a pilot may exercise particular flying privileges. Ratings can add aircraft or operational qualifications.",
-why:"Understanding licences helps future pilots plan their aviation careers.",
-related:["Private Pilot","Commercial Pilot","Ratings","Medical Certificate"]
-},
-
-{
-title:"Pilot Rating",
-category:"Pilot",
-pronunciation:"/ˈpaɪ.lət ˈreɪ.tɪŋ/",
-search:"rating aircraft rating instrument rating type rating pilot",
-simple:"A rating adds a specific qualification to a pilot certificate or licence.",
-detailed:"Examples can include instrument, aircraft category/class or type ratings, depending on the licensing system.",
-why:"Ratings allow pilots to qualify for additional aircraft or operating privileges.",
-related:["Pilot Licence","Instrument Rating","Type Rating"]
-},
-
-{
-title:"Flight Training",
-category:"Pilot",
-pronunciation:"/flaɪt ˈtreɪ.nɪŋ/",
-search:"flight training flying lessons pilot school aviation training",
-simple:"Flight training develops the knowledge and practical skills required for safe piloting.",
-detailed:"Training normally combines ground knowledge with supervised practical flight instruction. Approved schools and qualified instructors help students progress through a structured syllabus.",
-why:"Formal training is essential because aviation requires knowledge, judgement and practical competence.",
-related:["Ground School","Flight Instructor","Student Pilot"]
-},
-
-{
-title:"Ground School",
-category:"Pilot",
-pronunciation:"/ɡraʊnd skuːl/",
-search:"ground school theory pilot theory lessons aviation knowledge",
-simple:"Ground school teaches the theoretical knowledge needed by pilots.",
-detailed:"Subjects can include aerodynamics, weather, navigation, aircraft systems, human factors, regulations, communications and performance.",
-why:"A pilot must understand what is happening around the aircraft, not simply know how to move controls.",
-related:["Aerodynamics","Weather","Navigation","Aircraft Systems"]
-},
-
-/* ================= AIRCRAFT ================= */
-
-{
-title:"Aircraft",
-category:"Aircraft",
-pronunciation:"/ˈeə.krɑːft/",
-search:"aircraft airplane plane helicopter aviation flying machine",
-simple:"An aircraft is a machine capable of flight through the atmosphere.",
-detailed:"Aircraft include airplanes, helicopters, gliders, balloons and other categories. Different aircraft use different methods of generating lift and controlling movement.",
-why:"Understanding aircraft categories helps future pilots choose appropriate training paths.",
-related:["Airplane","Helicopter","Glider","Aircraft Systems"]
-},
-
-{
-title:"Airplane",
-category:"Aircraft",
-pronunciation:"/ˈeə.pleɪn/",
-search:"airplane plane aeroplane fixed wing",
-simple:"An airplane is a powered aircraft that normally uses wings to generate lift.",
-detailed:"Airplanes may have one or more engines and can range from small training aircraft to large transport aircraft.",
-why:"Most airline pilots train and work on fixed-wing airplanes.",
-related:["Aircraft","Wing","Lift","Engine"]
-},
-
-{
-title:"Helicopter",
-category:"Aircraft",
-pronunciation:"/ˈhel.ɪˌkɒp.tər/",
-search:"helicopter rotor rotorcraft chopper",
-simple:"A helicopter is a rotorcraft that generates lift primarily through rotating rotor systems.",
-detailed:"Helicopters can perform controlled flight in ways that differ significantly from conventional airplanes. Their flight characteristics and systems require specialized training.",
-why:"Helicopters represent a major aviation career path separate from fixed-wing flying.",
-related:["Rotor","Rotorcraft","Lift","Aircraft"]
-},
-
-{
-title:"Glider",
-category:"Aircraft",
-pronunciation:"/ˈɡlaɪ.dər/",
-search:"glider sailplane soaring aircraft",
-simple:"A glider is an aircraft designed to fly without an engine providing continuous thrust.",
-detailed:"Gliders use aerodynamic lift from the atmosphere to remain airborne and are commonly associated with soaring and specialized flight training.",
-why:"Gliders provide valuable insight into energy management and aerodynamics.",
-related:["Lift","Drag","Soaring","Aircraft"]
-},
-
-{
-title:"Engine",
-category:"Systems",
-pronunciation:"/ˈen.dʒɪn/",
-search:"engine aircraft engine piston turbine jet powerplant motor",
-simple:"An aircraft engine provides power that can be used to produce thrust.",
-detailed:"Aircraft use different powerplants, including piston engines and gas turbine engines. The engine type affects aircraft performance, systems and operating characteristics.",
-why:"Pilots need to understand the basic purpose and indications of their aircraft's powerplant.",
-related:["Thrust","Fuel System","Propeller","Turbine"]
-},
-
-{
-title:"Propeller",
-category:"Aircraft",
-pronunciation:"/prəˈpel.ər/",
-search:"propeller prop plane propeller aircraft blade",
-simple:"A propeller converts engine power into thrust by accelerating air.",
-detailed:"Propellers consist of blades designed with airfoil-like sections. Their aerodynamic behavior changes with airspeed, rotational speed and blade angle.",
-why:"Many training aircraft use propellers, making propeller knowledge important for beginner pilots.",
-related:["Thrust","Engine","Torque","Blade"]
-},
-
-{
-title:"Wing",
-category:"Aircraft",
-pronunciation:"/wɪŋ/",
-search:"wing aircraft wings airfoil lift",
-simple:"A wing is an aircraft structure designed primarily to generate lift.",
-detailed:"Wing shape, angle, airspeed and airflow all influence aerodynamic forces. Wings may also contain fuel tanks, control surfaces and other systems.",
-why:"The wing is one of the most important aerodynamic components of an airplane.",
-related:["Lift","Airfoil","Aileron","Flap"]
-},
-
-{
-title:"Fuselage",
-category:"Aircraft",
-pronunciation:"/ˈfjuː.zə.lɑːʒ/",
-search:"fuselage aircraft body body structure",
-simple:"The fuselage is the main body of an aircraft.",
-detailed:"It can contain the cockpit, cabin, cargo areas, systems and structural components.",
-why:"Understanding aircraft structure helps pilots understand how different components fit together.",
-related:["Aircraft Structure","Cockpit","Cabin","Empennage"]
-},
-
-{
-title:"Empennage",
-category:"Aircraft",
-pronunciation:"/ˌem.pəˈnɑːʒ/",
-search:"empennage tail aircraft tail fin rudder stabilizer",
-simple:"The empennage is the tail assembly of an aircraft.",
-detailed:"It commonly includes the vertical stabilizer, rudder, horizontal stabilizer and elevator, although exact configurations vary.",
-why:"The tail contributes to aircraft stability and control.",
-related:["Rudder","Elevator","Stabilizer"]
-},
-
-/* ================= COCKPIT ================= */
-
-{
-title:"Cockpit",
-category:"Cockpit",
-pronunciation:"/ˈkɒk.pɪt/",
-search:"cockpit flight deck pilot controls instruments",
-simple:"The cockpit is the area from which pilots control and monitor an aircraft.",
-detailed:"It contains flight controls, instruments, displays, communication equipment and other systems. Modern cockpits may use integrated electronic displays.",
-why:"Pilots spend much of their working time monitoring and managing the cockpit environment.",
-related:["Flight Instruments","Flight Controls","Avionics"]
-},
-
-{
-title:"Airspeed Indicator",
-category:"Cockpit",
-pronunciation:"/ˈeə.spiːd ˈɪn.dɪ.keɪ.tər/",
-search:"airspeed indicator asi speed cockpit instrument",
-simple:"The airspeed indicator displays the aircraft's airspeed according to its sensing system.",
-detailed:"It is one of the fundamental flight instruments. The displayed information comes from the aircraft's pitot-static system.",
-why:"Airspeed information is important for understanding aircraft performance and flight condition.",
-related:["Pitot System","Static System","Altitude","Flight Instruments"]
-},
-
-{
-title:"Altimeter",
-category:"Cockpit",
-pronunciation:"/ˈæl.tɪˌmiː.tər/",
-search:"altimeter altitude height cockpit instrument",
-simple:"An altimeter provides an indication of aircraft altitude based on atmospheric pressure.",
-detailed:"The instrument uses pressure information and a selected reference setting to provide an altitude indication.",
-why:"Altitude awareness is a fundamental part of safe flight.",
-related:["Altitude","Static Pressure","Flight Instruments"]
-},
-
-{
-title:"Attitude Indicator",
-category:"Cockpit",
-pronunciation:"/ˈæt.ɪ.tjuːd ˈɪn.dɪ.keɪ.tər/",
-search:"attitude indicator artificial horizon horizon gyro cockpit",
-simple:"The attitude indicator displays the aircraft's pitch and bank attitude relative to the horizon.",
-detailed:"Traditional instruments use gyroscopic principles while modern systems may derive attitude information electronically.",
-why:"It helps pilots understand aircraft orientation, especially when outside visual references are limited.",
-related:["Pitch","Bank","Flight Instruments"]
-},
-
-{
-title:"Heading Indicator",
-category:"Cockpit",
-pronunciation:"/ˈhed.ɪŋ ˈɪn.dɪ.keɪ.tər/",
-search:"heading indicator directional gyro dg compass cockpit",
-simple:"A heading indicator provides an indication of aircraft heading.",
-detailed:"Traditional heading indicators use gyroscopic principles and require appropriate reference to the aircraft's magnetic direction system. Modern aircraft may use electronic heading systems.",
-why:"Heading information helps pilots understand aircraft direction and navigation.",
-related:["Heading","Compass","Navigation"]
-},
-
-{
-title:"Turn Coordinator",
-category:"Cockpit",
-pronunciation:"/tɜːrn koʊˈɔːr.dɪ.neɪ.tər/",
-search:"turn coordinator turn rate roll cockpit instrument",
-simple:"A turn coordinator provides information about aircraft turning motion and coordination.",
-detailed:"It provides an indication related to roll and rate of turn and includes a slip/skid indication.",
-why:"It helps pilots understand whether a turn is coordinated.",
-related:["Turn","Slip","Skid","Flight Instruments"]
-},
-
-{
-title:"Vertical Speed Indicator",
-category:"Cockpit",
-pronunciation:"/ˈvɜːr.tɪ.kəl spiːd ˈɪn.dɪ.keɪ.tər/",
-search:"vsi vertical speed indicator climb descent cockpit",
-simple:"The VSI indicates the aircraft's rate of climb or descent.",
-detailed:"It uses changes in static pressure over time to indicate vertical movement.",
-why:"It helps pilots monitor whether altitude is generally increasing, decreasing or remaining stable.",
-related:["Altitude","Climb","Descent","Static Pressure"]
-},
-
-{
-title:"Flight Controls",
-category:"Cockpit",
-pronunciation:"/flaɪt kənˈtroʊlz/",
-search:"flight controls controls elevator aileron rudder cockpit",
-simple:"Flight controls are systems used to influence an aircraft's attitude and movement.",
-detailed:"Common airplane primary controls include ailerons, elevator and rudder. Other aircraft may use different control arrangements.",
-why:"Pilots need to understand how control inputs relate to aircraft response.",
-related:["Aileron","Elevator","Rudder","Pitch","Roll","Yaw"]
-},
-
-{
-title:"Avionics",
-category:"Cockpit",
-pronunciation:"/ˌeɪ.viˈɒn.ɪks/",
-search:"avionics electronics cockpit gps radio navigation systems",
-simple:"Avionics are electronic systems used in aircraft.",
-detailed:"Avionics can include communication, navigation, flight displays, surveillance and other electronic equipment.",
-why:"Modern aircraft depend heavily on avionics for information and communication.",
-related:["GPS","Radio","Navigation","Transponder"]
-},
-
-/* ================= AERODYNAMICS ================= */
-
-{
-title:"Lift",
-category:"Aerodynamics",
-pronunciation:"/lɪft/",
-search:"lift aerodynamic force wing flight four forces",
-simple:"Lift is the aerodynamic force associated with supporting an aircraft against gravity.",
-detailed:"Lift depends on factors including air density, airspeed, wing area and aerodynamic characteristics. The exact relationship varies with aircraft configuration and flight condition.",
-why:"Understanding lift is fundamental to understanding how aircraft fly.",
-related:["Weight","Thrust","Drag","Airfoil"]
-},
-
-{
-title:"Weight",
-category:"Aerodynamics",
-pronunciation:"/weɪt/",
-search:"weight gravity aircraft four forces mass",
-simple:"Weight is the force associated with gravity acting on an aircraft's mass.",
-detailed:"Aircraft weight changes as fuel and payload change. Weight affects performance and must be considered within the aircraft's approved limitations.",
-why:"Weight influences aircraft performance, handling and loading considerations.",
-related:["Lift","Mass","Weight and Balance","Performance"]
-},
-
-{
-title:"Thrust",
-category:"Aerodynamics",
-pronunciation:"/θrʌst/",
-search:"thrust engine propeller jet four forces power",
-simple:"Thrust is the force produced by an aircraft propulsion system that acts to move the aircraft through the air.",
-detailed:"Different propulsion systems create thrust in different ways. Propellers accelerate air while jet engines produce thrust through high-speed exhaust and related aerodynamic processes.",
-why:"Thrust is one of the four basic forces commonly introduced in airplane aerodynamics.",
-related:["Engine","Propeller","Lift","Drag"]
-},
-
-{
-title:"Drag",
-category:"Aerodynamics",
-pronunciation:"/dræɡ/",
-search:"drag aerodynamic resistance four forces parasite induced",
-simple:"Drag is an aerodynamic force that opposes an aircraft's motion through the air.",
-detailed:"Drag has several forms. Two important categories discussed in basic airplane aerodynamics are parasite drag and induced drag.",
-why:"Understanding drag helps pilots understand aircraft performance and energy.",
-related:["Lift","Thrust","Parasite Drag","Induced Drag"]
-},
-
-{
-title:"Pitch",
-category:"Aerodynamics",
-pronunciation:"/pɪtʃ/",
-search:"pitch aircraft nose up down attitude",
-simple:"Pitch describes rotation around an aircraft's lateral axis.",
-detailed:"Pitch changes the orientation of the aircraft's nose relative to the horizon. The elevator commonly influences pitch in conventional airplanes.",
-why:"Pitch is one of the three fundamental aircraft rotational motions.",
-related:["Roll","Yaw","Elevator","Attitude"]
-},
-
-{
-title:"Roll",
-category:"Aerodynamics",
-pronunciation:"/roʊl/",
-search:"roll aircraft bank aileron movement",
-simple:"Roll is rotation around the aircraft's longitudinal axis.",
-detailed:"Ailerons commonly control roll on conventional airplanes. Roll changes the aircraft's bank attitude.",
-why:"Understanding roll is fundamental to understanding turns and aircraft control.",
-related:["Bank","Aileron","Pitch","Yaw"]
-},
-
-{
-title:"Yaw",
-category:"Aerodynamics",
-pronunciation:"/jɔː/",
-search:"yaw aircraft rudder left right movement",
-simple:"Yaw is rotation around the aircraft's vertical axis.",
-detailed:"The rudder commonly controls yaw on conventional airplanes. Yaw can also occur because of aerodynamic forces and propulsion effects.",
-why:"Understanding yaw is important for coordinated aircraft control.",
-related:["Rudder","Roll","Pitch","Slip","Skid"]
-},
-
-{
-title:"Airfoil",
-category:"Aerodynamics",
-pronunciation:"/ˈeə.fɔɪl/",
-search:"airfoil aerofoil wing shape aerodynamic",
-simple:"An airfoil is a shape designed to interact with airflow in a useful aerodynamic way.",
-detailed:"Aircraft wings, propeller blades and many control surfaces use airfoil-like sections. Shape and airflow influence pressure distribution and aerodynamic forces.",
-why:"Airfoil concepts help explain how wings and other aerodynamic surfaces work.",
-related:["Wing","Lift","Drag","Angle of Attack"]
-},
-
-{
-title:"Angle of Attack",
-category:"Aerodynamics",
-pronunciation:"/ˈæŋ.ɡəl əv əˈtæk/",
-search:"angle of attack aoa aerodynamic wing stall",
-simple:"Angle of attack is the angle between an airfoil's reference line and the relative airflow.",
-detailed:"Angle of attack is a fundamental aerodynamic concept and is closely related to lift and stall behavior.",
-why:"Pilots study it because aerodynamic behavior depends strongly on angle of attack.",
-related:["Airfoil","Lift","Stall","Relative Wind"]
-},
-
-{
-title:"Stall",
-category:"Aerodynamics",
-pronunciation:"/stɔːl/",
-search:"stall aerodynamic stall wing angle attack",
-simple:"An aerodynamic stall occurs when an airfoil exceeds its critical angle of attack and lift decreases significantly.",
-detailed:"A stall is primarily an aerodynamic condition related to angle of attack, not simply a particular airspeed. The critical angle depends on the aircraft and configuration.",
-why:"Understanding stalls is an important part of pilot aerodynamics and training.",
-related:["Angle of Attack","Lift","Airfoil","Aerodynamics"]
-},
-
-/* ================= WEATHER ================= */
-
-{
-title:"Weather",
-category:"Weather",
-pronunciation:"/ˈweð.ər/",
-search:"weather aviation meteorology forecast pilot",
-simple:"Weather describes atmospheric conditions and changes that can affect aviation.",
-detailed:"Pilots study temperature, pressure, wind, clouds, visibility, precipitation, fronts, thunderstorms and other atmospheric conditions.",
-why:"Weather can strongly influence flight safety, planning and aircraft performance.",
-related:["Wind","Cloud","Visibility","Thunderstorm","Pressure"]
-},
-
-{
-title:"Atmosphere",
-category:"Weather",
-pronunciation:"/ˈæt.mə.sfɪər/",
-search:"atmosphere earth air aviation weather",
-simple:"The atmosphere is the layer of gases surrounding Earth.",
-detailed:"Aircraft operate within Earth's atmosphere, where pressure, temperature, density and moisture change with altitude and location.",
-why:"Understanding the atmosphere provides the foundation for aviation weather and aerodynamics.",
-related:["Pressure","Temperature","Density","Weather"]
-},
-
-{
-title:"Wind",
-category:"Weather",
-pronunciation:"/wɪnd/",
-search:"wind aviation headwind tailwind crosswind weather",
-simple:"Wind is moving air and is an important factor in aviation.",
-detailed:"Wind has direction and speed and can affect aircraft ground movement, navigation and performance. Pilots study wind as part of weather information.",
-why:"Wind conditions can change how an aircraft moves relative to the ground.",
-related:["Headwind","Tailwind","Crosswind","Weather"]
-},
-
-{
-title:"Cloud",
-category:"Weather",
-pronunciation:"/klaʊd/",
-search:"cloud clouds aviation weather cumulus stratus",
-simple:"A cloud is a visible collection of tiny water droplets or ice particles suspended in the atmosphere.",
-detailed:"Cloud type, altitude, development and associated weather can provide important information about atmospheric conditions.",
-why:"Clouds are important for visibility, weather awareness and flight planning.",
-related:["Cumulus","Stratus","Thunderstorm","Visibility"]
-},
-
-{
-title:"Fog",
-category:"Weather",
-pronunciation:"/fɒɡ/",
-search:"fog visibility aviation weather mist",
-simple:"Fog is a cloud layer at or very near the Earth's surface that can significantly reduce visibility.",
-detailed:"Fog forms under atmospheric conditions that allow moisture to condense near the ground.",
-why:"Reduced visibility can affect airport operations and flight conditions.",
-related:["Visibility","Cloud","Weather","Humidity"]
-},
-
-{
-title:"Thunderstorm",
-category:"Weather",
-pronunciation:"/ˈθʌn.dər.stɔːrm/",
-search:"thunderstorm storm aviation weather lightning hail turbulence",
-simple:"A thunderstorm is a convective weather system associated with lightning and thunder.",
-detailed:"Thunderstorms can involve strong vertical air movements, heavy precipitation, turbulence, lightning, hail and other hazardous conditions.",
-why:"Thunderstorms are among the weather phenomena that pilots must understand and treat seriously.",
-related:["Lightning","Hail","Turbulence","Weather Radar"]
-},
-
-{
-title:"Visibility",
-category:"Weather",
-pronunciation:"/ˌvɪz.əˈbɪl.ə.ti/",
-search:"visibility flight weather visual conditions fog",
-simple:"Visibility describes how far objects can be seen under atmospheric conditions.",
-detailed:"Visibility can be affected by fog, haze, precipitation, dust, smoke and other factors.",
-why:"Visibility is important for understanding flight conditions and airport operations.",
-related:["Fog","Haze","Weather","Cloud"]
-},
-
-{
-title:"Atmospheric Pressure",
-category:"Weather",
-pronunciation:"/ˌæt.məˈsfɪr.ɪk ˈpreʃ.ər/",
-search:"pressure atmospheric pressure barometric pressure aviation",
-simple:"Atmospheric pressure is the pressure exerted by the weight of the atmosphere.",
-detailed:"Pressure generally decreases with altitude. Pressure information is fundamental to several aircraft instruments and aviation weather concepts.",
-why:"Pressure affects altimetry, weather interpretation and aircraft performance.",
-related:["Altimeter","Altitude","Weather","Density"]
-},
-
-{
-title:"Humidity",
-category:"Weather",
-pronunciation:"/hjuːˈmɪd.ə.ti/",
-search:"humidity moisture water vapor aviation weather",
-simple:"Humidity describes the amount of water vapor present in the air.",
-detailed:"Moisture in the atmosphere contributes to cloud formation, precipitation and other weather processes.",
-why:"Understanding humidity helps pilots understand atmospheric conditions and weather development.",
-related:["Cloud","Fog","Water Vapor","Weather"]
-},
-
-/* ================= NAVIGATION ================= */
-
-{
-title:"Navigation",
-category:"Navigation",
-pronunciation:"/ˌnæv.ɪˈɡeɪ.ʃən/",
-search:"navigation pilot route gps map direction flight",
-simple:"Navigation is the process of determining and maintaining an aircraft's position and intended path.",
-detailed:"Aviation navigation can involve visual references, charts, radio navigation systems, satellite navigation and integrated avionics.",
-why:"Pilots need navigation knowledge to understand where an aircraft is and where it is intended to go.",
-related:["GPS","Heading","Waypoint","Chart"]
-},
-
-{
-title:"GPS",
-category:"Navigation",
-pronunciation:"/ˌdʒiː.piːˈes/",
-search:"gps global positioning system satellite navigation",
-simple:"GPS is a satellite-based positioning and navigation system.",
-detailed:"Aircraft navigation systems can use satellite-derived position information. Modern aviation systems may integrate GPS with other navigation sources.",
-why:"Satellite navigation is an important part of modern aviation.",
-related:["Navigation","Waypoint","GNSS","Avionics"]
-},
-
-{
-title:"Waypoint",
-category:"Navigation",
-pronunciation:"/ˈweɪ.pɔɪnt/",
-search:"waypoint gps navigation fix route",
-simple:"A waypoint is a defined geographic position used for navigation.",
-detailed:"Waypoints can be represented by coordinates and may form part of a programmed route in an aircraft navigation system.",
-why:"They help organize and describe routes in modern navigation systems.",
-related:["GPS","Navigation","Route","Fix"]
-},
-
-{
-title:"Heading",
-category:"Navigation",
-pronunciation:"/ˈhed.ɪŋ/",
-search:"heading direction compass aircraft navigation",
-simple:"Heading describes the direction an aircraft's nose is pointing relative to a reference system.",
-detailed:"Pilots distinguish heading from track. Wind can cause the aircraft's path over the ground to differ from its heading.",
-why:"Understanding heading is fundamental to navigation.",
-related:["Track","Compass","Navigation","Wind"]
-},
-
-{
-title:"Track",
-category:"Navigation",
-pronunciation:"/træk/",
-search:"track ground track navigation course heading",
-simple:"Track is the direction the aircraft is actually moving over the ground.",
-detailed:"Track can differ from heading because wind affects the aircraft's path relative to the ground.",
-why:"The distinction between heading and track is important in navigation.",
-related:["Heading","Wind","Course","Navigation"]
-},
-
-{
-title:"VOR",
-category:"Navigation",
-pronunciation:"/ˌviː.oʊˈɑːr/",
-search:"vor navigation radio vor station aviation",
-simple:"VOR is a radio navigation system used to determine direction relative to a ground station.",
-detailed:"VOR has historically been an important terrestrial navigation system in aviation. Modern navigation often integrates several sources.",
-why:"Understanding conventional navigation helps pilots understand both legacy and modern systems.",
-related:["Navigation","Radio Navigation","DME","Aviation Chart"]
-},
-
-{
-title:"DME",
-category:"Navigation",
-pronunciation:"/ˌdiː.emˈiː/",
-search:"dme distance measuring equipment navigation",
-simple:"DME is a radio navigation system that provides distance information from a compatible ground station.",
-detailed:"Distance information is based on radio signal timing between the aircraft system and ground equipment.",
-why:"Distance information can support navigation and situational awareness.",
-related:["VOR","Navigation","Radio Navigation"]
-},
-
-{
-title:"ILS",
-category:"Navigation",
-pronunciation:"/ˌaɪ.elˈes/",
-search:"ils instrument landing system navigation runway approach",
-simple:"ILS is a precision radio navigation system associated with certain instrument approaches.",
-detailed:"An ILS can provide lateral and vertical guidance to an appropriately equipped aircraft during a published approach.",
-why:"ILS is an important concept in instrument aviation and airport navigation systems.",
-related:["Instrument Flight","Localizer","Glideslope"]
-},
-
-{
-title:"Aeronautical Chart",
-category:"Navigation",
-pronunciation:"/ˌeə.rəˈnɔː.tɪ.kəl tʃɑːrt/",
-search:"aviation chart aeronautical chart map pilot navigation",
-simple:"An aeronautical chart is a specialized map designed for aviation.",
-detailed:"Charts can show airports, airspace, navigation information, terrain and other aviation data depending on chart type.",
-why:"Charts are important tools for aviation navigation and planning.",
-related:["Navigation","Airspace","Airport","Waypoint"]
-},
-
-/* ================= COMMUNICATION ================= */
-
-{
-title:"Air Traffic Control",
-category:"Communication",
-pronunciation:"/eə ˈtræf.ɪk kənˌtroʊl/",
-search:"atc air traffic control controller tower pilot radio",
-simple:"Air Traffic Control is a service that helps manage aircraft movement and airspace according to applicable procedures.",
-detailed:"ATC services can include clearances, instructions, traffic information and separation services depending on the airspace and facility.",
-why:"Pilots must understand aviation communication and ATC concepts.",
-related:["ATC","Radio","Phraseology","Airspace"]
-},
-
-{
-title:"ATC",
-category:"Communication",
-pronunciation:"/ˌeɪ.tiːˈsiː/",
-search:"atc air traffic control controller",
-simple:"ATC is the common abbreviation for Air Traffic Control.",
-detailed:"ATC is part of the aviation system that supports the safe and orderly movement of aircraft within controlled airspace and at participating airports.",
-why:"Pilot-controller communication is a core aviation skill.",
-related:["Air Traffic Control","Radio","Clearance","Airspace"]
-},
-
-{
-title:"Radio Communication",
-category:"Communication",
-pronunciation:"/ˈreɪ.di.oʊ kəˌmjuː.nɪˈkeɪ.ʃən/",
-search:"radio aviation communication pilot controller frequency",
-simple:"Radio communication allows pilots and aviation personnel to exchange information.",
-detailed:"Aviation radio systems support communication between pilots and services such as air traffic control.",
-why:"Clear communication is essential to coordinated aviation operations.",
-related:["ATC","Phraseology","Frequency","Call Sign"]
-},
-
-{
-title:"Call Sign",
-category:"Communication",
-pronunciation:"/ˈkɔːl saɪn/",
-search:"call sign callsign aircraft radio communication",
-simple:"A call sign is an identifier used in aviation communication.",
-detailed:"Aircraft and aviation organizations can use call signs to identify themselves during communications.",
-why:"Correct identification helps reduce communication confusion.",
-related:["Radio","ATC","Phraseology"]
-},
-
-{
-title:"Aviation Phraseology",
-category:"Communication",
-pronunciation:"/eɪ.viˈeɪ.ʃən freɪ.ziˈɒl.ə.dʒi/",
-search:"phraseology aviation communication radio atc words",
-simple:"Aviation phraseology is standardized language used to make aviation communication clear and efficient.",
-detailed:"Standard phraseology reduces ambiguity and supports consistent communication between pilots and controllers.",
-why:"Professional pilots must communicate clearly and accurately.",
-related:["ATC","Radio Communication","Call Sign"]
-},
-
-{
-title:"Frequency",
-category:"Communication",
-pronunciation:"/ˈfriː.kwən.si/",
-search:"frequency radio aviation communication mhz",
-simple:"A radio frequency identifies a particular part of the radio spectrum used for communication or navigation.",
-detailed:"Aircraft radios are tuned to appropriate frequencies for communication and other aviation services.",
-why:"Pilots need to understand the concept of frequencies when using aircraft communication equipment.",
-related:["Radio","ATC","Communication"]
-},
-
-/* ================= AIRPORT ================= */
-
-{
-title:"Airport",
-category:"Airport",
-pronunciation:"/ˈeə.pɔːrt/",
-search:"airport aerodrome aviation airport terminal runway",
-simple:"An airport is a location with facilities for aircraft operations and related activities.",
-detailed:"Airports can include runways, taxiways, terminals, aprons, navigation equipment and other facilities.",
-why:"Pilots need to understand airport layouts and terminology.",
-related:["Runway","Taxiway","Apron","Terminal"]
-},
-
-{
-title:"Runway",
-category:"Airport",
-pronunciation:"/ˈrʌn.weɪ/",
-search:"runway airport takeoff landing strip",
-simple:"A runway is a defined area prepared for aircraft takeoffs and landings.",
-detailed:"Runways have markings, lighting and identification systems that vary according to airport and runway characteristics.",
-why:"Runways are central to airport operations.",
-related:["Airport","Taxiway","Runway Markings"]
-},
-
-{
-title:"Taxiway",
-category:"Airport",
-pronunciation:"/ˈtæk.si.weɪ/",
-search:"taxiway airport ground movement",
-simple:"A taxiway is a defined route used by aircraft moving between areas of an airport.",
-detailed:"Taxiways connect runways with ramps, aprons, terminals and other airport areas.",
-why:"Understanding taxiway terminology helps pilots understand airport movement areas.",
-related:["Airport","Runway","Apron"]
-},
-
-{
-title:"Apron",
-category:"Airport",
-pronunciation:"/ˈeɪ.prən/",
-search:"apron airport ramp aircraft parking",
-simple:"An apron is an airport area where aircraft can park, load, unload, refuel or receive servicing.",
-detailed:"Aprons are part of the airport movement and support environment, subject to local procedures.",
-why:"Pilots and ground crews interact frequently with apron areas.",
-related:["Airport","Taxiway","Ramp"]
-},
-
-{
-title:"Terminal",
-category:"Airport",
-pronunciation:"/ˈtɜːr.mɪ.nəl/",
-search:"airport terminal passenger building",
-simple:"An airport terminal is a facility where passengers and airport services are handled.",
-detailed:"Large airports may have multiple terminals, gates, baggage facilities and passenger services.",
-why:"Understanding airport infrastructure helps students understand how airline operations connect with passengers.",
-related:["Airport","Gate","Apron"]
-},
-
-{
-title:"Airspace",
-category:"Airport",
-pronunciation:"/ˈeə.speɪs/",
-search:"airspace controlled uncontrolled aviation class",
-simple:"Airspace is the portion of the atmosphere designated for aviation use and management.",
-detailed:"Airspace can have different classifications and requirements depending on the country and location.",
-why:"Pilots must understand the airspace environment relevant to their flight.",
-related:["ATC","Airport","Navigation"]
-},
-
-/* ================= SYSTEMS ================= */
-
-{
-title:"Fuel System",
-category:"Systems",
-pronunciation:"/fjuːl ˈsɪs.təm/",
-search:"fuel system aircraft fuel tank engine aviation",
-simple:"An aircraft fuel system stores and delivers fuel to the engine or engines.",
-detailed:"Fuel systems vary considerably between aircraft. Components can include tanks, pumps, lines, valves and measurement systems.",
-why:"Pilots need basic knowledge of their aircraft's fuel system and limitations.",
-related:["Engine","Fuel","Fuel Quantity"]
-},
-
-{
-title:"Hydraulic System",
-category:"Systems",
-pronunciation:"/haɪˈdrɔː.lɪk ˈsɪs.təm/",
-search:"hydraulic system aircraft landing gear brakes flight controls",
-simple:"A hydraulic system uses pressurized fluid to transmit power.",
-detailed:"Aircraft may use hydraulic systems for functions such as brakes, landing gear or flight controls depending on aircraft design.",
-why:"Understanding aircraft systems helps pilots recognize the purpose of important components.",
-related:["Aircraft Systems","Landing Gear","Flight Controls"]
-},
-
-{
-title:"Electrical System",
-category:"Systems",
-pronunciation:"/ɪˈlek.trɪ.kəl ˈsɪs.təm/",
-search:"electrical system aircraft battery alternator generator avionics",
-simple:"An aircraft electrical system supplies electrical power to aircraft equipment.",
-detailed:"Components may include batteries, generators or alternators, buses, circuit protection and wiring.",
-why:"Modern aircraft depend on electrical power for many instruments and systems.",
-related:["Battery","Alternator","Avionics"]
-},
-
-{
-title:"Landing Gear",
-category:"Systems",
-pronunciation:"/ˈlæn.dɪŋ ɡɪər/",
-search:"landing gear wheels aircraft undercarriage",
-simple:"Landing gear supports an aircraft while it is on the ground and during landing and takeoff operations.",
-detailed:"Landing gear configurations vary. Some aircraft have fixed gear while others have retractable systems.",
-why:"Landing gear is an important structural and mechanical part of an aircraft.",
-related:["Aircraft Systems","Wheel","Hydraulic System"]
-},
-
-{
-title:"Pitot-Static System",
-category:"Systems",
-pronunciation:"/ˈpiː.tɒt ˈstæt.ɪk/",
-search:"pitot static system airspeed altimeter vsi instruments",
-simple:"The pitot-static system supplies pressure information to several basic flight instruments.",
-detailed:"Pitot pressure and static pressure are used by instruments such as the airspeed indicator, altimeter and vertical speed indicator.",
-why:"Understanding the system explains where important cockpit indications come from.",
-related:["Airspeed Indicator","Altimeter","VSI","Static Pressure"]
-},
-
-{
-title:"Transponder",
-category:"Systems",
-pronunciation:"/trænˈspɒn.dər/",
-search:"transponder aircraft radar identification squawk",
-simple:"An aircraft transponder is an electronic device that responds to interrogation signals from compatible systems.",
-detailed:"Transponders support aircraft identification and surveillance functions in aviation.",
-why:"Transponder concepts are important in modern aircraft surveillance and air traffic systems.",
-related:["Radar","ATC","Avionics"]
-},
-
-/* ================= PERFORMANCE ================= */
-
-{
-title:"Altitude",
-category:"Performance",
-pronunciation:"/ˈæl.tɪ.tjuːd/",
-search:"altitude height aircraft flight level elevation",
-simple:"Altitude describes vertical distance relative to a specified reference.",
-detailed:"Different altitude references are used in aviation, including references based on mean sea level, terrain or pressure settings depending on context.",
-why:"Altitude is fundamental to flight planning, separation and situational awareness.",
-related:["Altimeter","Pressure","Flight Level"]
-},
-
-{
-title:"Airspeed",
-category:"Performance",
-pronunciation:"/ˈeə.spiːd/",
-search:"airspeed aircraft speed indicated true ground speed",
-simple:"Airspeed describes the aircraft's speed relative to the surrounding air.",
-detailed:"Aviation uses several airspeed concepts, including indicated airspeed and true airspeed. They serve different purposes.",
-why:"Airspeed is an essential part of aircraft performance knowledge.",
-related:["Airspeed Indicator","True Airspeed","Groundspeed"]
-},
-
-{
-title:"Groundspeed",
-category:"Performance",
-pronunciation:"/ˈɡraʊnd.spiːd/",
-search:"ground speed aircraft gps navigation speed",
-simple:"Groundspeed is the aircraft's speed relative to the ground.",
-detailed:"Wind can make groundspeed different from airspeed.",
-why:"Groundspeed is useful for understanding progress along a route and travel time.",
-related:["Airspeed","Wind","Track","Navigation"]
-},
-
-{
-title:"Weight and Balance",
-category:"Performance",
-pronunciation:"/weɪt ænd ˈbæl.əns/",
-search:"weight balance aircraft loading center gravity cg mass",
-simple:"Weight and balance concerns how aircraft mass is distributed within approved limits.",
-detailed:"Aircraft have specified loading and center-of-gravity limitations. Proper loading is an important part of aircraft safety and performance.",
-why:"Incorrect loading can negatively affect aircraft handling and performance.",
-related:["Weight","Center of Gravity","Aircraft Loading"]
-},
-
-{
-title:"Center of Gravity",
-category:"Performance",
-pronunciation:"/ˈsen.tər əv ˈɡræv.ə.ti/",
-search:"center of gravity cg aircraft balance loading",
-simple:"The center of gravity is the point at which an aircraft's mass is considered concentrated for balance calculations.",
-detailed:"The position of the center of gravity changes with loading and must remain within aircraft-approved limits.",
-why:"CG position influences stability, handling and performance.",
-related:["Weight and Balance","Mass","Aircraft Loading"]
-},
-
-{
-title:"Density Altitude",
-category:"Performance",
-pronunciation:"/ˈden.sə.ti ˈæl.tɪ.tjuːd/",
-search:"density altitude temperature pressure performance hot high airport",
-simple:"Density altitude is a performance-related atmospheric concept based on air density.",
-detailed:"Temperature, pressure and elevation affect air density. Higher density altitude can reduce the performance available from an aircraft.",
-why:"It helps explain why aircraft performance can change significantly with atmospheric conditions.",
-related:["Density","Altitude","Temperature","Performance"]
-},
-
-/* ================= SAFETY ================= */
-
-{
-title:"Human Factors",
-category:"Safety",
-pronunciation:"/ˈhjuː.mən ˈfæk.tərz/",
-search:"human factors pilot safety fatigue stress aviation",
-simple:"Human factors studies how human abilities and limitations interact with aviation systems.",
-detailed:"It includes subjects such as workload, communication, fatigue, decision-making, attention and other factors affecting performance.",
-why:"Aviation safety depends on both technical systems and human performance.",
-related:["Fatigue","Decision Making","CRM"]
-},
-
-{
-title:"Risk Management",
-category:"Safety",
-pronunciation:"/rɪsk ˈmæn.ɪdʒ.mənt/",
-search:"risk management aviation pilot safety hazards decision",
-simple:"Risk management is the process of identifying and managing hazards and risks.",
-detailed:"Aviation risk management involves recognizing hazards, evaluating risk and selecting appropriate ways to reduce or control it.",
-why:"Good risk management supports safer aviation decisions.",
-related:["Hazard","Decision Making","Safety"]
-},
-
-{
-title:"Situational Awareness",
-category:"Safety",
-pronunciation:"/ˌsɪtʃ.uˈeɪ.ʃən.əl əˈweə.nəs/",
-search:"situational awareness pilot safety surroundings traffic",
-simple:"Situational awareness means understanding what is happening around the aircraft and how the situation may develop.",
-detailed:"It involves maintaining awareness of aircraft state, location, weather, traffic, systems and other relevant factors.",
-why:"Strong situational awareness supports sound decision-making.",
-related:["Human Factors","Decision Making","Navigation"]
-},
-
-{
-title:"Crew Resource Management",
-category:"Safety",
-pronunciation:"/kruː rɪˈsɔːrs ˈmæn.ɪdʒ.mənt/",
-search:"crm crew resource management airline teamwork pilot",
-simple:"CRM is the effective use of people, information and available resources to support safe operations.",
-detailed:"CRM emphasizes communication, teamwork, leadership, followership, workload management and decision-making.",
-why:"Professional aviation relies heavily on effective teamwork.",
-related:["Human Factors","Communication","First Officer","Captain"]
-},
-
-{
-title:"Fatigue",
-category:"Safety",
-pronunciation:"/fəˈtiːɡ/",
-search:"fatigue pilot tiredness sleep aviation safety",
-simple:"Fatigue is a state of reduced physical or mental performance associated with insufficient or disrupted rest and other factors.",
-detailed:"Fatigue can affect attention, reaction, judgement and decision-making.",
-why:"Managing fatigue is an important part of aviation safety and human performance.",
-related:["Human Factors","Sleep","Risk Management"]
-},
-
-{
-title:"Aeronautical Decision Making",
-category:"Safety",
-pronunciation:"/ˌeə.rəˈnɔː.tɪ.kəl dɪˈsɪʒ.ən ˈmeɪ.kɪŋ/",
-search:"adm aeronautical decision making pilot decisions safety",
-simple:"Aeronautical decision making is the process of making sound decisions in aviation situations.",
-detailed:"It involves evaluating information, identifying risks, considering alternatives and choosing appropriate actions within the applicable rules and limitations.",
-why:"Good decision-making is a major part of safe pilot performance.",
-related:["Risk Management","Human Factors","Situational Awareness"]
-},
-
-/* ================= CAREERS ================= */
-
-{
-title:"Airline Pilot",
-category:"Careers",
-pronunciation:"/ˈeə.laɪn ˈpaɪ.lət/",
-search:"airline pilot career commercial pilot job",
-simple:"An airline pilot operates aircraft for an airline under the company's procedures and applicable regulations.",
-detailed:"Airline pilots typically progress through structured training, licensing and aircraft-specific qualification pathways.",
-why:"It is one of the most popular professional aviation career goals.",
-related:["Captain","First Officer","Airline Transport Pilot","Type Rating"]
-},
-
-{
-title:"Flight Dispatcher",
-category:"Careers",
-pronunciation:"/flaɪt dɪˈspætʃ.ər/",
-search:"flight dispatcher airline dispatch operations",
-simple:"A flight dispatcher is an aviation professional involved in operational flight planning and support.",
-detailed:"Dispatcher responsibilities vary by regulatory system and operator but can include flight planning, weather information, operational monitoring and coordination.",
-why:"Dispatchers work closely with flight crews and other operational teams.",
-related:["Airline Operations","Weather","Flight Planning"]
-},
-
-{
-title:"Aviation Engineer",
-category:"Careers",
-pronunciation:"/ˌeɪ.viˈeɪ.ʃən ˌen.dʒɪˈnɪər/",
-search:"aviation engineer aerospace engineer aircraft engineering",
-simple:"An aviation or aerospace engineer applies engineering principles to aircraft and aviation systems.",
-detailed:"Engineers can work in aircraft design, structures, propulsion, avionics, systems and many other technical areas.",
-why:"Aviation offers many careers beyond piloting.",
-related:["Aircraft","Aerospace","Avionics","Engineering"]
-},
-
-{
-title:"Aircraft Maintenance Engineer",
-category:"Careers",
-pronunciation:"/ˈeə.krɑːft ˈmeɪn.tə.nəns ˌen.dʒɪˈnɪər/",
-search:"aircraft maintenance engineer ame mechanic maintenance technician",
-simple:"An aircraft maintenance professional inspects, maintains and supports the continued airworthiness of aircraft.",
-detailed:"Maintenance personnel work under applicable qualifications, approvals, procedures and regulations.",
-why:"Safe aviation depends on skilled maintenance professionals as well as pilots.",
-related:["Maintenance","Aircraft Systems","Airworthiness"]
-},
-
-{
-title:"Aviation Meteorologist",
-category:"Careers",
-pronunciation:"/ˌeɪ.viˈeɪ.ʃən ˌmiː.ti.əˈrɒl.ə.dʒɪst/",
-search:"aviation meteorologist weather forecaster pilot weather",
-simple:"An aviation meteorologist specializes in weather information relevant to aviation.",
-detailed:"Aviation weather professionals analyze atmospheric conditions, forecasts and weather hazards that can affect aviation operations.",
-why:"Weather knowledge is essential to aviation planning and safety.",
-related:["Weather","Forecast","Thunderstorm"]
-},
-
-/* ================= NIGERIA ================= */
-
-{
-title:"NCAA",
-category:"Nigeria",
-pronunciation:"/ˌen.siː.eɪˈeɪ/",
-search:"ncaa nigeria civil aviation authority nigeria pilot license licence aviation",
-simple:"NCAA stands for the Nigeria Civil Aviation Authority.",
-detailed:"The NCAA is Nigeria's civil aviation regulatory authority. It is involved in regulating and overseeing civil aviation activities in Nigeria under applicable Nigerian aviation laws and regulations.",
-why:"A student intending to pursue aviation in Nigeria should understand the country's aviation regulatory structure.",
-related:["Nigeria","Pilot Licence","Civil Aviation","Regulation"]
-},
-
-{
-title:"FAAN",
-category:"Nigeria",
-pronunciation:"/ˌef.eɪ.eɪˈen/",
-search:"faan federal airports authority nigeria airport nigeria",
-simple:"FAAN stands for the Federal Airports Authority of Nigeria.",
-detailed:"FAAN is associated with the management and operation of federal airports and related facilities in Nigeria.",
-why:"Understanding airport organizations helps students understand how Nigeria's aviation infrastructure is organized.",
-related:["Airport","Nigeria","NCAA"]
-},
-
-{
-title:"Nigerian Aviation",
-category:"Nigeria",
-pronunciation:"/naɪˈdʒɪə.ri.ən eɪ.viˈeɪ.ʃən/",
-search:"nigeria aviation pilot nigeria pilot school airline airport",
-simple:"Nigerian aviation refers to the civil aviation ecosystem operating within Nigeria.",
-detailed:"It includes airlines, airports, regulators, training organizations, maintenance organizations, air traffic services and other aviation stakeholders.",
-why:"For a Nigerian student interested in becoming a pilot, understanding the local aviation environment is valuable.",
-related:["NCAA","FAAN","Airport","Pilot Training"]
-},
-
-{
-title:"Pilot Training School",
-category:"Nigeria",
-pronunciation:"/ˈpaɪ.lət ˈtreɪ.nɪŋ skuːl/",
-search:"pilot training school nigeria flight school aviation school",
-simple:"A pilot training school provides structured aviation training under applicable regulatory requirements.",
-detailed:"Training organizations may provide ground instruction, flight instruction or both. Students should verify that a school and its courses are appropriately approved or recognized for the qualification being pursued.",
-why:"Choosing appropriate training is an important step toward becoming a professional pilot.",
-related:["Flight Training","Ground School","Flight Instructor","NCAA"]
-}
-
-];
-
-
-/* =========================================================
-   STATE
-   ========================================================= */
-
-let currentSearch = "";
-let currentCategory = "All";
-let currentLetter = "All";
-
-
-/* =========================================================
-   ELEMENTS
-   ========================================================= */
-
-const searchInput = document.getElementById("searchInput");
-const controls = document.getElementById("controls");
-const startState = document.getElementById("startState");
-const resultHeader = document.getElementById("resultHeader");
-const resultCount = document.getElementById("resultCount");
-const resultsGrid = document.getElementById("resultsGrid");
-const noResults = document.getElementById("noResults");
-const termModal = document.getElementById("termModal");
-
-
-/* =========================================================
-   ALPHABET
-   ========================================================= */
-
-function createAlphabet(){
-
-    const container = document.getElementById("alphabetFilters");
-
-    const all = document.createElement("button");
-
-    all.className = "filter-btn active";
-    all.textContent = "All";
-
-    all.onclick = function(){
-        currentLetter = "All";
-
-        document
-        .querySelectorAll("#alphabetFilters .filter-btn")
-        .forEach(btn => btn.classList.remove("active"));
-
-        this.classList.add("active");
-
-        renderResults();
-    };
-
-    container.appendChild(all);
-
-
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(letter => {
+    <p>
+      Future Pilot Academy — Learn aviation. Understand aviation.
+      Build the knowledge of a future pilot.
+    </p>
+
+  </footer>
+
+
+  <script>
+
+    /* ==========================================
+       AVIATION KNOWLEDGE DATABASE
+    ========================================== */
+
+    const aviationData = [
+
+      {
+        category: "Pilot",
+        title: "Pilot",
+        pronunciation: "PY-luht",
+        simple: "A pilot is a person trained and licensed to operate an aircraft.",
+        detailed: "Pilots are responsible for controlling the aircraft, following procedures, monitoring weather and aircraft systems, communicating with air traffic control, navigating and making decisions that support a safe flight.",
+        why: "Pilots need strong technical knowledge, communication skills, situational awareness and decision-making abilities.",
+        related: ["Captain", "First Officer", "Pilot Licence", "Flight Training"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Aviator",
+        pronunciation: "AY-vee-ay-tor",
+        simple: "An aviator is a person who flies or is involved in aviation.",
+        detailed: "The term aviator can describe pilots and, depending on context, people who have a strong professional connection with aviation and flight operations.",
+        why: "Understanding aviation terminology helps future pilots communicate accurately.",
+        related: ["Pilot", "Aircraft", "Aviation"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Captain",
+        pronunciation: "KAP-tin",
+        simple: "The captain is normally the pilot with overall command of a flight.",
+        detailed: "On airline flights, the captain is generally the pilot in command and has overall responsibility for the aircraft and flight operation.",
+        why: "Understanding command responsibility is important for learning cockpit teamwork and decision-making.",
+        related: ["First Officer", "Pilot in Command", "CRM"]
+      },
+
+      {
+        category: "Pilot",
+        title: "First Officer",
+        pronunciation: "FIRST OFF-i-ser",
+        simple: "The first officer is a qualified pilot who works alongside the captain.",
+        detailed: "The first officer assists with aircraft operation, navigation, communication, checklists and other flight duties. The exact division of responsibilities depends on the operation and procedures.",
+        why: "Modern aviation relies heavily on effective cooperation between flight crew members.",
+        related: ["Captain", "Crew Resource Management", "Cockpit"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Private Pilot",
+        pronunciation: "PRY-vit PY-lut",
+        simple: "A private pilot is licensed to fly aircraft for private purposes within the privileges of their licence.",
+        detailed: "Private pilot training introduces students to aircraft control, navigation, weather, regulations, radio communication and emergency procedures.",
+        why: "It is one of the common foundations for people beginning professional aviation training.",
+        related: ["Pilot Licence", "Flight Training", "Ground School"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Commercial Pilot",
+        pronunciation: "kuh-MER-shul PY-lut",
+        simple: "A commercial pilot holds a licence that allows certain flight activities for compensation under applicable regulations.",
+        detailed: "Commercial pilot training develops advanced flying skills and knowledge beyond basic private pilot training.",
+        why: "It can form part of the pathway toward professional flying careers.",
+        related: ["Private Pilot", "Flight Training", "Airline Pilot"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Airline Transport Pilot",
+        pronunciation: "AIR-line TRAN-sport PY-lut",
+        simple: "An Airline Transport Pilot is a pilot qualification associated with advanced professional airline operations.",
+        detailed: "The ATP-level qualification represents advanced pilot training and experience requirements established by the applicable aviation authority.",
+        why: "Understanding advanced licensing helps future pilots understand professional career progression.",
+        related: ["Airline Pilot", "Commercial Pilot", "Pilot Licence"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Flight Instructor",
+        pronunciation: "FLYTE in-STRUHK-tor",
+        simple: "A flight instructor teaches people how to fly.",
+        detailed: "Flight instructors provide practical flying instruction, demonstrate procedures, assess student performance and help students develop safe flying habits.",
+        why: "Instructors play a major role in developing competent future pilots.",
+        related: ["Student Pilot", "Flight Training", "Ground School"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Student Pilot",
+        pronunciation: "STOO-dent PY-lut",
+        simple: "A student pilot is a person learning to fly under an approved training program.",
+        detailed: "Student pilots study aviation theory and develop practical skills under the supervision of qualified instructors.",
+        why: "Every professional pilot begins by building fundamental knowledge and flying skills.",
+        related: ["Flight Instructor", "Flight Training", "Ground School"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Pilot Licence",
+        pronunciation: "PY-lut LYE-sens",
+        simple: "A pilot licence is an official authorization allowing a person to exercise specified pilot privileges.",
+        detailed: "Licences and ratings define what types of flying a pilot may conduct, subject to the regulations and limitations of the aviation authority.",
+        why: "Future pilots need to understand licensing requirements before beginning professional training.",
+        related: ["Pilot Rating", "Commercial Pilot", "Private Pilot"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Pilot Rating",
+        pronunciation: "PY-lut RAY-ting",
+        simple: "A rating is an authorization associated with a pilot licence for specific aircraft or operating privileges.",
+        detailed: "Examples can include aircraft category, class or type ratings and instrument-related qualifications, depending on the licensing system.",
+        why: "Ratings determine important parts of a pilot's permitted operations.",
+        related: ["Pilot Licence", "Instrument Flight", "Aircraft"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Flight Training",
+        pronunciation: "FLYTE TRAY-ning",
+        simple: "Flight training is the process of learning the knowledge and practical skills needed to fly.",
+        detailed: "Training combines ground lessons with practical flight instruction and may cover aircraft control, navigation, communication, weather, regulations, emergencies and human factors.",
+        why: "Structured training develops the foundation required for safe aviation operations.",
+        related: ["Ground School", "Student Pilot", "Flight Instructor"]
+      },
+
+      {
+        category: "Pilot",
+        title: "Ground School",
+        pronunciation: "GROUND SKOOL",
+        simple: "Ground school teaches the theoretical knowledge pilots need.",
+        detailed: "Subjects can include meteorology, navigation, aircraft systems, human factors, aviation regulations, communications and performance.",
+        why: "Good theoretical knowledge helps pilots understand why procedures and aircraft behave the way they do.",
+        related: ["Weather", "Navigation", "Aircraft Systems"]
+      },
+
+
+      {
+        category: "Aircraft",
+        title: "Aircraft",
+        pronunciation: "AIR-kraft",
+        simple: "An aircraft is a machine designed to fly through the atmosphere.",
+        detailed: "Aircraft include airplanes, helicopters, gliders and other machines designed for controlled flight.",
+        why: "Understanding aircraft structure and operation is fundamental to aviation.",
+        related: ["Airplane", "Helicopter", "Wing", "Fuselage"]
+      },
+
+      {
+        category: "Aircraft",
+        title: "Airplane",
+        pronunciation: "AIR-plane",
+        simple: "An airplane is an aircraft that normally uses wings and forward motion to generate lift.",
+        detailed: "Airplanes use aerodynamic surfaces, engines or other propulsion systems and flight controls to achieve controlled flight.",
+        why: "Understanding airplane design helps pilots understand aircraft performance.",
+        related: ["Wing", "Lift", "Thrust", "Drag"]
+      },
+
+      {
+        category: "Aircraft",
+        title: "Helicopter",
+        pronunciation: "HEL-i-kop-ter",
+        simple: "A helicopter is an aircraft that uses rotating blades to generate lift and control flight.",
+        detailed: "Helicopters can take off and land vertically and can hover. Their flight mechanics differ significantly from fixed-wing airplanes.",
+        why: "Helicopter operations require knowledge of rotor systems, power management and unique aerodynamic effects.",
+        related: ["Rotor", "Lift", "Aircraft"]
+      },
+
+      {
+        category: "Aircraft",
+        title: "Glider",
+        pronunciation: "GLY-der",
+        simple: "A glider is an aircraft designed to fly efficiently without continuous engine propulsion.",
+        detailed: "Gliders use aerodynamic efficiency and rising air currents to remain airborne for extended periods.",
+        why: "Gliders provide excellent examples of lift, drag and energy management.",
+        related: ["Lift", "Drag", "Airfoil"]
+      },
+
+      {
+        category: "Aircraft",
+        title: "Propeller",
+        pronunciation: "proh-PEL-er",
+        simple: "A propeller produces thrust by accelerating air.",
+        detailed: "Propellers consist of blades designed as rotating aerodynamic surfaces. Their shape and pitch affect how efficiently they produce thrust.",
+        why: "Understanding propellers helps pilots understand aircraft propulsion and performance.",
+        related: ["Thrust", "Engine", "Airfoil"]
+      },
+
+      {
+        category: "Aircraft",
+        title: "Wing",
+        pronunciation: "WING",
+        simple: "A wing is an aerodynamic surface that produces lift.",
+        detailed: "Wing shape, angle of attack, airspeed, air density and other factors influence the amount of lift produced.",
+        why: "The wing is one of the most important aerodynamic components of many aircraft.",
+        related: ["Lift", "Airfoil", "Angle of Attack", "Drag"]
+      },
+
+      {
+        category: "Aircraft",
+        title: "Fuselage",
+        pronunciation: "FYOO-sah-lahzh",
+        simple: "The fuselage is the main body of an aircraft.",
+        detailed: "It houses or supports occupants, cargo and many aircraft systems while connecting major aircraft structures.",
+        why: "Knowing aircraft structure helps pilots understand weight, balance and system locations.",
+        related: ["Wing", "Empennage", "Weight and Balance"]
+      },
+
+      {
+        category: "Aircraft",
+        title: "Empennage",
+        pronunciation: "em-pen-ahzh",
+        simple: "The empennage is the tail assembly of an aircraft.",
+        detailed: "It generally includes the horizontal stabilizer, vertical stabilizer and associated control surfaces.",
+        why: "The empennage contributes to aircraft stability and directional control.",
+        related: ["Rudder", "Elevator", "Yaw"]
+      },
+
+
+      {
+        category: "Systems",
+        title: "Engine",
+        pronunciation: "EN-jin",
+        simple: "An aircraft engine provides power for propulsion and may also drive other aircraft systems.",
+        detailed: "Aircraft engines convert energy into mechanical or thrust-producing power. Different aircraft use different propulsion technologies.",
+        why: "Pilots must understand engine operation, limitations, indications and abnormal conditions.",
+        related: ["Thrust", "Fuel System", "Engine Performance"]
+      },
+
+      {
+        category: "Systems",
+        title: "Fuel System",
+        pronunciation: "FYOOL SIS-tem",
+        simple: "The fuel system stores and delivers fuel to the engine.",
+        detailed: "Fuel systems may include tanks, pumps, lines, valves, filters and monitoring equipment.",
+        why: "Fuel management is essential for flight planning and safe aircraft operation.",
+        related: ["Engine", "Fuel", "Weight and Balance"]
+      },
+
+      {
+        category: "Systems",
+        title: "Hydraulic System",
+        pronunciation: "hy-DRAW-lik",
+        simple: "A hydraulic system uses pressurized fluid to operate certain aircraft components.",
+        detailed: "Hydraulic systems can be used for functions such as landing gear, brakes and flight-control assistance depending on aircraft design.",
+        why: "Pilots need to recognize hydraulic indications and understand system limitations.",
+        related: ["Landing Gear", "Flight Controls", "Aircraft Systems"]
+      },
+
+      {
+        category: "Systems",
+        title: "Electrical System",
+        pronunciation: "ee-LEK-tri-kal",
+        simple: "The electrical system supplies electrical power to aircraft equipment.",
+        detailed: "Aircraft electrical systems can power avionics, lighting, instruments, communication equipment and other components.",
+        why: "Electrical failures can affect important aircraft systems and require proper pilot response.",
+        related: ["Avionics", "Battery", "Generator"]
+      },
+
+      {
+        category: "Systems",
+        title: "Landing Gear",
+        pronunciation: "LAN-ding GEER",
+        simple: "Landing gear supports an aircraft while it is on the ground and during landing and takeoff.",
+        detailed: "Depending on the aircraft, landing gear can be fixed or retractable and may include wheels, brakes, shock absorption and steering mechanisms.",
+        why: "Pilots must understand landing gear indications and operating procedures.",
+        related: ["Hydraulic System", "Landing", "Brakes"]
+      },
+
+      {
+        category: "Systems",
+        title: "Pitot-Static System",
+        pronunciation: "PEE-toh STAT-ik",
+        simple: "The pitot-static system supplies pressure information to important flight instruments.",
+        detailed: "The system uses pitot and static pressure sources to support instruments such as the airspeed indicator, altimeter and vertical speed indicator.",
+        why: "A blockage or failure can produce incorrect instrument indications.",
+        related: ["Airspeed Indicator", "Altimeter", "Vertical Speed Indicator"]
+      },
+
+      {
+        category: "Systems",
+        title: "Transponder",
+        pronunciation: "trans-PON-der",
+        simple: "A transponder is an aircraft device that responds to certain radar or surveillance interrogations.",
+        detailed: "Transponders can transmit identification and altitude information to compatible surveillance systems.",
+        why: "Correct transponder operation supports air traffic surveillance and identification.",
+        related: ["ATC", "Radar", "Altitude"]
+      },
+
+
+      {
+        category: "Cockpit",
+        title: "Cockpit",
+        pronunciation: "KOK-pit",
+        simple: "The cockpit is the area where pilots control and monitor an aircraft.",
+        detailed: "It contains flight controls, instruments, communication equipment, navigation equipment and other systems required for flight operations.",
+        why: "Pilots spend much of their working time managing information and aircraft systems from the cockpit.",
+        related: ["Avionics", "Flight Controls", "Instruments"]
+      },
+
+      {
+        category: "Cockpit",
+        title: "Airspeed Indicator",
+        pronunciation: "AIR-speed IN-di-kay-ter",
+        simple: "The airspeed indicator shows the aircraft's speed relative to the surrounding air.",
+        detailed: "It normally uses pitot pressure and static pressure to calculate indicated airspeed.",
+        why: "Airspeed is critical for aircraft control, performance and operating limitations.",
+        related: ["Pitot-Static System", "Airplane", "Stall"]
+      },
+
+      {
+        category: "Cockpit",
+        title: "Altimeter",
+        pronunciation: "AL-ti-mee-ter",
+        simple: "An altimeter provides an indication of altitude based on atmospheric pressure.",
+        detailed: "The instrument uses static pressure and an adjustable pressure reference to provide altitude information.",
+        why: "Altitude awareness is essential for terrain clearance, separation and navigation.",
+        related: ["Altitude", "Atmospheric Pressure", "Pitot-Static System"]
+      },
+
+      {
+        category: "Cockpit",
+        title: "Attitude Indicator",
+        pronunciation: "AT-i-tood",
+        simple: "The attitude indicator shows the aircraft's pitch and bank attitude.",
+        detailed: "It provides pilots with a visual representation of aircraft orientation relative to the horizon.",
+        why: "It is particularly important when outside visual references are limited.",
+        related: ["Pitch", "Roll", "Instrument Flight"]
+      },
+
+      {
+        category: "Cockpit",
+        title: "Heading Indicator",
+        pronunciation: "HED-ing",
+        simple: "A heading indicator helps show the aircraft's direction.",
+        detailed: "The instrument displays aircraft heading and can be used with other navigation information to maintain a desired direction.",
+        why: "Accurate heading information supports navigation and flight control.",
+        related: ["Heading", "Navigation", "Compass"]
+      },
+
+      {
+        category: "Cockpit",
+        title: "Turn Coordinator",
+        pronunciation: "TURN koh-OR-di-nay-ter",
+        simple: "A turn coordinator provides information about aircraft turning motion and coordination.",
+        detailed: "It helps pilots monitor rate of turn and whether the aircraft is properly coordinated.",
+        why: "Coordinated turns improve aircraft handling and help prevent unnecessary aerodynamic problems.",
+        related: ["Roll", "Yaw", "Flight Controls"]
+      },
+
+      {
+        category: "Cockpit",
+        title: "Vertical Speed Indicator",
+        pronunciation: "VER-ti-kal SPEED",
+        simple: "The vertical speed indicator shows the aircraft's rate of climb or descent.",
+        detailed: "It uses changes in static pressure to indicate vertical movement over time.",
+        why: "Pilots use vertical speed information to manage climbs, descents and approaches.",
+        related: ["Altimeter", "Altitude", "Pitot-Static System"]
+      },
+
+      {
+        category: "Cockpit",
+        title: "Flight Controls",
+        pronunciation: "FLYTE kon-TROLS",
+        simple: "Flight controls allow pilots to control aircraft movement.",
+        detailed: "Primary flight controls commonly include surfaces associated with pitch, roll and yaw. Modern aircraft may also use advanced control systems.",
+        why: "Understanding flight controls is fundamental to aircraft handling.",
+        related: ["Pitch", "Roll", "Yaw", "Empennage"]
+      },
+
+      {
+        category: "Cockpit",
+        title: "Avionics",
+        pronunciation: "ay-vee-ON-iks",
+        simple: "Avionics are electronic systems used in aircraft.",
+        detailed: "Avionics can include communication, navigation, surveillance, flight management and display systems.",
+        why: "Modern aircraft rely heavily on avionics for safe and efficient operations.",
+        related: ["GPS", "Radio Communication", "Navigation"]
+      },
+
+
+      {
+        category: "Aerodynamics",
+        title: "Lift",
+        pronunciation: "LIFT",
+        simple: "Lift is the aerodynamic force that acts generally upward relative to the aircraft.",
+        detailed: "Lift is produced by the interaction between an aircraft's aerodynamic surfaces and the surrounding airflow.",
+        why: "Understanding lift is essential to understanding how aircraft fly.",
+        related: ["Wing", "Airfoil", "Angle of Attack"]
+      },
+
+      {
+        category: "Aerodynamics",
+        title: "Weight",
+        pronunciation: "WAYT",
+        simple: "Weight is the force associated with gravity acting on the aircraft.",
+        detailed: "Aircraft weight affects performance, takeoff distance, climb performance, fuel consumption and other operational factors.",
+        why: "Pilots must understand aircraft weight and its effect on performance.",
+        related: ["Lift", "Weight and Balance", "Performance"]
+      },
+
+      {
+        category: "Aerodynamics",
+        title: "Thrust",
+        pronunciation: "THRUST",
+        simple: "Thrust is the force that propels an aircraft forward.",
+        detailed: "Thrust can be produced by propellers, jet engines, electric propulsion or other propulsion systems.",
+        why: "Thrust is one of the four major forces considered in basic aircraft aerodynamics.",
+        related: ["Engine", "Drag", "Lift"]
+      },
+
+      {
+        category: "Aerodynamics",
+        title: "Drag",
+        pronunciation: "DRAG",
+        simple: "Drag is an aerodynamic force that opposes an aircraft's movement through the air.",
+        detailed: "Drag can result from several aerodynamic effects and generally increases as aircraft configuration and speed change.",
+        why: "Pilots need to understand drag to manage aircraft performance and efficiency.",
+        related: ["Thrust", "Lift", "Airfoil"]
+      },
+
+      {
+        category: "Aerodynamics",
+        title: "Pitch",
+        pronunciation: "PITCH",
+        simple: "Pitch is the aircraft's rotation around its lateral axis.",
+        detailed: "Pitch changes the aircraft's nose-up or nose-down attitude and is primarily associated with elevator or stabilator movement on many aircraft.",
+        why: "Pitch control is fundamental to aircraft attitude and flight-path management.",
+        related: ["Elevator", "Attitude Indicator", "Flight Controls"]
+      },
+
+      {
+        category: "Aerodynamics",
+        title: "Roll",
+        pronunciation: "ROLE",
+        simple: "Roll is the aircraft's rotation around its longitudinal axis.",
+        detailed: "Roll moves the aircraft's wings toward one side or the other and is commonly controlled using ailerons.",
+        why: "Pilots use roll control to establish and maintain turns.",
+        related: ["Aileron", "Turn Coordinator", "Flight Controls"]
+      },
+
+      {
+        category: "Aerodynamics",
+        title: "Yaw",
+        pronunciation: "YAW",
+        simple: "Yaw is the aircraft's rotation around its vertical axis.",
+        detailed: "Yaw moves the aircraft's nose left or right and is commonly controlled using the rudder.",
+        why: "Understanding yaw helps pilots maintain coordinated flight.",
+        related: ["Rudder", "Turn Coordinator", "Empennage"]
+      },
+
+      {
+        category: "Aerodynamics",
+        title: "Airfoil",
+        pronunciation: "AIR-foyl",
+        simple: "An airfoil is a shaped surface designed to interact efficiently with airflow.",
+        detailed: "Wings, propeller blades and many control surfaces use airfoil shapes.",
+        why: "Airfoils are central to the production of lift and other aerodynamic forces.",
+        related: ["Wing", "Lift", "Drag"]
+      },
+
+      {
+        category: "Aerodynamics",
+        title: "Angle of Attack",
+        pronunciation: "ANG-gul of uh-TAK",
+        simple: "Angle of attack is the angle between an airfoil's reference line and the airflow.",
+        detailed: "Angle of attack strongly influences lift and can increase toward conditions associated with aerodynamic stall.",
+        why: "Pilots must understand angle of attack for aircraft control and stall awareness.",
+        related: ["Lift", "Airfoil", "Stall"]
+      },
+
+      {
+        category: "Aerodynamics",
+        title: "Stall",
+        pronunciation: "STAWL",
+        simple: "An aerodynamic stall occurs when an airfoil exceeds its critical angle of attack and loses a significant amount of lift.",
+        detailed: "A stall is fundamentally related to angle of attack rather than simply a particular airspeed. Aircraft can stall at different airspeeds depending on configuration and conditions.",
+        why: "Understanding stalls is an important part of pilot training and aircraft handling.",
+        related: ["Angle of Attack", "Lift", "Airfoil"]
+      },
+
+
+      {
+        category: "Weather",
+        title: "Weather",
+        pronunciation: "WETH-er",
+        simple: "Weather describes the current state of the atmosphere.",
+        detailed: "Aviation weather includes wind, visibility, clouds, temperature, pressure, precipitation, thunderstorms and other atmospheric conditions.",
+        why: "Weather can directly affect aircraft performance, routing and flight safety.",
+        related: ["Wind", "Cloud", "Visibility", "Thunderstorm"]
+      },
+
+      {
+        category: "Weather",
+        title: "Atmosphere",
+        pronunciation: "AT-mos-feer",
+        simple: "The atmosphere is the layer of gases surrounding Earth.",
+        detailed: "Aircraft operate within Earth's atmosphere, where pressure, temperature and density change with altitude.",
+        why: "Atmospheric conditions influence aircraft performance and weather.",
+        related: ["Pressure", "Humidity", "Altitude"]
+      },
+
+      {
+        category: "Weather",
+        title: "Wind",
+        pronunciation: "WIND",
+        simple: "Wind is the movement of air.",
+        detailed: "Wind direction and speed are important aviation factors and can affect takeoff, landing, navigation and fuel planning.",
+        why: "Pilots must account for wind throughout a flight.",
+        related: ["Groundspeed", "Weather", "Runway"]
+      },
+
+      {
+        category: "Weather",
+        title: "Cloud",
+        pronunciation: "KLOUD",
+        simple: "A cloud is a visible collection of tiny water droplets or ice crystals in the atmosphere.",
+        detailed: "Different cloud types provide information about atmospheric conditions and may be associated with different aviation hazards.",
+        why: "Clouds can affect visibility, turbulence, icing and flight planning.",
+        related: ["Weather", "Visibility", "Thunderstorm"]
+      },
+
+      {
+        category: "Weather",
+        title: "Fog",
+        pronunciation: "FOG",
+        simple: "Fog is a cloud that forms at or near the ground.",
+        detailed: "Fog can significantly reduce visibility and may affect airport operations and aircraft approaches.",
+        why: "Reduced visibility can require specific operational procedures and equipment.",
+        related: ["Visibility", "Weather", "Airport"]
+      },
+
+      {
+        category: "Weather",
+        title: "Thunderstorm",
+        pronunciation: "THUN-der-storm",
+        simple: "A thunderstorm is a storm associated with lightning and thunder.",
+        detailed: "Thunderstorms can involve strong winds, turbulence, heavy precipitation, lightning and other serious aviation hazards.",
+        why: "Pilots must treat thunderstorms as significant weather hazards and plan appropriately.",
+        related: ["Weather", "Wind", "Visibility"]
+      },
+
+      {
+        category: "Weather",
+        title: "Visibility",
+        pronunciation: "viz-uh-BIL-i-tee",
+        simple: "Visibility describes how far objects can be seen under atmospheric conditions.",
+        detailed: "Visibility is affected by fog, haze, precipitation, dust, smoke and other factors.",
+        why: "Visibility is important for flight planning, approaches and visual operations.",
+        related: ["Fog", "Weather", "Airport"]
+      },
+
+      {
+        category: "Weather",
+        title: "Atmospheric Pressure",
+        pronunciation: "at-mos-FER-ik PRESH-er",
+        simple: "Atmospheric pressure is the force exerted by the weight of the atmosphere.",
+        detailed: "Pressure changes with altitude and weather systems. Aircraft instruments such as the altimeter rely on pressure information.",
+        why: "Pressure settings and changes are important to accurate altitude information.",
+        related: ["Altimeter", "Altitude", "Pitot-Static System"]
+      },
+
+      {
+        category: "Weather",
+        title: "Humidity",
+        pronunciation: "hyoo-MID-i-tee",
+        simple: "Humidity describes the amount of water vapor in the air.",
+        detailed: "Humidity influences atmospheric conditions and can contribute to cloud and precipitation formation.",
+        why: "Humidity is part of the weather information pilots consider during flight planning.",
+        related: ["Weather", "Cloud", "Atmosphere"]
+      },
+
+
+      {
+        category: "Navigation",
+        title: "Navigation",
+        pronunciation: "nav-i-GAY-shun",
+        simple: "Navigation is the process of planning and maintaining a route from one location to another.",
+        detailed: "Aviation navigation can use charts, radio navigation aids, satellite navigation and other systems.",
+        why: "Accurate navigation is essential for reaching destinations while maintaining the intended route.",
+        related: ["GPS", "Waypoint", "Heading", "Track"]
+      },
+
+      {
+        category: "Navigation",
+        title: "GPS",
+        pronunciation: "JEE-PEE-ESS",
+        simple: "GPS is a satellite-based navigation system that can provide position and timing information.",
+        detailed: "Aviation GPS equipment can support navigation and route management when approved and operated according to applicable procedures.",
+        why: "Satellite navigation is an important part of modern aviation.",
+        related: ["Navigation", "Waypoint", "Avionics"]
+      },
+
+      {
+        category: "Navigation",
+        title: "Waypoint",
+        pronunciation: "WAY-point",
+        simple: "A waypoint is a defined geographical position used for navigation.",
+        detailed: "Waypoints are used to construct routes and define points aircraft can navigate to or through.",
+        why: "Pilots and flight management systems use waypoints to organize routes.",
+        related: ["GPS", "Navigation", "Flight Plan"]
+      },
+
+      {
+        category: "Navigation",
+        title: "Heading",
+        pronunciation: "HED-ing",
+        simple: "Heading is the direction an aircraft's nose is pointing.",
+        detailed: "Heading is normally expressed in degrees relative to a reference such as magnetic or true north.",
+        why: "Heading is essential for maintaining direction and understanding navigation information.",
+        related: ["Track", "Compass", "Heading Indicator"]
+      },
+
+      {
+        category: "Navigation",
+        title: "Track",
+        pronunciation: "TRAK",
+        simple: "Track is the actual direction the aircraft is moving across the ground.",
+        detailed: "Wind can cause the aircraft's track to differ from its heading.",
+        why: "Understanding heading versus track is important for navigation and wind correction.",
+        related: ["Heading", "Wind", "Groundspeed"]
+      },
+
+      {
+        category: "Navigation",
+        title: "VOR",
+        pronunciation: "VEE-OH-AR",
+        simple: "VOR is a ground-based radio navigation system used by aircraft.",
+        detailed: "VOR stations transmit directional information that aircraft navigation equipment can use to determine a radial from the station.",
+        why: "VOR remains an important concept in aviation navigation training.",
+        related: ["Navigation", "DME", "Radio"]
+      },
+
+      {
+        category: "Navigation",
+        title: "DME",
+        pronunciation: "DEE-EM-EE",
+        simple: "DME is a radio navigation system that provides distance information from a ground station.",
+        detailed: "Distance measuring equipment calculates aircraft distance from a compatible ground facility using radio signals.",
+        why: "Distance information supports navigation and position awareness.",
+        related: ["VOR", "Navigation", "Radio"]
+      },
+
+      {
+        category: "Navigation",
+        title: "ILS",
+        pronunciation: "EYE-EL-ESS",
+        simple: "ILS is an instrument landing system that provides guidance for aircraft approaches to a runway.",
+        detailed: "An ILS can provide lateral and vertical guidance to support precision instrument approaches when appropriate equipment and procedures are available.",
+        why: "ILS is an important system for understanding instrument approaches.",
+        related: ["Navigation", "Runway", "Instrument Flight"]
+      },
+
+      {
+        category: "Navigation",
+        title: "Aeronautical Chart",
+        pronunciation: "air-oh-NAW-ti-kal CHART",
+        simple: "An aeronautical chart is a specialized map used for aviation navigation.",
+        detailed: "Charts contain information such as airspace, navigation aids, airports, routes, terrain and other operational details.",
+        why: "Pilots use charts to plan and conduct flights.",
+        related: ["Navigation", "Airspace", "Airport"]
+      },
+
+
+      {
+        category: "Communication",
+        title: "Air Traffic Control",
+        pronunciation: "AIR TRAF-ik kun-TROHL",
+        simple: "Air Traffic Control helps manage and separate aircraft in controlled airspace and around airports.",
+        detailed: "ATC provides clearances, instructions, traffic information and other services according to the applicable air traffic system.",
+        why: "Effective pilot-ATC communication is essential to coordinated flight operations.",
+        related: ["ATC", "Radio Communication", "Communication"]
+      },
+
+      {
+        category: "Communication",
+        title: "ATC",
+        pronunciation: "AY-TEE-SEE",
+        simple: "ATC is the abbreviation for Air Traffic Control.",
+        detailed: "ATC services support safe and organized movement of aircraft through controlled airspace and airport environments.",
+        why: "Pilots communicate with ATC throughout many phases of flight.",
+        related: ["Air Traffic Control", "Radio Communication"]
+      },
+
+      {
+        category: "Communication",
+        title: "Radio Communication",
+        pronunciation: "RAY-dee-oh",
+        simple: "Radio communication allows pilots and aviation personnel to exchange information.",
+        detailed: "Aviation radio communication follows established frequencies, phraseology and procedures.",
+        why: "Clear communication reduces misunderstandings and supports safe operations.",
+        related: ["ATC", "Frequency", "Aviation Phraseology"]
+      },
+
+      {
+        category: "Communication",
+        title: "Call Sign",
+        pronunciation: "KAWL SYNE",
+        simple: "A call sign is an identification used in aviation communication.",
+        detailed: "Aircraft and aviation organizations use assigned or authorized call signs to identify themselves during radio communication.",
+        why: "Correct identification helps avoid communication errors.",
+        related: ["ATC", "Radio Communication", "Communication"]
+      },
+
+      {
+        category: "Communication",
+        title: "Aviation Phraseology",
+        pronunciation: "air-ee-AY-shun FRAY-zee-OL-uh-jee",
+        simple: "Aviation phraseology is the standardized language used for clear aviation communication.",
+        detailed: "Standard phraseology helps pilots and controllers communicate efficiently and reduces ambiguity.",
+        why: "Consistent communication is an important part of aviation safety.",
+        related: ["ATC", "Radio Communication", "Call Sign"]
+      },
+
+      {
+        category: "Communication",
+        title: "Frequency",
+        pronunciation: "FREE-kwen-see",
+        simple: "A radio frequency identifies a particular portion of the radio spectrum used for communication or navigation.",
+        detailed: "Different aviation services use designated frequencies for communication and navigation purposes.",
+        why: "Pilots must select and monitor appropriate frequencies during flight.",
+        related: ["Radio Communication", "ATC", "VOR"]
+      },
+
+
+      {
+        category: "Airport",
+        title: "Airport",
+        pronunciation: "AIR-port",
+        simple: "An airport is a location designed for aircraft operations.",
+        detailed: "Airports can include runways, taxiways, aprons, terminals, navigation aids, control facilities and support services.",
+        why: "Pilots need to understand airport layouts and operating procedures.",
+        related: ["Runway", "Taxiway", "Apron"]
+      },
+
+      {
+        category: "Airport",
+        title: "Runway",
+        pronunciation: "RUN-way",
+        simple: "A runway is a prepared surface used for aircraft takeoff and landing.",
+        detailed: "Runways have markings, lighting and operational information designed to support safe aircraft movement.",
+        why: "Runway selection and operation are important parts of takeoff and landing planning.",
+        related: ["Airport", "Taxiway", "ILS"]
+      },
+
+      {
+        category: "Airport",
+        title: "Taxiway",
+        pronunciation: "TAK-see-way",
+        simple: "A taxiway is a designated path used by aircraft moving between runways and other airport areas.",
+        detailed: "Taxiways connect runways with aprons, terminals, hangars and other airport facilities.",
+        why: "Pilots use taxiways to move safely around the airport surface.",
+        related: ["Airport", "Runway", "Apron"]
+      },
+
+      {
+        category: "Airport",
+        title: "Apron",
+        pronunciation: "AY-pron",
+        simple: "An apron is an airport area where aircraft can park, load, unload or receive services.",
+        detailed: "Aprons can contain aircraft parking stands, service areas and connections to taxiways.",
+        why: "Pilots need to understand surface movement and parking procedures.",
+        related: ["Airport", "Taxiway", "Terminal"]
+      },
+
+      {
+        category: "Airport",
+        title: "Terminal",
+        pronunciation: "TER-mi-nal",
+        simple: "A terminal is a facility used to process passengers and support airport operations.",
+        detailed: "Passenger terminals can include check-in areas, security facilities, boarding areas and baggage facilities.",
+        why: "Understanding airport facilities helps pilots and aviation students understand the broader aviation environment.",
+        related: ["Airport", "Apron", "Passenger"]
+      },
+
+      {
+        category: "Airport",
+        title: "Airspace",
+        pronunciation: "AIR-space",
+        simple: "Airspace is the portion of the atmosphere used and regulated for aviation.",
+        detailed: "Airspace can be organized into different classes and areas with specific rules and services.",
+        why: "Pilots must know the airspace rules applicable to their route and operation.",
+        related: ["Navigation", "ATC", "Aeronautical Chart"]
+      },
+
+
+      {
+        category: "Performance",
+        title: "Altitude",
+        pronunciation: "AL-ti-tood",
+        simple: "Altitude is the vertical distance of an aircraft relative to a specified reference.",
+        detailed: "Different altitude references can be used in aviation, including mean sea level and above ground level depending on the context.",
+        why: "Altitude awareness is essential for terrain clearance, separation and navigation.",
+        related: ["Altimeter", "Atmospheric Pressure", "Airspace"]
+      },
+
+      {
+        category: "Performance",
+        title: "Airspeed",
+        pronunciation: "AIR-speed",
+        simple: "Airspeed is the speed of an aircraft relative to the surrounding air.",
+        detailed: "Different airspeed definitions are used in aviation, and the appropriate type depends on the flight task.",
+        why: "Airspeed affects aircraft control, performance and operating limitations.",
+        related: ["Airspeed Indicator", "Stall", "Performance"]
+      },
+
+      {
+        category: "Performance",
+        title: "Groundspeed",
+        pronunciation: "GROUND-speed",
+        simple: "Groundspeed is the aircraft's speed relative to the ground.",
+        detailed: "Groundspeed is affected by aircraft airspeed and wind. A tailwind can increase groundspeed while a headwind can reduce it.",
+        why: "Groundspeed affects travel time, fuel planning and navigation calculations.",
+        related: ["Wind", "Track", "Navigation"]
+      },
+
+      {
+        category: "Performance",
+        title: "Weight and Balance",
+        pronunciation: "WAYT and BAL-ans",
+        simple: "Weight and balance describes how an aircraft's total weight and loading are distributed.",
+        detailed: "Aircraft loading must remain within approved limits for weight and center of gravity.",
+        why: "Incorrect loading can negatively affect aircraft handling and performance.",
+        related: ["Center of Gravity", "Weight", "Aircraft"]
+      },
+
+      {
+        category: "Performance",
+        title: "Center of Gravity",
+        pronunciation: "SEN-ter of GRAV-i-tee",
+        simple: "The center of gravity is the point where an aircraft's weight can be considered to act.",
+        detailed: "The location of the center of gravity affects stability, control and performance.",
+        why: "Pilots must ensure loading remains within the aircraft's approved center-of-gravity limits.",
+        related: ["Weight and Balance", "Weight", "Performance"]
+      },
+
+      {
+        category: "Performance",
+        title: "Density Altitude",
+        pronunciation: "DEN-si-tee AL-ti-tood",
+        simple: "Density altitude is a way of describing air density in terms of an equivalent standard altitude.",
+        detailed: "Temperature, pressure and humidity influence air density. Higher density altitude generally reduces aircraft performance.",
+        why: "It is important for takeoff, climb and aircraft performance planning.",
+        related: ["Altitude", "Atmosphere", "Performance"]
+      },
+
+
+      {
+        category: "Safety",
+        title: "Human Factors",
+        pronunciation: "HYOO-man FAK-tors",
+        simple: "Human factors examines how people interact with aircraft, systems and operational environments.",
+        detailed: "Human factors includes communication, workload, fatigue, decision-making, teamwork and other factors that can affect performance.",
+        why: "Aviation safety depends on both technical systems and human performance.",
+        related: ["Fatigue", "CRM", "Decision Making"]
+      },
+
+      {
+        category: "Safety",
+        title: "Risk Management",
+        pronunciation: "RISK MAN-ij-ment",
+        simple: "Risk management is the process of identifying and controlling hazards.",
+        detailed: "Pilots assess hazards, consider possible consequences and choose actions that reduce risk to an acceptable level.",
+        why: "Risk management supports safer decision-making.",
+        related: ["Safety", "Human Factors", "Decision Making"]
+      },
+
+      {
+        category: "Safety",
+        title: "Situational Awareness",
+        pronunciation: "sit-choo-AY-shun-al",
+        simple: "Situational awareness means understanding what is happening around the aircraft and what may happen next.",
+        detailed: "Pilots continuously monitor aircraft state, weather, traffic, navigation, systems and other factors.",
+        why: "Strong situational awareness helps pilots identify developing problems early.",
+        related: ["Human Factors", "Navigation", "Weather"]
+      },
+
+      {
+        category: "Safety",
+        title: "Crew Resource Management",
+        pronunciation: "KROO REE-sors MAN-ij-ment",
+        simple: "Crew Resource Management focuses on effective teamwork and communication in the cockpit.",
+        detailed: "CRM covers communication, leadership, followership, workload management, decision-making and coordination among crew members.",
+        why: "Good teamwork can reduce communication errors and improve operational safety.",
+        related: ["Captain", "First Officer", "Human Factors"]
+      },
+
+      {
+        category: "Safety",
+        title: "Fatigue",
+        pronunciation: "fuh-TEEG",
+        simple: "Fatigue is a state of reduced physical or mental performance.",
+        detailed: "Fatigue can be influenced by insufficient sleep, long duty periods, disrupted schedules and other factors.",
+        why: "Pilot performance depends on maintaining adequate alertness and managing fatigue appropriately.",
+        related: ["Human Factors", "Safety", "CRM"]
+      },
+
+      {
+        category: "Safety",
+        title: "Aeronautical Decision Making",
+        pronunciation: "air-oh-NAW-ti-kal",
+        simple: "Aeronautical decision making is the process pilots use to make informed operational decisions.",
+        detailed: "It involves recognizing hazards, evaluating options, considering aircraft and environmental factors and choosing appropriate actions.",
+        why: "Decision-making is a major part of safe flight operations.",
+        related: ["Risk Management", "Situational Awareness", "Human Factors"]
+      },
+
+
+      {
+        category: "Careers",
+        title: "Airline Pilot",
+        pronunciation: "AIR-line PY-lut",
+        simple: "An airline pilot operates aircraft for an airline under applicable regulations and company procedures.",
+        detailed: "Airline pilots perform flight planning, aircraft operation, communication, monitoring and decision-making as part of a professional flight crew.",
+        why: "It is one of the major career paths for professional pilots.",
+        related: ["Captain", "First Officer", "Commercial Pilot"]
+      },
+
+      {
+        category: "Careers",
+        title: "Flight Dispatcher",
+        pronunciation: "FLYTE dis-PATCH-er",
+        simple: "A flight dispatcher helps plan and monitor aircraft operations.",
+        detailed: "Dispatchers may work with pilots on flight planning, weather, fuel, routing, operational limitations and monitoring of flights depending on the regulatory system.",
+        why: "Dispatchers are important members of airline operational teams.",
+        related: ["Flight Planning", "Weather", "Airline"]
+      },
+
+      {
+        category: "Careers",
+        title: "Aviation Engineer",
+        pronunciation: "air-ee-AY-shun en-juh-NEER",
+        simple: "An aviation engineer applies engineering knowledge to aircraft and aviation systems.",
+        detailed: "Engineering roles can involve aircraft design, systems, structures, propulsion, safety and technical development.",
+        why: "Engineering is a major part of the aviation industry beyond piloting.",
+        related: ["Aircraft", "Engine", "Systems"]
+      },
+
+      {
+        category: "Careers",
+        title: "Aircraft Maintenance Engineer",
+        pronunciation: "AIR-kraft MAYN-ten-ans",
+        simple: "An aircraft maintenance engineer works on the inspection, maintenance and technical condition of aircraft.",
+        detailed: "Maintenance professionals perform authorized inspections, repairs and maintenance tasks according to approved procedures and regulations.",
+        why: "Proper aircraft maintenance is essential to safe aviation operations.",
+        related: ["Aircraft", "Maintenance", "Safety"]
+      },
+
+      {
+        category: "Careers",
+        title: "Aviation Meteorologist",
+        pronunciation: "air-ee-AY-shun mee-tee-OR-ol-uh-jist",
+        simple: "An aviation meteorologist specializes in weather information for aviation.",
+        detailed: "Aviation meteorologists analyze and communicate weather information relevant to aircraft operations and flight planning.",
+        why: "Accurate weather information supports safe and efficient flight operations.",
+        related: ["Weather", "Wind", "Visibility"]
+      },
+
+
+      {
+        category: "Nigeria",
+        title: "NCAA",
+        pronunciation: "EN-SEE-AY-AY",
+        simple: "NCAA refers to the Nigerian Civil Aviation Authority.",
+        detailed: "The NCAA is Nigeria's civil aviation regulatory authority and has responsibilities related to aviation regulation and oversight.",
+        why: "Future Nigerian aviation professionals should understand the role of the national aviation regulator.",
+        related: ["Nigeria", "Aviation Regulation", "Pilot Licence"]
+      },
+
+      {
+        category: "Nigeria",
+        title: "FAAN",
+        pronunciation: "FAN",
+        simple: "FAAN refers to the Federal Airports Authority of Nigeria.",
+        detailed: "FAAN is associated with the management and development of federal airports and related airport infrastructure in Nigeria.",
+        why: "Understanding aviation organizations helps students understand Nigeria's aviation ecosystem.",
+        related: ["Airport", "Nigeria", "Aviation"]
+      },
+
+      {
+        category: "Nigeria",
+        title: "Nigerian Aviation",
+        pronunciation: "nye-JEER-ee-an",
+        simple: "Nigerian aviation includes the country's airlines, airports, regulators, training organizations and aviation professionals.",
+        detailed: "Nigeria has a broad aviation ecosystem covering passenger operations, cargo, training, maintenance, airport services, regulation and other aviation activities.",
+        why: "Future Nigerian pilots can benefit from understanding the aviation industry in their own country.",
+        related: ["NCAA", "FAAN", "Pilot Training School"]
+      },
+
+      {
+        category: "Nigeria",
+        title: "Pilot Training School",
+        pronunciation: "PY-lut TRAY-ning SKOOL",
+        simple: "A pilot training school provides structured education and flight training for aspiring pilots.",
+        detailed: "Training organizations combine theoretical instruction and practical flight training according to applicable aviation authority requirements.",
+        why: "Choosing and understanding an approved training pathway is an important part of becoming a professional pilot.",
+        related: ["Flight Training", "Ground School", "Student Pilot"]
+      }
+
+    ];
+
+
+    /* ==========================================
+       APPLICATION STATE
+    ========================================== */
+
+    let currentSearch = "";
+    let currentCategory = "All";
+    let currentLetter = "All";
+
+
+    /* ==========================================
+       CREATE ALPHABET
+    ========================================== */
+
+    function createAlphabet() {
+
+      const alphabetContainer =
+        document.getElementById("alphabetFilters");
+
+      const allButton = document.createElement("button");
+
+      allButton.className = "filter-btn active";
+      allButton.textContent = "All";
+
+      allButton.onclick = function() {
+        filterLetter("All", this);
+      };
+
+      alphabetContainer.appendChild(allButton);
+
+
+      for (let i = 65; i <= 90; i++) {
+
+        const letter = String.fromCharCode(i);
 
         const button = document.createElement("button");
 
         button.className = "filter-btn";
         button.textContent = letter;
 
-        button.onclick = function(){
-
-            currentLetter = letter;
-
-            document
-            .querySelectorAll("#alphabetFilters .filter-btn")
-            .forEach(btn => btn.classList.remove("active"));
-
-            this.classList.add("active");
-
-            renderResults();
+        button.onclick = function() {
+          filterLetter(letter, this);
         };
 
-        container.appendChild(button);
-
-    });
-
-}
-
-createAlphabet();
-
-
-/* =========================================================
-   SEARCH
-   ========================================================= */
-
-searchInput.addEventListener("input",function(){
-
-    currentSearch = this.value.trim().toLowerCase();
-
-    if(currentSearch === ""){
-
-        hideResults();
-
-        return;
+        alphabetContainer.appendChild(button);
+      }
     }
 
-    showResults();
 
-    renderResults();
+    /* ==========================================
+       SEARCH INPUT
+    ========================================== */
 
-});
+    const searchInput =
+      document.getElementById("searchInput");
 
+    searchInput.addEventListener("input", function() {
 
-function quickSearch(word){
+      currentSearch = this.value.trim();
 
-    searchInput.value = word;
+      if (currentSearch.length === 0) {
+        hideResults();
+        return;
+      }
 
-    currentSearch = word.toLowerCase();
+      showResults();
+      renderResults();
 
-    showResults();
-
-    renderResults();
-
-    window.scrollTo({
-        top:document.querySelector(".results-area").offsetTop - 100,
-        behavior:"smooth"
     });
 
-}
+
+    /* ==========================================
+       QUICK SEARCH
+    ========================================== */
+
+    function quickSearch(word) {
+
+      searchInput.value = word;
+
+      currentSearch = word;
+
+      currentCategory = "All";
+      currentLetter = "All";
+
+      resetFilterButtons();
+
+      showResults();
+
+      renderResults();
+
+      searchInput.focus();
+    }
 
 
-/* =========================================================
-   SHOW / HIDE
-   ========================================================= */
+    /* ==========================================
+       MATCH SEARCH
+    ========================================== */
 
-function showResults(){
+    function matchesSearch(item) {
 
-    startState.style.display = "none";
+      const searchableText = [
 
-    controls.classList.add("visible");
-
-    resultHeader.classList.add("visible");
-
-}
-
-
-function hideResults(){
-
-    startState.style.display = "block";
-
-    controls.classList.remove("visible");
-
-    resultHeader.classList.remove("visible");
-
-    resultsGrid.innerHTML = "";
-
-    noResults.classList.remove("visible");
-
-}
-
-
-/* =========================================================
-   SEARCH MATCHING
-   ========================================================= */
-
-function matchesSearch(item){
-
-    if(!currentSearch) return false;
-
-    const searchableText = [
-
-        item.title,
         item.category,
+        item.title,
         item.pronunciation,
-        item.search,
         item.simple,
         item.detailed,
         item.why,
-        ...item.related
+        ...(item.related || [])
 
-    ]
-    .join(" ")
-    .toLowerCase();
+      ].join(" ").toLowerCase();
 
-    const words = currentSearch
+
+      const words = currentSearch
+        .toLowerCase()
         .split(/\s+/)
         .filter(Boolean);
 
-    return words.every(word => searchableText.includes(word));
 
-}
+      return words.every(word =>
+        searchableText.includes(word)
+      );
+    }
 
 
-/* =========================================================
-   RENDER RESULTS
-   ========================================================= */
+    /* ==========================================
+       SHOW RESULTS
+    ========================================== */
 
-function renderResults(){
+    function showResults() {
 
-    if(!currentSearch){
+      document
+        .getElementById("startState")
+        .style.display = "none";
 
-        hideResults();
+      document
+        .getElementById("resultsSection")
+        .classList.add("show");
+
+      document
+        .getElementById("controls")
+        .classList.add("show");
+    }
+
+
+    /* ==========================================
+       HIDE RESULTS
+    ========================================== */
+
+    function hideResults() {
+
+      document
+        .getElementById("startState")
+        .style.display = "block";
+
+      document
+        .getElementById("resultsSection")
+        .classList.remove("show");
+
+      document
+        .getElementById("controls")
+        .classList.remove("show");
+    }
+
+
+    /* ==========================================
+       RENDER RESULTS
+    ========================================== */
+
+    function renderResults() {
+
+      const grid =
+        document.getElementById("resultsGrid");
+
+      grid.innerHTML = "";
+
+
+      const filtered = aviationData.filter(item => {
+
+        const searchMatch =
+          currentSearch.length === 0 ||
+          matchesSearch(item);
+
+
+        const categoryMatch =
+          currentCategory === "All" ||
+          item.category === currentCategory;
+
+
+        const letterMatch =
+          currentLetter === "All" ||
+          item.title.toUpperCase().startsWith(currentLetter);
+
+
+        return searchMatch &&
+               categoryMatch &&
+               letterMatch;
+      });
+
+
+      document.getElementById("resultsCount").innerHTML =
+        `<strong>${filtered.length}</strong> result${filtered.length === 1 ? "" : "s"} found`;
+
+
+      if (filtered.length === 0) {
+
+        grid.innerHTML = `
+          <div class="no-results" style="grid-column: 1 / -1;">
+            <div class="no-results-icon">🔎</div>
+            <h3>No aviation knowledge found</h3>
+            <p>
+              Try another search word, category or alphabet letter.
+            </p>
+          </div>
+        `;
 
         return;
-    }
-
-    let results = aviationDatabase.filter(matchesSearch);
+      }
 
 
-    if(currentCategory !== "All"){
+      filtered.forEach(item => {
 
-        results = results.filter(item =>
-            item.category === currentCategory
-        );
-
-    }
-
-
-    if(currentLetter !== "All"){
-
-        results = results.filter(item =>
-            item.title.toUpperCase().startsWith(currentLetter)
-        );
-
-    }
-
-
-    resultsGrid.innerHTML = "";
-
-    resultCount.textContent = results.length;
-
-
-    if(results.length === 0){
-
-        noResults.classList.add("visible");
-
-        return;
-
-    }
-
-    noResults.classList.remove("visible");
-
-
-    results.forEach((item,index)=>{
-
-        const card = document.createElement("article");
+        const card =
+          document.createElement("article");
 
         card.className = "term-card";
 
         card.innerHTML = `
 
-            <div class="term-category">
-                ${item.category}
-            </div>
+          <div class="term-category">
+            ${item.category}
+          </div>
 
-            <h3>${item.title}</h3>
+          <h3>
+            ${item.title}
+          </h3>
 
-            <div class="pronunciation">
-                ${item.pronunciation}
-            </div>
+          <div class="pronunciation">
+            / ${item.pronunciation} /
+          </div>
 
-            <p>
-                ${item.simple}
-            </p>
+          <p>
+            ${item.simple}
+          </p>
 
-            <div class="learn-more">
-                Explore full knowledge →
-            </div>
-
+          <button class="explore-btn">
+            Explore full knowledge →
+          </button>
         `;
 
 
-        card.onclick = function(){
-
+        card
+          .querySelector(".explore-btn")
+          .addEventListener("click", function() {
             openModal(item);
-
-        };
-
-
-        resultsGrid.appendChild(card);
-
-    });
-
-}
+          });
 
 
-/* =========================================================
-   CATEGORY FILTER
-   ========================================================= */
+        grid.appendChild(card);
 
-function filterCategory(category,button){
+      });
 
-    currentCategory = category;
-
-    document
-    .querySelectorAll(".filter-row:first-of-type .filter-btn")
-    .forEach(btn => btn.classList.remove("active"));
-
-    button.classList.add("active");
-
-    renderResults();
-
-}
-
-
-/* =========================================================
-   CLEAR
-   ========================================================= */
-
-function clearSearch(){
-
-    searchInput.value = "";
-
-    currentSearch = "";
-
-    currentCategory = "All";
-    currentLetter = "All";
-
-    document
-    .querySelectorAll(".filter-btn")
-    .forEach(btn => btn.classList.remove("active"));
-
-    const categoryFirst =
-        document.querySelector(".filter-row .filter-btn");
-
-    if(categoryFirst){
-        categoryFirst.classList.add("active");
     }
 
-    const alphabetFirst =
+
+    /* ==========================================
+       CATEGORY FILTER
+    ========================================== */
+
+    function filterCategory(category, button) {
+
+      currentCategory = category;
+
+      document
+        .querySelectorAll("#categoryFilters .filter-btn")
+        .forEach(btn => btn.classList.remove("active"));
+
+      button.classList.add("active");
+
+      showResults();
+
+      renderResults();
+    }
+
+
+    /* ==========================================
+       LETTER FILTER
+    ========================================== */
+
+    function filterLetter(letter, button) {
+
+      currentLetter = letter;
+
+      document
+        .querySelectorAll("#alphabetFilters .filter-btn")
+        .forEach(btn => btn.classList.remove("active"));
+
+      button.classList.add("active");
+
+      showResults();
+
+      renderResults();
+    }
+
+
+    /* ==========================================
+       RESET FILTERS
+    ========================================== */
+
+    function resetFilterButtons() {
+
+      document
+        .querySelectorAll(".filter-btn")
+        .forEach(btn => btn.classList.remove("active"));
+
+
+      const firstCategory =
+        document.querySelector("#categoryFilters .filter-btn");
+
+      const firstLetter =
         document.querySelector("#alphabetFilters .filter-btn");
 
-    if(alphabetFirst){
-        alphabetFirst.classList.add("active");
+
+      if (firstCategory) {
+        firstCategory.classList.add("active");
+      }
+
+      if (firstLetter) {
+        firstLetter.classList.add("active");
+      }
+
     }
 
-    hideResults();
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    /* ==========================================
+       CLEAR SEARCH
+    ========================================== */
 
-}
+    function clearSearch() {
+
+      currentSearch = "";
+      currentCategory = "All";
+      currentLetter = "All";
+
+      searchInput.value = "";
+
+      resetFilterButtons();
+
+      hideResults();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
 
 
-/* =========================================================
-   MODAL
-   ========================================================= */
+    /* ==========================================
+       OPEN MODAL
+    ========================================== */
 
-function openModal(item){
+    function openModal(item) {
 
-    document.getElementById("modalCategory").textContent =
+      document.getElementById("modalCategory").textContent =
         item.category;
 
-    document.getElementById("modalTitle").textContent =
+      document.getElementById("modalTitle").textContent =
         item.title;
 
-    document.getElementById("modalPronunciation").textContent =
-        item.pronunciation;
+      document.getElementById("modalPronunciation").textContent =
+        "/ " + item.pronunciation + " /";
 
-    document.getElementById("modalSimple").textContent =
+      document.getElementById("modalSimple").textContent =
         item.simple;
 
-    document.getElementById("modalDetailed").textContent =
+      document.getElementById("modalDetailed").textContent =
         item.detailed;
 
-    document.getElementById("modalWhy").textContent =
+      document.getElementById("modalWhy").textContent =
         item.why;
 
 
-    const related =
+      const related =
         document.getElementById("modalRelated");
 
-    related.innerHTML = "";
+      related.innerHTML = "";
 
 
-    item.related.forEach(term=>{
+      (item.related || []).forEach(concept => {
 
-        const span = document.createElement("span");
+        const tag =
+          document.createElement("span");
 
-        span.textContent = term;
+        tag.className = "related-tag";
 
-        related.appendChild(span);
+        tag.textContent = concept;
 
-    });
+        related.appendChild(tag);
 
-
-    termModal.classList.add("show");
-
-    document.body.style.overflow = "hidden";
-
-}
+      });
 
 
-function closeModal(){
-
-    termModal.classList.remove("show");
-
-    document.body.style.overflow = "";
-
-}
+      document
+        .getElementById("knowledgeModal")
+        .classList.add("show");
 
 
-termModal.addEventListener("click",function(e){
-
-    if(e.target === termModal){
-
-        closeModal();
-
+      document.body.style.overflow = "hidden";
     }
 
-});
 
+    /* ==========================================
+       CLOSE MODAL
+    ========================================== */
 
-document.addEventListener("keydown",function(e){
+    function closeModal() {
 
-    if(e.key === "Escape"){
+      document
+        .getElementById("knowledgeModal")
+        .classList.remove("show");
 
-        closeModal();
-
+      document.body.style.overflow = "";
     }
 
-});
 
-
-/* =========================================================
-   MOBILE NAVIGATION
-   ========================================================= */
-
-function toggleMenu(){
+    /* ==========================================
+       CLOSE MODAL OUTSIDE
+    ========================================== */
 
     document
-    .getElementById("navLinks")
-    .classList.toggle("open");
+      .getElementById("knowledgeModal")
+      .addEventListener("click", function(event) {
 
-}
+        if (event.target === this) {
+          closeModal();
+        }
+
+      });
 
 
-document
-.querySelectorAll(".nav-links a")
-.forEach(link=>{
+    /* ==========================================
+       ESCAPE KEY
+    ========================================== */
 
-    link.addEventListener("click",()=>{
+    document.addEventListener("keydown", function(event) {
 
-        document
-        .getElementById("navLinks")
-        .classList.remove("open");
+      if (event.key === "Escape") {
+        closeModal();
+      }
 
     });
 
-});
+
+    /* ==========================================
+       MOBILE NAVIGATION
+    ========================================== */
+
+    function toggleMenu() {
+
+      document
+        .getElementById("navLinks")
+        .classList.toggle("open");
+    }
 
 
-/* =========================================================
-   INITIAL STATE
-   ========================================================= */
+    /* Close mobile menu after clicking a link */
 
-hideResults();
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(link => {
 
-</script>
+        link.addEventListener("click", function() {
+
+          document
+            .getElementById("navLinks")
+            .classList.remove("open");
+
+        });
+
+      });
+
+
+    /* ==========================================
+       INITIALIZE
+    ========================================== */
+
+    createAlphabet();
+
+    hideResults();
+
+  </script>
 
 </body>
 </html>

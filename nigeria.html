@@ -11,6 +11,24 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<!-- =========================
+     GOOGLE ANALYTICS
+========================= -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9QWF7YCP3J"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag() {
+    dataLayer.push(arguments);
+}
+
+gtag("js", new Date());
+
+gtag("config", "G-9QWF7YCP3J");
+</script>
+
 <style>
 
 *{
@@ -587,6 +605,29 @@ footer strong{
     font-family:'Cinzel',serif;
 }
 
+.footer-links{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.footer-links a{
+    color:#cfe3ee;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:700;
+    padding:7px 10px;
+    border-radius:10px;
+    transition:.25s;
+}
+
+.footer-links a:hover{
+    background:#008c68;
+    color:white;
+}
+
 /* MOBILE */
 
 @media(max-width:950px){
@@ -697,6 +738,7 @@ It's Muh'd <span>👑🖥️</span>
 <a href="dictionary.html">Dictionary</a>
 <a href="missions.html">Missions</a>
 <a href="nigeria.html" class="active">Nigeria</a>
+<a href="gist.html">Gist ✈️</a>
 <a href="contact.html">Contact</a>
 
 </div>
@@ -1362,6 +1404,22 @@ Created by <strong>It's Muh'd 👑🖥️</strong>
 
 <div class="footer-pilot">
 Future Pilot: ZILHEART ✈️
+</div>
+
+<div class="footer-links">
+
+<a href="index.html">Home</a>
+<a href="academy.html">Academy</a>
+<a href="map.html">Map</a>
+<a href="aircraft.html">Aircraft</a>
+<a href="cockpit.html">Cockpit</a>
+<a href="tests.html">Tests</a>
+<a href="dictionary.html">Dictionary</a>
+<a href="missions.html">Missions</a>
+<a href="nigeria.html">Nigeria</a>
+<a href="gist.html">Gist ✈️</a>
+<a href="contact.html">Contact</a>
+
 </div>
 
 </footer>

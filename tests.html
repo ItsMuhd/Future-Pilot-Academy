@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Future Pilot Academy — Tests</title>
+<title>Aviation Tests | Future Pilot Academy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -18,2497 +25,2538 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at 10% 10%, rgba(0,180,255,.15), transparent 25%),
-        radial-gradient(circle at 90% 30%, rgba(255,170,0,.12), transparent 25%),
-        linear-gradient(135deg,#06152b,#09294b,#04101f);
-    color:#fff;
-    min-height:100vh;
-    overflow-x:hidden;
+    font-family:'Montserrat',sans-serif;
+    background:#f4f9ff;
+    color:#17283b;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
 /* ================= NAVIGATION ================= */
 
-header{
+.navbar{
     position:sticky;
     top:0;
-    z-index:9999;
-    background:rgba(3,15,31,.95);
+    z-index:999;
+    background:rgba(255,255,255,.97);
     backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(255,255,255,.1);
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
 }
 
-.navbar{
-    max-width:1250px;
+.nav-container{
+    max-width:1200px;
     margin:auto;
-    padding:15px 20px;
+    padding:15px 22px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
-    text-decoration:none;
-    color:#fff;
-    font-weight:900;
-    font-size:19px;
+    font-family:'Cinzel',serif;
+    font-size:18px;
+    font-weight:800;
+    color:#07579e;
 }
 
 .logo span{
-    color:#38d9ff;
-}
-
-.menu-btn{
-    display:none;
-    border:0;
-    background:#08a9e8;
-    color:white;
-    font-size:25px;
-    width:45px;
-    height:42px;
-    border-radius:10px;
-    cursor:pointer;
+    color:#efa900;
 }
 
 .nav-links{
-    list-style:none;
     display:flex;
-    gap:8px;
+    gap:18px;
     align-items:center;
 }
 
 .nav-links a{
-    text-decoration:none;
-    color:#fff;
-    padding:10px 12px;
-    border-radius:9px;
-    font-size:14px;
-    transition:.25s;
+    font-size:12px;
+    font-weight:700;
+    color:#344b61;
+    transition:.3s;
 }
 
 .nav-links a:hover,
-.nav-links a.active{
-    background:#08a9e8;
-    transform:translateY(-2px);
+.nav-links .active{
+    color:#087bc9;
 }
 
-/* MOBILE NAV */
-
-@media(max-width:950px){
-
-    .menu-btn{
-        display:block;
-    }
-
-    .nav-links{
-        position:absolute;
-        top:73px;
-        left:12px;
-        right:12px;
-        display:none;
-        flex-direction:column;
-        align-items:stretch;
-        background:rgba(4,18,36,.98);
-        border:1px solid rgba(255,255,255,.12);
-        border-radius:16px;
-        padding:12px;
-        box-shadow:0 20px 50px rgba(0,0,0,.5);
-    }
-
-    .nav-links.open{
-        display:flex;
-    }
-
-    .nav-links a{
-        display:block;
-        text-align:center;
-        padding:13px;
-    }
+.menu-btn{
+    display:none;
+    width:42px;
+    height:38px;
+    border:0;
+    border-radius:10px;
+    background:#087bc9;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
 }
 
 /* ================= HERO ================= */
 
 .hero{
-    max-width:1100px;
-    margin:auto;
-    padding:75px 20px 40px;
+    min-height:400px;
+    padding:75px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
+    color:white;
+
+    background:
+    linear-gradient(
+        120deg,
+        rgba(3,65,122,.95),
+        rgba(0,145,194,.85)
+    ),
+    url("https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1800&q=85");
+
+    background-size:cover;
+    background-position:center;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::after{
+    content:"🧠";
+    position:absolute;
+    right:4%;
+    top:25px;
+    font-size:150px;
+    opacity:.08;
+}
+
+.hero-content{
+    max-width:800px;
+    position:relative;
+    z-index:2;
 }
 
 .badge{
     display:inline-block;
-    padding:8px 15px;
+    padding:9px 18px;
     border-radius:30px;
-    background:rgba(0,196,255,.12);
-    border:1px solid rgba(0,196,255,.35);
-    color:#62ddff;
-    font-size:13px;
-    margin-bottom:18px;
+
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.3);
+
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:clamp(38px,7vw,72px);
-    line-height:1;
-    margin-bottom:18px;
-    background:linear-gradient(90deg,#fff,#49dcff,#fff);
-    -webkit-background-clip:text;
-    color:transparent;
+    font-family:'Cinzel',serif;
+    font-size:clamp(35px,7vw,65px);
+    line-height:1.1;
+}
+
+.hero h1 span{
+    display:block;
+    color:#ffd34e;
+    font-size:.5em;
+    letter-spacing:5px;
+    margin-top:12px;
+
+    animation:floatName 3s ease-in-out infinite;
+}
+
+@keyframes floatName{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+
 }
 
 .hero p{
-    max-width:760px;
-    margin:auto;
-    color:#bdd1e5;
+    margin:18px auto 0;
+    max-width:650px;
     line-height:1.8;
-    font-size:16px;
+    font-size:14px;
+    color:#eaf7ff;
 }
+
+/* ================= STUDENT ================= */
 
 .student{
-    margin:28px auto 0;
-    display:inline-block;
-    padding:10px 18px;
-    border-radius:30px;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.12);
-    color:#dcecff;
+    max-width:950px;
+    margin:-45px auto 45px;
+    position:relative;
+    z-index:5;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:23px;
+
+    box-shadow:
+    0 15px 40px rgba(20,70,110,.14);
+
+    display:flex;
+    gap:18px;
+    align-items:center;
 }
 
-.student strong{
-    color:#ffd45c;
-}
+.student-icon{
+    width:65px;
+    min-width:65px;
+    height:65px;
 
-/* ================= MAIN ================= */
+    border-radius:50%;
 
-.container{
-    width:min(1000px,92%);
-    margin:auto;
-}
-
-.test-info{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin:20px 0;
+    place-items:center;
+
+    font-size:28px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #087bc9,
+        #ffd34e
+    );
 }
 
-.info-card{
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:18px;
-    padding:20px;
-    text-align:center;
-}
-
-.info-card strong{
-    display:block;
-    font-size:25px;
-    color:#54ddff;
+.student h3{
+    font-family:'Cinzel',serif;
+    color:#07579e;
     margin-bottom:5px;
 }
 
-.info-card span{
-    color:#a9bfd3;
-    font-size:13px;
+.student p{
+    font-size:12px;
+    line-height:1.7;
+    color:#697c90;
 }
 
-/* ================= TEST BOX ================= */
+/* ================= SECTION ================= */
+
+.section{
+    max-width:1000px;
+    margin:auto;
+    padding:30px 20px 70px;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.heading small{
+    color:#087bc9;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.heading h2{
+    font-family:'Cinzel',serif;
+    color:#183f67;
+    font-size:clamp(27px,5vw,40px);
+    margin:9px 0;
+}
+
+.heading p{
+    max-width:650px;
+    margin:auto;
+    color:#6b7d90;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* ================= QUIZ ================= */
 
 .test-box{
-    background:rgba(255,255,255,.065);
-    border:1px solid rgba(255,255,255,.11);
+    background:white;
+
     border-radius:25px;
-    padding:25px;
-    margin:30px 0 50px;
-    box-shadow:0 20px 60px rgba(0,0,0,.2);
+
+    padding:30px;
+
+    box-shadow:
+    0 12px 40px rgba(20,65,105,.11);
+
+    border:1px solid #e1ebf4;
 }
 
-.test-top{
+.top-bar{
     display:flex;
     justify-content:space-between;
-    gap:15px;
     align-items:center;
+
+    gap:15px;
+
     margin-bottom:15px;
 }
 
-.question-number{
-    color:#5cdbff;
-    font-weight:bold;
+.question-count{
+    color:#087bc9;
+    font-size:12px;
+    font-weight:800;
+}
+
+.score{
+    background:#edf7ff;
+    color:#07579e;
+
+    padding:8px 13px;
+
+    border-radius:20px;
+
+    font-size:11px;
+    font-weight:800;
 }
 
 .progress{
     height:8px;
-    background:rgba(255,255,255,.1);
+
+    background:#e6eef6;
+
     border-radius:20px;
+
     overflow:hidden;
-    margin-bottom:28px;
+
+    margin-bottom:30px;
 }
 
 .progress-bar{
     width:0%;
     height:100%;
-    background:linear-gradient(90deg,#00bfff,#7c5cff);
+
+    background:
+    linear-gradient(
+        90deg,
+        #087bc9,
+        #ffd34e
+    );
+
     transition:.4s;
 }
 
-.topic{
-    display:inline-block;
-    padding:6px 11px;
-    border-radius:20px;
-    background:rgba(255,190,60,.12);
-    color:#ffd35c;
-    font-size:12px;
-    margin-bottom:14px;
-}
-
 .question{
-    font-size:23px;
+    font-size:20px;
+    font-weight:800;
+
     line-height:1.5;
+
+    color:#173e68;
+
     margin-bottom:23px;
 }
 
 .options{
     display:grid;
-    gap:13px;
+    gap:12px;
 }
 
 .option{
     width:100%;
+
+    padding:15px 17px;
+
+    border:2px solid #e0eaf3;
+
+    background:#fbfdff;
+
+    border-radius:13px;
+
     text-align:left;
-    padding:17px;
-    border-radius:14px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.045);
-    color:#fff;
+
+    font-family:inherit;
+
+    font-size:13px;
+    font-weight:700;
+
+    color:#40566b;
+
     cursor:pointer;
-    font-size:15px;
+
     transition:.25s;
 }
 
 .option:hover{
-    border-color:#31d7ff;
-    background:rgba(0,190,255,.1);
+    border-color:#62bce8;
+    background:#f2faff;
+
     transform:translateX(3px);
 }
 
-.option.selected{
-    border-color:#31d7ff;
-    background:rgba(0,190,255,.18);
-    box-shadow:0 0 20px rgba(0,190,255,.12);
+.option.correct{
+    border-color:#32a866;
+    background:#eafaf1;
+    color:#217444;
 }
 
-.option-letter{
-    display:inline-flex;
-    width:30px;
-    height:30px;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:rgba(255,255,255,.1);
-    margin-right:10px;
-    font-weight:bold;
+.option.wrong{
+    border-color:#df6262;
+    background:#fff0f0;
+    color:#a43838;
 }
 
-/* ================= BUTTONS ================= */
-
-.buttons{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    margin-top:25px;
+.option.disabled{
+    pointer-events:none;
 }
 
-.btn{
+.feedback{
+    min-height:30px;
+
+    margin-top:18px;
+
+    font-size:12px;
+    font-weight:800;
+
+    line-height:1.6;
+}
+
+.feedback.correct{
+    color:#25834b;
+}
+
+.feedback.wrong{
+    color:#b33e3e;
+}
+
+.next-btn{
+    display:none;
+
+    margin-top:18px;
+
+    padding:12px 20px;
+
     border:0;
-    padding:13px 20px;
-    border-radius:12px;
+
+    border-radius:25px;
+
+    background:#087bc9;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:12px;
+    font-weight:800;
+
     cursor:pointer;
-    font-weight:bold;
-    color:#fff;
-    background:#078fd0;
-    transition:.25s;
 }
 
-.btn:hover{
+.next-btn:hover{
     transform:translateY(-2px);
-    filter:brightness(1.12);
-}
-
-.btn.secondary{
-    background:rgba(255,255,255,.09);
-}
-
-.btn.finish{
-    background:linear-gradient(135deg,#00b7ff,#665cff);
 }
 
 /* ================= RESULT ================= */
 
 .result{
     display:none;
-    margin:30px 0 60px;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:25px;
-    padding:30px;
-}
 
-.result.show{
-    display:block;
-}
-
-.result-title{
     text-align:center;
-    font-size:34px;
+
+    padding:15px;
+}
+
+.result-icon{
+    font-size:65px;
+
     margin-bottom:10px;
 }
 
-.score-circle{
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    margin:25px auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:radial-gradient(circle,rgba(0,190,255,.2),rgba(0,0,0,.1));
-    border:3px solid #35d9ff;
-    box-shadow:0 0 35px rgba(0,190,255,.2);
-}
+.result h2{
+    font-family:'Cinzel',serif;
 
-.score-circle strong{
-    font-size:40px;
-}
+    color:#07579e;
 
-.score-circle span{
-    color:#abc2d7;
-}
+    font-size:30px;
 
-.result-message{
-    text-align:center;
-    color:#c7d9e8;
-    line-height:1.7;
-    margin-bottom:25px;
-}
-
-/* ================= WRONG ANSWERS ================= */
-
-.review-title{
-    margin:30px 0 15px;
-    color:#ffcb5c;
-}
-
-.wrong-card{
-    background:rgba(255,70,70,.075);
-    border:1px solid rgba(255,90,90,.25);
-    border-radius:17px;
-    padding:20px;
-    margin:15px 0;
-}
-
-.wrong-card h4{
-    color:#ff8b8b;
     margin-bottom:10px;
 }
 
-.wrong-question{
-    font-size:17px;
-    line-height:1.5;
+.result-name{
+    color:#087bc9;
+
+    font-family:'Cinzel',serif;
+
+    font-size:20px;
+
+    letter-spacing:3px;
+
     margin-bottom:15px;
 }
 
-.answer-row{
-    margin:8px 0;
-    padding:10px;
-    border-radius:9px;
-    background:rgba(255,255,255,.045);
+.final-score{
+    font-size:48px;
+
+    font-weight:800;
+
+    color:#efa900;
 }
 
-.answer-row strong{
-    color:#b9d0e4;
+.percentage{
+    margin-top:5px;
+
+    color:#60778b;
+
+    font-size:13px;
+
+    font-weight:700;
 }
 
-.your-answer{
-    color:#ff8b8b;
+.result-message{
+    max-width:600px;
+
+    margin:15px auto;
+
+    color:#66798c;
+
+    font-size:13px;
+
+    line-height:1.8;
 }
 
-.correct-answer{
-    color:#62e5a4;
+.result-buttons{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
 }
 
-.correction{
-    margin-top:13px;
-    padding:13px;
-    border-left:3px solid #ffd45c;
-    background:rgba(255,210,80,.06);
-    color:#d9e5ee;
+.result-btn{
+    border:0;
+
+    padding:12px 20px;
+
+    border-radius:25px;
+
+    background:#087bc9;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+.result-btn.secondary{
+    background:#edf7ff;
+
+    color:#07579e;
+}
+
+/* ================= RANDOM NOTICE ================= */
+
+.random-note{
+    margin-top:20px;
+
+    padding:13px 16px;
+
+    border-radius:13px;
+
+    background:#fff9e8;
+
+    border:1px solid #f5dfa0;
+
+    color:#765d1a;
+
+    font-size:11px;
+
     line-height:1.7;
+
+    text-align:center;
 }
 
-/* ================= PERFECT ================= */
-
-.perfect{
-    text-align:center;
-    padding:25px;
-    border-radius:16px;
-    background:rgba(60,220,140,.08);
-    border:1px solid rgba(60,220,140,.25);
-    color:#8dffc0;
+.random-note strong{
+    color:#a97700;
 }
 
 /* ================= TOPICS ================= */
 
-.topics{
-    margin:50px 0;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:25px;
-}
-
-.section-title h2{
-    font-size:32px;
-    margin-bottom:8px;
-}
-
-.section-title p{
-    color:#9fb5c9;
-}
-
 .topic-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+
+    margin-top:20px;
 }
 
-.topic-card{
-    padding:18px;
-    border-radius:15px;
-    background:rgba(255,255,255,.055);
-    border:1px solid rgba(255,255,255,.08);
-    transition:.25s;
+.topic{
+    background:white;
+
+    border-radius:18px;
+
+    padding:23px;
+
+    text-align:center;
+
+    border:1px solid #e1ebf4;
+
+    box-shadow:
+    0 7px 22px rgba(20,65,105,.07);
+
+    transition:.3s;
 }
 
-.topic-card:hover{
+.topic:hover{
     transform:translateY(-5px);
-    border-color:#36d7ff;
 }
 
-.topic-card h3{
+.topic-icon{
+    font-size:30px;
+
+    margin-bottom:10px;
+}
+
+.topic h3{
+    color:#173e68;
+
     font-size:15px;
+
     margin-bottom:7px;
 }
 
-.topic-card p{
+.topic p{
+    color:#708195;
+
+    font-size:11px;
+
+    line-height:1.7;
+}
+
+/* ================= CHALLENGE ================= */
+
+.challenge{
+    margin-top:35px;
+
+    padding:30px;
+
+    text-align:center;
+
+    border-radius:23px;
+
+    background:
+    linear-gradient(
+        120deg,
+        #064c8d,
+        #0799c9
+    );
+
+    color:white;
+}
+
+.challenge h2{
+    font-family:'Cinzel',serif;
+
+    color:#ffd34e;
+
+    margin-bottom:10px;
+}
+
+.challenge p{
+    max-width:650px;
+
+    margin:auto;
+
     font-size:12px;
-    color:#9eb4c8;
-    line-height:1.5;
+
+    line-height:1.8;
+
+    color:#e6f8ff;
 }
 
 /* ================= FOOTER ================= */
 
 footer{
-    margin-top:70px;
-    padding:35px 20px;
+    background:#082d50;
+
+    color:white;
+
     text-align:center;
-    background:rgba(0,0,0,.25);
-    border-top:1px solid rgba(255,255,255,.08);
+
+    padding:40px 20px;
+}
+
+.footer-brand{
+    font-family:'Cinzel',serif;
+
+    color:#ffd34e;
+
+    font-size:18px;
+}
+
+.footer-line{
+    width:60px;
+
+    height:2px;
+
+    background:#55c8ff;
+
+    margin:17px auto;
 }
 
 .creator{
-    font-size:20px;
-    font-weight:bold;
-    color:#5edfff;
-    margin-bottom:8px;
+    font-size:13px;
+
+    color:#d1e7f4;
 }
 
-footer p{
-    color:#91a7bb;
-    font-size:13px;
-    line-height:1.7;
+.pilot{
+    margin-top:9px;
+
+    color:#ffd34e;
+
+    font-family:'Cinzel',serif;
+
+    letter-spacing:2px;
+}
+
+footer small{
+    display:block;
+
+    margin-top:17px;
+
+    color:#88aabe;
+
+    font-size:9px;
 }
 
 /* ================= MOBILE ================= */
 
-@media(max-width:700px){
+@media(max-width:900px){
 
-    .hero{
-        padding-top:50px;
+    .nav-links{
+        position:absolute;
+
+        top:70px;
+
+        left:15px;
+        right:15px;
+
+        background:white;
+
+        padding:15px;
+
+        border-radius:15px;
+
+        box-shadow:
+        0 15px 35px rgba(0,0,0,.13);
+
+        display:none;
+
+        flex-direction:column;
+
+        align-items:stretch;
     }
 
-    .test-info{
-        grid-template-columns:1fr;
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:9px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .topic-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero{
+        min-height:370px;
+    }
+
+    .student{
+        margin-left:15px;
+        margin-right:15px;
     }
 
     .test-box{
-        padding:18px;
+        padding:20px;
     }
 
     .question{
-        font-size:19px;
-    }
-
-    .buttons{
-        flex-direction:column;
-    }
-
-    .btn{
-        width:100%;
+        font-size:17px;
     }
 
     .topic-grid{
         grid-template-columns:1fr;
     }
 
-    .result{
-        padding:20px;
+    .top-bar{
+        align-items:flex-start;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- ================= NAVIGATION ================= -->
 
-<header>
-    <nav class="navbar">
+<nav class="navbar">
 
-        <a href="index.html" class="logo">
-            It's Muh'd <span>👑🖥️</span>
-        </a>
+<div class="nav-container">
 
-        <button
-            type="button"
-            class="menu-btn"
-            id="menuBtn"
-            aria-label="Open navigation"
-            aria-expanded="false">
-            ☰
-        </button>
+<a href="index.html" class="logo">
+Future Pilot <span>Academy</span>
+</a>
 
-        <ul class="nav-links" id="navLinks">
+<button
+class="menu-btn"
+onclick="toggleMenu()">
+☰
+</button>
 
-            <li><a href="index.html">🏠 Home</a></li>
+<div class="nav-links" id="navLinks">
 
-            <li><a href="academy.html">📚 Academy</a></li>
+<a href="index.html">Home</a>
 
-            <li><a href="map.html">🌍 Aviation Map</a></li>
+<a href="academy.html">
+Academy
+</a>
 
-            <li><a href="aircraft.html">✈️ Aircraft</a></li>
+<a href="map.html">
+World Map
+</a>
 
-            <li><a href="cockpit.html">🎛️ Cockpit</a></li>
+<a href="aircraft.html">
+Aircraft
+</a>
 
-            <li><a href="tests.html" class="active">📝 Tests</a></li>
+<a href="cockpit.html">
+Cockpit
+</a>
 
-            <li><a href="dictionary.html">📖 Dictionary</a></li>
+<a href="tests.html" class="active">
+Tests
+</a>
 
-            <li><a href="missions.html">🎯 Missions</a></li>
+<a href="dictionary.html">
+Dictionary
+</a>
 
-            <li><a href="nigeria.html">🇳🇬 Nigeria Aviation</a></li>
+<a href="missions.html">
+Missions
+</a>
 
-            <li><a href="contact.html">📞 Contact</a></li>
+<a href="nigeria.html">
+Nigeria Aviation
+</a>
 
-            <li><a href="gist.html">💬 Gist</a></li>
+<a href="contact.html">
+Contact
+</a>
 
-        </ul>
+</div>
 
-    </nav>
-</header>
+</div>
+
+</nav>
 
 
 <!-- ================= HERO ================= -->
 
-<section class="hero">
+<header class="hero">
 
-    <div class="badge">
-        FUTURE PILOT ACADEMY • THEORY TEST CENTER
-    </div>
+<div class="hero-content">
 
-    <h1>✈️ Pilot Knowledge Tests</h1>
+<div class="badge">
+🧠 AVIATION KNOWLEDGE TEST
+</div>
 
-    <p>
-        Welcome to the Future Pilot Academy examination center.
-        Each test contains 15 questions selected from the aviation
-        theory library. Answer all questions first — your corrections
-        will appear only after you finish the complete test.
-    </p>
+<h1>
 
-    <div class="student">
-        Student: <strong>ZILHEART</strong> ✈️
-    </div>
+Pilot Knowledge
+Challenge
+
+<span>
+ZILHEART
+</span>
+
+</h1>
+
+<p>
+
+Every attempt can be different.
+Questions and answer choices are automatically
+shuffled whenever you start a new test.
+
+</p>
+
+</div>
+
+</header>
+
+
+<!-- ================= STUDENT ================= -->
+
+<div class="student">
+
+<div class="student-icon">
+👩‍✈️
+</div>
+
+<div>
+
+<h3>
+ZILHEART'S AVIATION TEST
+</h3>
+
+<p>
+
+No pressure, Future Pilot.
+Think carefully, choose your answer,
+and learn from every question. 🚀✈️
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ================= TEST ================= -->
+
+<section class="section">
+
+<div class="heading">
+
+<small>
+KNOWLEDGE CHECK
+</small>
+
+<h2>
+Ready For Takeoff?
+</h2>
+
+<p>
+
+Complete the aviation quiz below.
+Your questions and answer choices are
+randomized for every new attempt.
+
+</p>
+
+</div>
+
+
+<div class="test-box">
+
+
+<!-- QUIZ -->
+
+<div id="quizArea">
+
+<div class="top-bar">
+
+<div
+class="question-count"
+id="questionCount">
+Question 1 of 15
+</div>
+
+<div class="score">
+
+Score:
+<span id="score">
+0
+</span>
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="progressBar">
+</div>
+
+</div>
+
+
+<div
+class="question"
+id="question">
+Loading question...
+</div>
+
+
+<div
+class="options"
+id="options">
+</div>
+
+
+<div
+class="feedback"
+id="feedback">
+</div>
+
+
+<button
+class="next-btn"
+id="nextBtn"
+onclick="nextQuestion()">
+
+Next Question →
+
+</button>
+
+
+<div class="random-note">
+
+🔀 <strong>Random Mode:</strong>
+The quiz order and answer choices are shuffled
+every time you start or restart the test.
+
+</div>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div
+class="result"
+id="result">
+
+<div
+class="result-icon"
+id="resultIcon">
+🏆
+</div>
+
+<h2>
+Test Complete!
+</h2>
+
+<div class="result-name">
+ZILHEART
+</div>
+
+<div class="final-score">
+
+<span id="finalScore">
+0
+</span>/15
+
+</div>
+
+<div
+class="percentage"
+id="percentage">
+0%
+</div>
+
+<div
+class="result-message"
+id="resultMessage">
+Great work!
+</div>
+
+<div class="result-buttons">
+
+<button
+class="result-btn"
+onclick="restartQuiz()">
+
+🔀 New Random Test
+
+</button>
+
+<button
+class="result-btn secondary"
+onclick="window.location.href='academy.html'">
+
+📚 Continue Learning
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CHALLENGE -->
+
+<div class="challenge">
+
+<h2>
+✈️ Pilot Mindset
+</h2>
+
+<p>
+
+A good learner doesn't simply memorize answers.
+Understand the idea behind the answer.
+If you miss a question, learn from it and try again.
+Every new attempt gives you a fresh randomized challenge.
+
+</p>
+
+</div>
 
 </section>
 
 
-<main class="container">
+<!-- ================= TOPICS ================= -->
 
-    <!-- TEST INFORMATION -->
+<section class="section">
 
-    <section class="test-info">
+<div class="heading">
 
-        <div class="info-card">
-            <strong>15</strong>
-            <span>Questions Per Test</span>
-        </div>
+<small>
+WHAT YOU ARE TESTING
+</small>
 
-        <div class="info-card">
-            <strong id="attemptNumber">1</strong>
-            <span>Current Test</span>
-        </div>
+<h2>
+Aviation Topics
+</h2>
 
-        <div class="info-card">
-            <strong>70%</strong>
-            <span>Recommended Pass Mark</span>
-        </div>
+<p>
 
-    </section>
+The quiz covers basic aviation concepts
+suitable for someone beginning to explore aviation.
 
+</p>
 
-    <!-- ================= TEST ================= -->
+</div>
 
-    <section class="test-box" id="testBox">
 
-        <div class="test-top">
+<div class="topic-grid">
 
-            <span class="question-number" id="questionNumber">
-                Question 1 of 15
-            </span>
 
-            <span id="answeredCount">
-                0 / 15 answered
-            </span>
+<div class="topic">
 
-        </div>
+<div class="topic-icon">
+✈️
+</div>
 
-        <div class="progress">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
+<h3>
+Aircraft
+</h3>
 
-        <div id="questionArea"></div>
+<p>
+Basic aircraft types and their general purposes.
+</p>
 
-        <div class="buttons">
+</div>
 
-            <button
-                type="button"
-                class="btn secondary"
-                id="previousBtn">
-                ← Previous
-            </button>
 
-            <button
-                type="button"
-                class="btn finish"
-                id="nextBtn">
-                Next →
-            </button>
+<div class="topic">
 
-        </div>
+<div class="topic-icon">
+🌍
+</div>
 
-    </section>
+<h3>
+Flight Science
+</h3>
 
+<p>
+Simple concepts about forces and aircraft movement.
+</p>
 
-    <!-- ================= RESULT ================= -->
+</div>
 
-    <section class="result" id="resultBox">
 
-        <h2 class="result-title">
-            Test Completed
-        </h2>
+<div class="topic">
 
-        <div class="score-circle">
+<div class="topic-icon">
+🎛️
+</div>
 
-            <strong id="scoreText">
-                0/15
-            </strong>
+<h3>
+Cockpit
+</h3>
 
-            <span id="percentageText">
-                0%
-            </span>
+<p>
+Basic knowledge of common flight instruments.
+</p>
 
-        </div>
+</div>
 
-        <p class="result-message" id="resultMessage"></p>
 
-        <div id="wrongAnswers"></div>
+<div class="topic">
 
-        <div class="buttons">
+<div class="topic-icon">
+🧭
+</div>
 
-            <button
-                type="button"
-                class="btn finish"
-                id="newTestBtn">
-                🔄 Start Another 15 Questions
-            </button>
+<h3>
+Navigation
+</h3>
 
-            <a
-                href="academy.html"
-                class="btn secondary"
-                style="text-decoration:none;text-align:center;">
-                📚 Review Academy
-            </a>
-
-            <a
-                href="index.html"
-                class="btn secondary"
-                style="text-decoration:none;text-align:center;">
-                🏠 Home
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= TOPICS ================= -->
-
-    <section class="topics">
-
-        <div class="section-title">
-
-            <h2>📚 Theory Covered</h2>
-
-            <p>
-                Questions are selected from these aviation knowledge areas.
-            </p>
-
-        </div>
-
-        <div class="topic-grid">
-
-            <div class="topic-card">
-                <h3>✈️ Introduction to Aviation</h3>
-                <p>Basic aviation concepts, terminology and history.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🧑‍✈️ Pilot Profession</h3>
-                <p>Pilot roles, responsibilities and professional development.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>📜 Pilot Licences</h3>
-                <p>Basic differences between major pilot licences.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🌬️ Aerodynamics</h3>
-                <p>How aircraft interact with air and generate forces.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>⬆️ Four Forces</h3>
-                <p>Lift, weight, thrust and drag.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🪽 Control Surfaces</h3>
-                <p>Ailerons, elevators, rudders and flaps.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>⚙️ Aircraft Engines</h3>
-                <p>Basic piston and turbine engine concepts.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🎛️ Cockpit Instruments</h3>
-                <p>Airspeed, altitude, attitude, heading and vertical speed.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🧭 Navigation</h3>
-                <p>Charts, coordinates, directions and navigation concepts.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>📻 Communication</h3>
-                <p>Aviation radio communication and phonetic alphabet.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🌦️ Weather</h3>
-                <p>Clouds, wind, pressure, visibility and thunderstorms.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🛫 Airports</h3>
-                <p>Runways, taxiways, aprons and airport operations.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🎧 Air Traffic Control</h3>
-                <p>The role of ATC in managing aircraft traffic.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🇳🇬 Nigerian Aviation</h3>
-                <p>NCAA, FAAN, NAMA, NiMet, NSIB and NCAT.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🛡️ Aviation Safety</h3>
-                <p>Safety culture, human factors and risk awareness.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>🚁 Aircraft Types</h3>
-                <p>Airliners, helicopters, trainers and business aircraft.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>👥 Crew Resource Management</h3>
-                <p>Communication, teamwork and decision-making.</p>
-            </div>
-
-            <div class="topic-card">
-                <h3>📈 Performance</h3>
-                <p>General aircraft performance concepts.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
+<p>
+Introductory concepts related to direction and navigation.
+</p>
+
+</div>
+
+
+<div class="topic">
+
+<div class="topic-icon">
+👨‍✈️
+</div>
+
+<h3>
+Pilots
+</h3>
+
+<p>
+General knowledge about pilot learning and responsibilities.
+</p>
+
+</div>
+
+
+<div class="topic">
+
+<div class="topic-icon">
+🇳🇬
+</div>
+
+<h3>
+Nigeria Aviation
+</h3>
+
+<p>
+Basic aviation knowledge connected to Nigeria.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
 
 
 <!-- ================= FOOTER ================= -->
 
 <footer>
 
-    <div class="creator">
-        It's Muh'd 👑🖥️
-    </div>
+<div class="footer-brand">
+Future Pilot Academy ✈️
+</div>
 
-    <p>
-        Future Pilot Academy — created for aviation learning,
-        knowledge development and educational practice.
-    </p>
+<div class="footer-line">
+</div>
 
-    <p>
-        Student: ZILHEART ✈️
-    </p>
+<div class="creator">
 
-    <p style="margin-top:12px;">
-        Educational simulator only. This website does not replace
-        certified flight training or professional aviation instruction.
-    </p>
+Created by
+<strong>
+It's Muh'd 👑🖥️
+</strong>
 
-    <p style="margin-top:15px;">
-        © <span id="year"></span> It's Muh'd 👑🖥️
-    </p>
+</div>
+
+<div class="pilot">
+
+Future Pilot:
+ZILHEART ✈️
+
+</div>
+
+<small>
+
+Educational aviation website •
+Built for learning and inspiration
+
+</small>
 
 </footer>
 
 
 <script>
 
-/* =========================================================
-   MOBILE NAVIGATION
-========================================================= */
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
-menuBtn.addEventListener("click", function(){
+function toggleMenu(){
 
-    navLinks.classList.toggle("open");
+    document
+    .getElementById("navLinks")
+    .classList
+    .toggle("show");
 
-    const opened = navLinks.classList.contains("open");
+}
 
-    menuBtn.setAttribute("aria-expanded", opened ? "true" : "false");
 
-});
+document
+.querySelectorAll(".nav-links a")
+.forEach(function(link){
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener(
+        "click",
+        function(){
 
-    link.addEventListener("click", () => {
+            document
+            .getElementById("navLinks")
+            .classList
+            .remove("show");
 
-        navLinks.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded","false");
-
-    });
-
-});
-
-document.addEventListener("click", function(event){
-
-    if(
-        !navLinks.contains(event.target) &&
-        !menuBtn.contains(event.target)
-    ){
-
-        navLinks.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded","false");
-
-    }
+        }
+    );
 
 });
 
 
-/* =========================================================
+/* =====================================================
    QUESTION BANK
-   60+ QUESTIONS
-========================================================= */
+
+   IMPORTANT:
+   We keep more questions than the 15 shown in one test.
+   The system randomly selects 15 questions for every
+   new attempt.
+===================================================== */
 
 const questionBank = [
 
-/* 1 */
-
 {
-id:"q1",
-topic:"Aerodynamics",
-question:"Which force acts generally upward on an aircraft and opposes its weight?",
-options:[
-"Lift",
-"Drag",
-"Thrust",
-"Gravity"
-],
-correct:0,
-explanation:"Lift is the aerodynamic force that generally acts upward and counteracts the aircraft's weight."
-},
+question:
+"What force generally acts upward to support an aircraft in flight?",
 
-{
-id:"q2",
-topic:"Four Forces",
-question:"Which force generally acts opposite to an aircraft's direction of motion through the air?",
 options:[
 "Drag",
 "Lift",
 "Weight",
 "Thrust"
 ],
-correct:0,
-explanation:"Drag is the aerodynamic resistance that acts opposite the aircraft's motion through the air."
+
+answer:"Lift",
+
+explanation:
+"Lift is the aerodynamic force that generally acts upward relative to the aircraft."
 },
 
+
 {
-id:"q3",
-topic:"Four Forces",
-question:"Which force is produced by an engine or propulsion system to move an aircraft forward?",
+question:
+"Which instrument provides an indication of aircraft altitude?",
+
 options:[
-"Thrust",
+"Altimeter",
+"Compass",
+"Airspeed indicator",
+"VSI"
+],
+
+answer:"Altimeter",
+
+explanation:
+"The altimeter provides an indication of altitude using atmospheric pressure information."
+},
+
+
+{
+question:
+"Which instrument shows indicated airspeed?",
+
+options:[
+"Altimeter",
+"Heading indicator",
+"Airspeed indicator",
+"Turn coordinator"
+],
+
+answer:"Airspeed indicator",
+
+explanation:
+"The airspeed indicator shows indicated airspeed."
+},
+
+
+{
+question:
+"Which force acts opposite an aircraft's motion through the air?",
+
+options:[
+"Lift",
 "Weight",
 "Drag",
-"Lift"
+"Thrust"
 ],
-correct:0,
-explanation:"Thrust is the propulsive force that moves an aircraft forward."
+
+answer:"Drag",
+
+explanation:
+"Drag is aerodynamic resistance that acts against movement through the air."
 },
 
+
 {
-id:"q4",
-topic:"Aircraft Forces",
-question:"Which force is primarily caused by gravity acting on the aircraft?",
+question:
+"What is the primary purpose of an attitude indicator?",
+
 options:[
-"Weight",
+"Show fuel quantity",
+"Show pitch and bank relative to the horizon",
+"Show engine temperature",
+"Show aircraft weight"
+],
+
+answer:"Show pitch and bank relative to the horizon",
+
+explanation:
+"The attitude indicator provides a visual reference for pitch and bank relative to the horizon."
+},
+
+
+{
+question:
+"Which aircraft is commonly associated with pilot training?",
+
+options:[
+"Airbus A350",
+"Cessna 172",
+"Gulfstream G550",
+"Boeing 747"
+],
+
+answer:"Cessna 172",
+
+explanation:
+"The Cessna 172 is widely known as a training and general-aviation aircraft."
+},
+
+
+{
+question:
+"Which of these is a helicopter?",
+
+options:[
+"Airbus A320",
+"Diamond DA40",
+"Robinson R44",
+"Boeing 737"
+],
+
+answer:"Robinson R44",
+
+explanation:
+"The Robinson R44 is a light helicopter."
+},
+
+
+{
+question:
+"What does VSI commonly stand for?",
+
+options:[
+"Vertical Speed Indicator",
+"Variable Speed Instrument",
+"Visual System Indicator",
+"Vertical Steering Instrument"
+],
+
+answer:"Vertical Speed Indicator",
+
+explanation:
+"VSI commonly stands for Vertical Speed Indicator."
+},
+
+
+{
+question:
+"Which force is associated with gravity acting on an aircraft?",
+
+options:[
 "Lift",
+"Weight",
 "Thrust",
 "Drag"
 ],
-correct:0,
-explanation:"Weight is the force produced by gravity acting on the aircraft's mass."
+
+answer:"Weight",
+
+explanation:
+"Weight is the force caused by gravity acting on the aircraft and its contents."
 },
 
-/* 5 */
 
 {
-id:"q5",
-topic:"Control Surfaces",
-question:"Which primary flight control surface primarily controls an aircraft's roll?",
+question:
+"Which force is produced by an aircraft's propulsion system?",
+
 options:[
-"Ailerons",
-"Elevator",
-"Rudder",
-"Flaps"
+"Thrust",
+"Drag",
+"Weight",
+"Lift"
 ],
-correct:0,
-explanation:"Ailerons control roll by changing lift on the aircraft's wings."
+
+answer:"Thrust",
+
+explanation:
+"Thrust is the forward force produced by an aircraft's propulsion system."
 },
 
+
 {
-id:"q6",
-topic:"Control Surfaces",
-question:"Which primary flight control surface primarily controls pitch?",
+question:
+"What does a heading indicator provide?",
+
 options:[
-"Elevator",
-"Aileron",
-"Rudder",
-"Flap"
+"Fuel information",
+"Directional reference",
+"Engine pressure",
+"Altitude"
 ],
-correct:0,
-explanation:"The elevator controls pitch, which changes the aircraft's nose-up or nose-down attitude."
+
+answer:"Directional reference",
+
+explanation:
+"A heading indicator provides a directional reference for the aircraft."
 },
 
+
 {
-id:"q7",
-topic:"Control Surfaces",
-question:"Which primary flight control surface primarily controls yaw?",
+question:
+"Which aircraft is a business jet?",
+
 options:[
-"Rudder",
-"Elevator",
-"Aileron",
-"Flap"
+"Cessna 172",
+"Robinson R44",
+"Gulfstream G550",
+"Bell 206"
 ],
-correct:0,
-explanation:"The rudder controls yaw around the aircraft's vertical axis."
+
+answer:"Gulfstream G550",
+
+explanation:
+"The Gulfstream G550 is a business jet."
 },
 
+
 {
-id:"q8",
-topic:"Aircraft",
-question:"What is the main purpose of flaps on an aircraft wing?",
+question:
+"Which aircraft is a wide-body commercial aircraft?",
+
 options:[
-"To increase lift at lower speeds",
-"To control yaw",
-"To replace the engine",
-"To measure altitude"
+"Airbus A350",
+"Cessna 182",
+"Diamond DA40",
+"Piper PA-28"
 ],
-correct:0,
-explanation:"Flaps change the wing's aerodynamic characteristics and can increase lift at lower speeds."
+
+answer:"Airbus A350",
+
+explanation:
+"The Airbus A350 is a modern wide-body commercial aircraft family."
 },
 
-/* 9 */
 
 {
-id:"q9",
-topic:"Cockpit Instruments",
-question:"What does an airspeed indicator primarily display?",
+question:
+"Which aircraft is commonly used for training and general aviation?",
+
 options:[
-"Aircraft speed through the air",
-"Aircraft altitude above sea level",
-"Aircraft heading",
-"Rate of climb"
+"Diamond DA40",
+"Airbus A350",
+"Gulfstream G550",
+"Boeing 737"
 ],
-correct:0,
-explanation:"The airspeed indicator displays the aircraft's indicated airspeed."
+
+answer:"Diamond DA40",
+
+explanation:
+"The Diamond DA40 is a light aircraft commonly used for training and general aviation."
 },
 
+
 {
-id:"q10",
-topic:"Cockpit Instruments",
-question:"What does an altimeter primarily indicate?",
+question:
+"What is one important quality for someone learning aviation?",
+
 options:[
-"Altitude",
-"Airspeed",
-"Heading",
-"Engine temperature"
+"Never asking questions",
+"Stopping after mistakes",
+"Continuous learning",
+"Ignoring safety"
 ],
-correct:0,
-explanation:"An altimeter provides an indication of altitude based on atmospheric pressure."
+
+answer:"Continuous learning",
+
+explanation:
+"Continuous learning is an important part of developing aviation knowledge."
 },
 
+
 {
-id:"q11",
-topic:"Cockpit Instruments",
-question:"Which instrument provides information about the aircraft's pitch and bank attitude?",
+question:
+"What is the main purpose of an aircraft's wings?",
+
 options:[
-"Attitude indicator",
-"Airspeed indicator",
-"Altimeter",
+"To produce aerodynamic lift",
+"To store passenger luggage",
+"To control cabin temperature",
+"To communicate with airports"
+],
+
+answer:"To produce aerodynamic lift",
+
+explanation:
+"Wings are designed to interact with airflow and produce aerodynamic lift."
+},
+
+
+{
+question:
+"Which instrument is primarily associated with vertical speed?",
+
+options:[
+"Vertical Speed Indicator",
+"Fuel gauge",
+"Heading indicator",
 "Compass"
 ],
-correct:0,
-explanation:"The attitude indicator displays the aircraft's pitch and bank attitude relative to the horizon."
+
+answer:"Vertical Speed Indicator",
+
+explanation:
+"The Vertical Speed Indicator provides an indication of the aircraft's vertical speed."
 },
 
+
 {
-id:"q12",
-topic:"Cockpit Instruments",
-question:"Which instrument primarily shows aircraft heading?",
+question:
+"What does an aircraft compass primarily indicate?",
+
 options:[
-"Heading indicator",
-"Altimeter",
-"Vertical speed indicator",
-"Attitude indicator"
+"Direction",
+"Fuel quantity",
+"Engine power",
+"Cabin pressure"
 ],
-correct:0,
-explanation:"The heading indicator provides a stabilized reference for the aircraft's heading."
+
+answer:"Direction",
+
+explanation:
+"A magnetic compass provides directional information."
 },
 
-/* 13 */
 
 {
-id:"q13",
-topic:"Cockpit Instruments",
-question:"What does the vertical speed indicator show?",
+question:
+"Which of these is an airplane rather than a helicopter?",
+
 options:[
-"Rate of climb or descent",
-"Aircraft heading",
-"Aircraft weight",
-"Engine thrust"
+"Bell 206",
+"Robinson R44",
+"Airbus A320",
+"Airbus H125"
 ],
-correct:0,
-explanation:"The vertical speed indicator shows the aircraft's rate of climb or descent."
+
+answer:"Airbus A320",
+
+explanation:
+"The Airbus A320 is a commercial airplane."
 },
 
+
 {
-id:"q14",
-topic:"Navigation",
-question:"What is the purpose of aviation navigation?",
+question:
+"Which aircraft is associated with the Piper PA-28 family?",
+
 options:[
-"To determine and maintain the intended route",
-"To increase engine size",
-"To change the aircraft's paint",
-"To replace weather information"
+"Light training/general-aviation airplane",
+"Large passenger jet",
+"Heavy helicopter",
+"Business jet"
 ],
-correct:0,
-explanation:"Navigation involves determining position, direction and route so an aircraft can proceed toward its intended destination."
+
+answer:"Light training/general-aviation airplane",
+
+explanation:
+"The Piper PA-28 family includes light airplanes used for training and general aviation."
 },
 
+
 {
-id:"q15",
-topic:"Communication",
-question:"What is the primary purpose of the NATO phonetic alphabet in aviation communication?",
+question:
+"What does the word 'aviation' broadly refer to?",
+
 options:[
-"To make letters easier to distinguish",
-"To calculate aircraft weight",
-"To measure wind speed",
-"To determine runway length"
+"Activities involving aircraft and flight",
+"Only airport restaurants",
+"Only automobile travel",
+"Only ship transportation"
 ],
-correct:0,
-explanation:"The phonetic alphabet helps make individual letters clearer during radio communication."
+
+answer:"Activities involving aircraft and flight",
+
+explanation:
+"Aviation broadly concerns aircraft, flight and the systems and activities associated with them."
 },
 
-{
-id:"q16",
-topic:"Communication",
-question:"Which word represents the letter A in the NATO phonetic alphabet?",
-options:[
-"Alfa",
-"Bravo",
-"Charlie",
-"Delta"
-],
-correct:0,
-explanation:"Alfa is the standardized phonetic word for the letter A."
-},
-
-/* 17 */
 
 {
-id:"q17",
-topic:"Weather",
-question:"What is wind?",
-options:[
-"Air moving from one place to another",
-"Water falling from clouds",
-"Cloud formation only",
-"Atmospheric pressure alone"
-],
-correct:0,
-explanation:"Wind is the movement of air, generally described by its direction and speed."
-},
+question:
+"Which aircraft type normally uses rotors to generate lift?",
 
-{
-id:"q18",
-topic:"Weather",
-question:"What is atmospheric pressure?",
-options:[
-"The force exerted by the atmosphere over an area",
-"The speed of an aircraft",
-"The weight of fuel only",
-"The temperature of a runway"
-],
-correct:0,
-explanation:"Atmospheric pressure is the force exerted by the atmosphere on a given area."
-},
-
-{
-id:"q19",
-topic:"Weather",
-question:"Which weather phenomenon can contain strong winds, heavy precipitation and lightning?",
-options:[
-"Thunderstorm",
-"Clear sky",
-"Calm air",
-"Light haze"
-],
-correct:0,
-explanation:"Thunderstorms are associated with powerful vertical air movements and can contain lightning, heavy precipitation and strong winds."
-},
-
-{
-id:"q20",
-topic:"Weather",
-question:"Why is visibility important in aviation?",
-options:[
-"It affects the ability to see objects and visual references",
-"It determines aircraft colour",
-"It changes the aircraft's registration",
-"It determines pilot age"
-],
-correct:0,
-explanation:"Visibility affects how well pilots and other aviation personnel can see relevant visual references."
-},
-
-/* 21 */
-
-{
-id:"q21",
-topic:"Airports",
-question:"What is a runway?",
-options:[
-"A prepared surface used for aircraft takeoffs and landings",
-"A passenger waiting room",
-"An aircraft engine",
-"A radio frequency"
-],
-correct:0,
-explanation:"A runway is a defined area prepared for aircraft takeoff and landing."
-},
-
-{
-id:"q22",
-topic:"Airports",
-question:"What is a taxiway?",
-options:[
-"A route used by aircraft to move between parts of an airport",
-"A runway used only for takeoff",
-"A passenger terminal",
-"A weather station"
-],
-correct:0,
-explanation:"Taxiways provide aircraft ground movement routes between runways, aprons and other airport areas."
-},
-
-{
-id:"q23",
-topic:"Airports",
-question:"What is an apron at an airport?",
-options:[
-"An area where aircraft may park, load, unload or receive services",
-"A weather cloud",
-"A navigation instrument",
-"An aircraft wing"
-],
-correct:0,
-explanation:"An apron is an airport area where aircraft can park and conduct activities such as loading, unloading and servicing."
-},
-
-{
-id:"q24",
-topic:"Air Traffic Control",
-question:"What is a major purpose of air traffic control?",
-options:[
-"To help manage aircraft movements safely and efficiently",
-"To manufacture aircraft",
-"To design aircraft paint",
-"To train aircraft engines"
-],
-correct:0,
-explanation:"Air traffic control helps organize aircraft movements and supports safe and orderly traffic flow."
-},
-
-/* 25 */
-
-{
-id:"q25",
-topic:"Pilot Profession",
-question:"Which quality is especially important for a professional pilot?",
-options:[
-"Good judgment and responsibility",
-"Ignoring procedures",
-"Avoiding communication",
-"Refusing to learn"
-],
-correct:0,
-explanation:"Professional pilots require sound judgment, responsibility, discipline and a strong safety mindset."
-},
-
-{
-id:"q26",
-topic:"Human Factors",
-question:"What does human factors in aviation study?",
-options:[
-"How human abilities and limitations affect safety and performance",
-"Only aircraft paint",
-"Only airport architecture",
-"Only engine fuel"
-],
-correct:0,
-explanation:"Human factors considers how human capabilities, limitations and behavior influence aviation performance and safety."
-},
-
-{
-id:"q27",
-topic:"Crew Resource Management",
-question:"What is a key principle of crew resource management?",
-options:[
-"Effective communication and teamwork",
-"Working without communication",
-"Ignoring other crew members",
-"Avoiding information sharing"
-],
-correct:0,
-explanation:"Crew resource management emphasizes communication, teamwork, decision-making and effective use of available resources."
-},
-
-{
-id:"q28",
-topic:"Aviation Safety",
-question:"What is a safety culture?",
-options:[
-"A shared commitment to safe practices and responsible behavior",
-"A type of aircraft",
-"A navigation chart",
-"A weather condition"
-],
-correct:0,
-explanation:"Safety culture refers to the shared attitudes, values and behaviors that support safety."
-},
-
-/* 29 */
-
-{
-id:"q29",
-topic:"Pilot Training",
-question:"What is ground school primarily intended to teach?",
-options:[
-"Theoretical aviation knowledge",
-"Aircraft painting",
-"Airport construction",
-"Passenger entertainment"
-],
-correct:0,
-explanation:"Ground school develops theoretical knowledge such as aviation regulations, meteorology, navigation and aircraft systems."
-},
-
-{
-id:"q30",
-topic:"Pilot Training",
-question:"Why is structured pilot training important?",
-options:[
-"It develops knowledge and skills progressively",
-"It removes the need for safety",
-"It eliminates all decision-making",
-"It replaces aviation regulations"
-],
-correct:0,
-explanation:"Structured training allows aviation knowledge and skills to develop progressively under appropriate instruction."
-},
-
-{
-id:"q31",
-topic:"Pilot Licences",
-question:"What does a pilot licence generally represent?",
-options:[
-"Authorization demonstrating that required standards have been met",
-"Aviation insurance only",
-"Aircraft ownership",
-"Airport ownership"
-],
-correct:0,
-explanation:"A pilot licence is an official authorization issued after meeting specified training, knowledge, skill and other requirements."
-},
-
-{
-id:"q32",
-topic:"Pilot Licences",
-question:"Which licence is generally associated with flying for personal, non-commercial purposes?",
-options:[
-"Private Pilot Licence",
-"Airline Transport Pilot Licence",
-"Aircraft Mechanic Licence",
-"Airport Manager Licence"
-],
-correct:0,
-explanation:"A Private Pilot Licence is generally associated with private flying rather than exercising commercial pilot privileges."
-},
-
-/* 33 */
-
-{
-id:"q33",
-topic:"Aircraft Types",
-question:"Which aircraft type normally uses rotating blades to generate lift?",
 options:[
 "Helicopter",
-"Glider",
 "Airliner",
-"Jet trainer"
+"Business jet",
+"Glider"
 ],
-correct:0,
-explanation:"A helicopter uses a rotor system with rotating blades to generate lift."
+
+answer:"Helicopter",
+
+explanation:
+"Helicopters use rotating rotor systems to generate lift and enable flight."
 },
 
+
 {
-id:"q34",
-topic:"Aircraft Types",
-question:"What is a training aircraft primarily designed to support?",
+question:
+"Which cockpit instrument is associated with aircraft pitch and bank?",
+
 options:[
-"Pilot instruction and practice",
-"Airport construction",
-"Passenger baggage storage",
-"Weather forecasting only"
+"Attitude indicator",
+"Fuel gauge",
+"Clock",
+"Engine temperature gauge"
 ],
-correct:0,
-explanation:"Training aircraft are designed to support pilot instruction and the development of flying skills."
+
+answer:"Attitude indicator",
+
+explanation:
+"The attitude indicator provides a visual reference for pitch and bank."
 },
 
+
 {
-id:"q35",
-topic:"Aircraft Types",
-question:"What is an airliner primarily designed to transport?",
+question:
+"What is drag in basic flight science?",
+
 options:[
-"Passengers and/or cargo",
-"Only fuel",
-"Only weather instruments",
-"Only pilots"
+"Resistance to movement through the air",
+"Gravity",
+"Forward propulsion",
+"Passenger weight"
 ],
-correct:0,
-explanation:"Airliners are aircraft designed primarily for transporting passengers, cargo or both."
+
+answer:"Resistance to movement through the air",
+
+explanation:
+"Drag is aerodynamic resistance that opposes movement through the air."
 },
 
+
 {
-id:"q36",
-topic:"Aircraft Structures",
-question:"What is the fuselage?",
+question:
+"What is thrust in basic flight science?",
+
 options:[
-"The main body of an aircraft",
-"The horizontal tail only",
-"The engine exhaust only",
-"The landing light"
+"A force produced by propulsion",
+"A force caused by gravity",
+"Air resistance",
+"Passenger weight"
 ],
-correct:0,
-explanation:"The fuselage is the main body of the aircraft and typically contains the cockpit, cabin and other equipment."
+
+answer:"A force produced by propulsion",
+
+explanation:
+"Thrust is generated by an aircraft's propulsion system."
 },
 
-/* 37 */
 
 {
-id:"q37",
-topic:"Aircraft Structures",
-question:"What is the primary purpose of an aircraft wing?",
+question:
+"What is weight in basic flight science?",
+
 options:[
-"To generate aerodynamic lift",
-"To store airport vehicles",
-"To communicate with ATC",
-"To measure temperature"
+"The force caused by gravity",
+"The force from the engine",
+"Air resistance",
+"The force from the wings"
 ],
-correct:0,
-explanation:"The wing is designed primarily to generate aerodynamic lift."
+
+answer:"The force caused by gravity",
+
+explanation:
+"Weight is the gravitational force acting on an aircraft."
 },
 
+
 {
-id:"q38",
-topic:"Engines",
-question:"What is the main purpose of an aircraft engine?",
+question:
+"What is lift in basic flight science?",
+
 options:[
-"To provide propulsion",
-"To measure altitude",
-"To control weather",
-"To replace the wings"
+"An aerodynamic force",
+"An airport building",
+"A navigation light",
+"A type of fuel"
 ],
-correct:0,
-explanation:"The engine or propulsion system provides the energy required to produce thrust."
+
+answer:"An aerodynamic force",
+
+explanation:
+"Lift is an aerodynamic force generated through the interaction of an aircraft with airflow."
 },
 
+
 {
-id:"q39",
-topic:"Propellers",
-question:"What is the function of a propeller on a typical propeller-driven aircraft?",
+question:
+"Which aircraft is designed primarily as a commercial passenger airplane?",
+
 options:[
-"To convert engine power into thrust",
-"To measure air pressure",
-"To control cabin temperature",
-"To display altitude"
+"Airbus A320",
+"Robinson R44",
+"Diamond DA40",
+"Cessna 172"
 ],
-correct:0,
-explanation:"A propeller converts rotational engine power into aerodynamic thrust."
+
+answer:"Airbus A320",
+
+explanation:
+"The Airbus A320 is a commercial passenger aircraft family."
 },
 
+
 {
-id:"q40",
-topic:"Jet Engines",
-question:"Jet engines produce propulsion primarily by accelerating air and exhaust gases?",
+question:
+"Which of these is a light helicopter?",
+
 options:[
-"True",
-"False",
-"Only when parked",
-"Only without fuel"
+"Robinson R44",
+"Airbus A350",
+"Boeing 737",
+"Cessna 182"
 ],
-correct:0,
-explanation:"Jet propulsion produces thrust through the acceleration of gases, with the exact process depending on engine type."
+
+answer:"Robinson R44",
+
+explanation:
+"The Robinson R44 is a light helicopter."
 },
 
-/* 41 */
 
 {
-id:"q41",
-topic:"Aerodynamics",
-question:"What is an airfoil?",
+question:
+"What does a pilot's basic aviation education help develop?",
+
 options:[
-"A shape designed to interact aerodynamically with airflow",
-"A type of airport",
-"A radio call",
-"A weather instrument"
+"Aeronautical knowledge",
+"Only artistic ability",
+"Only swimming skills",
+"Only musical ability"
 ],
-correct:0,
-explanation:"An airfoil is a streamlined shape designed to produce useful aerodynamic effects when air flows around it."
+
+answer:"Aeronautical knowledge",
+
+explanation:
+"Aviation education develops knowledge about aircraft, flight science, navigation and related subjects."
 },
 
+
 {
-id:"q42",
-topic:"Aerodynamics",
-question:"What is angle of attack?",
+question:
+"Why is learning from mistakes useful during study?",
+
 options:[
-"The angle between an airfoil's reference line and the relative airflow",
-"The angle between two runways",
-"The aircraft's compass heading",
-"The angle of a passenger seat"
+"It helps identify areas that need more understanding",
+"It means studying is unnecessary",
+"It guarantees a pilot certificate",
+"It replaces professional instruction"
 ],
-correct:0,
-explanation:"Angle of attack describes the angle between an airfoil's reference line and the relative airflow."
+
+answer:"It helps identify areas that need more understanding",
+
+explanation:
+"Reviewing mistakes can show which concepts need more study."
 },
 
+
 {
-id:"q43",
-topic:"Aerodynamics",
-question:"What is a stall in aerodynamic terms?",
+question:
+"What is a cockpit?",
+
 options:[
-"A condition where an airfoil exceeds its critical angle of attack and lift decreases significantly",
-"An engine being switched off while parked",
-"A runway closure",
-"A radio failure"
+"The area from which an aircraft is operated",
+"An aircraft's luggage compartment",
+"An airport parking area",
+"A type of runway"
 ],
-correct:0,
-explanation:"An aerodynamic stall occurs when an airfoil exceeds its critical angle of attack, causing a significant loss of lift."
+
+answer:"The area from which an aircraft is operated",
+
+explanation:
+"The cockpit is the flight deck area containing controls and instruments used by the flight crew."
 },
 
-{
-id:"q44",
-topic:"Stability",
-question:"What does aircraft stability describe?",
-options:[
-"The tendency of an aircraft to maintain or return toward a desired condition after a disturbance",
-"The aircraft's paint quality",
-"The number of passengers",
-"The airport's size"
-],
-correct:0,
-explanation:"Aircraft stability concerns how the aircraft responds to disturbances and whether it tends to maintain or return toward an equilibrium condition."
-},
-
-/* 45 */
 
 {
-id:"q45",
-topic:"Navigation",
-question:"What are coordinates used for in navigation?",
-options:[
-"Identifying a position using a reference system",
-"Measuring engine temperature",
-"Changing aircraft colour",
-"Calculating passenger age"
-],
-correct:0,
-explanation:"Coordinates provide a systematic way of identifying a geographic position."
-},
+question:
+"What does an altimeter help a pilot understand?",
 
-{
-id:"q46",
-topic:"Navigation",
-question:"What is a chart in aviation?",
 options:[
-"A graphical representation containing information useful for navigation or planning",
-"A pilot licence",
-"An engine component",
-"A passenger ticket"
-],
-correct:0,
-explanation:"Aviation charts graphically present geographic and aviation information used for navigation and planning."
-},
-
-{
-id:"q47",
-topic:"Magnetic Compass",
-question:"What does a magnetic compass primarily provide?",
-options:[
-"Directional reference",
 "Altitude",
-"Engine thrust",
-"Vertical speed"
+"Fuel brand",
+"Passenger age",
+"Aircraft color"
 ],
-correct:0,
-explanation:"A magnetic compass provides a directional reference based on Earth's magnetic field."
+
+answer:"Altitude",
+
+explanation:
+"An altimeter provides an indication of altitude."
 },
 
+
 {
-id:"q48",
-topic:"Weather",
-question:"Clouds form when moist air cools enough for water vapor to condense?",
+question:
+"Which of these is an example of a business jet?",
+
 options:[
-"True",
-"False",
-"Only over airports",
-"Only at night"
+"Embraer Phenom 300",
+"Robinson R44",
+"Cessna 172",
+"Diamond DA40"
 ],
-correct:0,
-explanation:"Cloud formation commonly involves moist air cooling to a point where water vapor condenses into tiny droplets or ice crystals."
+
+answer:"Embraer Phenom 300",
+
+explanation:
+"The Embraer Phenom 300 is a light business jet."
 },
 
-/* 49 */
 
 {
-id:"q49",
-topic:"Pressure",
-question:"Why is atmospheric pressure important in aviation?",
+question:
+"Which aircraft is a large commercial jet?",
+
 options:[
-"It affects instruments, weather and aircraft performance",
-"It determines pilot nationality",
-"It changes aircraft registration numbers",
-"It controls passenger tickets"
+"Boeing 737",
+"Cessna 172",
+"Robinson R44",
+"Piper PA-28"
 ],
-correct:0,
-explanation:"Atmospheric pressure influences weather, aircraft performance and the operation or interpretation of pressure-based instruments."
+
+answer:"Boeing 737",
+
+explanation:
+"The Boeing 737 is a commercial jet aircraft family."
 },
 
+
 {
-id:"q50",
-topic:"Visibility",
-question:"Which condition generally reduces visual range?",
+question:
+"Which quality is valuable when studying aviation?",
+
 options:[
-"Fog",
-"Clear air",
-"Excellent visibility",
-"Dry transparent air"
+"Curiosity and careful learning",
+"Ignoring explanations",
+"Guessing everything",
+"Never reviewing mistakes"
 ],
-correct:0,
-explanation:"Fog consists of tiny suspended water droplets near the surface and can substantially reduce visibility."
+
+answer:"Curiosity and careful learning",
+
+explanation:
+"Curiosity, careful study and asking questions can help build aviation knowledge."
 },
 
-{
-id:"q51",
-topic:"Nigerian Aviation",
-question:"What does NCAA stand for in Nigerian aviation?",
-options:[
-"Nigerian Civil Aviation Authority",
-"Nigeria Commercial Aircraft Association",
-"National Cabin Aviation Agency",
-"Nigerian Central Airport Authority"
-],
-correct:0,
-explanation:"NCAA stands for Nigerian Civil Aviation Authority, the country's civil aviation regulatory authority."
-},
 
 {
-id:"q52",
-topic:"Nigerian Aviation",
-question:"What does FAAN stand for?",
+question:
+"What is the purpose of a quiz like this on Future Pilot Academy?",
+
 options:[
-"Federal Airports Authority of Nigeria",
-"Federal Aircraft Association of Nigeria",
-"Flight Administration Agency of Nigeria",
-"Federal Aviation Academy of Nigeria"
+"To support learning",
+"To replace professional flight training",
+"To operate a real aircraft",
+"To issue a pilot licence"
 ],
-correct:0,
-explanation:"FAAN stands for Federal Airports Authority of Nigeria."
-},
 
-/* 53 */
+answer:"To support learning",
 
-{
-id:"q53",
-topic:"Nigerian Aviation",
-question:"What is NAMA primarily associated with?",
-options:[
-"Air navigation services",
-"Aircraft manufacturing",
-"Passenger catering",
-"Airport hotel management"
-],
-correct:0,
-explanation:"NAMA, the Nigerian Airspace Management Agency, is associated with air navigation services and management of Nigerian airspace."
-},
-
-{
-id:"q54",
-topic:"Nigerian Aviation",
-question:"What is NiMet primarily responsible for?",
-options:[
-"Meteorological services",
-"Aircraft manufacturing",
-"Airport security only",
-"Pilot licensing only"
-],
-correct:0,
-explanation:"NiMet, the Nigerian Meteorological Agency, provides meteorological information and services."
-},
-
-{
-id:"q55",
-topic:"Nigerian Aviation",
-question:"What is NSIB associated with?",
-options:[
-"Investigation of transportation accidents and incidents",
-"Airport food services",
-"Aircraft ticket sales",
-"Pilot uniform design"
-],
-correct:0,
-explanation:"The Nigeria Safety Investigation Bureau investigates transportation accidents and serious incidents within its mandate."
-},
-
-{
-id:"q56",
-topic:"Nigerian Aviation",
-question:"What is NCAT?",
-options:[
-"Nigerian College of Aviation Technology",
-"Nigerian Civil Airport Terminal",
-"National Commercial Air Transport",
-"Nigeria Cabin Aviation Team"
-],
-correct:0,
-explanation:"NCAT stands for Nigerian College of Aviation Technology, a major aviation training institution in Nigeria."
-},
-
-/* 57 */
-
-{
-id:"q57",
-topic:"Aviation Safety",
-question:"Why are checklists important in aviation?",
-options:[
-"They help ensure important tasks and items are systematically considered",
-"They replace all pilot knowledge",
-"They eliminate the need for communication",
-"They are used only for decoration"
-],
-correct:0,
-explanation:"Checklists provide a structured way to ensure important items and actions are considered systematically."
-},
-
-{
-id:"q58",
-topic:"Human Factors",
-question:"Which can negatively affect human performance in aviation?",
-options:[
-"Fatigue",
-"Good rest",
-"Clear communication",
-"Proper preparation"
-],
-correct:0,
-explanation:"Fatigue can impair attention, judgment, reaction and decision-making, making it an important human-factors concern."
-},
-
-{
-id:"q59",
-topic:"Aviation Regulations",
-question:"Why do aviation regulations exist?",
-options:[
-"To establish standards and requirements that support safe and orderly aviation",
-"To make aircraft heavier",
-"To prevent pilots from studying",
-"To replace all training"
-],
-correct:0,
-explanation:"Aviation regulations establish legally applicable standards and requirements intended to support safe and orderly aviation."
-},
-
-{
-id:"q60",
-topic:"Professional Development",
-question:"Why is continuous learning important for pilots?",
-options:[
-"Aviation knowledge, procedures and technology continue to develop",
-"Pilots never need new information",
-"It removes the need for training",
-"It makes regulations unnecessary"
-],
-correct:0,
-explanation:"Continuous learning helps aviation professionals maintain and develop relevant knowledge and skills as aviation evolves."
-},
-
-/* 61 */
-
-{
-id:"q61",
-topic:"Four Forces",
-question:"For steady level flight, which statement best describes the relationship between lift and weight?",
-options:[
-"Lift is approximately equal to weight",
-"Lift is always zero",
-"Weight is always zero",
-"Drag must equal weight"
-],
-correct:0,
-explanation:"In steady level flight, the vertical forces are approximately balanced, so lift is approximately equal to weight."
-},
-
-{
-id:"q62",
-topic:"Four Forces",
-question:"For steady unaccelerated flight, thrust and drag are approximately:",
-options:[
-"Balanced",
-"Both zero",
-"Unrelated",
-"Always vertical"
-],
-correct:0,
-explanation:"In steady unaccelerated flight, the forward and rearward forces are approximately balanced, so thrust is approximately equal to drag."
-},
-
-{
-id:"q63",
-topic:"Aircraft Systems",
-question:"Why do aircraft have multiple systems and instruments?",
-options:[
-"Different systems perform different functions and provide useful information",
-"All systems perform exactly the same function",
-"They are only for decoration",
-"They replace the aircraft structure"
-],
-correct:0,
-explanation:"Aircraft contain different systems and instruments because different functions require different forms of control, monitoring and support."
-},
-
-{
-id:"q64",
-topic:"Pilot Decision Making",
-question:"What is sound aeronautical decision-making intended to improve?",
-options:[
-"The quality and safety of decisions",
-"Aircraft paint",
-"Passenger ticket prices",
-"Runway colour"
-],
-correct:0,
-explanation:"Aeronautical decision-making helps pilots evaluate information, identify risks and make safer decisions."
-},
-
-/* 65 */
-
-{
-id:"q65",
-topic:"Aviation History",
-question:"Why is aviation history useful to aviation students?",
-options:[
-"It helps students understand how aviation developed and learned from past experience",
-"It eliminates the need for modern knowledge",
-"It replaces pilot training",
-"It determines today's weather"
-],
-correct:0,
-explanation:"Aviation history provides context for technological development, operational practices and lessons learned over time."
-},
-
-{
-id:"q66",
-topic:"Pilot Profession",
-question:"Which is an important professional responsibility of a pilot?",
-options:[
-"Prioritizing safety and following applicable procedures",
-"Ignoring regulations",
-"Avoiding preparation",
-"Refusing to communicate"
-],
-correct:0,
-explanation:"Professional pilots are expected to prioritize safety, maintain competence and follow applicable procedures and regulations."
-},
-
-{
-id:"q67",
-topic:"Cockpit",
-question:"What is the cockpit?",
-options:[
-"The area from which an aircraft is controlled",
-"The aircraft's fuel tank only",
-"The airport runway",
-"The passenger baggage room"
-],
-correct:0,
-explanation:"The cockpit is the flight-deck area containing the controls, instruments and systems used by flight crew."
-},
-
-{
-id:"q68",
-topic:"Aviation Alphabet",
-question:"Which phonetic word represents the letter B?",
-options:[
-"Bravo",
-"Alfa",
-"Charlie",
-"Echo"
-],
-correct:0,
-explanation:"Bravo is the NATO phonetic alphabet word for the letter B."
-},
-
-/* 69 */
-
-{
-id:"q69",
-topic:"Aircraft Performance",
-question:"What does aircraft performance generally describe?",
-options:[
-"How an aircraft behaves and what it can achieve under specified conditions",
-"Only the aircraft's paint quality",
-"Only passenger comfort",
-"Only radio communication"
-],
-correct:0,
-explanation:"Aircraft performance describes characteristics such as speed, climb, range and other capabilities under particular conditions."
-},
-
-{
-id:"q70",
-topic:"Airport",
-question:"What is the terminal building primarily associated with?",
-options:[
-"Passenger processing and airport services",
-"Generating lift",
-"Controlling aircraft pitch",
-"Producing engine thrust"
-],
-correct:0,
-explanation:"Airport terminal facilities support passenger processing and related airport services."
+explanation:
+"This website is an educational learning tool and does not replace qualified aviation training."
 }
 
 ];
 
 
-/* =========================================================
-   TEST VARIABLES
-========================================================= */
+/* =====================================================
+   QUIZ VARIABLES
+===================================================== */
 
 const QUESTIONS_PER_TEST = 15;
 
-let currentQuestions = [];
-let currentIndex = 0;
+let testQuestions = [];
 
-let userAnswers = [];
+let currentQuestion = 0;
 
-let usedQuestionIds =
-    JSON.parse(sessionStorage.getItem("usedQuestionIds") || "[]");
+let score = 0;
 
-let attempt =
-    Number(sessionStorage.getItem("pilotTestAttempt") || "0");
-
-let cycleResetMessage = false;
+let answered = false;
 
 
-/* =========================================================
-   SHUFFLE
-========================================================= */
+/* =====================================================
+   RANDOM SHUFFLE
+===================================================== */
 
-function shuffle(array){
+/*
+   Fisher-Yates shuffle.
 
-    const copy = [...array];
+   This creates a proper randomized order for arrays.
+*/
 
-    for(let i = copy.length - 1; i > 0; i--){
+function shuffleArray(array){
 
-        const j = Math.floor(Math.random() * (i + 1));
+    const shuffled = [...array];
 
-        [copy[i],copy[j]] = [copy[j],copy[i]];
+    for(
+        let i = shuffled.length - 1;
+        i > 0;
+        i--
+    ){
+
+        const j =
+        Math.floor(
+            Math.random() * (i + 1)
+        );
+
+        [
+            shuffled[i],
+            shuffled[j]
+        ] =
+        [
+            shuffled[j],
+            shuffled[i]
+        ];
 
     }
 
-    return copy;
+    return shuffled;
+
 }
 
 
-/* =========================================================
-   CREATE RANDOM QUESTION
-========================================================= */
+/* =====================================================
+   CREATE NEW RANDOM TEST
+===================================================== */
 
-function prepareQuestion(question){
-
-    const correctText = question.options[question.correct];
-
-    const shuffledOptions = shuffle(
-        question.options.map((text,index)=>({
-            text:text,
-            correct:index === question.correct
-        }))
-    );
-
-    return {
-        ...question,
-        shuffledOptions,
-        correctText
-    };
-}
-
-
-/* =========================================================
-   START NEW TEST
-========================================================= */
-
-function startTest(){
-
-    cycleResetMessage = false;
-
-    let available =
-        questionBank.filter(
-            q => !usedQuestionIds.includes(q.id)
-        );
+function createRandomTest(){
 
     /*
-       If fewer than 15 questions remain,
-       start a fresh question cycle.
+       First shuffle the entire question bank.
     */
 
-    if(available.length < QUESTIONS_PER_TEST){
+    const shuffledQuestions =
+    shuffleArray(questionBank);
 
-        usedQuestionIds = [];
 
-        sessionStorage.setItem(
-            "usedQuestionIds",
-            JSON.stringify(usedQuestionIds)
-        );
+    /*
+       Take only 15 questions.
+    */
 
-        available = [...questionBank];
+    testQuestions =
+    shuffledQuestions
+    .slice(0,QUESTIONS_PER_TEST)
+    .map(function(q){
 
-        cycleResetMessage = true;
-    }
+        /*
+           Also shuffle the answer choices.
 
-    currentQuestions =
-        shuffle(available)
-        .slice(0, QUESTIONS_PER_TEST)
-        .map(prepareQuestion);
+           We keep the correct answer by its text,
+           instead of relying on an array number.
+        */
 
-    currentQuestions.forEach(q => {
+        return {
 
-        if(!usedQuestionIds.includes(q.id)){
-            usedQuestionIds.push(q.id);
-        }
+            question:q.question,
+
+            options:
+            shuffleArray(q.options),
+
+            answer:q.answer,
+
+            explanation:q.explanation
+
+        };
 
     });
 
-    sessionStorage.setItem(
-        "usedQuestionIds",
-        JSON.stringify(usedQuestionIds)
-    );
 
-    attempt++;
+    currentQuestion = 0;
 
-    sessionStorage.setItem(
-        "pilotTestAttempt",
-        attempt
-    );
+    score = 0;
 
-    document.getElementById("attemptNumber").textContent = attempt;
+    answered = false;
 
-    currentIndex = 0;
-
-    userAnswers = new Array(QUESTIONS_PER_TEST).fill(null);
-
-    document.getElementById("resultBox").classList.remove("show");
-
-    document.getElementById("testBox").style.display = "block";
-
-    renderQuestion();
-
-    window.scrollTo({
-        top:document.getElementById("testBox").offsetTop - 90,
-        behavior:"smooth"
-    });
 }
 
 
-/* =========================================================
-   RENDER QUESTION
-========================================================= */
+/* =====================================================
+   LOAD QUESTION
+===================================================== */
 
-function renderQuestion(){
+function loadQuestion(){
 
-    const q = currentQuestions[currentIndex];
+    answered = false;
 
-    document.getElementById("questionNumber").textContent =
-        `Question ${currentIndex + 1} of ${QUESTIONS_PER_TEST}`;
-
-    const answered =
-        userAnswers.filter(answer => answer !== null).length;
-
-    document.getElementById("answeredCount").textContent =
-        `${answered} / ${QUESTIONS_PER_TEST} answered`;
-
-    const progress =
-        ((currentIndex + 1) / QUESTIONS_PER_TEST) * 100;
-
-    document.getElementById("progressBar").style.width =
-        progress + "%";
-
-
-    let html = `
-
-        <div class="topic">
-            ${q.topic}
-        </div>
-
-        <h2 class="question">
-            ${q.question}
-        </h2>
-
-        <div class="options">
-
-    `;
-
-
-    q.shuffledOptions.forEach((option,index)=>{
-
-        const selected =
-            userAnswers[currentIndex] === index
-            ? "selected"
-            : "";
-
-        html += `
-
-            <button
-                type="button"
-                class="option ${selected}"
-                data-index="${index}">
-
-                <span class="option-letter">
-                    ${String.fromCharCode(65 + index)}
-                </span>
-
-                ${option.text}
-
-            </button>
-
-        `;
-
-    });
-
-
-    html += `</div>`;
-
-
-    document.getElementById("questionArea").innerHTML = html;
+    const q =
+    testQuestions[currentQuestion];
 
 
     document
-        .querySelectorAll(".option")
-        .forEach(button => {
-
-            button.addEventListener("click",function(){
-
-                const selectedIndex =
-                    Number(this.dataset.index);
-
-                userAnswers[currentIndex] =
-                    selectedIndex;
-
-                renderQuestion();
-
-            });
-
-        });
+    .getElementById("questionCount")
+    .textContent =
+    "Question " +
+    (currentQuestion + 1) +
+    " of " +
+    testQuestions.length;
 
 
-    document.getElementById("previousBtn").style.visibility =
-        currentIndex === 0
-        ? "hidden"
-        : "visible";
+    document
+    .getElementById("question")
+    .textContent =
+    q.question;
 
 
-    const nextBtn =
-        document.getElementById("nextBtn");
+    document
+    .getElementById("feedback")
+    .textContent =
+    "";
 
-    nextBtn.textContent =
-        currentIndex === QUESTIONS_PER_TEST - 1
-        ? "Finish Test ✓"
-        : "Next →";
+
+    document
+    .getElementById("feedback")
+    .className =
+    "feedback";
+
+
+    document
+    .getElementById("nextBtn")
+    .style.display =
+    "none";
+
+
+    const options =
+    document.getElementById("options");
+
+
+    options.innerHTML = "";
+
+
+    /*
+       Create the randomized answer buttons.
+    */
+
+    q.options.forEach(function(option){
+
+        const button =
+        document.createElement("button");
+
+
+        button.className =
+        "option";
+
+
+        button.textContent =
+        String.fromCharCode(
+            65 +
+            q.options.indexOf(option)
+        )
+        +
+        ". "
+        +
+        option;
+
+
+        button.onclick =
+        function(){
+
+            selectAnswer(
+                option,
+                button
+            );
+
+        };
+
+
+        options.appendChild(button);
+
+    });
+
+
+    /*
+       Progress calculation.
+    */
+
+    const percentage =
+    (currentQuestion /
+    testQuestions.length) *
+    100;
+
+
+    document
+    .getElementById("progressBar")
+    .style.width =
+    percentage + "%";
+
 }
 
 
-/* =========================================================
-   NEXT / FINISH
-========================================================= */
+/* =====================================================
+   ANSWER
+===================================================== */
 
-document.getElementById("nextBtn").addEventListener(
-"click",
-function(){
+function selectAnswer(
+    selectedAnswer,
+    button
+){
 
-    if(userAnswers[currentIndex] === null){
-
-        alert("Please select an answer before continuing.");
-
+    if(answered){
         return;
     }
 
 
-    if(currentIndex < QUESTIONS_PER_TEST - 1){
-
-        currentIndex++;
-
-        renderQuestion();
-
-        window.scrollTo({
-            top:document.getElementById("testBox").offsetTop - 90,
-            behavior:"smooth"
-        });
-
-    }else{
-
-        finishTest();
-
-    }
-
-});
+    answered = true;
 
 
-/* =========================================================
-   PREVIOUS
-========================================================= */
-
-document.getElementById("previousBtn").addEventListener(
-"click",
-function(){
-
-    if(currentIndex > 0){
-
-        currentIndex--;
-
-        renderQuestion();
-
-        window.scrollTo({
-            top:document.getElementById("testBox").offsetTop - 90,
-            behavior:"smooth"
-        });
-
-    }
-
-});
+    const q =
+    testQuestions[currentQuestion];
 
 
-/* =========================================================
-   FINISH TEST
-   IMPORTANT:
-   NO CORRECTION IS SHOWN BEFORE THIS FUNCTION
-========================================================= */
-
-function finishTest(){
-
-    /*
-       Make sure every question has been answered.
-    */
-
-    if(userAnswers.some(answer => answer === null)){
-
-        alert(
-            "Please answer all 15 questions before finishing the test."
-        );
-
-        return;
-    }
+    const buttons =
+    document.querySelectorAll(".option");
 
 
-    let score = 0;
+    buttons.forEach(function(btn){
 
-    let wrong = [];
-
-
-    currentQuestions.forEach((question,index)=>{
-
-        const selectedIndex =
-            userAnswers[index];
-
-        const selectedOption =
-            question.shuffledOptions[selectedIndex];
-
-        if(selectedOption.correct){
-
-            score++;
-
-        }else{
-
-            wrong.push({
-
-                number:index + 1,
-
-                topic:question.topic,
-
-                question:question.question,
-
-                yourAnswer:selectedOption.text,
-
-                correctAnswer:question.correctText,
-
-                explanation:question.explanation
-
-            });
-
-        }
+        btn.classList.add("disabled");
 
     });
+
+
+    /*
+       Correct answer.
+    */
+
+    if(
+        selectedAnswer ===
+        q.answer
+    ){
+
+        score++;
+
+
+        button.classList.add(
+            "correct"
+        );
+
+
+        document
+        .getElementById("feedback")
+        .textContent =
+        "✅ Correct! " +
+        q.explanation;
+
+
+        document
+        .getElementById("feedback")
+        .className =
+        "feedback correct";
+
+    }
+
+    /*
+       Wrong answer.
+    */
+
+    else{
+
+        button.classList.add(
+            "wrong"
+        );
+
+
+        /*
+           Find and highlight the correct answer.
+        */
+
+        buttons.forEach(function(btn){
+
+            const text =
+            btn.textContent
+            .replace(
+                /^[A-D]\.\s/,
+                ""
+            );
+
+
+            if(text === q.answer){
+
+                btn.classList.add(
+                    "correct"
+                );
+
+            }
+
+        });
+
+
+        document
+        .getElementById("feedback")
+        .textContent =
+        "❌ Not quite. " +
+        q.explanation;
+
+
+        document
+        .getElementById("feedback")
+        .className =
+        "feedback wrong";
+
+    }
+
+
+    document
+    .getElementById("score")
+    .textContent =
+    score;
+
+
+    document
+    .getElementById("nextBtn")
+    .style.display =
+    "inline-block";
+
+}
+
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+
+    if(
+        currentQuestion >=
+        testQuestions.length
+    ){
+
+        finishQuiz();
+
+    }
+
+    else{
+
+        loadQuestion();
+
+    }
+
+}
+
+
+/* =====================================================
+   FINISH QUIZ
+===================================================== */
+
+function finishQuiz(){
+
+    document
+    .getElementById("quizArea")
+    .style.display =
+    "none";
+
+
+    document
+    .getElementById("result")
+    .style.display =
+    "block";
+
+
+    document
+    .getElementById("finalScore")
+    .textContent =
+    score;
 
 
     const percentage =
-        Math.round(
-            (score / QUESTIONS_PER_TEST) * 100
-        );
+    Math.round(
+        (score /
+        testQuestions.length) *
+        100
+    );
 
 
-    document.getElementById("scoreText").textContent =
-        `${score}/${QUESTIONS_PER_TEST}`;
+    document
+    .getElementById("percentage")
+    .textContent =
+    percentage + "%";
 
-    document.getElementById("percentageText").textContent =
-        `${percentage}%`;
+
+    document
+    .getElementById("progressBar")
+    .style.width =
+    "100%";
 
 
-    let resultMessage = "";
+    let message;
+
+    let icon;
+
 
     if(percentage >= 90){
 
-        resultMessage =
-            "Outstanding performance, ZILHEART! ✈️ Your aviation theory knowledge is developing strongly.";
+        icon = "🏆";
 
-    }else if(percentage >= 70){
+        message =
+        "Outstanding, ZILHEART! Your aviation knowledge is taking off beautifully. Keep learning and building your foundation.";
 
-        resultMessage =
-            "Good work, ZILHEART! ✈️ You reached the recommended pass mark. Review the missed questions and keep improving.";
+    }
 
-    }else{
+    else if(percentage >= 70){
 
-        resultMessage =
-            "Keep studying, ZILHEART. ✈️ Don't worry about the result. Review the corrections below and try another test.";
+        icon = "🌟";
+
+        message =
+        "Excellent work! You have a strong beginner foundation. Keep studying and sharpening your aviation knowledge.";
+
+    }
+
+    else if(percentage >= 50){
+
+        icon = "✈️";
+
+        message =
+        "Good effort! You have a foundation to build on. Review the lessons and try another randomized test.";
+
+    }
+
+    else{
+
+        icon = "📚";
+
+        message =
+        "Every learner starts somewhere. Review the Academy lessons, explore the cockpit page and come back for another fresh challenge.";
 
     }
 
 
-    document.getElementById("resultMessage").textContent =
-        resultMessage;
+    document
+    .getElementById("resultIcon")
+    .textContent =
+    icon;
 
 
-    const wrongContainer =
-        document.getElementById("wrongAnswers");
+    document
+    .getElementById("resultMessage")
+    .textContent =
+    message;
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restartQuiz(){
+
+    /*
+       This is the important part.
+
+       A completely new question set is created.
+       The question order AND answer order change.
+    */
+
+    createRandomTest();
+
+
+    document
+    .getElementById("score")
+    .textContent =
+    "0";
+
+
+    document
+    .getElementById("quizArea")
+    .style.display =
+    "block";
+
+
+    document
+    .getElementById("result")
+    .style.display =
+    "none";
+
+
+    loadQuestion();
 
 
     /*
-       IMPORTANT:
-       Only wrong questions are displayed.
+       Scroll back to the quiz.
     */
 
-    if(wrong.length === 0){
-
-        wrongContainer.innerHTML = `
-
-            <div class="perfect">
-
-                🎉 Perfect Score!
-
-                <br><br>
-
-                You answered all 15 questions correctly.
-                There are no corrections to review.
-
-            </div>
-
-        `;
-
-    }else{
-
-        let html = `
-
-            <h3 class="review-title">
-                ❌ Questions You Missed (${wrong.length})
-            </h3>
-
-        `;
-
-
-        wrong.forEach(item=>{
-
-            html += `
-
-                <div class="wrong-card">
-
-                    <h4>
-                        Question ${item.number} • ${item.topic}
-                    </h4>
-
-                    <div class="wrong-question">
-                        ${item.question}
-                    </div>
-
-                    <div class="answer-row">
-                        <strong>Your answer:</strong>
-                        <span class="your-answer">
-                            ${item.yourAnswer}
-                        </span>
-                    </div>
-
-                    <div class="answer-row">
-                        <strong>Correct answer:</strong>
-                        <span class="correct-answer">
-                            ${item.correctAnswer}
-                        </span>
-                    </div>
-
-                    <div class="correction">
-
-                        <strong>📖 Correction:</strong><br>
-
-                        ${item.explanation}
-
-                    </div>
-
-                </div>
-
-            `;
-
-        });
-
-
-        wrongContainer.innerHTML = html;
-
-    }
-
-
-    /*
-       Hide the test and show result.
-    */
-
-    document.getElementById("testBox").style.display =
-        "none";
-
-    document.getElementById("resultBox").classList.add("show");
-
-
-    window.scrollTo({
-        top:document.getElementById("resultBox").offsetTop - 90,
-        behavior:"smooth"
+    document
+    .getElementById("testBox")
+    .scrollIntoView({
+        behavior:"smooth",
+        block:"start"
     });
 
 }
 
 
-/* =========================================================
-   NEW TEST
-========================================================= */
+/* =====================================================
+   START FIRST RANDOM TEST
+===================================================== */
 
-document.getElementById("newTestBtn").addEventListener(
-"click",
-function(){
+createRandomTest();
 
-    startTest();
-
-});
-
-
-/* =========================================================
-   YEAR
-========================================================= */
-
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-
-/* =========================================================
-   START FIRST TEST
-========================================================= */
-
-startTest();
+loadQuestion();
 
 </script>
 

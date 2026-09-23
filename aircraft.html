@@ -6,6 +6,15 @@
 
 <title>Aircraft Explorer | Future Pilot Academy</title>
 
+<!-- GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9QWF7YCP3J"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9QWF7YCP3J');
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -40,7 +49,9 @@ img{
     display:block;
 }
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION
+========================= */
 
 .navbar{
     position:sticky;
@@ -101,19 +112,29 @@ img{
     cursor:pointer;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     min-height:470px;
     padding:80px 20px;
     position:relative;
     overflow:hidden;
+
     background:
-        linear-gradient(120deg,rgba(2,57,112,.94),rgba(0,137,191,.83)),
+        linear-gradient(
+            120deg,
+            rgba(2,57,112,.94),
+            rgba(0,137,191,.83)
+        ),
         url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=85");
+
     background-size:cover;
     background-position:center;
+
     color:white;
+
     display:flex;
     align-items:center;
     justify-content:center;
@@ -164,12 +185,15 @@ img{
 }
 
 @keyframes floatName{
+
     0%,100%{
         transform:translateY(0);
     }
+
     50%{
         transform:translateY(-8px);
     }
+
 }
 
 .hero p{
@@ -213,7 +237,9 @@ img{
     transform:translateY(-3px);
 }
 
-/* STUDENT */
+/* =========================
+   STUDENT
+========================= */
 
 .student-card{
     max-width:950px;
@@ -253,7 +279,9 @@ img{
     line-height:1.6;
 }
 
-/* GENERAL */
+/* =========================
+   GENERAL
+========================= */
 
 .section{
     max-width:1200px;
@@ -289,7 +317,9 @@ img{
     font-size:14px;
 }
 
-/* FILTERS */
+/* =========================
+   FILTERS
+========================= */
 
 .filters{
     display:flex;
@@ -319,7 +349,9 @@ img{
     border-color:#0879d1;
 }
 
-/* AIRCRAFT GRID */
+/* =========================
+   AIRCRAFT GRID
+========================= */
 
 .aircraft-grid{
     display:grid;
@@ -406,7 +438,9 @@ img{
     color:white;
 }
 
-/* FORCES */
+/* =========================
+   FORCES
+========================= */
 
 .forces{
     background:#eaf5ff;
@@ -449,7 +483,9 @@ img{
     color:#68788b;
 }
 
-/* VISUAL LEARNING */
+/* =========================
+   VISUAL LEARNING
+========================= */
 
 .visual-grid{
     display:grid;
@@ -470,13 +506,21 @@ img{
 
 .visual-card:first-child{
     background-image:
-        linear-gradient(0deg,rgba(0,38,78,.9),rgba(0,38,78,.1)),
+        linear-gradient(
+            0deg,
+            rgba(0,38,78,.9),
+            rgba(0,38,78,.1)
+        ),
         url("https://images.unsplash.com/photo-1556388158-158ea5ccacbd?auto=format&fit=crop&w=1200&q=85");
 }
 
 .visual-card:last-child{
     background-image:
-        linear-gradient(0deg,rgba(0,38,78,.9),rgba(0,38,78,.1)),
+        linear-gradient(
+            0deg,
+            rgba(0,38,78,.9),
+            rgba(0,38,78,.1)
+        ),
         url("https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=1200&q=85");
 }
 
@@ -497,7 +541,9 @@ img{
     color:#e8f5ff;
 }
 
-/* NOTICE */
+/* =========================
+   NOTICE
+========================= */
 
 .notice{
     max-width:950px;
@@ -511,7 +557,9 @@ img{
     line-height:1.8;
 }
 
-/* CTA */
+/* =========================
+   CTA
+========================= */
 
 .cta{
     margin:30px 20px 70px;
@@ -521,8 +569,14 @@ img{
     border-radius:28px;
     padding:55px 25px;
     text-align:center;
+
     background:
-        linear-gradient(120deg,#064c8d,#0796c8);
+        linear-gradient(
+            120deg,
+            #064c8d,
+            #0796c8
+        );
+
     color:white;
     position:relative;
     overflow:hidden;
@@ -556,7 +610,9 @@ img{
     font-size:13px;
 }
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 
 .modal{
     position:fixed;
@@ -584,14 +640,17 @@ img{
 }
 
 @keyframes modalIn{
+
     from{
         transform:translateY(30px);
         opacity:0;
     }
+
     to{
         transform:translateY(0);
         opacity:1;
     }
+
 }
 
 .modal-box h2{
@@ -620,7 +679,9 @@ img{
     font-size:18px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     background:#082d50;
@@ -662,7 +723,9 @@ footer small{
     font-size:10px;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:900px){
 
@@ -699,6 +762,7 @@ footer small{
     .force-grid{
         grid-template-columns:repeat(2,1fr);
     }
+
 }
 
 @media(max-width:600px){
@@ -709,7 +773,7 @@ footer small{
     }
 
     .student-card{
-        margin: -40px 18px 35px;
+        margin:-40px 18px 35px;
         padding:20px;
     }
 
@@ -744,6 +808,7 @@ footer small{
         margin-left:18px;
         margin-right:18px;
     }
+
 }
 
 </style>
@@ -751,7 +816,9 @@ footer small{
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav class="navbar">
 
@@ -761,19 +828,35 @@ footer small{
 Future Pilot <span>Academy</span>
 </a>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<button
+class="menu-btn"
+onclick="toggleMenu()"
+aria-label="Open navigation menu">
+☰
+</button>
 
 <div class="nav-links" id="navLinks">
 
 <a href="index.html">Home</a>
+
 <a href="academy.html">Academy</a>
+
 <a href="map.html">World Map</a>
+
 <a href="aircraft.html" class="active">Aircraft</a>
+
 <a href="cockpit.html">Cockpit</a>
+
 <a href="tests.html">Tests</a>
+
 <a href="dictionary.html">Dictionary</a>
+
+<a href="gist.html">Gist</a>
+
 <a href="missions.html">Missions</a>
+
 <a href="nigeria.html">Nigeria Aviation</a>
+
 <a href="contact.html">Contact</a>
 
 </div>
@@ -783,17 +866,24 @@ Future Pilot <span>Academy</span>
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <header class="hero">
 
 <div class="hero-content">
 
-<div class="badge">✈️ AIRCRAFT EXPLORER</div>
+<div class="badge">
+✈️ AIRCRAFT EXPLORER
+</div>
 
 <h1>
+
 Know Your Aircraft
-<span>ZILHEART</span>
+
+<span>ZAIHEART</span>
+
 </h1>
 
 <p>
@@ -818,7 +908,9 @@ Learn Aerodynamics
 </header>
 
 
-<!-- STUDENT CARD -->
+<!-- =========================
+     STUDENT CARD
+========================= -->
 
 <div class="student-card">
 
@@ -828,7 +920,9 @@ Learn Aerodynamics
 
 <div>
 
-<h3>ZILHEART — Future Pilot ✈️</h3>
+<h3>
+ZAIHEART — Future Pilot ✈️
+</h3>
 
 <p>
 Every aircraft has a story. Learn the machines, understand the science,
@@ -840,15 +934,21 @@ and keep building your aviation knowledge.
 </div>
 
 
-<!-- AIRCRAFT -->
+<!-- =========================
+     AIRCRAFT
+========================= -->
 
 <section class="section" id="aircraft">
 
 <div class="section-heading">
 
-<div class="small">Aircraft Library</div>
+<div class="small">
+Aircraft Library
+</div>
 
-<h2>Explore The Fleet</h2>
+<h2>
+Explore The Fleet
+</h2>
 
 <p>
 From beginner training aircraft to commercial airliners and helicopters,
@@ -860,23 +960,33 @@ discover the role and basic characteristics of each aircraft.
 
 <div class="filters">
 
-<button class="filter-btn active" onclick="filterAircraft('all',this)">
+<button
+class="filter-btn active"
+onclick="filterAircraft('all',this)">
 All
 </button>
 
-<button class="filter-btn" onclick="filterAircraft('airplane',this)">
+<button
+class="filter-btn"
+onclick="filterAircraft('airplane',this)">
 Airplanes
 </button>
 
-<button class="filter-btn" onclick="filterAircraft('helicopter',this)">
+<button
+class="filter-btn"
+onclick="filterAircraft('helicopter',this)">
 Helicopters
 </button>
 
-<button class="filter-btn" onclick="filterAircraft('training',this)">
+<button
+class="filter-btn"
+onclick="filterAircraft('training',this)">
 Training
 </button>
 
-<button class="filter-btn" onclick="filterAircraft('jet',this)">
+<button
+class="filter-btn"
+onclick="filterAircraft('jet',this)">
 Jets
 </button>
 
@@ -886,9 +996,11 @@ Jets
 <div class="aircraft-grid">
 
 
-<!-- 1 -->
+<!-- AIRCRAFT 1 -->
 
-<article class="aircraft-card" data-category="airplane">
+<article
+class="aircraft-card"
+data-category="airplane">
 
 <div class="aircraft-image">
 
@@ -905,15 +1017,21 @@ COMMERCIAL
 
 <div class="aircraft-info">
 
-<h3>Airbus A320</h3>
+<h3>
+Airbus A320
+</h3>
 
 <p>
 A widely used twin-engine commercial passenger aircraft.
 It is part of the Airbus A320 family.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Airbus A320','The A320 is a narrow-body commercial airliner designed for passenger transportation. It is widely used by airlines around the world.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Airbus A320',
+'The A320 is a narrow-body commercial airliner designed for passenger transportation. It is widely used by airlines around the world.'
+)">
 Learn More
 </button>
 
@@ -922,9 +1040,11 @@ Learn More
 </article>
 
 
-<!-- 2 -->
+<!-- AIRCRAFT 2 -->
 
-<article class="aircraft-card" data-category="airplane training">
+<article
+class="aircraft-card"
+data-category="airplane training">
 
 <div class="aircraft-image">
 
@@ -941,15 +1061,21 @@ TRAINING
 
 <div class="aircraft-info">
 
-<h3>Cessna 172 Skyhawk</h3>
+<h3>
+Cessna 172 Skyhawk
+</h3>
 
 <p>
 A famous single-engine aircraft commonly associated with
 pilot training and general aviation.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Cessna 172 Skyhawk','The Cessna 172 is a four-seat, single-engine, high-wing aircraft and is one of the best-known general aviation aircraft.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Cessna 172 Skyhawk',
+'The Cessna 172 is a four-seat, single-engine, high-wing aircraft and is one of the best-known general aviation aircraft.'
+)">
 Learn More
 </button>
 
@@ -958,9 +1084,11 @@ Learn More
 </article>
 
 
-<!-- 3 -->
+<!-- AIRCRAFT 3 -->
 
-<article class="aircraft-card" data-category="helicopter">
+<article
+class="aircraft-card"
+data-category="helicopter">
 
 <div class="aircraft-image">
 
@@ -977,15 +1105,21 @@ HELICOPTER
 
 <div class="aircraft-info">
 
-<h3>Robinson R44</h3>
+<h3>
+Robinson R44
+</h3>
 
 <p>
 A light four-seat helicopter used for training,
 touring and general aviation operations.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Robinson R44','The R44 is a light helicopter designed by Robinson Helicopter Company and is commonly used for general aviation activities.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Robinson R44',
+'The R44 is a light helicopter designed by Robinson Helicopter Company and is commonly used for general aviation activities.'
+)">
 Learn More
 </button>
 
@@ -994,9 +1128,11 @@ Learn More
 </article>
 
 
-<!-- 4 -->
+<!-- AIRCRAFT 4 -->
 
-<article class="aircraft-card" data-category="airplane training">
+<article
+class="aircraft-card"
+data-category="airplane training">
 
 <div class="aircraft-image">
 
@@ -1013,15 +1149,21 @@ TRAINING
 
 <div class="aircraft-info">
 
-<h3>Piper PA-28</h3>
+<h3>
+Piper PA-28
+</h3>
 
 <p>
 A family of light aircraft widely associated with
 flight training and general aviation.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Piper PA-28','The Piper PA-28 family includes several light aircraft variants and is commonly associated with training and general aviation.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Piper PA-28',
+'The Piper PA-28 family includes several light aircraft variants and is commonly associated with training and general aviation.'
+)">
 Learn More
 </button>
 
@@ -1030,9 +1172,11 @@ Learn More
 </article>
 
 
-<!-- 5 -->
+<!-- AIRCRAFT 5 -->
 
-<article class="aircraft-card" data-category="helicopter">
+<article
+class="aircraft-card"
+data-category="helicopter">
 
 <div class="aircraft-image">
 
@@ -1049,15 +1193,21 @@ HELICOPTER
 
 <div class="aircraft-info">
 
-<h3>Bell 206 JetRanger</h3>
+<h3>
+Bell 206 JetRanger
+</h3>
 
 <p>
 A famous light helicopter family recognized for its
 distinctive design and widespread aviation history.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Bell 206 JetRanger','The Bell 206 family is a well-known light helicopter series with a long history in civilian aviation.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Bell 206 JetRanger',
+'The Bell 206 family is a well-known light helicopter series with a long history in civilian aviation.'
+)">
 Learn More
 </button>
 
@@ -1066,9 +1216,11 @@ Learn More
 </article>
 
 
-<!-- 6 -->
+<!-- AIRCRAFT 6 -->
 
-<article class="aircraft-card" data-category="airplane">
+<article
+class="aircraft-card"
+data-category="airplane">
 
 <div class="aircraft-image">
 
@@ -1085,15 +1237,21 @@ GENERAL AVIATION
 
 <div class="aircraft-info">
 
-<h3>Cessna 182 Skylane</h3>
+<h3>
+Cessna 182 Skylane
+</h3>
 
 <p>
 A four-seat, single-engine general aviation aircraft
 known for its useful combination of performance and utility.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Cessna 182 Skylane','The Cessna 182 is a single-engine aircraft used in general aviation, including personal and utility flying.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Cessna 182 Skylane',
+'The Cessna 182 is a single-engine aircraft used in general aviation, including personal and utility flying.'
+)">
 Learn More
 </button>
 
@@ -1102,9 +1260,11 @@ Learn More
 </article>
 
 
-<!-- 7 -->
+<!-- AIRCRAFT 7 -->
 
-<article class="aircraft-card" data-category="helicopter">
+<article
+class="aircraft-card"
+data-category="helicopter">
 
 <div class="aircraft-image">
 
@@ -1121,15 +1281,21 @@ HELICOPTER
 
 <div class="aircraft-info">
 
-<h3>Airbus H125</h3>
+<h3>
+Airbus H125
+</h3>
 
 <p>
 A single-engine light helicopter designed for a wide
 range of civilian and utility missions.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Airbus H125','The H125 is a single-engine light helicopter produced by Airbus Helicopters and is known for its versatility.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Airbus H125',
+'The H125 is a single-engine light helicopter produced by Airbus Helicopters and is known for its versatility.'
+)">
 Learn More
 </button>
 
@@ -1138,9 +1304,11 @@ Learn More
 </article>
 
 
-<!-- 8 -->
+<!-- AIRCRAFT 8 -->
 
-<article class="aircraft-card" data-category="airplane jet">
+<article
+class="aircraft-card"
+data-category="airplane jet">
 
 <div class="aircraft-image">
 
@@ -1157,15 +1325,21 @@ BUSINESS JET
 
 <div class="aircraft-info">
 
-<h3>Gulfstream G550</h3>
+<h3>
+Gulfstream G550
+</h3>
 
 <p>
 A long-range business jet designed for high-speed
 executive and private aviation.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Gulfstream G550','The Gulfstream G550 is a long-range business jet designed for executive and private aviation.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Gulfstream G550',
+'The Gulfstream G550 is a long-range business jet designed for executive and private aviation.'
+)">
 Learn More
 </button>
 
@@ -1174,9 +1348,11 @@ Learn More
 </article>
 
 
-<!-- 9 -->
+<!-- AIRCRAFT 9 -->
 
-<article class="aircraft-card" data-category="airplane jet">
+<article
+class="aircraft-card"
+data-category="airplane jet">
 
 <div class="aircraft-image">
 
@@ -1193,15 +1369,21 @@ WIDE-BODY JET
 
 <div class="aircraft-info">
 
-<h3>Airbus A350</h3>
+<h3>
+Airbus A350
+</h3>
 
 <p>
 A modern twin-engine wide-body commercial aircraft
 designed for long-distance passenger flights.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Airbus A350','The A350 is a modern wide-body commercial aircraft family designed for long-haul passenger transportation.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Airbus A350',
+'The A350 is a modern wide-body commercial aircraft family designed for long-haul passenger transportation.'
+)">
 Learn More
 </button>
 
@@ -1210,9 +1392,11 @@ Learn More
 </article>
 
 
-<!-- 10 -->
+<!-- AIRCRAFT 10 -->
 
-<article class="aircraft-card" data-category="airplane training">
+<article
+class="aircraft-card"
+data-category="airplane training">
 
 <div class="aircraft-image">
 
@@ -1229,15 +1413,21 @@ TRAINING
 
 <div class="aircraft-info">
 
-<h3>Diamond DA40</h3>
+<h3>
+Diamond DA40
+</h3>
 
 <p>
 A modern light aircraft frequently used for pilot
 training and general aviation.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Diamond DA40','The Diamond DA40 is a four-seat single-engine light aircraft commonly used for training and general aviation.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Diamond DA40',
+'The Diamond DA40 is a four-seat single-engine light aircraft commonly used for training and general aviation.'
+)">
 Learn More
 </button>
 
@@ -1246,9 +1436,11 @@ Learn More
 </article>
 
 
-<!-- 11 -->
+<!-- AIRCRAFT 11 -->
 
-<article class="aircraft-card" data-category="airplane jet">
+<article
+class="aircraft-card"
+data-category="airplane jet">
 
 <div class="aircraft-image">
 
@@ -1265,15 +1457,21 @@ COMMERCIAL
 
 <div class="aircraft-info">
 
-<h3>Boeing 737</h3>
+<h3>
+Boeing 737
+</h3>
 
 <p>
 One of the world's best-known narrow-body commercial
 jet aircraft families.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Boeing 737','The Boeing 737 family is a narrow-body commercial jet family used extensively for passenger transportation.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Boeing 737',
+'The Boeing 737 family is a narrow-body commercial jet family used extensively for passenger transportation.'
+)">
 Learn More
 </button>
 
@@ -1282,9 +1480,11 @@ Learn More
 </article>
 
 
-<!-- 12 -->
+<!-- AIRCRAFT 12 -->
 
-<article class="aircraft-card" data-category="airplane jet">
+<article
+class="aircraft-card"
+data-category="airplane jet">
 
 <div class="aircraft-image">
 
@@ -1301,15 +1501,21 @@ BUSINESS JET
 
 <div class="aircraft-info">
 
-<h3>Embraer Phenom 300</h3>
+<h3>
+Embraer Phenom 300
+</h3>
 
 <p>
 A light business jet designed for private,
 executive and corporate aviation.
 </p>
 
-<button class="learn-btn"
-onclick="showInfo('Embraer Phenom 300','The Phenom 300 is a light business jet manufactured by Embraer and designed for executive and private aviation.')">
+<button
+class="learn-btn"
+onclick="showInfo(
+'Embraer Phenom 300',
+'The Phenom 300 is a light business jet manufactured by Embraer and designed for executive and private aviation.'
+)">
 Learn More
 </button>
 
@@ -1323,7 +1529,9 @@ Learn More
 </section>
 
 
-<!-- FORCES -->
+<!-- =========================
+     FORCES
+========================= -->
 
 <section class="forces" id="forces">
 
@@ -1331,9 +1539,13 @@ Learn More
 
 <div class="section-heading">
 
-<div class="small">Flight Science</div>
+<div class="small">
+Flight Science
+</div>
 
-<h2>The Four Forces of Flight</h2>
+<h2>
+The Four Forces of Flight
+</h2>
 
 <p>
 Aircraft flight involves four major forces. Understanding them
@@ -1345,11 +1557,16 @@ is an important part of basic aviation science.
 
 <div class="force-grid">
 
+
 <div class="force-card">
 
-<div class="force-icon">⬆️</div>
+<div class="force-icon">
+⬆️
+</div>
 
-<h3>Lift</h3>
+<h3>
+Lift
+</h3>
 
 <p>
 The aerodynamic force that acts generally upward and supports
@@ -1361,9 +1578,13 @@ an aircraft in flight.
 
 <div class="force-card">
 
-<div class="force-icon">⬇️</div>
+<div class="force-icon">
+⬇️
+</div>
 
-<h3>Weight</h3>
+<h3>
+Weight
+</h3>
 
 <p>
 The force caused by gravity acting on the aircraft and its contents.
@@ -1374,9 +1595,13 @@ The force caused by gravity acting on the aircraft and its contents.
 
 <div class="force-card">
 
-<div class="force-icon">➡️</div>
+<div class="force-icon">
+➡️
+</div>
 
-<h3>Thrust</h3>
+<h3>
+Thrust
+</h3>
 
 <p>
 The forward force produced by an aircraft's propulsion system.
@@ -1387,9 +1612,13 @@ The forward force produced by an aircraft's propulsion system.
 
 <div class="force-card">
 
-<div class="force-icon">⬅️</div>
+<div class="force-icon">
+⬅️
+</div>
 
-<h3>Drag</h3>
+<h3>
+Drag
+</h3>
 
 <p>
 Aerodynamic resistance that acts against an aircraft's motion
@@ -1398,6 +1627,7 @@ through the air.
 
 </div>
 
+
 </div>
 
 </div>
@@ -1405,15 +1635,21 @@ through the air.
 </section>
 
 
-<!-- VISUAL LEARNING -->
+<!-- =========================
+     VISUAL LEARNING
+========================= -->
 
 <section class="section">
 
 <div class="section-heading">
 
-<div class="small">Understand The Basics</div>
+<div class="small">
+Understand The Basics
+</div>
 
-<h2>See Aviation Differently</h2>
+<h2>
+See Aviation Differently
+</h2>
 
 <p>
 Learning becomes easier when you connect aviation concepts
@@ -1425,11 +1661,14 @@ with what you can actually see.
 
 <div class="visual-grid">
 
+
 <div class="visual-card">
 
 <div class="visual-content">
 
-<h3>Lift & Aerodynamics</h3>
+<h3>
+Lift & Aerodynamics
+</h3>
 
 <p>
 Aircraft wings interact with moving air to create aerodynamic forces.
@@ -1445,7 +1684,9 @@ This is one of the foundations of flight science.
 
 <div class="visual-content">
 
-<h3>Aircraft In Flight</h3>
+<h3>
+Aircraft In Flight
+</h3>
 
 <p>
 Different aircraft are designed for different purposes,
@@ -1456,12 +1697,15 @@ from training and transportation to specialized missions.
 
 </div>
 
+
 </div>
 
 </section>
 
 
-<!-- NOTICE -->
+<!-- =========================
+     NOTICE
+========================= -->
 
 <div class="section">
 
@@ -1479,12 +1723,14 @@ devices.
 </div>
 
 
-<!-- CTA -->
+<!-- =========================
+     CTA
+========================= -->
 
 <section class="cta">
 
 <h2>
-Keep Flying, <span>ZILHEART</span> ✈️
+Keep Flying, <span>ZAIHEART</span> ✈️
 </h2>
 
 <p>
@@ -1493,20 +1739,29 @@ understand the science, test your knowledge and keep moving
 toward your aviation dream.
 </p>
 
-<a href="tests.html" class="btn btn-primary">
+<a
+href="tests.html"
+class="btn btn-primary">
 Take Aviation Test
 </a>
 
 </section>
 
 
-<!-- MODAL -->
+<!-- =========================
+     MODAL
+========================= -->
 
-<div class="modal" id="infoModal">
+<div
+class="modal"
+id="infoModal">
 
 <div class="modal-box">
 
-<button class="close-modal" onclick="closeInfo()">
+<button
+class="close-modal"
+onclick="closeInfo()"
+aria-label="Close">
 ×
 </button>
 
@@ -1523,7 +1778,9 @@ Aircraft information.
 </div>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1538,7 +1795,7 @@ Created by <strong>It's Muh'd 👑🖥️</strong>
 </div>
 
 <div class="footer-pilot">
-Future Pilot: ZILHEART ✈️
+Future Pilot: ZAIHEART ✈️
 </div>
 
 <small>
@@ -1550,7 +1807,9 @@ Educational aviation website • Built for learning and inspiration
 
 <script>
 
-/* MOBILE MENU */
+/* =========================
+   MOBILE MENU
+========================= */
 
 function toggleMenu(){
 
@@ -1564,7 +1823,9 @@ function toggleMenu(){
 
 /* CLOSE MOBILE MENU AFTER CLICK */
 
-document.querySelectorAll(".nav-links a").forEach(function(link){
+document
+.querySelectorAll(".nav-links a")
+.forEach(function(link){
 
     link.addEventListener("click",function(){
 
@@ -1578,7 +1839,9 @@ document.querySelectorAll(".nav-links a").forEach(function(link){
 });
 
 
-/* AIRCRAFT FILTER */
+/* =========================
+   AIRCRAFT FILTER
+========================= */
 
 function filterAircraft(category,button){
 
@@ -1620,13 +1883,19 @@ function filterAircraft(category,button){
 }
 
 
-/* MODAL */
+/* =========================
+   AIRCRAFT MODAL
+========================= */
 
 function showInfo(title,text){
 
-    document.getElementById("modalTitle").textContent = title;
+    document
+    .getElementById("modalTitle")
+    .textContent = title;
 
-    document.getElementById("modalText").textContent = text;
+    document
+    .getElementById("modalText")
+    .textContent = text;
 
     document
     .getElementById("infoModal")
@@ -1646,7 +1915,7 @@ function closeInfo(){
 }
 
 
-/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+/* CLOSE MODAL OUTSIDE */
 
 document
 .getElementById("infoModal")

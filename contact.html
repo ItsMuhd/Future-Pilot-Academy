@@ -15,6 +15,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+  <!-- =========================
+       GOOGLE ANALYTICS
+  ========================= -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QWF7YCP3J"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag("js", new Date());
+
+    gtag("config", "G-9QWF7YCP3J");
+  </script>
+
   <style>
     :root {
       --navy: #071a35;
@@ -590,12 +608,6 @@
       color: var(--gold);
     }
 
-    .footer-pilot {
-      margin-top: 7px;
-      color: #bcd6f2;
-      font-size: 13px;
-    }
-
     .footer-line {
       width: 70px;
       height: 2px;
@@ -603,9 +615,38 @@
       background: var(--blue);
     }
 
+    .footer-pilot {
+      margin-top: 7px;
+      color: #bcd6f2;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #dcecff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 10px;
+      border-radius: 12px;
+      transition: .25s ease;
+    }
+
+    .footer-links a:hover {
+      background: var(--blue);
+      color: white;
+    }
+
     .copyright {
       color: #89a7c8;
       font-size: 11px;
+      margin-top: 15px;
     }
 
     /* ================= TOAST ================= */
@@ -639,6 +680,7 @@
       0%,100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-15px);
       }
@@ -648,6 +690,7 @@
       0%,100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-7px);
       }
@@ -656,6 +699,7 @@
     /* ================= MOBILE ================= */
 
     @media (max-width: 900px) {
+
       .nav-links {
         display: none;
         position: absolute;
@@ -686,6 +730,7 @@
     }
 
     @media (max-width: 600px) {
+
       .hero {
         padding-top: 65px;
       }
@@ -710,30 +755,51 @@
   <!-- ================= NAVIGATION ================= -->
 
   <nav class="navbar">
+
     <div class="nav-inner">
 
       <a href="index.html" class="brand">
         It's Muh'd <span>👑🖥️</span>
       </a>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
         ☰
       </button>
 
       <div class="nav-links" id="navLinks">
+
         <a href="index.html">Home</a>
+
         <a href="academy.html">Academy</a>
+
         <a href="map.html">Map</a>
+
         <a href="aircraft.html">Aircraft</a>
+
         <a href="cockpit.html">Cockpit</a>
+
         <a href="tests.html">Tests</a>
+
         <a href="dictionary.html">Dictionary</a>
+
         <a href="missions.html">Missions</a>
+
         <a href="nigeria.html">Nigeria</a>
+
+        <a href="gist.html">Gist ✈️</a>
+
         <a href="contact.html" class="active">Contact</a>
+
       </div>
 
     </div>
+
   </nav>
 
 
@@ -819,7 +885,7 @@
         </div>
 
 
-        <button class="copy-btn" id="copyPhone">
+        <button class="copy-btn" id="copyPhone" type="button">
           📋 Copy Creator Number
         </button>
 
@@ -914,8 +980,6 @@
           </div>
 
 
-          <!-- Helps identify where the message came from -->
-
           <input
             type="hidden"
             name="website"
@@ -1006,9 +1070,12 @@
 
         <div class="faq-item">
 
-          <button class="faq-question">
+          <button class="faq-question" type="button">
+
             Can I send a message through this page?
+
             <span class="faq-plus">+</span>
+
           </button>
 
           <div class="faq-answer">
@@ -1022,9 +1089,12 @@
 
         <div class="faq-item">
 
-          <button class="faq-question">
+          <button class="faq-question" type="button">
+
             What should I put in the message?
+
             <span class="faq-plus">+</span>
+
           </button>
 
           <div class="faq-answer">
@@ -1038,9 +1108,12 @@
 
         <div class="faq-item">
 
-          <button class="faq-question">
+          <button class="faq-question" type="button">
+
             Can I use a phone to send the message?
+
             <span class="faq-plus">+</span>
+
           </button>
 
           <div class="faq-answer">
@@ -1053,9 +1126,12 @@
 
         <div class="faq-item">
 
-          <button class="faq-question">
+          <button class="faq-question" type="button">
+
             Is the aviation simulator real flight training?
+
             <span class="faq-plus">+</span>
+
           </button>
 
           <div class="faq-answer">
@@ -1082,7 +1158,8 @@
       <p>
         After sending your message, continue exploring the
         academy, aircraft, cockpit laboratory, missions,
-        aviation dictionary, and Nigerian aviation section.
+        aviation dictionary, Nigerian aviation section,
+        and the new Gist page.
       </p>
 
       <div class="cta-links">
@@ -1093,6 +1170,10 @@
 
         <a href="dictionary.html">
           📚 Dictionary
+        </a>
+
+        <a href="gist.html">
+          ✈️ Gist
         </a>
 
         <a href="tests.html" class="secondary">
@@ -1120,7 +1201,31 @@
       Future Pilot: ZILHEART ✈️
     </div>
 
-    <br>
+    <div class="footer-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="academy.html">Academy</a>
+
+      <a href="map.html">Map</a>
+
+      <a href="aircraft.html">Aircraft</a>
+
+      <a href="cockpit.html">Cockpit</a>
+
+      <a href="tests.html">Tests</a>
+
+      <a href="dictionary.html">Dictionary</a>
+
+      <a href="missions.html">Missions</a>
+
+      <a href="nigeria.html">Nigeria</a>
+
+      <a href="gist.html">Gist ✈️</a>
+
+      <a href="contact.html">Contact</a>
+
+    </div>
 
     <div class="copyright">
       © <span id="year"></span> Future Pilot Academy.
@@ -1151,10 +1256,16 @@
 
       navLinks.classList.toggle("show");
 
+      const isOpen =
+        navLinks.classList.contains("show");
+
       menuBtn.textContent =
-        navLinks.classList.contains("show")
-        ? "✕"
-        : "☰";
+        isOpen ? "✕" : "☰";
+
+      menuBtn.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
 
     });
 
@@ -1164,7 +1275,13 @@
       link.addEventListener("click", () => {
 
         navLinks.classList.remove("show");
+
         menuBtn.textContent = "☰";
+
+        menuBtn.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
       });
 
@@ -1254,11 +1371,6 @@
 
     contactForm.addEventListener("submit", async (event) => {
 
-      /*
-       * We submit with JavaScript so the visitor stays
-       * on the same page.
-       */
-
       event.preventDefault();
 
       sendBtn.disabled = true;
@@ -1332,7 +1444,6 @@
         "✈️ Send Message";
 
     });
-
 
   </script>
 
